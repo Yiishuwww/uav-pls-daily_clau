@@ -390,6 +390,54 @@ select {
   border-color: var(--accent);
 }
 
+/* ---------- Guide ---------- */
+
+.guide {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 15px 18px;
+  margin-bottom: 18px;
+}
+
+.guide-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.guide-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.guide-sub {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.guide-text {
+  margin: 0 0 6px;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.guide-text.overview {
+  color: var(--text);
+}
+
+.guide-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11.8px;
+  line-height: 1.6;
+}
+
 /* ---------- List ---------- */
 
 main {
@@ -406,6 +454,28 @@ main {
   color: var(--muted);
   font-size: 12.5px;
   margin-bottom: 14px;
+}
+
+.list-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reset-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 11.5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.reset-btn:hover {
+  border-color: var(--accent);
 }
 
 .month-head {
@@ -708,6 +778,23 @@ footer a {
 
   .selects select {
     flex: 1;
+  }
+
+  .guide {
+    padding: 13px 14px;
+    margin-bottom: 14px;
+  }
+
+  .guide-sub {
+    display: none;
+  }
+
+  .guide-text {
+    font-size: 12.5px;
+  }
+
+  .guide-hint {
+    font-size: 11.5px;
   }
 
   .paper {

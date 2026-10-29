@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-29T17:20:38+08:00",
+  "updatedAt": "2026-10-29T19:43:11+08:00",
   "papers": [
     {
       "title": "Poster: Secrecy rate analysis of RIS-assisted UAV networks using DDQN Network",
@@ -139,66 +139,6 @@
       "id": "doi:10.1007/s42401-026-00541-7"
     },
     {
-      "title": "Dynamic Source–Jammer Role Assignment for Secure UAV Communications: Joint Trajectory and Power Optimization",
-      "authors": [
-        "Runxin Gu",
-        "Yingying Fan",
-        "Enchao Zhang",
-        "Bing Hu"
-      ],
-      "abstract": "Unmanned aerial vehicle (UAV)-enabled communications provides a cost-effective option for next-generation wireless networks. Nevertheless, the inherently open characteristics of air-to-ground links leave such communications particularly susceptible to eavesdropping. Motivated by this vulnerability, this paper studies a secure UAV communication system supported by cooperative jamming from the perspective of physical layer security (PLS). We introduce a new mechanism in which UAVs dynamically alternate between the source and jammer roles according to time-varying channel conditions. A security optimization problem is then formulated to jointly determine the role assignments, UAV trajectories, and transmission power control, with the objective of maximizing the worst-case secrecy rate (WCSR). The formulated problem is highly non-convex because of its binary role assignment variables, coupled decision variables, and semi-infinite constraints. To address this problem, we develop an optimization framework termed OASIS, which partitions the original formulation into tractable subproblems and iteratively solves them through successive convex approximation (SCA) and the S-procedure. Under simulation scenarios with K=2 and K=4 potential eavesdroppers and a maximum location-uncertainty radius of 20 m, the proposed strategy achieves a higher WCSR than the evaluated fixed-role, partial-optimization, and dynamic non-robust benchmark schemes.",
-      "doi": "10.3390/drones10100763",
-      "venue": "Drones",
-      "publisher": "Multidisciplinary Digital Publishing Institute",
-      "type": "journal-article",
-      "published": "2026-10-11",
-      "url": "https://doi.org/10.3390/drones10100763",
-      "pdfUrl": "",
-      "sources": [
-        "openalex"
-      ],
-      "tags": [
-        "干扰/人工噪声",
-        "安全速率",
-        "轨迹优化"
-      ],
-      "score": 32,
-      "firstSeen": "2026-10-11",
-      "id": "doi:10.3390/drones10100763"
-    },
-    {
-      "title": "Novel framework for physical-layer secrecy and network secrecy energy efficiency of UAV-assisted device-to-device communication",
-      "authors": [
-        "Shiyam Alalmaei",
-        "Nikoly Hinov",
-        "Fadi M. Al-Turjman",
-        "Ramiz Salama",
-        "Hugo Alberto González López",
-        "Leandro Flórez Aristizábal",
-        "Dionicio Neira Rodado",
-        "José Escorcia‐Gutierrez",
-        "Darius Andriukaitis"
-      ],
-      "abstract": "Introduction Wireless networks are anticipated to continue connecting billions of devices and producing enormous amounts of data with the next sixth-generation (6G) technologies, propelling the development of artificial intelligence applications in a variety of industries. Unmanned aerial vehicles have shown promise in this regard as a way to deal with the problems brought on by the expanding environment. UAVs are especially well-suited for delivering on-demand services to mobile devices because of their special qualities, which include their mobility, flexibility, and capacity to create line-of-sight communication links. This is especially true in areas with limited terrestrial infrastructure, such as hot areas and disaster communication. Therefore, by acting as relaying points, aerial base stations, and data collectors, UAVs may greatly increase the capacity and reach of networks. Methods To address the challenges of energy limitations, spectrum scarcity, and severe co-channel interference in device-to-device (D2D) communication networks supporting UAVs in passive eavesdropping environments, the concept of secrecy energy-efficiency was introduced by considering each user’s privacy level and transmission power limitations. Based on physical layer secure transmission theory, the common problem of optimizing spectrum multiplexing and energy management strategies to maximize the energy efficiency of network secrecy was studied. A resource allocation algorithm combining the two algorithms was proposed to ensure the convergence of the original problem to a global optimal solution using the Dinkelbach algorithm and to transform the non-convex optimization problem into a geometric planning problem using the convex approximation algorithm. The problem was non-linear and non-convex. Results and Discussion Simulation results show that the recommended approach can effectively reduce co-channel interference, improve the energy efficiency of network privacy, and achieve a balance between network energy consumption and secure communication performance.",
-      "doi": "10.3389/fphy.2026.1964844",
-      "venue": "Frontiers in Physics",
-      "publisher": "Frontiers Media",
-      "type": "journal-article",
-      "published": "2026-10-08",
-      "url": "https://doi.org/10.3389/fphy.2026.1964844",
-      "pdfUrl": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2026.1964844/pdf",
-      "sources": [
-        "openalex",
-        "crossref"
-      ],
-      "tags": [
-        "无人机集群"
-      ],
-      "score": 32,
-      "firstSeen": "2026-10-08",
-      "id": "doi:10.3389/fphy.2026.1964844"
-    },
-    {
       "title": "Waveform Randomization for Secure ISAC",
       "authors": [
         "Zexin Fang",
@@ -262,6 +202,69 @@
       "score": 14,
       "firstSeen": "2026-10-04",
       "id": "doi:10.48550/arxiv.2610.04885"
+    },
+    {
+      "title": "Dynamic Source–Jammer Role Assignment for Secure UAV Communications: Joint Trajectory and Power Optimization",
+      "authors": [
+        "Runxin Gu",
+        "Yingying Fan",
+        "Enchao Zhang",
+        "Bing Hu"
+      ],
+      "abstract": "Unmanned aerial vehicle (UAV)-enabled communications provides a cost-effective option for next-generation wireless networks. Nevertheless, the inherently open characteristics of air-to-ground links leave such communications particularly susceptible to eavesdropping. Motivated by this vulnerability, this paper studies a secure UAV communication system supported by cooperative jamming from the perspective of physical layer security (PLS). We introduce a new mechanism in which UAVs dynamically alternate between the source and jammer roles according to time-varying channel conditions. A security optimization problem is then formulated to jointly determine the role assignments, UAV trajectories, and transmission power control, with the objective of maximizing the worst-case secrecy rate (WCSR). The formulated problem is highly non-convex because of its binary role assignment variables, coupled decision variables, and semi-infinite constraints. To address this problem, we develop an optimization framework termed OASIS, which partitions the original formulation into tractable subproblems and iteratively solves them through successive convex approximation (SCA) and the S-procedure. Under simulation scenarios with K = 2 and K = 4 potential eavesdroppers and a maximum location-uncertainty radius of 20 m, the proposed strategy achieves a higher WCSR than the evaluated fixed-role, partial-optimization, and dynamic non-robust benchmark schemes.",
+      "doi": "10.3390/drones10100763",
+      "venue": "Drones",
+      "publisher": "Multidisciplinary Digital Publishing Institute",
+      "type": "journal-article",
+      "published": "2026-10-01",
+      "url": "https://doi.org/10.3390/drones10100763",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "doaj"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "安全速率",
+        "轨迹优化"
+      ],
+      "score": 32,
+      "firstSeen": "2026-10-11",
+      "id": "doi:10.3390/drones10100763"
+    },
+    {
+      "title": "Novel framework for physical-layer secrecy and network secrecy energy efficiency of UAV-assisted device-to-device communication",
+      "authors": [
+        "Shiyam Alalmaei",
+        "Nikoly Hinov",
+        "Nikoly Hinov",
+        "Fadi Al-Turjman",
+        "Ramiz Salama",
+        "Hugo Alberto González López",
+        "Leandro Flórez Aristizábal",
+        "Dionicio Neira-Rodado",
+        "José Escorcia-Gutierrez",
+        "Darius Andriukaitis"
+      ],
+      "abstract": "Introduction Wireless networks are anticipated to continue connecting billions of devices and producing enormous amounts of data with the next sixth-generation (6G) technologies, propelling the development of artificial intelligence applications in a variety of industries. Unmanned aerial vehicles have shown promise in this regard as a way to deal with the problems brought on by the expanding environment. UAVs are especially well-suited for delivering on-demand services to mobile devices because of their special qualities, which include their mobility, flexibility, and capacity to create line-of-sight communication links. This is especially true in areas with limited terrestrial infrastructure, such as hot areas and disaster communication. Therefore, by acting as relaying points, aerial base stations, and data collectors, UAVs may greatly increase the capacity and reach of networks. Methods To address the challenges of energy limitations, spectrum scarcity, and severe co-channel interference in device-to-device (D2D) communication networks supporting UAVs in passive eavesdropping environments, the concept of secrecy energy-efficiency was introduced by considering each user’s privacy level and transmission power limitations. Based on physical layer secure transmission theory, the common problem of optimizing spectrum multiplexing and energy management strategies to maximize the energy efficiency of network secrecy was studied. A resource allocation algorithm combining the two algorithms was proposed to ensure the convergence of the original problem to a global optimal solution using the Dinkelbach algorithm and to transform the non-convex optimization problem into a geometric planning problem using the convex approximation algorithm. The problem was non-linear and non-convex. Results and Discussion Simulation results show that the recommended approach can effectively reduce co-channel interference, improve the energy efficiency of network privacy, and achieve a balance between network energy consumption and secure communication performance.",
+      "doi": "10.3389/fphy.2026.1964844",
+      "venue": "Frontiers in Physics",
+      "publisher": "Frontiers Media",
+      "type": "journal-article",
+      "published": "2026-10-01",
+      "url": "https://doi.org/10.3389/fphy.2026.1964844",
+      "pdfUrl": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2026.1964844/pdf",
+      "sources": [
+        "openalex",
+        "crossref",
+        "doaj"
+      ],
+      "tags": [
+        "无人机集群"
+      ],
+      "score": 32,
+      "firstSeen": "2026-10-08",
+      "id": "doi:10.3389/fphy.2026.1964844"
     },
     {
       "title": "Exploiting UAV Attitude for Covert Communications: Dynamics-Consistent Trajectory-Attitude Co-Design",
@@ -370,34 +373,6 @@
       "score": 12.5,
       "firstSeen": "2026-09-30",
       "id": "doi:10.48550/arxiv.2610.00752"
-    },
-    {
-      "title": "Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems",
-      "authors": [
-        "Omar Abdullatif Jassim",
-        "Sameh Najeh",
-        "Ammar Bouallègue"
-      ],
-      "abstract": "In recent years, reconfigurable intelligent surfaces (RISs) have been proposed as a promising disruptive technology for future wireless communication systems. RISs enable unprecedented dynamic and programmable control of the electromagnetic waves by integrating software-defined metasurfaces into wireless environments. When smartly configured with the phase shifts of incident signals, RIS systems have the potential to improve spectral efficiency, energy efficiency, coverage, security, and other wireless metrics without the need for additional transmit power or active radio frequency chains. However, optimizing RIS-assisted wireless networks is highly nontrivial, due to the high-dimensional search space, cascaded channel model, coupled design of active and passive beamforming, etc. Machine learning (ML), and in particular deep reinforcement learning (DRL), has shown great promise in addressing these challenges by providing intelligent, adaptive, and real-time resource allocation and control. In this survey, we present a comprehensive overview of the state-of-the-art Machine Learning (ML) empowered RISs, from the fundamentals to the various ML paradigms, including supervised learning, unsupervised learning and the DRL framework. We then discuss in details ML-based solutions for channel estimation, beamforming design, power allocation, and resource management in RIS-aided multiple access systems. We further survey recent advances in ML for mobile edge computing, federated learning, unmanned aerial vehicles (UAVs), and physical layer security with RISs. Finally, we discuss several open challenges and future directions to spur future research on ML-empowered RISs, including scalability, hardware impairments, and integration with future 6G wireless networks. Critically, we provide a substantive technical treatment of Explainable AI (XAI) for RIS scenarios, detailing how SHAP value attribution, Grad-CAM saliency mapping over RIS element indices, and Transformer attention maps can be applied to interpret black-box DRL policies and CNN-based models used for continuous phase-shift and beamforming optimisation, enabling operators to understand, trust, and debug ML-driven RIS control decisions.",
-      "doi": "10.3390/fi18100522",
-      "venue": "Future Internet",
-      "publisher": "Multidisciplinary Digital Publishing Institute",
-      "type": "journal-article",
-      "published": "2026-09-29",
-      "url": "https://doi.org/10.3390/fi18100522",
-      "pdfUrl": "",
-      "sources": [
-        "openalex"
-      ],
-      "tags": [
-        "RIS/IRS",
-        "波束成形",
-        "深度强化学习",
-        "边缘计算"
-      ],
-      "score": 7,
-      "firstSeen": "2026-09-29",
-      "id": "doi:10.3390/fi18100522"
     },
     {
       "title": "Analysis of Unmanned Aerial Vehicle Compromising Emissions in Terms of the Possibility of Reconstructing the Transmitted Image",
@@ -568,67 +543,6 @@
       "id": "doi:10.1016/j.phycom.2026.103373"
     },
     {
-      "title": "Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications",
-      "authors": [
-        "Xiang Ji",
-        "Shuomin Sun",
-        "Haofei Wang",
-        "Peng Liu",
-        "Wanming Hao"
-      ],
-      "abstract": "The integration of semantic communication with unmanned aerial vehicles (UAVs) and intelligent reflecting surfaces (IRSs) offers a promising approach for next-generation wireless systems. However, jointly optimizing semantic reliability, physical-layer security, and energy efficiency remains challenging. This paper investigates an IRS-assisted UAV semantic secure communication system in the presence of a potential eavesdropper, with the objective of maximizing semantic secure energy efficiency (SSEE). We first introduce a semantic similarity-based secure energy efficiency metric to capture the trade-off among transmission reliability, physical-layer security, and UAV energy consumption. The semantic symbol number, UAV trajectory, transmit power, and IRS phase shifts are jointly considered under mobility, secrecy, and energy constraints. To efficiently solve the resulting mixed discrete-continuous optimization problem, we develop a hierarchical optimization framework: the outer layer exhaustively searches over a finite set of candidate semantic symbol numbers, while the inner layer solves the continuous resource allocation problem using a heuristic-guided soft actor-critic (HG-SAC) algorithm. Simulation results show that the proposed framework achieves noticeable SSEE gains over several benchmark schemes.",
-      "doi": "10.3390/s26185779",
-      "venue": "Sensors",
-      "publisher": "Multidisciplinary Digital Publishing Institute",
-      "type": "journal-article",
-      "published": "2026-09-11",
-      "url": "https://doi.org/10.3390/s26185779",
-      "pdfUrl": "",
-      "sources": [
-        "openalex"
-      ],
-      "tags": [
-        "RIS/IRS",
-        "轨迹优化",
-        "深度强化学习"
-      ],
-      "score": 16,
-      "firstSeen": "2026-09-11",
-      "id": "doi:10.3390/s26185779"
-    },
-    {
-      "title": "Multi-Beam Cooperative Time-Varying Directional Modulation for Secure Satellite Downlink Transmission to UAV Swarms",
-      "authors": [
-        "Bin Qi",
-        "Jianxiong Pan",
-        "Linan Wang",
-        "Yanxue Zhang",
-        "Ruilang Li",
-        "Neng Ye"
-      ],
-      "abstract": "Satellite downlinks reliably connect remote unmanned aerial vehicle (UAV) swarms, but broad coverage exposes information-bearing signals to unauthorized receivers. This paper proposes a multi-beam cooperative time-varying directional modulation (TVDM) framework for secure satellite downlinks. Two asymmetrically partitioned subarrays form cooperative beams whose pointing states and beam-dependent symbol mappings are randomly updated at the symbol rate, thereby introducing controlled randomness for physical-layer security. In each interval, the source symbol is mapped to two transmit symbols whose superposition remains in the correct phase-shift-keying decision region at legitimate UAVs, while the equivalent constellation varies at unauthorized locations. A relaxed transparent-transmission constraint based on constructive decision-region margins enables conventional detection without instantaneous TVDM-state estimation. Mutual information (MI) defines the pointwise multi-UAV secrecy capacity (SC), main-lobe insecure area, and sidelobe leakage. A mixed discrete–continuous problem jointly optimizes the trajectory radius, relative pointing phase, mapping parameters, and subarray partition to reduce insecure coverage and sidelobe leakage. A block alternating algorithm combines Monte Carlo MI evaluation, projected Armijo updates, and finite partition search to coordinate continuous and discrete variables. Simulations using representative low-Earth-orbit satellite parameters show that the proposed design reduces the central insecure-interval length by 82.7% relative to conventional beamforming.",
-      "doi": "10.3390/drones10090690",
-      "venue": "Drones",
-      "publisher": "Multidisciplinary Digital Publishing Institute",
-      "type": "journal-article",
-      "published": "2026-09-11",
-      "url": "https://doi.org/10.3390/drones10090690",
-      "pdfUrl": "",
-      "sources": [
-        "openalex"
-      ],
-      "tags": [
-        "安全速率",
-        "轨迹优化",
-        "波束成形",
-        "空天地网络",
-        "无人机集群"
-      ],
-      "score": 14,
-      "firstSeen": "2026-09-11",
-      "id": "doi:10.3390/drones10090690"
-    },
-    {
       "title": "Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system",
       "authors": [
         "Nikita Goel",
@@ -715,6 +629,98 @@
       "score": 10.5,
       "firstSeen": "2026-09-02",
       "id": "doi:10.48550/arxiv.2609.03099"
+    },
+    {
+      "title": "Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems",
+      "authors": [
+        "Omar Abdullatif Jassim",
+        "Sameh Najeh",
+        "Ammar Bouallègue"
+      ],
+      "abstract": "In recent years, reconfigurable intelligent surfaces (RISs) have been proposed as a promising disruptive technology for future wireless communication systems. RISs enable unprecedented dynamic and programmable control of the electromagnetic waves by integrating software-defined metasurfaces into wireless environments. When smartly configured with the phase shifts of incident signals, RIS systems have the potential to improve spectral efficiency, energy efficiency, coverage, security, and other wireless metrics without the need for additional transmit power or active radio frequency chains. However, optimizing RIS-assisted wireless networks is highly nontrivial, due to the high-dimensional search space, cascaded channel model, coupled design of active and passive beamforming, etc. Machine learning (ML), and in particular deep reinforcement learning (DRL), has shown great promise in addressing these challenges by providing intelligent, adaptive, and real-time resource allocation and control. In this survey, we present a comprehensive overview of the state-of-the-art Machine Learning (ML) empowered RISs, from the fundamentals to the various ML paradigms, including supervised learning, unsupervised learning and the DRL framework. We then discuss in details ML-based solutions for channel estimation, beamforming design, power allocation, and resource management in RIS-aided multiple access systems. We further survey recent advances in ML for mobile edge computing, federated learning, unmanned aerial vehicles (UAVs), and physical layer security with RISs. Finally, we discuss several open challenges and future directions to spur future research on ML-empowered RISs, including scalability, hardware impairments, and integration with future 6G wireless networks. Critically, we provide a substantive technical treatment of Explainable AI (XAI) for RIS scenarios, detailing how SHAP value attribution, Grad-CAM saliency mapping over RIS element indices, and Transformer attention maps can be applied to interpret black-box DRL policies and CNN-based models used for continuous phase-shift and beamforming optimisation, enabling operators to understand, trust, and debug ML-driven RIS control decisions.",
+      "doi": "10.3390/fi18100522",
+      "venue": "Future Internet",
+      "publisher": "Multidisciplinary Digital Publishing Institute",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.3390/fi18100522",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "波束成形",
+        "深度强化学习",
+        "边缘计算"
+      ],
+      "score": 7,
+      "firstSeen": "2026-09-29",
+      "id": "doi:10.3390/fi18100522"
+    },
+    {
+      "title": "Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications",
+      "authors": [
+        "Xiang Ji",
+        "Shuomin Sun",
+        "Haofei Wang",
+        "Peng Liu",
+        "Wanming Hao"
+      ],
+      "abstract": "The integration of semantic communication with unmanned aerial vehicles (UAVs) and intelligent reflecting surfaces (IRSs) offers a promising approach for next-generation wireless systems. However, jointly optimizing semantic reliability, physical-layer security, and energy efficiency remains challenging. This paper investigates an IRS-assisted UAV semantic secure communication system in the presence of a potential eavesdropper, with the objective of maximizing semantic secure energy efficiency (SSEE). We first introduce a semantic similarity-based secure energy efficiency metric to capture the trade-off among transmission reliability, physical-layer security, and UAV energy consumption. The semantic symbol number, UAV trajectory, transmit power, and IRS phase shifts are jointly considered under mobility, secrecy, and energy constraints. To efficiently solve the resulting mixed discrete-continuous optimization problem, we develop a hierarchical optimization framework: the outer layer exhaustively searches over a finite set of candidate semantic symbol numbers, while the inner layer solves the continuous resource allocation problem using a heuristic-guided soft actor-critic (HG-SAC) algorithm. Simulation results show that the proposed framework achieves noticeable SSEE gains over several benchmark schemes.",
+      "doi": "10.3390/s26185779",
+      "venue": "Sensors",
+      "publisher": "Multidisciplinary Digital Publishing Institute",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.3390/s26185779",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "轨迹优化",
+        "深度强化学习"
+      ],
+      "score": 16,
+      "firstSeen": "2026-09-11",
+      "id": "doi:10.3390/s26185779"
+    },
+    {
+      "title": "Multi-Beam Cooperative Time-Varying Directional Modulation for Secure Satellite Downlink Transmission to UAV Swarms",
+      "authors": [
+        "Bin Qi",
+        "Jianxiong Pan",
+        "Linan Wang",
+        "Yanxue Zhang",
+        "Ruilang Li",
+        "Neng Ye"
+      ],
+      "abstract": "Satellite downlinks reliably connect remote unmanned aerial vehicle (UAV) swarms, but broad coverage exposes information-bearing signals to unauthorized receivers. This paper proposes a multi-beam cooperative time-varying directional modulation (TVDM) framework for secure satellite downlinks. Two asymmetrically partitioned subarrays form cooperative beams whose pointing states and beam-dependent symbol mappings are randomly updated at the symbol rate, thereby introducing controlled randomness for physical-layer security. In each interval, the source symbol is mapped to two transmit symbols whose superposition remains in the correct phase-shift-keying decision region at legitimate UAVs, while the equivalent constellation varies at unauthorized locations. A relaxed transparent-transmission constraint based on constructive decision-region margins enables conventional detection without instantaneous TVDM-state estimation. Mutual information (MI) defines the pointwise multi-UAV secrecy capacity (SC), main-lobe insecure area, and sidelobe leakage. A mixed discrete–continuous problem jointly optimizes the trajectory radius, relative pointing phase, mapping parameters, and subarray partition to reduce insecure coverage and sidelobe leakage. A block alternating algorithm combines Monte Carlo MI evaluation, projected Armijo updates, and finite partition search to coordinate continuous and discrete variables. Simulations using representative low-Earth-orbit satellite parameters show that the proposed design reduces the central insecure-interval length by 82.7% relative to conventional beamforming.",
+      "doi": "10.3390/drones10090690",
+      "venue": "Drones",
+      "publisher": "Multidisciplinary Digital Publishing Institute",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.3390/drones10090690",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "doaj"
+      ],
+      "tags": [
+        "安全速率",
+        "轨迹优化",
+        "波束成形",
+        "空天地网络",
+        "无人机集群"
+      ],
+      "score": 14,
+      "firstSeen": "2026-09-11",
+      "id": "doi:10.3390/drones10090690"
     },
     {
       "title": "Utility Maximization Integrating Secrecy, Energy Consumption, and Latency for UAV-Assisted MEC Systems via Dual-Replay TD3",
@@ -1096,6 +1102,35 @@
       "id": "doi:10.48550/arxiv.2608.27973"
     },
     {
+      "title": "Quantization-Aware Learning for Secure and Resilient UAV-STAR-RIS-Enabled 6G Systems",
+      "authors": [
+        "Yaser Almasri",
+        "Khaled M. Rabie",
+        "Mahmoud M. Salim",
+        "Ashraf S. Mahmoud",
+        "Ali Arshad Nasir"
+      ],
+      "abstract": "Secure and reliable wireless communication is a major requirement for upcoming 6G mission-critical applications, such as emergency response and public safety networks. In this respect, unmanned aerial vehicle (UAV)-mounted, simultaneously transmitting and reflecting reconfigurable intelligent surface (STAR-RIS) systems are expected to play an important role in enabling secure, mission-critical 6G communications. However, practical implementations require discrete phase shifts, which can introduce performance degradation due to phase quantization effects. In this paper, we investigate phase quantization in a UAV-mounted STAR-RIS-assisted downlink non-orthogonal multiple access (NOMA) network to maximize secrecy rate. Two approaches are considered, namely, post-training quantization (PTQ) and quantization-aware training (QAT). A Twin Delayed Deep Deterministic Policy Gradient (TD3) agent is developed to jointly optimize STAR-RIS phase shifts and UAV positioning while enforcing minimum quality-of-service (QoS) requirements for users. Simulation results show that QAT consistently outperforms PTQ, particularly at low resolutions. While PTQ suffers significant performance degradation under coarse quantization, QAT maintains near-continuous performance at 3-bit resolution with less than 1% secrecy rate loss, and significantly reduces degradation at 2 bits. These results demonstrate that QAT enables efficient low-bit STAR-RIS operation, reducing hardware complexity and signaling overhead while preserving secrecy performance, thereby enhancing the practical viability of the proposed framework.",
+      "doi": "10.1109/ojcoms.2026.3725175",
+      "venue": "IEEE Open Journal of the Communications Society",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-08-27",
+      "url": "https://doi.org/10.1109/ojcoms.2026.3725175",
+      "pdfUrl": "",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "NOMA",
+        "安全速率"
+      ],
+      "score": 12,
+      "firstSeen": "2026-08-27",
+      "id": "doi:10.1109/ojcoms.2026.3725175"
+    },
+    {
       "title": "Resource Allocation for Secure Dual-UAV-Assisted ISAC System",
       "authors": [
         "Hongjiang Lei",
@@ -1128,37 +1163,6 @@
       "score": 14,
       "firstSeen": "2026-08-25",
       "id": "doi:10.48550/arxiv.2608.24398"
-    },
-    {
-      "title": "Joint UAV Placement and Active IRS Gain Optimization for Covert Communications",
-      "authors": [
-        "Guojie Qu",
-        "Mei Shen",
-        "Kai Liu",
-        "Bin Xu",
-        "Yuwen Qian"
-      ],
-      "abstract": "Wireless sensing networks increasingly extend into obstacle-prone deployments, where physical blockage degrades reliability and open propagation exposes transmission activity. Intelligent reflecting surfaces (IRSs) establish programmable paths around obstacles while passive elements remain constrained by severe cascaded attenuation. To address the tradeoff between reliability and covertness, we propose an unmanned aerial vehicle (UAV) -assisted active-IRS architecture under probabilistic line-of-sight and non-line-of-sight propagation conditions that accounts for direct leakage from the transmitter to the warden together with residual jammer cancellation and always-on IRS circuit noise under a finite output power budget. Furthermore, bidirectional Kullback-Leibler analysis identifies the reverse divergence as the tighter restriction and converts the covertness requirement into conservative gain bounds under warden location uncertainty and relative phase uncertainty conditions between the direct and aggregate reflected fields. Subsequently, closed-form phase control for calibrated equal-gain elements and gain monotonicity reduce the joint design to an exhaustive search over the prescribed placement grid. The numerical results demonstrate a SINR advantage over passive reflection and single-element relaying across the evaluated settings. The finite-array and hardware analyses show that gain back-off enforces a prescribed covert-outage limit while direct leakage and residual self-interference remain explicitly controlled. Overall, the framework provides a transparent basis for reliable covert sensing through UAV-assisted active reflection.",
-      "doi": "10.3390/s26165244",
-      "venue": "Sensors",
-      "publisher": "Multidisciplinary Digital Publishing Institute",
-      "type": "journal-article",
-      "published": "2026-08-19",
-      "url": "https://doi.org/10.3390/s26165244",
-      "pdfUrl": "",
-      "sources": [
-        "openalex",
-        "crossref"
-      ],
-      "tags": [
-        "RIS/IRS",
-        "隐蔽通信",
-        "干扰/人工噪声",
-        "无人机集群"
-      ],
-      "score": 32,
-      "firstSeen": "2026-08-19",
-      "id": "doi:10.3390/s26165244"
     },
     {
       "title": "Low-Rank Modeling of Continuous Threat Regions for Cooperative Secure Beamforming in UAV Networks",
@@ -1283,6 +1287,37 @@
       "id": "doi:10.1016/j.iot.2026.102060"
     },
     {
+      "title": "Dynamic Role Allocation in Cooperative Secure UAV-ISAC Networks",
+      "authors": [
+        "Mahmoud M. Selim",
+        "Mohamed Rihan",
+        "Armin Dekorsy",
+        "M. A. Aboulhassan"
+      ],
+      "abstract": "This paper proposes a novel physical-layer security framework for multi-UAV Integrated Sensing and Communication (ISAC) networks operating in adversarial environments. To maximize the sum secrecy rate of legitimate ground users (GUs) while satisfying minimum sensing beampattern-gain constraints for target illumination, we introduce a dynamic role allocation mechanism in which each UAV can switch, on a per-time-slot basis, between an ISAC mode—combining coherent communications with radar sensing—and a dedicated artificial noise (AN) jammer mode. The resulting optimization is cast as a highly coupled Mixed-Integer Non-Linear Program (MINLP) that jointly optimizes binary role indicators, transmit beamforming and sensing covariance matrices, and UAV trajectories. We solve this problem with a tailored Alternating Optimization (AO) algorithm that integrates a penalty-based Convex-Concave Procedure (CCP) for the binary role subproblem, Semidefinite Relaxation (SDR) for the beamforming subproblem, and a trust-region Successive Convex Approximation (SCA) for the trajectory subproblem. Numerical results demonstrate that the proposed dynamic-role architecture consistently outperforms both a static dedicated-jammer scheme and a fully optimized all-ISAC embedded-AN benchmark, confirming that its secrecy advantage arises from adaptive spatial-functional specialization rather than from artificial-noise transmission alone. Furthermore, we characterize the fundamental tradeoff between secrecy performance and stringent sensing beampattern-gain constraints, showing that moderate sensing requirements can be accommodated with no secrecy penalty.",
+      "doi": "10.1109/ojcoms.2026.3719395",
+      "venue": "IEEE Open Journal of the Communications Society",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-08-07",
+      "url": "https://doi.org/10.1109/ojcoms.2026.3719395",
+      "pdfUrl": "",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "通感一体化",
+        "干扰/人工噪声",
+        "安全速率",
+        "轨迹优化",
+        "波束成形",
+        "无人机集群"
+      ],
+      "score": 14.5,
+      "firstSeen": "2026-08-07",
+      "id": "doi:10.1109/ojcoms.2026.3719395"
+    },
+    {
       "title": "DRL-Based Secure Transmission for Rotatable Antenna-Enabled Low-Altitude ISAC Systems",
       "authors": [
         "Chuan Liu",
@@ -1339,6 +1374,38 @@
       "score": 26,
       "firstSeen": "2026-08-05",
       "id": "title:1snc1de"
+    },
+    {
+      "title": "Joint UAV Placement and Active IRS Gain Optimization for Covert Communications",
+      "authors": [
+        "Guojie Qu",
+        "Mei Shen",
+        "Kai Liu",
+        "Bin Xu",
+        "Yuwen Qian"
+      ],
+      "abstract": "Wireless sensing networks increasingly extend into obstacle-prone deployments, where physical blockage degrades reliability and open propagation exposes transmission activity. Intelligent reflecting surfaces (IRSs) establish programmable paths around obstacles while passive elements remain constrained by severe cascaded attenuation. To address the tradeoff between reliability and covertness, we propose an unmanned aerial vehicle (UAV) -assisted active-IRS architecture under probabilistic line-of-sight and non-line-of-sight propagation conditions that accounts for direct leakage from the transmitter to the warden together with residual jammer cancellation and always-on IRS circuit noise under a finite output power budget. Furthermore, bidirectional Kullback-Leibler analysis identifies the reverse divergence as the tighter restriction and converts the covertness requirement into conservative gain bounds under warden location uncertainty and relative phase uncertainty conditions between the direct and aggregate reflected fields. Subsequently, closed-form phase control for calibrated equal-gain elements and gain monotonicity reduce the joint design to an exhaustive search over the prescribed placement grid. The numerical results demonstrate a SINR advantage over passive reflection and single-element relaying across the evaluated settings. The finite-array and hardware analyses show that gain back-off enforces a prescribed covert-outage limit while direct leakage and residual self-interference remain explicitly controlled. Overall, the framework provides a transparent basis for reliable covert sensing through UAV-assisted active reflection.",
+      "doi": "10.3390/s26165244",
+      "venue": "Sensors",
+      "publisher": "Multidisciplinary Digital Publishing Institute",
+      "type": "journal-article",
+      "published": "2026-08-01",
+      "url": "https://doi.org/10.3390/s26165244",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "crossref",
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群"
+      ],
+      "score": 32,
+      "firstSeen": "2026-08-19",
+      "id": "doi:10.3390/s26165244"
     },
     {
       "title": "Covert communication method for UAV based on telemetry- type messages of the MAVLink protocol",
@@ -1501,6 +1568,62 @@
       "score": 16,
       "firstSeen": "2026-08-01",
       "id": "doi:10.19678/j.issn.1000-3428.0070720"
+    },
+    {
+      "title": "Joint UAV trajectory and offloading optimization with robust secrecy for intelligent mining",
+      "authors": [
+        "Abdulbasit A. Darem",
+        "Khalid Almalki",
+        "Abdulrahman Alzahrani",
+        "Khalid N. R. Alharbi",
+        "Asma A. Alhashmi",
+        "Laith A. Darem"
+      ],
+      "abstract": "Abstract Intelligent mining demands real-time processing of UAV sensor streams under latency, safety, and energy constraints. We study a dual-edge architecture in which a ground base station (BS) and an aerial edge server (AES) collaboratively serve aerial users (FDMA), while a protective jammer UAV adapts its trajectory subject to speed/acceleration limits and rotary-wing propulsion. The system models 3GPP A2G channels (probabilistic LoS/NLoS and state-conditioned fading) and passive ground-eavesdroppers with bounded location uncertainty. We formulate a robust energy-efficiency maximization that epigraphs worst-case eavesdropper rates, introduces secrecy-QoS slack variables for feasibility, and enforces slot-level task causality. The fractional objective is handled via Dinkelbach, and three-block BCD solves the problem with conservative SCA surrogates; a micro-AO resolves the bi-convex throughput epigraph in the radio block, and the trajectory block uses affine secrecy bounds plus an SOC treatment of induced power in the rotary-wing model. Under 3GPP Urban Macro calibration, the proposed scheme attains 60.5 kbits/J at $$U=10$$ , exceeding STRO by 22.2% and SHJ by 116.1%. With eavesdropper uncertainty $$\\rho _\\ell =15$$ m, energy efficiency degrades only 13.1%, whereas non-robust CENR collapses to 12.0 kbits/J (76.9% drop). The optimized jammer path is 1250 m (vs. 1131 m straight line; +10.5%) to secure stronger jamming geometry; propulsion dominates the energy budget at 4800 J (86.8% of total), while SLT despite saving 6.3% propulsion energy, incurs a 730.9% increase in RF jamming to 2742 J. The algorithm runs in 1.95 s/iteration on average (trajectory-frozen: 0.98 s/iteration), converges within 5–7 iterations, and captures 85% of its total gain in the first 3 iterations–validating near-real-time feasibility for secure, energy-efficient offloading in mining operations.",
+      "doi": "10.1038/s41598-026-54506-z",
+      "venue": "Scientific Reports",
+      "publisher": "Nature Portfolio",
+      "type": "journal-article",
+      "published": "2026-05-01",
+      "url": "https://doi.org/10.1038/s41598-026-54506-z",
+      "pdfUrl": "",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "轨迹优化"
+      ],
+      "score": 26,
+      "firstSeen": "2026-08-16",
+      "id": "doi:10.1038/s41598-026-54506-z"
+    },
+    {
+      "title": "Intelligent Reflecting Surface for Secrecy Rate Enhancement in UAV-Assisted Wireless Powered Communication",
+      "authors": [
+        "Kosar Ansari",
+        "Mahdi Majidi"
+      ],
+      "abstract": "3D beamforming is an advanced beamforming method designed to enhance the performance of wireless communication systems. This paper investigates a wireless-powered communication network incorporating an intelligent reflecting surface (IRS) that employs the 3D beamforming method. The IRS consists of numerous passive reflective elements, each capable of adjusting the phase of the reflected signals. Additionally, a UAV serves as a wireless transmitter to communicate with a ground user via the IRS. An optimization problem is formulated to maximize the secrecy rate by jointly optimizing the UAV’s trajectory and the IRS’s phase shift configuration. The energy harvesting (EH) of the user, achieved through the simultaneous wireless information and power transfer (SWIPT) method, is incorporated as a constraint. To solve the optimization problem, convexification techniques, such as Taylor expansion, are employed to alternately optimize the solution. Numerical results demonstrate that the use of IRS technology and 3D beamforming enhances EH and significantly improves the secrecy rate.",
+      "venue": "International Journal of Information and Communication Technology Research",
+      "publisher": "Iran Telecom Research Center",
+      "type": "journal-article",
+      "published": "2026-04-01",
+      "url": "http://ijict.itrc.ac.ir/article-1-781-en.pdf",
+      "pdfUrl": "http://ijict.itrc.ac.ir/article-1-781-en.pdf",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "安全速率",
+        "轨迹优化",
+        "波束成形",
+        "无人机集群"
+      ],
+      "score": 20.5,
+      "firstSeen": "2026-09-08",
+      "id": "title:3m74b8"
     }
   ]
 }

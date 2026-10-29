@@ -23,8 +23,12 @@
     resultCount: document.getElementById("result-count"),
     search: document.getElementById("search"),
     tags: document.getElementById("tags"),
+    sort: document.getElementById("sort-filter"),
     type: document.getElementById("type-filter"),
     month: document.getElementById("month-filter"),
+    reset: document.getElementById("reset-filters"),
+    overview: document.getElementById("overview"),
+    sortHint: document.getElementById("sort-hint"),
     countToday: document.getElementById("count-today"),
     countWeek: document.getElementById("count-week"),
     count30: document.getElementById("count-30d"),
@@ -52,6 +56,7 @@
     tag: "all",
     type: "all",
     month: "all",
+    sort: "latest",
     limit: 40,
   };
 
@@ -63,6 +68,7 @@
   state.tag = params.get("tag") || "all";
   state.type = params.get("type") || "all";
   state.month = params.get("month") || "all";
+  state.sort = params.get("sort") === "relevance" ? "relevance" : "latest";
 
   if (!["all", "journal-article", "conference", "preprint"].includes(state.type)) {
     state.type = "all";
@@ -167,31 +173,98 @@
   function render() {
     const items = papers.filter(matches);
 
+    if (state.sort === "relevance") {
+      items.sort(
+        (a, b) =>
+          (b.score || 0) - (a.score || 0)
+          || (b.published || "").localeCompare(a.published || ""),
+      );
+    }
+
     els.resultCount.textContent =
       items.length === papers.length
         ? `共 ${items.length} 篇`
         : `共 ${items.length} 篇（筛选自 ${papers.length} 篇）`;
+    els.sortHint.textContent = state.sort === "relevance" ? "按相关性排序" : "按发表时间排序";
 
     els.list.textContent = "";
 
+    const grouped = state.sort === "latest";
     const monthTotals = new Map();
-    for (const paper of items) {
-      const month = monthOf(paper);
-      monthTotals.set(month, (monthTotals.get(month) || 0) + 1);
+    if (grouped) {
+      for (const paper of items) {
+        const month = monthOf(paper);
+        monthTotals.set(month, (monthTotals.get(month) || 0) + 1);
+      }
     }
 
     let currentMonth = null;
     for (const paper of items.slice(0, state.limit)) {
-      const month = monthOf(paper);
-      if (month !== currentMonth) {
-        currentMonth = month;
-        els.list.appendChild(monthHead(month, monthTotals.get(month) || 0));
+      if (grouped) {
+        const month = monthOf(paper);
+        if (month !== currentMonth) {
+          currentMonth = month;
+          els.list.appendChild(monthHead(month, monthTotals.get(month) || 0));
+        }
       }
       els.list.appendChild(card(paper));
     }
 
     els.empty.hidden = items.length !== 0;
     els.more.hidden = items.length <= state.limit;
+    renderOverview(items);
+    updateResetButton();
+  }
+
+  function renderOverview(items) {
+    const periodLabel = {
+      today: "今日",
+      "7d": "近 7 天",
+      "30d": "近 30 天",
+      all: "全部",
+    }[state.period] || "当前";
+
+    if (items.length === 0) {
+      els.overview.textContent = "当前筛选没有论文，试试放宽时间范围或清空筛选。";
+      return;
+    }
+
+    const typeCounts = { "journal-article": 0, conference: 0, preprint: 0 };
+    const countsByTag = new Map();
+    for (const paper of items) {
+      if (typeCounts[paper.type] != null) typeCounts[paper.type] += 1;
+      for (const tag of paper.tags || []) {
+        countsByTag.set(tag, (countsByTag.get(tag) || 0) + 1);
+      }
+    }
+
+    const typeText = [
+      typeCounts["journal-article"] ? `期刊 ${typeCounts["journal-article"]}` : "",
+      typeCounts.conference ? `会议 ${typeCounts.conference}` : "",
+      typeCounts.preprint ? `预印本 ${typeCounts.preprint}` : "",
+    ].filter(Boolean).join(" · ");
+
+    const topTags = [...countsByTag.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"))
+      .slice(0, 3)
+      .map(([name, count]) => `${name} ${count}`)
+      .join("、");
+
+    let text = `当前筛选：${periodLabel} · ${items.length} 篇`;
+    if (typeText) text += `（${typeText}）`;
+    if (topTags) text += `；高频主题：${topTags}`;
+    els.overview.textContent = `${text}。`;
+  }
+
+  function updateResetButton() {
+    const active =
+      state.period !== "30d"
+      || Boolean(state.q)
+      || state.tag !== "all"
+      || state.type !== "all"
+      || state.month !== "all"
+      || state.sort !== "latest";
+    els.reset.hidden = !active;
   }
 
   function card(paper) {
@@ -350,6 +423,14 @@
     }, 140);
   });
 
+  els.sort.value = state.sort;
+  els.sort.addEventListener("change", () => {
+    state.sort = els.sort.value === "relevance" ? "relevance" : "latest";
+    state.limit = 40;
+    syncUrl();
+    render();
+  });
+
   els.type.value = state.type;
   els.type.addEventListener("change", () => {
     state.type = els.type.value;
@@ -364,6 +445,34 @@
     state.limit = 40;
     syncUrl();
     render();
+  });
+
+  els.reset.addEventListener("click", () => {
+    state.period = "30d";
+    state.q = "";
+    state.tag = "all";
+    state.type = "all";
+    state.month = "all";
+    state.sort = "latest";
+    state.limit = 40;
+    els.search.value = "";
+    els.type.value = "all";
+    els.month.value = "all";
+    els.sort.value = "latest";
+    for (const button of periodButtons) {
+      button.classList.toggle("active", button.dataset.period === "30d");
+    }
+    renderTags();
+    syncUrl();
+    render();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (["INPUT", "TEXTAREA", "SELECT"].includes(tag)) return;
+    event.preventDefault();
+    els.search.focus();
   });
 
   els.tags.addEventListener("click", (event) => {
@@ -384,12 +493,13 @@
   function syncUrl() {
     const url = new URL(window.location.href);
     const query = url.searchParams;
-    for (const key of ["period", "q", "tag", "type", "month"]) query.delete(key);
+    for (const key of ["period", "q", "tag", "type", "month", "sort"]) query.delete(key);
     if (state.period !== "30d") query.set("period", state.period);
     if (state.q) query.set("q", state.q);
     if (state.tag !== "all") query.set("tag", state.tag);
     if (state.type !== "all") query.set("type", state.type);
     if (state.month !== "all") query.set("month", state.month);
+    if (state.sort !== "latest") query.set("sort", state.sort);
 
     const search = query.toString();
     history.replaceState(null, "", `${url.pathname}${search ? `?${search}` : ""}${url.hash}`);
@@ -423,6 +533,7 @@
 
   renderTags();
   updateThemeButton();
+  els.sort.value = state.sort;
   for (const button of periodButtons) {
     button.classList.toggle("active", button.dataset.period === state.period);
   }

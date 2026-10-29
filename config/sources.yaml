@@ -32,6 +32,19 @@ crossref:
     - id: 311
       name: Wiley
 
+# 开放获取期刊目录，无需 key。DOAJ 的复杂布尔查询不稳定，
+# 采集器使用多条单字段查询，再由本地 PLS/UAV 规则过滤。
+doaj:
+  enabled: true
+  page_size: 100
+  max_pages: 1
+
+# Zenodo 公开检索无需 key；如需更高限额，可在仓库 Secrets 中设置 ZENODO_TOKEN。
+zenodo:
+  enabled: true
+  page_size: 100
+  max_pages: 2
+
 # 二期（需要免费 API key）可直接在此扩展，并在 src/collectors/ 下新增适配器：
 # ieee:    { enabled: false }   # https://developer.ieee.org
 # springer:{ enabled: false }   # https://dev.springernature.com

@@ -8,15 +8,16 @@
 
 ## 功能
 
-- 数据源：**arXiv API + OpenAlex + Crossref**，无需任何密钥
+- 数据源：**arXiv API + OpenAlex + Crossref + DOAJ + Zenodo**，无需任何密钥
 - 通过 Crossref 的 publisher member 精确覆盖 **IEEE / Elsevier / Springer / Wiley** 的期刊元数据
 - 跨源去重：DOI → arXiv ID → 标题精确匹配 → 标题模糊匹配（≥94%）
 - 相关性硬门槛：标题或摘要中必须同时出现 PLS 词与 UAV 词
 - 自动打标签：RIS、NOMA、通感一体化、隐蔽通信、轨迹优化、波束成形、毫米波/THz、空天地网络等
 - 中文界面，论文标题与摘要保留英文原文
+- 顶部中文导读 + 随筛选变化的“本期概览”
 - 预印本用灰色小标签标注，不抢视觉
-- 搜索、时间范围、类型、月份、标签筛选；支持 URL 参数分享
-- 深色模式；手机适配；RSS 与 JSON 数据
+- 搜索、时间范围、类型、月份、标签筛选，支持“最新发表 / 相关性”排序
+- 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
 
 ## 检索覆盖
 
@@ -25,6 +26,8 @@
 | arXiv | 官方 Atom API | 无需 key，当日可见 |
 | OpenAlex | REST API | 无需 key，覆盖全出版商元数据 |
 | Crossref | REST API | 无需 key，按 member 覆盖 IEEE(263)、Elsevier(78)、Springer(297)、Wiley(311) |
+| DOAJ | REST API | 无需 key，开放获取期刊 |
+| Zenodo | REST API | 无需 key；可选 `ZENODO_TOKEN` 提高限额 |
 | IEEE Xplore | 官方 Metadata API | 二期可接，需免费 key |
 | Springer Link | Springer Nature Meta API | 二期可接，需免费 key |
 | ScienceDirect / Elsevier | ScienceDirect Search API | 二期可接，需免费 key |
@@ -32,6 +35,8 @@
 | Web of Science | Starter API | 需机构订阅，暂不接入 |
 
 > 没有 IEEE / Elsevier / Springer 的官方 key，也能拿到这些出版社论文的 DOI、标题、作者、期刊、日期等元数据；部分摘要可能缺失，此时仍可通过标题命中筛选。
+>
+> DOAJ 的复杂布尔查询不稳定，采集器会拆成多条单字段查询并在本地过滤；Zenodo 记录中会排除数据集/软件，只保留论文、预印本和会议论文。
 
 ## 本地运行
 
@@ -95,6 +100,8 @@ npm run validate
 
 - `contact_email`：可选，填入后进入 OpenAlex / Crossref 的 polite pool
 - 各数据源的开关、每页条数、回溯上限
+- `doaj`：DOAJ 查询页数与每页条数
+- `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
 - 二期要接 IEEE / Springer / Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
@@ -110,7 +117,9 @@ uav-pls-daily_clau/
 │  ├─ collectors/
 │  │  ├─ arxiv.js
 │  │  ├─ openalex.js
-│  │  └─ crossref.js
+│  │  ├─ crossref.js
+│  │  ├─ doaj.js
+│  │  └─ zenodo.js
 │  ├─ dedup.js                   # 跨源去重与字段合并
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化

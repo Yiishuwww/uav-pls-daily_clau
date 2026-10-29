@@ -9,6 +9,8 @@ import { parse as parseYaml } from "yaml";
 import { collectArxiv } from "./collectors/arxiv.js";
 import { collectOpenAlex } from "./collectors/openalex.js";
 import { collectCrossref } from "./collectors/crossref.js";
+import { collectDoaj } from "./collectors/doaj.js";
+import { collectZenodo } from "./collectors/zenodo.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
@@ -69,7 +71,13 @@ function loadYaml(file) {
 }
 
 function sourceLabel(name) {
-  return { arxiv: "arXiv", openalex: "OpenAlex", crossref: "Crossref" }[name] ?? name;
+  return {
+    arxiv: "arXiv",
+    openalex: "OpenAlex",
+    crossref: "Crossref",
+    doaj: "DOAJ",
+    zenodo: "Zenodo",
+  }[name] ?? name;
 }
 
 async function runSource(name, fn) {
@@ -141,6 +149,20 @@ async function main() {
       ),
     );
   }
+  if (sources.doaj?.enabled) {
+    tasks.push(
+      runSource("doaj", () =>
+        collectDoaj({ since, config: sources.doaj, log }),
+      ),
+    );
+  }
+  if (sources.zenodo?.enabled) {
+    tasks.push(
+      runSource("zenodo", () =>
+        collectZenodo({ since, config: sources.zenodo, log }),
+      ),
+    );
+  }
 
   const results = await Promise.all(tasks);
 
@@ -169,16 +191,17 @@ async function main() {
   const incoming = results.flatMap((result) => result.papers);
   log(`原始记录合计 ${incoming.length} 条`);
 
-  const stampFirstSeen = (published) => {
-    if (!bootstrap) return today;
-    if (!published || published > today) return today;
-    if (published < since) return since;
-    return published;
+  const stampFirstSeen = (hint) => {
+    if (!hint || hint > today) return today;
+    if (hint < since) return since;
+    return hint;
   };
 
   for (const paper of incoming) {
     paper.isNew = true;
-    paper.firstSeen = stampFirstSeen(paper.published);
+    paper.firstSeen = bootstrap
+      ? stampFirstSeen(paper.firstSeenHint || paper.published)
+      : today;
   }
 
   const merged = mergeAll(

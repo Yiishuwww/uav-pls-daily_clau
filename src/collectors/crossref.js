@@ -35,9 +35,7 @@ const GENERAL_QUERIES = [
   "secrecy UAV",
   "covert communication UAV",
   "eavesdropper UAV",
-  "anti jamming UAV",
   "physical layer security unmanned aerial vehicle",
-  "jamming UAV",
 ];
 
 // 每个出版商额外跑的两组核心检索

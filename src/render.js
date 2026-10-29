@@ -8,6 +8,8 @@ const SOURCE_LABELS = {
   arxiv: "arXiv",
   openalex: "OpenAlex",
   crossref: "Crossref",
+  doaj: "DOAJ",
+  zenodo: "Zenodo",
 };
 
 function sourceStatusHtml(status) {
@@ -43,6 +45,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
     pdfUrl: paper.pdfUrl,
     tags: paper.tags,
     sources: paper.sources,
+    score: paper.score,
   }));
 
   const papersJson = JSON.stringify(papersForSite).replace(/</g, "\\u003c");
@@ -56,7 +59,13 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UAV 物理层安全论文日报</title>
-<meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
+<meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
+<meta name="theme-color" content="#0b5f8a">
+<meta property="og:title" content="UAV 物理层安全论文日报">
+<meta property="og:description" content="每日自动汇总无人机物理层安全方向最新论文">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${xmlEscape(siteUrl ? `${siteUrl}/` : "")}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b5f8a'/%3E%3Cpath d='M32 14l14 6v10c0 10-6 17-14 20-8-3-14-10-14-20V20z' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="UAV 物理层安全论文日报 RSS" href="${xmlEscape(rssHref)}">
 </head>
@@ -97,6 +106,10 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
     <div class="toolbar-row two">
       <div class="chips" id="tags" aria-label="主题标签"></div>
       <div class="selects">
+        <select id="sort-filter" aria-label="排序方式">
+          <option value="latest">最新发表</option>
+          <option value="relevance">相关性</option>
+        </select>
         <select id="type-filter" aria-label="论文类型">
           <option value="all">全部类型</option>
           <option value="journal-article">期刊</option>
@@ -112,9 +125,22 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 </div>
 
 <main class="wrap">
+  <section class="guide" aria-label="导读">
+    <div class="guide-head">
+      <span class="guide-title">导读</span>
+      <span class="guide-sub">Physical Layer Security for UAV Communications</span>
+    </div>
+    <p class="guide-text">本站汇总无人机通信物理层安全方向的最新论文：保密速率、窃听与窃密、隐蔽通信、人工噪声、密钥生成等。数据每日 07:00 自动更新，来源包括 arXiv、OpenAlex、Crossref、DOAJ、Zenodo；摘要保留论文原文，预印本以灰色标签标注。</p>
+    <p class="guide-text overview" id="overview" aria-live="polite">正在统计当前筛选…</p>
+    <p class="guide-hint">「今日 / 近 7 天 / 近 30 天」按本站收录时间统计，卡片日期为论文出版日期。点击标签可筛选；搜索支持标题、作者、摘要和标签；筛选条件会同步到 URL。</p>
+  </section>
+
   <div class="list-head">
-    <span id="result-count">共 0 篇</span>
-    <span class="list-hint">按发表时间排序</span>
+    <div class="list-meta">
+      <span id="result-count" aria-live="polite">共 0 篇</span>
+      <button type="button" id="reset-filters" class="reset-btn" hidden>重置筛选</button>
+    </div>
+    <span class="list-hint" id="sort-hint">按发表时间排序</span>
   </div>
   <div id="list"></div>
   <div id="empty" class="empty" hidden>
@@ -126,7 +152,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 
 <footer>
   <div class="wrap">
-    <div>数据来源：arXiv API · OpenAlex · Crossref（IEEE / Elsevier / Springer / Wiley 的期刊元数据经 Crossref 覆盖）</div>
+    <div>数据来源：arXiv API · OpenAlex · Crossref · DOAJ · Zenodo（IEEE / Elsevier / Springer / Wiley 的期刊元数据经 Crossref 覆盖）</div>
     <div>仅收录公开元数据，不存储论文全文。每日 07:00（北京时间）自动更新。</div>
     <div><a href="${xmlEscape(rssHref)}">RSS 订阅</a> · <a href="${xmlEscape(jsonHref)}">JSON 数据</a> · 预印本论文以灰色「预印本」标记</div>
   </div>

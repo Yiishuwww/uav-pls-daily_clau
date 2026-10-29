@@ -196,7 +196,7 @@ export function finalizePaper(paper) {
 
   const pdfUrl = paper.pdfUrl || (arxivId ? `https://arxiv.org/pdf/${arxivId}` : "");
 
-  const { _titleKey, isNew, ...rest } = paper;
+  const { _titleKey, isNew, firstSeenHint, ...rest } = paper;
   return {
     ...rest,
     id,
