@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link>https://yiishuwww.github.io/uav-pls-daily</link>
+    <link>https://yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 09:23:47 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 11:00:53 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Poster: Secrecy rate analysis of RIS-assisted UAV networks using DDQN Network</title>

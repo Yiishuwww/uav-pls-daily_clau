@@ -2,7 +2,7 @@
 
 每日自动汇总 **无人机通信物理层安全**（Physical Layer Security for UAV Communications）方向的最新论文，生成静态网站并部署到 GitHub Pages。
 
-- 网站：`https://yiishuwww.github.io/uav-pls-daily/`
+- 网站：`https://yiishuwww.github.io/uav-pls-daily_clau/`
 - 更新：每天北京时间 **07:00**（GitHub Actions，UTC 23:00）
 - 费用：零 API key、公开仓库零成本
 
@@ -56,21 +56,15 @@ npm run preview
 npm run validate
 ```
 
-本地预览：
-
-```bash
-npx serve docs
-```
-
 然后打开 `http://localhost:3000`。
 
 ## 部署到 GitHub Pages
 
-1. 在 GitHub 新建一个 **public** 仓库，例如 `uav-pls-daily`。
+1. 在 GitHub 新建一个 **public** 仓库，例如 `uav-pls-daily_clau`。
 2. 推送本项目：
 
    ```bash
-   git remote add origin https://github.com/<你的用户名>/uav-pls-daily.git
+   git remote add origin https://github.com/<你的用户名>/uav-pls-daily_clau.git
    git branch -M main
    git push -u origin main
    ```
@@ -81,7 +75,7 @@ npx serve docs
    - 保存后等待 1–2 分钟
 4. 仓库 **Actions** 页面：
    - 如果提示工作流未启用，点击启用
-   - 选择 **Daily update → Run workflow**，`days` 填 `90` 跑一次回填
+   - 选择 **Daily update → Run workflow**，`days` 填 `7` 即可（仓库已带 90 天回填数据）
 5. 之后每天 UTC 23:00（北京时间 07:00）自动更新。
 
 > GitHub 的定时任务在高峰期可能延迟 5–30 分钟。公开仓库的 Actions 分钟数免费；每日提交也会避免仓库因 60 天无活动而被暂停定时任务。
@@ -106,7 +100,7 @@ npx serve docs
 ## 项目结构
 
 ```
-uav-pls-daily/
+uav-pls-daily_clau/
 ├─ .github/workflows/daily.yml   # 每天 07:00（北京时间）运行
 ├─ config/
 │  ├─ sources.yaml               # 数据源配置
