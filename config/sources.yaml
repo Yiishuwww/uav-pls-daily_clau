@@ -1,0 +1,39 @@
+# 数据源配置（一期零 key：arXiv + OpenAlex + Crossref）
+#
+# contact_email 可选。填写后 OpenAlex / Crossref 会把你放进 polite pool，
+# 请求优先级更高。建议填一个常用邮箱；留空也能正常工作。
+contact_email: ""
+
+request_timeout_ms: 60000
+retries: 3
+
+arxiv:
+  enabled: true
+  max_results: 300
+
+openalex:
+  enabled: true
+  per_page: 200
+  max_pages: 3
+
+# Crossref 覆盖 IEEE (263) / Elsevier (78) / Springer (297) / Wiley (311)。
+# 即使没有这些出版商的官方 API key，也能拿到 DOI、标题、作者、期刊等元数据。
+crossref:
+  enabled: true
+  rows: 200
+  member_rows: 100
+  members:
+    - id: 263
+      name: IEEE
+    - id: 78
+      name: Elsevier
+    - id: 297
+      name: Springer
+    - id: 311
+      name: Wiley
+
+# 二期（需要免费 API key）可直接在此扩展，并在 src/collectors/ 下新增适配器：
+# ieee:    { enabled: false }   # https://developer.ieee.org
+# springer:{ enabled: false }   # https://dev.springernature.com
+# elsevier:{ enabled: false }   # https://dev.elsevier.com
+# wos:     { enabled: false }   # 需要机构订阅

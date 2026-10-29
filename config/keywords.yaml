@@ -1,0 +1,204 @@
+# 检索词、筛选规则与打分权重
+# 修改后下次运行即生效（历史论文会重新计算标签与分数）
+
+# 物理层安全（PLS）检索词：用于召回与打分
+pls_terms:
+  - physical layer security
+  - physical layer secrecy
+  - secrecy
+  - eavesdropper
+  - eavesdropping
+  - wiretap
+  - wiretapping
+  - covert
+  - covert communication
+  - covert transmission
+  - covertness
+  - artificial noise
+  - secure transmission
+  - secure uav communication
+  - secure aerial communication
+  - secure drone communication
+  - secure communication
+  - anti jamming
+  - cooperative jamming
+  - friendly jamming
+  - jamming resistant
+  - jamming suppression
+  - jamming mitigation
+  - jamming
+  - jammer
+  - key generation
+  - secret key generation
+  - physical layer key generation
+  - secret key rate
+  - secret key
+  - pls
+
+# 弱判定词：单独命中不能通过硬门槛
+# 强判定词 = pls_terms - weak_pls_terms
+# 说明：抗干扰（jamming）与通用 "secure communication" 属于相邻方向，
+# 默认降为弱词以保证"物理层安全"主题纯度；需要放宽时把它们从本列表移走即可。
+weak_pls_terms:
+  - covert
+  - secure communication
+  - secure uav communication
+  - secure aerial communication
+  - secure drone communication
+  - anti jamming
+  - cooperative jamming
+  - friendly jamming
+  - jamming resistant
+  - jamming suppression
+  - jamming mitigation
+  - jamming
+  - jammer
+  - key generation
+  - secret key
+  - pls
+
+# 无人机（UAV）判定词：标题 + 摘要中至少命中一个
+# 刻意不使用裸词 "aerial"，否则会命中 Unidentified Aerial Phenomena、
+# aerial munition、aerial battlefield 等无关文献。
+uav_terms:
+  - uav
+  - unmanned aerial
+  - drone
+  - uas
+  - aerial vehicle
+  - aerial network
+  - aerial communication
+  - aerial base station
+  - aerial platform
+  - aerial relay
+  - aerial ris
+  - aerial reconfigurable intelligent surface
+  - aerial user
+  - aerial swarm
+  - aerial eavesdropper
+  - flying base station
+
+# 强 PLS 词与 UAV 词的最大字符距离（归一化文本）
+proximity_chars: 260
+
+# 标题命中这些模式直接丢弃（社论、勘误、征稿，以及明显不属于 PLS 的方向）
+exclude_title_patterns:
+  - call for papers
+  - editorial
+  - correction
+  - erratum
+  - retraction
+  - table of contents
+  - guest editorial
+  - special issue
+  - book review
+  - blockchain
+  - authenticat
+  - key management
+  - key agreement
+  - intrusion detection
+  - anomaly detection
+  - attack detection
+  - post quantum
+  - homomorphic
+  - cryptograph
+  - encrypt
+  - spoofing
+  - malware
+  - data cent
+  - munition
+  - fuze
+  - packaging
+  - '\buap\b'
+  - hauntology
+
+# 相关性打分（仅用于排序，不影响是否收录；硬门槛是上面两组词各命中一个）
+scoring:
+  title_pls: 6          # 标题每命中一个 PLS 词（最多计 2 个）
+  title_uav: 5          # 标题每命中一个 UAV 词（最多计 2 个）
+  abstract_pls: 2       # 摘要每命中一个 PLS 词（最多计 3 个）
+  abstract_uav: 1.5     # 摘要每命中一个 UAV 词（最多计 2 个）
+  both_title_bonus: 4   # PLS 与 UAV 同时出现在标题
+  journal_bonus: 2
+  conference_bonus: 1
+  recency_bonus: 2      # 发表时间在 7 天内
+
+# 主题标签：patterns 为正则表达式，作用在归一化后的标题 + 摘要上
+tags:
+  - name: RIS/IRS
+    patterns:
+      - 'reconfigurable intelligent'
+      - 'intelligent reflecting'
+      - '\bris\b'
+      - '\birs\b'
+  - name: NOMA
+    patterns:
+      - '\bnoma\b'
+  - name: 通感一体化
+    patterns:
+      - 'integrated sensing and communication'
+      - '\bisac\b'
+      - 'dual functional'
+      - '\bdfrc\b'
+      - 'joint communication and sensing'
+  - name: 隐蔽通信
+    patterns:
+      - 'covert'
+  - name: 干扰/人工噪声
+    patterns:
+      - 'jamming'
+      - 'artificial noise'
+      - 'jammer'
+  - name: 安全速率
+    patterns:
+      - 'secrecy rate'
+      - 'secrecy capacity'
+      - 'secure rate'
+  - name: 轨迹优化
+    patterns:
+      - 'trajectory'
+  - name: 波束成形
+    patterns:
+      - 'beamforming'
+      - 'beam forming'
+  - name: 毫米波/THz
+    patterns:
+      - 'millimeter wave'
+      - 'mmwave'
+      - 'terahertz'
+      - '\bthz\b'
+  - name: 空天地网络
+    patterns:
+      - 'satellite'
+      - 'space air ground'
+      - '\bsagin\b'
+      - 'non terrestrial'
+  - name: 无人机集群
+    patterns:
+      - 'swarm'
+      - 'multi uav'
+      - 'multiple uav'
+      - 'uav network'
+      - 'uav assisted'
+  - name: 深度强化学习
+    patterns:
+      - 'deep reinforcement'
+      - 'reinforcement learning'
+      - 'deep learning'
+      - 'machine learning'
+  - name: 密钥生成
+    patterns:
+      - 'key generation'
+      - 'secret key'
+  - name: 全双工
+    patterns:
+      - 'full duplex'
+  - name: 边缘计算
+    patterns:
+      - 'mobile edge computing'
+      - '\bmec\b'
+      - 'edge computing'
+  - name: MIMO
+    patterns:
+      - '\bmimo\b'
+      - 'multiple antenna'

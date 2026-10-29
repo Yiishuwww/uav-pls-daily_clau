@@ -1,0 +1,57 @@
+name: Daily update
+
+on:
+  schedule:
+    # UTC 23:00 = 北京时间次日 07:00
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "回溯天数（首次回填建议 90）"
+        required: false
+        default: "7"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      TZ: Asia/Shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Collect and render
+        run: node src/main.js --days "${{ github.event.inputs.days || '7' }}"
+
+      - name: Validate generated files
+        run: node scripts/validate.mjs
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily update $(date -u +%F)"
+            git push
+          fi

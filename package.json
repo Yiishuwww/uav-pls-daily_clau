@@ -1,0 +1,22 @@
+{
+  "name": "uav-pls-daily",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily digest of physical-layer-security papers for UAV communications",
+  "scripts": {
+    "start": "node src/main.js",
+    "backfill": "node src/main.js --days 90 --bootstrap",
+    "render": "node src/main.js --days 1 --no-collect",
+    "preview": "node scripts/serve.mjs",
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.5",
+    "fastest-levenshtein": "^1.0.16",
+    "yaml": "^2.8.1"
+  }
+}
