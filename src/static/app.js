@@ -64,6 +64,10 @@
   state.type = params.get("type") || "all";
   state.month = params.get("month") || "all";
 
+  if (!["all", "journal-article", "conference", "preprint"].includes(state.type)) {
+    state.type = "all";
+  }
+
   const counts = {
     today: papers.filter((paper) => paper.firstSeen === today).length,
     "7d": papers.filter((paper) => paper.firstSeen >= last7).length,

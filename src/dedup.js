@@ -45,6 +45,13 @@ function fuzzySame(a, b) {
   if (!a || !b) return false;
   if (a === b) return true;
   if (a[0] !== b[0]) return false;
+
+  // "Part I" / "Part II" 这类姊妹论文标题极像，不能合并
+  const partPattern = /\bpart\s+(i|ii|iii|iv|v|vi|1|2|3|4|5|6)\b/;
+  const partA = a.match(partPattern);
+  const partB = b.match(partPattern);
+  if (partA && partB && partA[1] !== partB[1]) return false;
+
   const maxLen = Math.max(a.length, b.length);
   if (Math.abs(a.length - b.length) > Math.max(6, maxLen * 0.12)) return false;
   return 1 - distance(a, b) / maxLen >= 0.94;
