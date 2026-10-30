@@ -1,7 +1,40 @@
 {
-  "updatedAt": "2026-10-30T07:29:44+08:00",
-  "total": 56,
+  "updatedAt": "2026-10-31T07:28:50+08:00",
+  "total": 57,
   "papers": [
+    {
+      "title": "Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach",
+      "authors": [
+        "Abdulmalik Alwarafy",
+        "Mohamed Hayajneh",
+        "Mustafa Al Juboori",
+        "Abdulaziz Almarzooqi",
+        "Tahnoon Almazrouei",
+        "Robera Abera",
+        "Kaleab Nega"
+      ],
+      "abstract": "Unmanned Aerial Vehicles (UAVs) are increasingly deployed in wireless networks; however, ensuring secure communication and efficient energy usage remains challenging. This paper addresses the joint trajectory optimization and resource allocation problem in UAV networks in the presence of a tethered UAV flying center and a malicious ground eavesdropper. In the proposed model, UAVs are equipped with energy harvesting capabilities and can adaptively switch between transmitting, jamming, and relaying roles to deliver data to a tethered UAV center for optimized network performance. An optimization problem is formulated to maximize a utility function that balances secrecy rate, energy consumption, and interference. To address the high non-convexity of the problem and its real-time decision requirements, a Proximal Policy Optimization (PPO)-based Deep Reinforcement Learning (DRL) algorithm is proposed to solve the problem and learn the network dynamics. Extensive simulation results demonstrate that the proposed approach achieves superior secrecy performance, lower energy consumption, and reduced interference compared to conventional and DRL-based methods.",
+      "arxivId": "2610.37897",
+      "venue": "arXiv",
+      "publisher": "arXiv",
+      "type": "preprint",
+      "published": "2026-10-27",
+      "url": "https://arxiv.org/abs/2610.37897v1",
+      "pdfUrl": "https://arxiv.org/pdf/2610.37897v1",
+      "sources": [
+        "arxiv"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "安全速率",
+        "轨迹优化",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 16,
+      "firstSeen": "2026-10-31",
+      "id": "arxiv:2610.37897"
+    },
     {
       "title": "Poster: Secrecy rate analysis of RIS-assisted UAV networks using DDQN Network",
       "authors": [
