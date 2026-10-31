@@ -5,12 +5,12 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Oct 2026 23:28:50 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 23:29:06 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach</title>
-      <link>https://arxiv.org/abs/2610.37897v1</link>
-      <guid isPermaLink="false">arxiv:2610.37897</guid>
+      <link>https://doi.org/10.48550/arxiv.2610.37897</link>
+      <guid isPermaLink="false">doi:10.48550/arxiv.2610.37897</guid>
       <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
       <description>Unmanned Aerial Vehicles (UAVs) are increasingly deployed in wireless networks; however, ensuring secure communication and efficient energy usage remains challenging. This paper addresses the joint trajectory optimization and resource allocation problem in UAV networks in the presence of a tethered UAV flying center and a malicious ground eavesdropper. In the proposed model, UAVs are equipped with energy harvesting capabilities and can adaptively switch between transmitting, jamming, and relaying roles to deliver data to a tethered UAV center for optimized network performance. An optimization problem is formulated to maximize a utility function that balances secrecy rate, energy consumption, and interference. To address the high non-convexity of the problem and its real-time decision requirements, a Proximal Policy Optimization (PPO)-based Deep Reinforcement Learning (DRL) algorithm is proposed to solve the problem and learn the network dynamics. Extensive simulation results demonstrate that the proposed approach achieves superior secrecy performance, lower energy consumption, and reduced interference compared to conventional and DRL-based methods.</description>
       <category>干扰/人工噪声</category>
