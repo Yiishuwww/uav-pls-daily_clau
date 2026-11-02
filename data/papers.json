@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-02T07:30:17+08:00",
+  "updatedAt": "2026-11-03T07:32:39+08:00",
   "papers": [
     {
       "title": "Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach",
@@ -62,7 +62,7 @@
         "安全速率",
         "无人机集群"
       ],
-      "score": 18,
+      "score": 16,
       "firstSeen": "2026-10-26",
       "id": "doi:10.1145/3842435.3843960"
     },
