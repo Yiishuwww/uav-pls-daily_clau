@@ -5,8 +5,19 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2026 23:32:39 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 23:35:13 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications</title>
+      <link>https://doi.org/10.1109/sr.2025.3639323</link>
+      <guid isPermaLink="false">doi:10.1109/sr.2025.3639323</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Unmanned aerial vehicles (UAVs) have emerged as transformative enablers in next-generation wireless communication systems due to their mobility, flexibility, and rapid deployment capabilities. The integration of intelligent reflecting surfaces (IRSs) further enhances their potential by enabling intelligent signal propagation control, improving coverage, and reducing active transmission power. However, energy efficiency (EE) remains a major bottleneck in sustaining prolonged UAV operations, especially in dense, latency-sensitive, and high-demand communication environments. While EE is studied independently with respect to UAV and IRS, integration-level EE, jointly considering UAV flight dynamics, IRS control, and communication design, remains underexplored. Existing surveys largely focus on architectural or algorithmic aspects of either UAV or IRS systems with only limited or domain-specific treatment of EE. Motivated by these gaps, this article presents the first survey that consolidates and extends the EE perspective in IRS-assisted UAV communications. We focus on key domains, such as trajectory optimization, power control, cooperative deployment, and secure transmission, and examine a wide range of IRS deployment strategies, including ground-based, UAV-mounted, and hybrid IRS systems, and explore how they dynamically enhance link reliability, spectral efficiency, and energy savings under various operational scenarios. Furthermore, we investigate cutting-edge optimization algorithms, including convex programming, deep reinforcement learning, and semantic-aware control frameworks, which jointly manage UAV mobility, IRS beamforming, and computational offloading to reduce energy consumption. Channel modeling advances are also discussed, highlighting the transition from traditional line-of-sight models to complex, stochastic, and near-field models tailored for IRS–UAV integration. By synthesizing findings from recent studies, this article underscores the transformative potential of IRS in addressing the energy limitations of UAVs. The insights presented can serve as a reference for researchers and system designers aiming to deploy sustainable, scalable, intelligent, and energy-efficient IRS-assisted UAV communication networks aligned with future sixth generation standards for wireless communications.</description>
+      <category>RIS/IRS</category>
+      <category>轨迹优化</category>
+      <category>波束成形</category>
+      <category>深度强化学习</category>
+    </item>
     <item>
       <title>Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach</title>
       <link>https://doi.org/10.48550/arxiv.2610.37897</link>

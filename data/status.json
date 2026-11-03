@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-11-03T07:32:39+08:00",
-  "updatedCN": "2026-11-03 07:32",
+  "updatedAt": "2026-11-04T07:35:12+08:00",
+  "updatedCN": "2026-11-04 07:35",
   "sources": [
     {
       "name": "arxiv",
       "ok": true,
       "count": 0,
-      "ms": 3373,
+      "ms": 1676,
       "error": null
     },
     {
       "name": "openalex",
       "ok": true,
       "count": 3,
-      "ms": 602,
+      "ms": 432,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
-      "count": 11,
-      "ms": 58476,
+      "count": 16,
+      "ms": 56805,
       "error": null
     },
     {
       "name": "doaj",
       "ok": true,
-      "count": 5,
-      "ms": 12272,
+      "count": 7,
+      "ms": 11915,
       "error": null
     },
     {
       "name": "zenodo",
       "ok": true,
-      "count": 1,
-      "ms": 5369,
+      "count": 0,
+      "ms": 2999,
       "error": null
     }
   ]
