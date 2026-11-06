@@ -1,7 +1,35 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T07:39:30+08:00",
+  "updatedAt": "2026-11-07T07:31:25+08:00",
   "papers": [
+    {
+      "title": "A robust constrained reinforcement learning framework for UAV-assisted secure relay communications",
+      "authors": [
+        "Zhenhang Wei",
+        "Gongchao Su",
+        "Mingjun Dai",
+        "Xiaohui Lin"
+      ],
+      "abstract": "Abstract Secure communication is essential in UAV-assisted wireless networks, where the broadcast nature of air-to-ground channels makes legitimate transmissions vulnerable to eavesdropping. Physical layer security (PLS) provides an effective means to mitigate this threat, with secrecy rate commonly adopted as the performance metric. However, practical engineering requirements may further require the eavesdropper’s signal-to-interference-plus-noise ratio (SINR) to remain below a prescribed threshold to prevent reliable decoding. The resulting optimization problem is challenging because both the secrecy-rate objective and the eavesdropper-SINR constraint depend on the unknown locations of passive eavesdroppers, while conventional reinforcement learning (RL) cannot explicitly enforce security-related constraints. To address these challenges, we formulate the problem as a constrained Markov decision process and develop a robust soft-fusion SAC-Lagrangian algorithm. The constrained RL component incorporates a long-term discounted eavesdropper-SINR cost into the learning process through a Lagrangian mechanism, enabling secrecy-rate optimization under explicit security requirements. It should be noted that the original per-slot hard SINR constraint is relaxed into a discounted cumulative-cost constraint when the problem is formulated as a CMDP, which is the standard formulation for long-term policy learning. To handle eavesdropper-location uncertainty, the potential eavesdropping region is partitioned into multiple subregions, and parallel reward-critic pairs are used to evaluate the worst-case secrecy performance in each subregion, while a single global cost critic evaluates the softmax-fused constraint cost. Their outputs are then fused to learn a single robust policy that balances secrecy-rate maximization and constraint satisfaction across uncertain eavesdropper locations. Simulation results show that the proposed method achieves faster stabilization of the training curve, a higher average secrecy rate, a higher worst-user secrecy rate, and a significantly lower constraint-violation probability than benchmark schemes.",
+      "doi": "10.1007/s44443-026-01488-7",
+      "venue": "Journal of King Saud University Computer and Information Sciences",
+      "publisher": "Springer Science and Business Media LLC",
+      "type": "journal-article",
+      "published": "2026-11-06",
+      "url": "https://doi.org/10.1007/s44443-026-01488-7",
+      "pdfUrl": "https://link.springer.com/content/pdf/10.1007/s44443-026-01488-7.pdf",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "安全速率",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 16.5,
+      "firstSeen": "2026-11-07",
+      "id": "doi:10.1007/s44443-026-01488-7"
+    },
     {
       "title": "A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications",
       "authors": [
@@ -30,6 +58,32 @@
       "score": 19,
       "firstSeen": "2026-11-04",
       "id": "doi:10.1109/sr.2025.3639323"
+    },
+    {
+      "title": "An unmanned aerial vehicle-carried RIS covert communication mechanism",
+      "authors": [
+        "Haotian Li",
+        "Shuang Zhang",
+        "Wen Tian"
+      ],
+      "abstract": "",
+      "doi": "10.1016/j.phycom.2026.103462",
+      "venue": "Physical Communication",
+      "publisher": "Elsevier BV",
+      "type": "journal-article",
+      "published": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.phycom.2026.103462",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "隐蔽通信"
+      ],
+      "score": 30,
+      "firstSeen": "2026-11-07",
+      "id": "doi:10.1016/j.phycom.2026.103462"
     },
     {
       "title": "Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach",

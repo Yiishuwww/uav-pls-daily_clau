@@ -5,8 +5,18 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Nov 2026 23:39:30 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 23:31:25 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>A robust constrained reinforcement learning framework for UAV-assisted secure relay communications</title>
+      <link>https://doi.org/10.1007/s44443-026-01488-7</link>
+      <guid isPermaLink="false">doi:10.1007/s44443-026-01488-7</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Abstract Secure communication is essential in UAV-assisted wireless networks, where the broadcast nature of air-to-ground channels makes legitimate transmissions vulnerable to eavesdropping. Physical layer security (PLS) provides an effective means to mitigate this threat, with secrecy rate commonly adopted as the performance metric. However, practical engineering requirements may further require the eavesdropper’s signal-to-interference-plus-noise ratio (SINR) to remain below a prescribed threshold to prevent reliable decoding. The resulting optimization problem is challenging because both the secrecy-rate objective and the eavesdropper-SINR constraint depend on the unknown locations of passive eavesdroppers, while conventional reinforcement learning (RL) cannot explicitly enforce security-related constraints. To address these challenges, we formulate the problem as a constrained Markov decision process and develop a robust soft-fusion SAC-Lagrangian algorithm. The constrained RL component incorporates a long-term discounted eavesdropper-SINR cost into the learning process through a Lagrangian mechanism, enabling secrecy-rate optimization under explicit security requirements. It should be noted that the original per-slot hard SINR constraint is relaxed into a discounted cumulative-cost constraint when the problem is formulated as a CMDP, which is the standard formulation for long-term policy learning. To handle eavesdropper-location uncertainty, the potential eavesdropping region is partitioned into multiple subregions, and parallel reward-critic pairs are used to evaluate the worst-case secrecy performance in each subregion, while a single global cost critic evaluates the softmax-fused constraint cost. Their outputs are then fused to learn a single robust policy that balances secrecy-rate maximization and constraint satisfaction across uncertain eavesdropper locations. Simulation results show that the proposed method achieves faster stabilization of the training curve, a higher average secrecy rate, a higher worst-user secrecy rate, and a significantly lower constraint-violation probability than benchmark schemes.</description>
+      <category>安全速率</category>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
+    </item>
     <item>
       <title>A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications</title>
       <link>https://doi.org/10.1109/sr.2025.3639323</link>
@@ -17,6 +27,15 @@
       <category>轨迹优化</category>
       <category>波束成形</category>
       <category>深度强化学习</category>
+    </item>
+    <item>
+      <title>An unmanned aerial vehicle-carried RIS covert communication mechanism</title>
+      <link>https://doi.org/10.1016/j.phycom.2026.103462</link>
+      <guid isPermaLink="false">doi:10.1016/j.phycom.2026.103462</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Physical Communication · 2026-11-01 · RIS/IRS, 隐蔽通信</description>
+      <category>RIS/IRS</category>
+      <category>隐蔽通信</category>
     </item>
     <item>
       <title>Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach</title>
