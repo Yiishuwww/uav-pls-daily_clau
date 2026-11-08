@@ -121,6 +121,11 @@ const server = http.createServer(async (request, response) => {
   response.end("Not found");
 });
 
+// 阿里云 FC / 腾讯云 SCF 的 Web 函数都要求长连接；SSE 不能被服务器提前断开。
+server.timeout = 0;
+server.keepAliveTimeout = 0;
+server.headersTimeout = 0;
+
 async function handleChat(request, response) {
   const abort = new AbortController();
   response.on("close", () => {

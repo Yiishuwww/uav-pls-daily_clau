@@ -92,9 +92,75 @@ npm run validate
 
 页面右下角的「问 AI」会基于 `data/papers.json` 回答论文相关问题。因为 GitHub Pages 是纯静态托管，API key 不能放在前端，所以需要一个很小的代理。
 
-> **国内公开访问推荐下面的「腾讯云 SCF」方案**，自带国内可访问的 HTTPS 地址，不用买域名；本节的 Cloudflare Worker 适合海外访问或自己挂代理使用。
+> **国内公开访问推荐下面的阿里云 FC 或腾讯云 SCF 方案**，自带国内可访问的 HTTPS 地址，不用买域名；Cloudflare Worker 适合海外访问或自己挂代理使用。
 
-### 方案一：腾讯云 SCF Web 函数（国内推荐）
+### 方案一：阿里云函数计算 FC Web 函数（国内推荐）
+
+阿里云 FC 的 **Web 函数**支持 SSE 流式输出（事件函数不支持），并自带国内可访问的默认 HTTPS 域名，普通访客不需要代理。
+
+#### 1. 生成部署包
+
+```powershell
+cd C:\Users\wsy\uav-pls-daily
+npm run render
+npm run build:alibaba
+tar.exe -a -c -f "dist\uav-pls-chat-alibaba.zip" -C "dist\alibaba" .
+```
+
+#### 2. 创建 FC Web 函数
+
+1. 登录阿里云 **函数计算 FC** 控制台，完成实名认证。
+2. **函数 → 创建函数**，选择 **Web 函数** / **使用自定义运行时创建**（不要选事件函数，事件函数不支持 SSE）。
+3. 地域选离你近的，函数名 `uav-pls-chat`，运行环境选 **Node.js 18**（或 20）。
+4. 代码选择 **上传 ZIP**，上传 `dist/uav-pls-chat-alibaba.zip`。
+5. 运行配置：
+   - **启动命令**：`node server.mjs`
+   - **监听端口**：`9000`
+   - **执行超时**：**120 秒**
+   - **内存**：512MB
+   - 环境变量：
+     - `DEEPSEEK_API_KEY` = 你的 DeepSeek key
+     - `DEEPSEEK_MODEL` = `deepseek-chat`
+     - `ALLOWED_ORIGINS` = `https://yiishuwww.github.io,http://localhost:3000`
+     - `PAPERS_URL` = `https://yiishuwww.github.io/uav-pls-daily_clau/data/papers.json`
+6. 创建 **HTTP 触发器**：
+   - 认证方式：**无需认证**
+   - 请求方法：勾选 **GET、POST、OPTIONS**（OPTIONS 必须勾，否则浏览器跨域预检会失败）
+   - 复制控制台显示的公网访问地址。
+
+> 如果控制台只允许用 `bootstrap` 文件启动，在代码里新建：
+> ```bash
+> #!/usr/bin/env bash
+> export PORT=9000
+> exec node server.mjs
+> ```
+> 并确保它有可执行权限；能用「启动命令」配置时优先用启动命令。
+
+#### 3. 验证
+
+浏览器打开：
+
+```text
+https://<FC公网地址>/health
+```
+
+看到 `"configured": true` 和 `"papers": 60` 就成功了。
+
+#### 4. 让页面指向 FC
+
+GitHub 仓库 **Settings → Secrets and variables → Actions → Variables**：
+
+- `CHAT_API_URL` = `https://<FC公网地址>/api/chat`
+
+然后 Actions → Daily update → Run workflow，等 Pages 更新后强刷页面。
+
+#### 5. 说明
+
+- FC 默认域名会自动加 `Content-Disposition: attachment`，对 `fetch` 调用的 API 没有影响；长期公开使用建议以后绑自定义域名。
+- 函数 URL 是公开的，建议在 FC 控制台设置最大并发（如 10）并监控调用量；DeepSeek 按量计费。
+- 与腾讯云方案一样：启动时用内置论文数据，后台每 10 分钟尝试从 `PAPERS_URL` 拉取最新数据；每天有新论文时重新 `npm run build:alibaba` 并上传一次即可。
+
+### 方案二：腾讯云 SCF Web 函数（国内可选）
 
 腾讯云 SCF 的 **Web 函数**原生支持 SSE 流式输出，并自带国内可访问的函数 URL，普通访客不需要代理。
 
@@ -159,7 +225,7 @@ GitHub 仓库 **Settings → Secrets and variables → Actions → Variables**�
 - 函数 URL 是公开的，建议在 SCF 控制台设置最大并发（如 10），并监控调用量；DeepSeek 按量计费。
 - 腾讯云 SCF 有免费额度，个人使用通常够，具体以控制台计费为准。
 
-### 方案二：Cloudflare Worker（海外/自用）
+### 方案三：Cloudflare Worker（海外/自用）
 
 仓库里已经包含完整实现：
 
@@ -266,7 +332,7 @@ uav-pls-daily_clau/
 │     ├─ chat.js                 # 请求校验、DeepSeek SSE 转发
 │     └─ prompt.js               # system 提示与论文清单
 ├─ tencent/
-│  └─ server.mjs                 # 腾讯云 SCF Web 函数入口
+│  └─ server.mjs                 # 通用 Web 函数入口（阿里云 FC / 腾讯云 SCF 共用）
 ├─ wrangler.toml                 # Cloudflare Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）

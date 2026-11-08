@@ -12,7 +12,8 @@
     "validate": "node scripts/validate.mjs",
     "worker:dev": "npx --yes wrangler dev",
     "worker:deploy": "npx --yes wrangler deploy",
-    "build:tencent": "node scripts/build-tencent.mjs"
+    "build:tencent": "node scripts/build-tencent.mjs",
+    "build:alibaba": "node scripts/build-alibaba.mjs"
   },
   "engines": {
     "node": ">=20"
