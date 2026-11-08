@@ -5,7 +5,7 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 08 Nov 2026 07:08:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 23:30:19 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications</title>
@@ -200,14 +200,6 @@
       <category>波束成形</category>
     </item>
     <item>
-      <title>FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients</title>
-      <link>https://doi.org/10.1038/s41598-026-68636-x</link>
-      <guid isPermaLink="false">doi:10.1038/s41598-026-68636-x</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.</description>
-      <category>安全速率</category>
-    </item>
-    <item>
       <title>Safeguarding UAV-ISAC networks: Robust covert communications against multiple wardens with location uncertainty</title>
       <link>https://doi.org/10.1016/j.phycom.2026.103370</link>
       <guid isPermaLink="false">doi:10.1016/j.phycom.2026.103370</guid>
@@ -262,6 +254,14 @@
       <category>波束成形</category>
       <category>深度强化学习</category>
       <category>边缘计算</category>
+    </item>
+    <item>
+      <title>FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients</title>
+      <link>https://doi.org/10.1038/s41598-026-68636-x</link>
+      <guid isPermaLink="false">doi:10.1038/s41598-026-68636-x</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.</description>
+      <category>安全速率</category>
     </item>
     <item>
       <title>Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications</title>

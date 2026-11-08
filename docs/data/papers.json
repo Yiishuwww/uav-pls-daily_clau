@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T15:08:18+08:00",
+  "updatedAt": "2026-11-09T07:30:19+08:00",
   "total": 60,
   "papers": [
     {
@@ -54,7 +54,7 @@
         "RIS/IRS",
         "隐蔽通信"
       ],
-      "score": 30,
+      "score": 28,
       "firstSeen": "2026-11-07",
       "id": "doi:10.1016/j.phycom.2026.103462"
     },
@@ -76,14 +76,15 @@
       "pdfUrl": "https://link.springer.com/content/pdf/10.1007/s44443-026-01488-7.pdf",
       "sources": [
         "crossref",
-        "openalex"
+        "openalex",
+        "doaj"
       ],
       "tags": [
         "安全速率",
         "无人机集群",
         "深度强化学习"
       ],
-      "score": 16.5,
+      "score": 14.5,
       "firstSeen": "2026-11-07",
       "id": "doi:10.1007/s44443-026-01488-7"
     },
@@ -580,31 +581,6 @@
       "id": "doi:10.48550/arxiv.2610.00216"
     },
     {
-      "title": "FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients",
-      "authors": [
-        "Hana Asghari",
-        "Ghosheh Abed Hodtani"
-      ],
-      "abstract": "Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.",
-      "doi": "10.1038/s41598-026-68636-x",
-      "venue": "Scientific Reports",
-      "publisher": "Nature Portfolio",
-      "type": "journal-article",
-      "published": "2026-09-18",
-      "url": "https://doi.org/10.1038/s41598-026-68636-x",
-      "pdfUrl": "https://www.nature.com/articles/s41598-026-68636-x_reference.pdf",
-      "sources": [
-        "openalex",
-        "crossref"
-      ],
-      "tags": [
-        "安全速率"
-      ],
-      "score": 32,
-      "firstSeen": "2026-09-18",
-      "id": "doi:10.1038/s41598-026-68636-x"
-    },
-    {
       "title": "Safeguarding UAV-ISAC networks: Robust covert communications against multiple wardens with location uncertainty",
       "authors": [
         "Haowen Yang",
@@ -778,6 +754,32 @@
       "score": 7,
       "firstSeen": "2026-09-29",
       "id": "doi:10.3390/fi18100522"
+    },
+    {
+      "title": "FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients",
+      "authors": [
+        "Hana Asghari",
+        "Ghosheh Abed Hodtani"
+      ],
+      "abstract": "Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.",
+      "doi": "10.1038/s41598-026-68636-x",
+      "venue": "Scientific Reports",
+      "publisher": "Nature Portfolio",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1038/s41598-026-68636-x",
+      "pdfUrl": "https://www.nature.com/articles/s41598-026-68636-x_reference.pdf",
+      "sources": [
+        "openalex",
+        "crossref",
+        "doaj"
+      ],
+      "tags": [
+        "安全速率"
+      ],
+      "score": 32,
+      "firstSeen": "2026-09-18",
+      "id": "doi:10.1038/s41598-026-68636-x"
     },
     {
       "title": "Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications",
