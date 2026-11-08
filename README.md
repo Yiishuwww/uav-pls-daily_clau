@@ -90,17 +90,88 @@ npm run validate
 
 ## AI 问答（可选，DeepSeek）
 
-页面右下角的「问 AI」会基于 `data/papers.json` 回答论文相关问题。因为 GitHub Pages 是纯静态托管，API key 不能放在前端，所以需要一个很小的代理（Cloudflare Worker）。仓库里已经包含完整实现：
+页面右下角的「问 AI」会基于 `data/papers.json` 回答论文相关问题。因为 GitHub Pages 是纯静态托管，API key 不能放在前端，所以需要一个很小的代理。
+
+> **国内公开访问推荐下面的「腾讯云 SCF」方案**，自带国内可访问的 HTTPS 地址，不用买域名；本节的 Cloudflare Worker 适合海外访问或自己挂代理使用。
+
+### 方案一：腾讯云 SCF Web 函数（国内推荐）
+
+腾讯云 SCF 的 **Web 函数**原生支持 SSE 流式输出，并自带国内可访问的函数 URL，普通访客不需要代理。
+
+#### 1. 生成部署包
+
+```powershell
+cd C:\Users\wsy\uav-pls-daily
+npm run render
+npm run build:tencent
+tar.exe -a -c -f "dist\uav-pls-chat-tencent.zip" -C "dist\tencent" .
+```
+
+生成的 ZIP 里包含 `server.mjs`、`worker/src/chat.js`、`worker/src/prompt.js` 和 `papers.json`（打包时的论文库）。
+
+#### 2. 创建 Web 函数
+
+1. 注册/登录腾讯云，完成实名认证，进入 **云函数 SCF** 控制台。
+2. **函数服务 → 新建**，函数类型选择 **Web 函数**。
+3. 地域选广州/上海等，名称 `uav-pls-chat`，运行环境选 **Node.js 18**（或 20）。
+4. 代码选择 **上传 ZIP**，上传 `dist/uav-pls-chat-tencent.zip`。
+5. 高级配置：
+   - 启动命令：`/var/lang/node18/bin/node server.mjs`
+     （Node.js 20 则是 `/var/lang/node20/bin/node server.mjs`，以控制台提示为准）
+   - 执行超时：**120 秒**
+   - 内存：256MB 即可
+   - 环境变量：
+     - `DEEPSEEK_API_KEY` = 你的 DeepSeek key
+     - `DEEPSEEK_MODEL` = `deepseek-chat`
+     - `ALLOWED_ORIGINS` = `https://yiishuwww.github.io,http://localhost:3000`
+     - `PAPERS_URL` = `https://yiishuwww.github.io/uav-pls-daily_clau/data/papers.json`
+6. 触发器：添加 **函数 URL**（公网访问），复制生成的 HTTPS 地址。
+
+> 如果控制台强制要求 `scf_bootstrap`，在在线编辑器里新建该文件，内容为：
+> ```bash
+> #!/bin/bash
+> /var/lang/node18/bin/node server.mjs
+> ```
+> 保存后访问函数 URL；如果报 405，检查启动命令路径和 LF 换行符。
+
+#### 3. 验证
+
+浏览器打开：
+
+```text
+https://<函数URL>/health
+```
+
+看到 `"configured": true` 和 `"papers": 60`（打包时的论文数）就成功了。
+
+#### 4. 让页面指向腾讯云函数
+
+GitHub 仓库 **Settings → Secrets and variables → Actions → Variables**：
+
+- `CHAT_API_URL` = `https://<函数URL>/api/chat`
+
+然后 Actions → Daily update → Run workflow，等 Pages 更新后强刷页面。
+
+#### 5. 说明
+
+- 函数 URL 是国内域名，普通访客无需代理即可使用 AI。
+- 函数启动时会立即使用内置论文数据，并在后台每 10 分钟尝试从 `PAPERS_URL` 拉取最新数据；拉取失败就继续用内置数据。每天有新论文时，重新 `npm run build:tencent` 并上传一次，就能更新内置数据。
+- 函数 URL 是公开的，建议在 SCF 控制台设置最大并发（如 10），并监控调用量；DeepSeek 按量计费。
+- 腾讯云 SCF 有免费额度，个人使用通常够，具体以控制台计费为准。
+
+### 方案二：Cloudflare Worker（海外/自用）
+
+仓库里已经包含完整实现：
 
 - `src/static/chat.js`：聊天面板、流式输出、引用定位
 - `worker/src/`：请求校验、提示词构造、DeepSeek SSE 转发
 - `wrangler.toml`：Worker 配置
 
-### 1. 申请 API Key
+#### 1. 申请 API Key
 
 到 [DeepSeek 开放平台](https://platform.deepseek.com/) 创建 API Key（`sk-...`）。
 
-### 2. 部署 Worker
+#### 2. 部署 Worker
 
 在仓库根目录执行：
 
@@ -112,7 +183,7 @@ npx wrangler deploy
 
 `wrangler.toml` 里已经配置了论文数据地址和允许的页面来源。如果仓库名/域名不同，修改 `PAPERS_URL` 和 `ALLOWED_ORIGINS`。部署成功后会得到类似 `https://uav-pls-chat.<你的子域>.workers.dev` 的地址。
 
-### 3. 让页面指向 Worker
+#### 3. 让页面指向 Worker
 
 在 GitHub 仓库 **Settings → Secrets and variables → Actions → Variables** 新增：
 
@@ -122,7 +193,7 @@ npx wrangler deploy
 
 > 不设置 `CHAT_API_URL` 时，页面会请求同域 `/api/chat`，在 GitHub Pages 上会返回 404，聊天框会提示「AI 服务未配置」。
 
-### 本地预览
+#### 本地预览
 
 ```powershell
 $env:DEEPSEEK_API_KEY = "sk-..."
@@ -131,7 +202,7 @@ npm run preview
 
 打开 `http://localhost:3000`。本地预览服务器会把 `/api/chat` 转发到 DeepSeek，不需要部署 Worker。
 
-### Worker 配置
+#### Worker 配置
 
 | 变量 | 默认值 | 说明 |
 |---|---|---|
@@ -140,7 +211,7 @@ npm run preview
 | `PAPERS_URL` | 本仓库 GitHub Pages 的 `data/papers.json` | Worker 请求时带 10 分钟缓存 |
 | `ALLOWED_ORIGINS` | GitHub Pages + localhost | 逗号分隔；只填协议 + 域名 + 端口，不要带路径 |
 
-### 说明与限制
+#### 说明与限制
 
 - 每次请求会把论文元数据（标题、作者、摘要、标签等，约 2 万 token）作为 system 提示发送给 DeepSeek；论文清单前缀稳定，能命中 DeepSeek 的自动上下文缓存。
 - 当前 56 篇不需要向量检索；论文超过约 300–500 篇后，建议在 Worker 里先做关键词/BM25 筛选，或改用 embedding 检索。
@@ -189,12 +260,14 @@ uav-pls-daily_clau/
 │  ├─ static/                    # 前端 CSS / JS（app.js、chat.js、style.css）
 │  ├─ http.js                    # 超时与重试
 │  └─ text.js                    # 文本归一化与日期工具
-├─ worker/                       # AI 问答代理（Cloudflare Worker）
+├─ worker/                       # 共用 AI 代理逻辑（Cloudflare Worker 入口也在这里）
 │  └─ src/
-│     ├─ index.js                # Worker 入口、论文数据拉取
+│     ├─ index.js                # Cloudflare Worker 入口
 │     ├─ chat.js                 # 请求校验、DeepSeek SSE 转发
 │     └─ prompt.js               # system 提示与论文清单
-├─ wrangler.toml                 # Worker 配置
+├─ tencent/
+│  └─ server.mjs                 # 腾讯云 SCF Web 函数入口
+├─ wrangler.toml                 # Cloudflare Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）
 │  └─ status.json                # 各数据源运行状态

@@ -5,4 +5,5 @@ Thumbs.db
 .env
 .dev.vars
 .wrangler/
+dist/
 .venv/
