@@ -11,6 +11,7 @@
     papers = [];
   }
   if (!Array.isArray(papers)) papers = [];
+  papers = papers.map((paper, index) => ({ ...paper, _n: index + 1 }));
 
   const today = document.body.dataset.today || "";
   const last7 = addDays(today, -6);
@@ -270,6 +271,7 @@
   function card(paper) {
     const article = document.createElement("article");
     article.className = "paper";
+    article.id = `paper-${paper._n}`;
 
     const top = document.createElement("div");
     top.className = "paper-top";
@@ -396,6 +398,52 @@
   // ---------- 交互 ----------
 
   const periodButtons = [...document.querySelectorAll("[data-period]")];
+
+  // 供 chat.js 读取当前筛选条件，并从 AI 回答的引用编号定位到论文卡片。
+  function revealPaper(n) {
+    const paper = papers.find((item) => item._n === n);
+    if (!paper) return false;
+
+    state.period = "all";
+    state.q = "";
+    state.tag = "all";
+    state.type = "all";
+    state.month = "all";
+    state.sort = "latest";
+    state.limit = Math.max(papers.length, 40);
+
+    els.search.value = "";
+    els.type.value = "all";
+    els.month.value = "all";
+    els.sort.value = "latest";
+    for (const button of periodButtons) {
+      button.classList.toggle("active", button.dataset.period === "all");
+    }
+
+    renderTags();
+    syncUrl();
+    render();
+
+    const element = document.getElementById(`paper-${n}`);
+    if (!element) return false;
+
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+    element.classList.add("flash");
+    window.setTimeout(() => element.classList.remove("flash"), 1800);
+    return true;
+  }
+
+  window.uavApp = {
+    getFilters: () => ({
+      period: state.period,
+      q: state.q,
+      tag: state.tag,
+      type: state.type,
+      month: state.month,
+      sort: state.sort,
+    }),
+    revealPaper,
+  };
 
   function setPeriod(period) {
     state.period = period;

@@ -28,7 +28,38 @@ function sourceStatusHtml(status) {
     .join("");
 }
 
-function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl }) {
+function chatWidgetHtml() {
+  return `<div id="chat">
+  <button type="button" id="chat-toggle" class="chat-toggle" aria-controls="chat-panel" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 10h8M8 14h5"></path></svg>
+    <span>问 AI</span>
+  </button>
+  <section class="chat-panel" id="chat-panel" role="dialog" aria-label="论文 AI 助手" hidden>
+    <header class="chat-head">
+      <div class="chat-title">
+        <strong>论文 AI 助手</strong>
+        <span>基于本站收录论文回答</span>
+      </div>
+      <div class="chat-actions">
+        <button type="button" id="chat-clear" title="清空对话" aria-label="清空对话">清空</button>
+        <button type="button" id="chat-close" title="关闭" aria-label="关闭">✕</button>
+      </div>
+    </header>
+    <div class="chat-log" id="chat-log" aria-live="polite" aria-relevant="additions text"></div>
+    <div class="chat-suggest" id="chat-suggest" aria-label="建议问题"></div>
+    <form class="chat-form" id="chat-form">
+      <textarea id="chat-input" rows="1" maxlength="1000" placeholder="问点关于这些论文的问题…" aria-label="输入问题"></textarea>
+      <div class="chat-buttons">
+        <button type="button" id="chat-stop" class="chat-stop" hidden>停止</button>
+        <button type="submit" id="chat-send" class="chat-send">发送</button>
+      </div>
+    </form>
+    <p class="chat-foot">回答仅基于论文元数据，可能有误；请以原文为准。由 DeepSeek 提供支持。</p>
+  </section>
+</div>`;
+}
+
+function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl }) {
   const papersForSite = papers.map((paper) => ({
     id: paper.id,
     title: paper.title,
@@ -61,6 +92,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <title>UAV 物理层安全论文日报</title>
 <meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
 <meta name="theme-color" content="#0b5f8a">
+<meta name="chat-api-url" content="${xmlEscape(chatApiUrl)}">
 <meta property="og:title" content="UAV 物理层安全论文日报">
 <meta property="og:description" content="每日自动汇总无人机物理层安全方向最新论文">
 <meta property="og:type" content="website">
@@ -158,8 +190,11 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   </div>
 </footer>
 
+${chatWidgetHtml()}
+
 <script type="application/json" id="papers-data">${papersJson}</script>
 <script src="assets/app.js" defer></script>
+<script src="assets/chat.js" defer></script>
 </body>
 </html>
 `;
@@ -216,6 +251,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
   const weekCount = papers.filter((paper) => paper.firstSeen >= last7).length;
 
   const siteUrl = (process.env.SITE_URL || "").replace(/\/+$/, "");
+  const chatApiUrl = (process.env.CHAT_API_URL || "/api/chat").trim() || "/api/chat";
 
   const html = renderIndexHtml({
     papers,
@@ -225,6 +261,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
     todayCount,
     weekCount,
     siteUrl,
+    chatApiUrl,
   });
 
   fs.writeFileSync(path.join(docsDir, "index.html"), html, "utf8");
@@ -237,7 +274,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
   fs.writeFileSync(path.join(docsDir, ".nojekyll"), "", { flag: "a" });
 
   const staticDir = path.join(root, "src", "static");
-  for (const file of ["style.css", "app.js"]) {
+  for (const file of ["style.css", "app.js", "chat.js"]) {
     fs.copyFileSync(path.join(staticDir, file), path.join(assetsDir, file));
   }
 

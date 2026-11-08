@@ -1,0 +1,20 @@
+name = "uav-pls-chat"
+main = "worker/src/index.js"
+compatibility_date = "2025-09-01"
+
+# 部署：
+#   npx wrangler login
+#   npx wrangler secret put DEEPSEEK_API_KEY
+#   npx wrangler deploy
+#
+# 本地调试：
+#   在仓库根目录新建 .dev.vars，写入 DEEPSEEK_API_KEY=sk-...
+#   npx wrangler dev
+
+[vars]
+DEEPSEEK_MODEL = "deepseek-chat"
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+# 改成你的 GitHub Pages 仓库地址；页面上的 data/papers.json 必须能公开访问
+PAPERS_URL = "https://yiishuwww.github.io/uav-pls-daily_clau/data/papers.json"
+# 允许调用这个 Worker 的页面来源（协议 + 域名 + 端口，不要带路径）
+ALLOWED_ORIGINS = "https://yiishuwww.github.io,http://localhost:3000,http://127.0.0.1:3000"

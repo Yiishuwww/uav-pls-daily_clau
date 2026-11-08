@@ -18,6 +18,7 @@
 - 预印本用灰色小标签标注，不抢视觉
 - 搜索、时间范围、类型、月份、标签筛选，支持“最新发表 / 相关性”排序
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
+- 内置 AI 问答（可选）：基于全部论文元数据回答，支持 `[n]` 引用定位，需部署一个 DeepSeek 代理（见下文）
 
 ## 检索覆盖
 
@@ -87,6 +88,65 @@ npm run validate
 
 > GitHub 的定时任务在高峰期可能延迟 5–30 分钟。公开仓库的 Actions 分钟数免费；每日提交也会避免仓库因 60 天无活动而被暂停定时任务。
 
+## AI 问答（可选，DeepSeek）
+
+页面右下角的「问 AI」会基于 `data/papers.json` 回答论文相关问题。因为 GitHub Pages 是纯静态托管，API key 不能放在前端，所以需要一个很小的代理（Cloudflare Worker）。仓库里已经包含完整实现：
+
+- `src/static/chat.js`：聊天面板、流式输出、引用定位
+- `worker/src/`：请求校验、提示词构造、DeepSeek SSE 转发
+- `wrangler.toml`：Worker 配置
+
+### 1. 申请 API Key
+
+到 [DeepSeek 开放平台](https://platform.deepseek.com/) 创建 API Key（`sk-...`）。
+
+### 2. 部署 Worker
+
+在仓库根目录执行：
+
+```bash
+npx wrangler login
+npx wrangler secret put DEEPSEEK_API_KEY
+npx wrangler deploy
+```
+
+`wrangler.toml` 里已经配置了论文数据地址和允许的页面来源。如果仓库名/域名不同，修改 `PAPERS_URL` 和 `ALLOWED_ORIGINS`。部署成功后会得到类似 `https://uav-pls-chat.<你的子域>.workers.dev` 的地址。
+
+### 3. 让页面指向 Worker
+
+在 GitHub 仓库 **Settings → Secrets and variables → Actions → Variables** 新增：
+
+- `CHAT_API_URL` = `https://uav-pls-chat.<你的子域>.workers.dev/api/chat`
+
+然后手动运行一次 **Daily update**（或本地 `npm run render` 后提交），让 `docs/index.html` 写入新的接口地址。
+
+> 不设置 `CHAT_API_URL` 时，页面会请求同域 `/api/chat`，在 GitHub Pages 上会返回 404，聊天框会提示「AI 服务未配置」。
+
+### 本地预览
+
+```powershell
+$env:DEEPSEEK_API_KEY = "sk-..."
+npm run preview
+```
+
+打开 `http://localhost:3000`。本地预览服务器会把 `/api/chat` 转发到 DeepSeek，不需要部署 Worker。
+
+### Worker 配置
+
+| 变量 | 默认值 | 说明 |
+|---|---|---|
+| `DEEPSEEK_MODEL` | `deepseek-chat` | 对话模型；换成 `deepseek-reasoner` 时自动不发送 `temperature` |
+| `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` | 兼容网关可改 |
+| `PAPERS_URL` | 本仓库 GitHub Pages 的 `data/papers.json` | Worker 请求时带 10 分钟缓存 |
+| `ALLOWED_ORIGINS` | GitHub Pages + localhost | 逗号分隔；只填协议 + 域名 + 端口，不要带路径 |
+
+### 说明与限制
+
+- 每次请求会把论文元数据（标题、作者、摘要、标签等，约 2 万 token）作为 system 提示发送给 DeepSeek；论文清单前缀稳定，能命中 DeepSeek 的自动上下文缓存。
+- 当前 56 篇不需要向量检索；论文超过约 300–500 篇后，建议在 Worker 里先做关键词/BM25 筛选，或改用 embedding 检索。
+- 公开 Worker 建议在 Cloudflare 控制台加一条速率限制规则（例如每 IP 每分钟 10 次），并控制 `max_tokens`（代码里默认 1200）。
+- 前端只发送问题、最近几轮对话和当前筛选；API key 只存在 Worker secret 里，不会进入 `docs/` 或 Git 仓库。
+
 ## 配置
 
 ### `config/keywords.yaml`
@@ -126,9 +186,15 @@ uav-pls-daily_clau/
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
 │  ├─ render.js                  # 网站与 RSS 生成
-│  ├─ static/                    # 前端 CSS / JS
+│  ├─ static/                    # 前端 CSS / JS（app.js、chat.js、style.css）
 │  ├─ http.js                    # 超时与重试
 │  └─ text.js                    # 文本归一化与日期工具
+├─ worker/                       # AI 问答代理（Cloudflare Worker）
+│  └─ src/
+│     ├─ index.js                # Worker 入口、论文数据拉取
+│     ├─ chat.js                 # 请求校验、DeepSeek SSE 转发
+│     └─ prompt.js               # system 提示与论文清单
+├─ wrangler.toml                 # Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）
 │  └─ status.json                # 各数据源运行状态

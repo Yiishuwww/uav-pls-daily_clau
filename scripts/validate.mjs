@@ -55,7 +55,12 @@ if (!channel) {
   if (items.length !== expected) fail(`RSS 条目 ${items.length} 条，预期 ${expected} 条`);
 }
 
-for (const asset of ["assets/style.css", "assets/app.js", "data/papers.json"]) {
+for (const asset of [
+  "assets/style.css",
+  "assets/app.js",
+  "assets/chat.js",
+  "data/papers.json",
+]) {
   if (!fs.existsSync(path.join(root, "docs", asset))) fail(`缺少静态资源 docs/${asset}`);
 }
 

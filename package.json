@@ -9,7 +9,9 @@
     "backfill": "node src/main.js --days 90 --bootstrap",
     "render": "node src/main.js --days 1 --no-collect",
     "preview": "node scripts/serve.mjs",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "worker:dev": "npx --yes wrangler dev",
+    "worker:deploy": "npx --yes wrangler deploy"
   },
   "engines": {
     "node": ">=20"
