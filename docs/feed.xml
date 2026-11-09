@@ -5,8 +5,26 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 08 Nov 2026 23:30:19 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 23:34:28 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Minimizing Secure Age of Information in UAV ‐Assisted Short‐Packet Covert Communication</title>
+      <link>https://doi.org/10.1002/itl2.70371</link>
+      <guid isPermaLink="false">doi:10.1002/itl2.70371</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
+      <description>ABSTRACT This paper investigates the joint optimization of resource allocation and unmanned aerial vehicle (UAV) trajectory in a UAV‐assisted two‐hop status update system, where secure and covert transmission is achieved under the finite blocklength (FBL) regime. A ground source transmits status updates to a destination via a decode‐and‐forward UAV relay, while a passive eavesdropper simultaneously attempts to intercept confidential information and detect the presence of legitimate transmissions. To capture the intricate coupling among information freshness, FBL reliability, physical‐layer security, and communication covertness, we formulate a problem of minimizing the secure age of information (S‐AoI). This formulation jointly accounts for FBL decoding errors, secrecy outage probability, Kullback–Leibler divergence‐based covertness constraints, transmit power limits, UAV mobility, and a safety‐distance requirement. Due to the mixed‐integer and non‐convex nature of the problem, we propose an alternating optimization and successive convex approximation algorithm to iteratively optimize the blocklength, two‐hop transmit powers, and UAV trajectory. Simulation results demonstrate that the proposed scheme achieves a significantly lower average S‐AoI compared to benchmark schemes, validating the effectiveness of the joint design in balancing reliability, security, covertness, and timeliness.</description>
+      <category>隐蔽通信</category>
+      <category>轨迹优化</category>
+      <category>无人机集群</category>
+    </item>
+    <item>
+      <title>DNN-Driven Proactive UAV Trajectory and Beam Steering for Blockage-Resilient Communications</title>
+      <link>https://arxiv.org/abs/2611.09384v1</link>
+      <guid isPermaLink="false">arxiv:2611.09384</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>This paper proposes Autonomous UAV Communication (AutUAVCom), a proactive communication system that jointly adapts the flight trajectory and RF beam steering to minimize UAV energy consumption while satisfying secrecy and reliability requirements for rescue teams operating in dynamic, cluttered, and GPS-denied environments. Unlike existing modelbased proactive approaches, AutUAVCom employs a deep neural network-based Tracking and Prediction (T&amp;P) module that combines onboard sensing with spatiotemporal and body-orientation information to track users, localize blocking objects, and predict future trajectories and potential beam blockages. Building on the T&amp;P module, we formulate a constrained optimization problem and develop a two-step iterative numerical approach. Monte Carlo simulations show that, relative to a reactive system, AutUAVCom achieves 10% and 19% gains in energy efficiency and channel secrecy, respectively, while reducing the outage probability by 85%, under a mean blockage arrival interval of 120 seconds and a mean blockage duration of 20 seconds.</description>
+      <category>轨迹优化</category>
+    </item>
     <item>
       <title>A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications</title>
       <link>https://doi.org/10.1109/sr.2025.3639323</link>

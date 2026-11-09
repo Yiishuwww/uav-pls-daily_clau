@@ -1,7 +1,62 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-09T07:30:19+08:00",
+  "updatedAt": "2026-11-10T07:34:28+08:00",
   "papers": [
+    {
+      "title": "Minimizing Secure Age of Information in UAV ‐Assisted Short‐Packet Covert Communication",
+      "authors": [
+        "Ting Zhang",
+        "Mangang Xie",
+        "Jing Wei",
+        "Jie Xu",
+        "Hui Sun"
+      ],
+      "abstract": "ABSTRACT This paper investigates the joint optimization of resource allocation and unmanned aerial vehicle (UAV) trajectory in a UAV‐assisted two‐hop status update system, where secure and covert transmission is achieved under the finite blocklength (FBL) regime. A ground source transmits status updates to a destination via a decode‐and‐forward UAV relay, while a passive eavesdropper simultaneously attempts to intercept confidential information and detect the presence of legitimate transmissions. To capture the intricate coupling among information freshness, FBL reliability, physical‐layer security, and communication covertness, we formulate a problem of minimizing the secure age of information (S‐AoI). This formulation jointly accounts for FBL decoding errors, secrecy outage probability, Kullback–Leibler divergence‐based covertness constraints, transmit power limits, UAV mobility, and a safety‐distance requirement. Due to the mixed‐integer and non‐convex nature of the problem, we propose an alternating optimization and successive convex approximation algorithm to iteratively optimize the blocklength, two‐hop transmit powers, and UAV trajectory. Simulation results demonstrate that the proposed scheme achieves a significantly lower average S‐AoI compared to benchmark schemes, validating the effectiveness of the joint design in balancing reliability, security, covertness, and timeliness.",
+      "doi": "10.1002/itl2.70371",
+      "venue": "Internet Technology Letters",
+      "publisher": "Wiley",
+      "type": "journal-article",
+      "published": "2026-11-09",
+      "url": "https://doi.org/10.1002/itl2.70371",
+      "pdfUrl": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/itl2.70371",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化",
+        "无人机集群"
+      ],
+      "score": 34,
+      "firstSeen": "2026-11-10",
+      "id": "doi:10.1002/itl2.70371"
+    },
+    {
+      "title": "DNN-Driven Proactive UAV Trajectory and Beam Steering for Blockage-Resilient Communications",
+      "authors": [
+        "Abdallah S. Ghazy",
+        "Hussein A. Ammar",
+        "James Bayes",
+        "Francois Chan"
+      ],
+      "abstract": "This paper proposes Autonomous UAV Communication (AutUAVCom), a proactive communication system that jointly adapts the flight trajectory and RF beam steering to minimize UAV energy consumption while satisfying secrecy and reliability requirements for rescue teams operating in dynamic, cluttered, and GPS-denied environments. Unlike existing modelbased proactive approaches, AutUAVCom employs a deep neural network-based Tracking and Prediction (T&P) module that combines onboard sensing with spatiotemporal and body-orientation information to track users, localize blocking objects, and predict future trajectories and potential beam blockages. Building on the T&P module, we formulate a constrained optimization problem and develop a two-step iterative numerical approach. Monte Carlo simulations show that, relative to a reactive system, AutUAVCom achieves 10% and 19% gains in energy efficiency and channel secrecy, respectively, while reducing the outage probability by 85%, under a mean blockage arrival interval of 120 seconds and a mean blockage duration of 20 seconds.",
+      "arxivId": "2611.09384",
+      "venue": "arXiv",
+      "publisher": "arXiv",
+      "type": "preprint",
+      "published": "2026-11-06",
+      "url": "https://arxiv.org/abs/2611.09384v1",
+      "pdfUrl": "https://arxiv.org/pdf/2611.09384v1",
+      "sources": [
+        "arxiv"
+      ],
+      "tags": [
+        "轨迹优化"
+      ],
+      "score": 10.5,
+      "firstSeen": "2026-11-10",
+      "id": "arxiv:2611.09384"
+    },
     {
       "title": "A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications",
       "authors": [
