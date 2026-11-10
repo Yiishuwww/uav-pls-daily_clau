@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T07:34:28+08:00",
+  "updatedAt": "2026-11-11T07:29:31+08:00",
   "total": 62,
   "papers": [
     {
@@ -42,20 +42,22 @@
       "abstract": "This paper proposes Autonomous UAV Communication (AutUAVCom), a proactive communication system that jointly adapts the flight trajectory and RF beam steering to minimize UAV energy consumption while satisfying secrecy and reliability requirements for rescue teams operating in dynamic, cluttered, and GPS-denied environments. Unlike existing modelbased proactive approaches, AutUAVCom employs a deep neural network-based Tracking and Prediction (T&P) module that combines onboard sensing with spatiotemporal and body-orientation information to track users, localize blocking objects, and predict future trajectories and potential beam blockages. Building on the T&P module, we formulate a constrained optimization problem and develop a two-step iterative numerical approach. Monte Carlo simulations show that, relative to a reactive system, AutUAVCom achieves 10% and 19% gains in energy efficiency and channel secrecy, respectively, while reducing the outage probability by 85%, under a mean blockage arrival interval of 120 seconds and a mean blockage duration of 20 seconds.",
       "arxivId": "2611.09384",
       "venue": "arXiv",
-      "publisher": "arXiv",
+      "publisher": "Cornell University",
       "type": "preprint",
       "published": "2026-11-06",
-      "url": "https://arxiv.org/abs/2611.09384v1",
+      "url": "https://doi.org/10.48550/arxiv.2611.09384",
       "pdfUrl": "https://arxiv.org/pdf/2611.09384v1",
       "sources": [
-        "arxiv"
+        "arxiv",
+        "openalex"
       ],
       "tags": [
         "轨迹优化"
       ],
       "score": 10.5,
       "firstSeen": "2026-11-10",
-      "id": "arxiv:2611.09384"
+      "id": "doi:10.48550/arxiv.2611.09384",
+      "doi": "10.48550/arxiv.2611.09384"
     },
     {
       "title": "A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications",
@@ -82,7 +84,7 @@
         "波束成形",
         "深度强化学习"
       ],
-      "score": 19,
+      "score": 17,
       "firstSeen": "2026-11-04",
       "id": "doi:10.1109/sr.2025.3639323"
     },
