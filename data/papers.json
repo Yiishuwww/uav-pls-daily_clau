@@ -1,7 +1,32 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-11T07:29:31+08:00",
+  "updatedAt": "2026-11-11T22:17:04+08:00",
   "papers": [
+    {
+      "title": "Energy- and Latency-Efficient Offloading for Secure Cooperative UAV-NOMA-Enabled Mobile Edge Computing Networks",
+      "authors": [
+        "Kaiwei Jiang"
+      ],
+      "abstract": "Abstract This work investigates energy- and latency-efficient computation offloading for secure cooperative UAV-NOMA-enabled MEC networks in the presence of an eavesdropper. A subset of UAVs serves as jammers to mitigate eavesdropping, while the rest perform partial offloading. Given the passive eavesdropper assumption, secrecy outage probability is adopted as the secrecy metric, and its closed-form expression is derived by analyzing SINR statistics at the ground access point and the eavesdropper. Three non-convex optimization problems are formulated: minimizing individual UAV energy consumption, minimizing total energy of offloading and jamming UAVs, and minimizing task latency under an energy budget. Suboptimal solutions are obtained via constraint simplification, multi-to-single-variable transformation, and numerical methods. Results demonstrate that partial offloading balances energy and latency, with optimal offloading bits and jamming power; larger latency deadlines, secrecy outage probability thresholds, or energy budgets enhance performance.",
+      "doi": "10.21203/rs.3.rs-11176890/v1",
+      "venue": "Springer Science and Business Media LLC",
+      "publisher": "Springer Science and Business Media LLC",
+      "type": "preprint",
+      "published": "2026-11-11",
+      "url": "https://doi.org/10.21203/rs.3.rs-11176890/v1",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "NOMA",
+        "干扰/人工噪声",
+        "边缘计算"
+      ],
+      "score": 14.5,
+      "firstSeen": "2026-11-11",
+      "id": "doi:10.21203/rs.3.rs-11176890/v1"
+    },
     {
       "title": "Minimizing Secure Age of Information in UAV ‐Assisted Short‐Packet Covert Communication",
       "authors": [
@@ -189,7 +214,7 @@
         "Swati Kumari",
         "Neeraj Kumar"
       ],
-      "abstract": "",
+      "abstract": "Physical layer security (PLS) is a critical research challenge in unmanned aerial vehicle (UAV)-assisted wireless networks due to the intrinsic vulnerability of a UAV's line of sight (LoS) to eavesdroppers' attacks. In this paper, a Double Deep Q-Network (DDQN) network model is proposed to optimize the UAV trajectory for a reconfigurable intelligent surface (RIS)-assisted network, with an aim of maximizing the Secret Key Rate (SKR). SKR is calculated against multiple eavesdroppers. Two network scenarios, including fixed-RIS, UAV and no-RIS-UAV, are compared and demonstrated in this paper. The proposed DDQN algorithm automatically learns UAV trajectory to gain maximum secrecy reward while taking 10 ground terminals (GT) with minimum data requirements. The validity of the proposed DDQN network is verified by simulating the SKR based on the number of GT's and eavesdroppers. Moreover, the presentation of 2D and 3D UAV trajectories. Simulation results show that RIS-assisted UAV always provide greater SKR than no-RIS UAV systems, which proves efficacy of the designed scheme.",
       "doi": "10.1145/3842435.3843960",
       "venue": "Proceedings of the 7th International Workshop on Drone-Assisted Wireless Communications for 5G and Beyond",
       "publisher": "ACM",
@@ -203,9 +228,11 @@
       "tags": [
         "RIS/IRS",
         "安全速率",
-        "无人机集群"
+        "轨迹优化",
+        "无人机集群",
+        "密钥生成"
       ],
-      "score": 16,
+      "score": 25,
       "firstSeen": "2026-10-26",
       "id": "doi:10.1145/3842435.3843960"
     },
@@ -902,6 +929,61 @@
       "id": "doi:10.3390/drones10090690"
     },
     {
+      "title": "UAV-Enabled Covert Communication Against Cooperative Detection Under Nakagami-m Channel",
+      "authors": [
+        "Peng Wu",
+        "Xiaopeng Yuan",
+        "Yulin Hu",
+        "Anke Schmeink"
+      ],
+      "abstract": "This work investigates the efficient optimization of UAV trajectory, user assignment and power splitting for unmanned aerial vehicle (UAV)-enabled covert communication facing cooperative wardens over Nakagami- m channel. We begin by analyzing the cooperative detection behavior among multiple wardens and derive a closed-form expression for the covertness metric under the considered channel model, thereby facilitating a transformation of the original problem. The optimal successive-hover-and-fly (SHF) structure is then employed to convert the original infinite-dimensional problem into a finite-dimensional formulation. To solve the reformulated problem, we develop an efficient algorithm based on a novel convex approximation technique. Finally, numerical simulations confirm the performance advantages of proposed design.",
+      "doi": "10.1109/pimrc69400.2026.11711983",
+      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1109/pimrc69400.2026.11711983",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化"
+      ],
+      "score": 31,
+      "firstSeen": "2026-09-01",
+      "id": "doi:10.1109/pimrc69400.2026.11711983"
+    },
+    {
+      "title": "Bursty Covert Communication in Finite-Buffer UAV Relay Networks for Autonomous Vehicular Systems",
+      "authors": [
+        "Viet-Dung Bui",
+        "Hung Tran",
+        "Thi My Chinh Chu",
+        "Hans-Jürgen Zepernick",
+        "Van Nhan Vo",
+        "Tu Dac Ho"
+      ],
+      "abstract": "This paper investigates bursty covert communication in a finite-buffer two-hop unmanned aerial vehicle (UAV) relay network for autonomous vehicular systems. Multiple autonomous vehicles generate status and emergency packets and forward them to a traffic-control gateway through a decodeand-forward UAV relay. Different from conventional smoothtraffic models, the packet generation process is represented by a two-state bursty Poisson model with a normal monitoring state and an emergency burst state. The UAV relay is equipped with a finite buffer, so emergency packet surges may cause buffer overflow when the covert forwarding capability is insufficient. The legitimate and eavesdropping links are subject to distance-dependent path loss, Nakagami- m fading, aggregate interference, and noise. A tractable covert success model is developed by jointly considering legitimate decoding and worstcase eavesdropper detectability on both hops. Based on this model, we derive the effective covert arrival rate, effective covert service rate, finite-buffer evolution, blocking probability, and effective covert throughput. The simulation results show how emergency burstiness, buffer size, relay transmit power, number of eavesdroppers, and aggregate interference affect covert throughput and packet blocking. The results also show that covert throughput may saturate when the effective covert arrival rate exceeds the covert relay service rate, and that interference has a dual role in covert UAV relay communication.",
+      "doi": "10.1109/pimrc69400.2026.11711797",
+      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1109/pimrc69400.2026.11711797",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信"
+      ],
+      "score": 31,
+      "firstSeen": "2026-09-01",
+      "id": "doi:10.1109/pimrc69400.2026.11711797"
+    },
+    {
       "title": "Utility Maximization Integrating Secrecy, Energy Consumption, and Latency for UAV-Assisted MEC Systems via Dual-Replay TD3",
       "authors": [
         "Yishan Zang",
@@ -930,6 +1012,34 @@
       "score": 26,
       "firstSeen": "2026-09-01",
       "id": "doi:10.3390/electronics15173938"
+    },
+    {
+      "title": "Secrecy Energy Efficiency Maximization for RIS-Assisted UAV Communications via Joint 3D Trajectory and Passive Beamforming Design",
+      "authors": [
+        "Yuan Ren",
+        "Xiangen Yu",
+        "Xuewei Zhang",
+        "Fan Jiang"
+      ],
+      "abstract": "Unmanned aerial vehicle (UAV) communications show great potential in establishing strong line-of-sight (LoS) links for ground users, which also leads to more susceptible terrestrial eavesdropping. Integrating a reconfigurable intelligent surface (RIS) into UAV communications offers a promising approach for secure transmission. This paper considers a secure uplink system assisted by RIS and UAV, in which a rotary-wing UAV acts as an aerial receiver to collect the information from two ground users under the threat of a terrestrial eavesdropper. A probabilistic LoS (PLoS) channel model is employed to characterize the ground-to-air (G2A) links. We formulate the design objective as maximizing the secrecy energy efficiency (SEE) through the joint optimization of the three-dimensional UAV trajectory, RIS passive beamforming, and user scheduling. The corresponding problem is highly coupled and nonconvex. To effectively solve it, we develop an iterative framework and adopt the method of block coordinate descent (BCD) to decompose the original problem into several tractable subproblems, which are handled via semi-definite relaxation (SDR), Dinkelbach’s algorithm, and successive convex approximation (SCA). Numerical results demonstrate that the proposed design achieves significant SEE gains over benchmark schemes. Index Terms-Unmanned aerial vehicle (UAV), reconfigurable intelligent surface (RIS), secrecy energy efficiency (SEE), probabilistic LoS channel, 3D trajectory design.",
+      "doi": "10.1109/pimrc69400.2026.11711659",
+      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1109/pimrc69400.2026.11711659",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "轨迹优化",
+        "波束成形"
+      ],
+      "score": 25,
+      "firstSeen": "2026-09-01",
+      "id": "doi:10.1109/pimrc69400.2026.11711659"
     },
     {
       "title": "Cooperative multi-agent DRL-based robust secure transmission in UAV-assisted HetNets",
@@ -962,6 +1072,36 @@
       "id": "doi:10.1016/j.dcan.2026.09.003"
     },
     {
+      "title": "Robust Secrecy-Throughput Efficiency Maximization for UAV-Assisted Mobile Edge Computing under Imperfect CSI",
+      "authors": [
+        "Jiabao Zhuang",
+        "Jie Tian",
+        "Wenjian Xu",
+        "Yue Zhang",
+        "Tiantian Li",
+        "Ji Bian"
+      ],
+      "abstract": "UAV-assisted mobile edge computing (MEC) is a promising solution for computation-intensive and securitysensitive applications, especially in infrastructure-limited environments. However, most existing secure UAV-MEC designs assume perfect channel state information (CSI), which is unrealistic in practice due to channel estimation errors, quantization noise, and feedback delays. In this paper, we study robust secrecy-throughput efficiency (STE) maximization for a dual-UAV secure MEC system under imperfect CSI, where a computing UAV (UAV-C) collects computation tasks from multiple ground users and a jamming UAV (UAV-J) interferes with a passive eavesdropper. To account for CSI uncertainty, we adopt bounded multiplicative error sets and formulate a worst-case robust optimization problem that jointly optimizes user transmit power, task offloading allocation, and UAV trajectories. To solve the resulting non-convex fractional program, we develop an iterative algorithm based on Dinkelbach’s method, block coordinate descent (BCD), and successive convex approximation (SCA). Simulation results show that the proposed robust design achieves a provable worst-case STE guarantee under channel uncertainty, while incurring only marginal averageperformance loss compared with the perfect-CSI baseline.",
+      "doi": "10.1109/pimrc69400.2026.11711998",
+      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1109/pimrc69400.2026.11711998",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "无人机集群",
+        "边缘计算"
+      ],
+      "score": 23.5,
+      "firstSeen": "2026-09-01",
+      "id": "doi:10.1109/pimrc69400.2026.11711998"
+    },
+    {
       "title": "Physical layer security of ground-to-UAV FSO system considering F-distribution turbulence channel and the presence of eavesdroppers",
       "authors": [
         "Yuqi Xiang",
@@ -985,117 +1125,6 @@
       "score": 23,
       "firstSeen": "2026-09-01",
       "id": "doi:10.1007/s11801-026-5056-6"
-    },
-    {
-      "title": "UAV-Enabled Covert Communication Against Cooperative Detection Under Nakagami-m Channel",
-      "authors": [
-        "Peng Wu",
-        "Xiaopeng Yuan",
-        "Yulin Hu",
-        "Anke Schmeink"
-      ],
-      "abstract": "",
-      "doi": "10.1109/pimrc69400.2026.11711983",
-      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-09-01",
-      "url": "https://doi.org/10.1109/pimrc69400.2026.11711983",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "隐蔽通信"
-      ],
-      "score": 22,
-      "firstSeen": "2026-09-01",
-      "id": "doi:10.1109/pimrc69400.2026.11711983"
-    },
-    {
-      "title": "Bursty Covert Communication in Finite-Buffer UAV Relay Networks for Autonomous Vehicular Systems",
-      "authors": [
-        "Viet-Dung Bui",
-        "Hung Tran",
-        "Thi My Chinh Chu",
-        "Hans-Jürgen Zepernick",
-        "Van Nhan Vo",
-        "Tu Dac Ho"
-      ],
-      "abstract": "",
-      "doi": "10.1109/pimrc69400.2026.11711797",
-      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-09-01",
-      "url": "https://doi.org/10.1109/pimrc69400.2026.11711797",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "隐蔽通信"
-      ],
-      "score": 22,
-      "firstSeen": "2026-09-01",
-      "id": "doi:10.1109/pimrc69400.2026.11711797"
-    },
-    {
-      "title": "Secrecy Energy Efficiency Maximization for RIS-Assisted UAV Communications via Joint 3D Trajectory and Passive Beamforming Design",
-      "authors": [
-        "Yuan Ren",
-        "Xiangen Yu",
-        "Xuewei Zhang",
-        "Fan Jiang"
-      ],
-      "abstract": "",
-      "doi": "10.1109/pimrc69400.2026.11711659",
-      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-09-01",
-      "url": "https://doi.org/10.1109/pimrc69400.2026.11711659",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "RIS/IRS",
-        "轨迹优化",
-        "波束成形"
-      ],
-      "score": 16,
-      "firstSeen": "2026-09-01",
-      "id": "doi:10.1109/pimrc69400.2026.11711659"
-    },
-    {
-      "title": "Robust Secrecy-Throughput Efficiency Maximization for UAV-Assisted Mobile Edge Computing under Imperfect CSI",
-      "authors": [
-        "Jiabao Zhuang",
-        "Jie Tian",
-        "Wenjian Xu",
-        "Yue Zhang",
-        "Tiantian Li",
-        "Ji Bian"
-      ],
-      "abstract": "",
-      "doi": "10.1109/pimrc69400.2026.11711998",
-      "venue": "2026 IEEE 37th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-09-01",
-      "url": "https://doi.org/10.1109/pimrc69400.2026.11711998",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "无人机集群",
-        "边缘计算"
-      ],
-      "score": 16,
-      "firstSeen": "2026-09-01",
-      "id": "doi:10.1109/pimrc69400.2026.11711998"
     },
     {
       "title": "RIS-assisted ISAC against heterogeneous malicious entities in low-altitude environments",
@@ -1587,6 +1616,66 @@
       "id": "doi:10.3390/s26165244"
     },
     {
+      "title": "Covert Communication in UAV Assisted Symbiotic Radio Systems",
+      "authors": [
+        "Yuxin Tian",
+        "Danyang Wang",
+        "Jiangbo Si",
+        "Lei Guan",
+        "Zan Li"
+      ],
+      "abstract": "Symbiotic radio owing to its open characteristics, poses a substantial threat to system security. With the integration of unmanned aerial vehicle (UAV) technology, the challenges to enhancing the security performance of such systems become even more severe. This article first propose a covert communication enhancement framework for symbiotic radio systems, which is realized through the joint optimization of UAV trajectory planning and ground device scheduling. It analyzes the outage probability of the symbiotic radio system and the minimum detection error probability of the eavesdropper, and then constructs the problem of optimizing the maximum communication rate of UAV flight trajectory and ground equipment scheduling under concealment constraints, energy constraints, and flight constraints. Due to the approximate expression of outage probability and the non convexity of the optimization problem, online learning is used to solve the approximate optimal solution. Finally, the effectiveness and robustness of the proposed method are demonstrated through simulation analysis.",
+      "doi": "10.1109/iccc70295.2026.11680510",
+      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-08-01",
+      "url": "https://doi.org/10.1109/iccc70295.2026.11680510",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化",
+        "无人机集群"
+      ],
+      "score": 31,
+      "firstSeen": "2026-08-01",
+      "id": "doi:10.1109/iccc70295.2026.11680510"
+    },
+    {
+      "title": "Air-to-Ground Two-Phase Covert Transmission Aided by a Full-Duplex UAV Relay",
+      "authors": [
+        "Chaowen Liu",
+        "Xianwei Ke",
+        "Haotian Wang",
+        "Xin Luo",
+        "Yimeng Ge",
+        "Tong-Xing Zheng",
+        "Guangyue Lu"
+      ],
+      "abstract": "This paper investigates an air-to-ground two phase covert transmission (AtG-TPCT) system, which is associated with an unmanned aerial vehicle transmitter Alice (UAV-A), a fullduplex UAV relay (UAV-R) and multiple uncertainly located wardens. Accordingly, given the bounded location uncertainty of wardens, we formulate a robust average covert rate (ACR) maximization problem by jointly optimizing the 3D trajectory of UAV-R, and the transmit powers of UAV-A and UAV-R, with the worst-case covertness constraint. The problem is explicitly non-convex due to factors that, the covert end-to-end achievable rate is coupled with the two adjacent legitimate transmission phases, while the coupled dependence is observed among the relay self-interference, transmit powers, and the UAV-R trajectory. To tackle this issue, an iterative optimization algorithm is developed based on block coordinate descent and successive convex approximation. Numerical results demonstrate that, regarding the performance metric of ACR, the proposed AtG-TPCT is capable of achieving rapid convergence to its optimal covertness, while can distinctively outperform in performance with its benchmark counterpart.",
+      "doi": "10.1109/iccc70295.2026.11680065",
+      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-08-01",
+      "url": "https://doi.org/10.1109/iccc70295.2026.11680065",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化",
+        "全双工"
+      ],
+      "score": 31,
+      "firstSeen": "2026-08-01",
+      "id": "doi:10.1109/iccc70295.2026.11680065"
+    },
+    {
       "title": "Covert communication method for UAV based on telemetry- type messages of the MAVLink protocol",
       "authors": [
         "Dongyan Huang",
@@ -1608,34 +1697,6 @@
       "score": 30,
       "firstSeen": "2026-08-01",
       "id": "title:sohq7h"
-    },
-    {
-      "title": "Covert Communication in UAV Assisted Symbiotic Radio Systems",
-      "authors": [
-        "Yuxin Tian",
-        "Danyang Wang",
-        "Jiangbo Si",
-        "Lei Guan",
-        "Zan Li"
-      ],
-      "abstract": "",
-      "doi": "10.1109/iccc70295.2026.11680510",
-      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-08-01",
-      "url": "https://doi.org/10.1109/iccc70295.2026.11680510",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "隐蔽通信",
-        "无人机集群"
-      ],
-      "score": 22,
-      "firstSeen": "2026-08-01",
-      "id": "doi:10.1109/iccc70295.2026.11680510"
     },
     {
       "title": "Resource Allocation for Covert Transmission in a UAV-Assisted Integrated Sensing, Computing and Communication System",
@@ -1691,36 +1752,6 @@
       "score": 22,
       "firstSeen": "2026-08-01",
       "id": "doi:10.23919/nanacps00070.2026.00050"
-    },
-    {
-      "title": "Air-to-Ground Two-Phase Covert Transmission Aided by a Full-Duplex UAV Relay",
-      "authors": [
-        "Chaowen Liu",
-        "Xianwei Ke",
-        "Haotian Wang",
-        "Xin Luo",
-        "Yimeng Ge",
-        "Tong-Xing Zheng",
-        "Guangyue Lu"
-      ],
-      "abstract": "",
-      "doi": "10.1109/iccc70295.2026.11680065",
-      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-08-01",
-      "url": "https://doi.org/10.1109/iccc70295.2026.11680065",
-      "pdfUrl": "",
-      "sources": [
-        "crossref"
-      ],
-      "tags": [
-        "隐蔽通信",
-        "全双工"
-      ],
-      "score": 22,
-      "firstSeen": "2026-08-01",
-      "id": "doi:10.1109/iccc70295.2026.11680065"
     },
     {
       "title": "Security Communication Strategy for UAV-Assisted Reconfigurable Intelligence Surface System",

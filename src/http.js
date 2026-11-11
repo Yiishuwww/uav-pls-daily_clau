@@ -21,6 +21,8 @@ export async function fetchText(
     headers = {},
     timeout = 60_000,
     retries = 3,
+    method = "GET",
+    body,
     accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
   } = {},
 ) {
@@ -37,20 +39,22 @@ export async function fetchText(
   for (let attempt = 0; attempt <= retries; attempt += 1) {
     try {
       const response = await fetch(target, {
+        method,
         headers: {
           "User-Agent": USER_AGENT,
           Accept: accept,
           ...headers,
         },
+        body,
         redirect: "follow",
         signal: AbortSignal.timeout(timeout),
       });
 
       if (!response.ok) {
-        const body = await response.text().catch(() => "");
+        const text = await response.text().catch(() => "");
         const retryable = response.status === 429 || response.status >= 500;
         const error = new HttpError(
-          `HTTP ${response.status} ${target.host}${target.pathname}: ${body.slice(0, 240)}`,
+          `HTTP ${response.status} ${target.host}${target.pathname}: ${text.slice(0, 240)}`,
           { status: response.status, retryable },
         );
         if (!retryable) throw error;

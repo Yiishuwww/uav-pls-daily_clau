@@ -13,6 +13,7 @@ import { collectDoaj } from "./collectors/doaj.js";
 import { collectZenodo } from "./collectors/zenodo.js";
 import { collectIeee } from "./collectors/ieee.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
+import { enrichAbstracts } from "./enrich.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
 import { loadStatus, loadStore, saveStatus, saveStore } from "./store.js";
@@ -222,6 +223,9 @@ async function main() {
     existing.map((paper) => ({ ...paper, isNew: false })),
     incoming,
   );
+
+  // Crossref / IEEE 等来源常缺摘要，按 DOI/arXiv ID 批量补全后再做相关性判断。
+  await enrichAbstracts(merged, { config: sources.semanticscholar ?? {}, log });
 
   let added = 0;
   const kept = [];

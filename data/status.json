@@ -1,41 +1,41 @@
 {
-  "updatedAt": "2026-11-11T07:29:31+08:00",
-  "updatedCN": "2026-11-11 07:29",
+  "updatedAt": "2026-11-11T22:16:53+08:00",
+  "updatedCN": "2026-11-11 22:16",
   "sources": [
     {
       "name": "arxiv",
       "ok": true,
       "count": 3,
-      "ms": 2004,
+      "ms": 2973,
       "error": null
     },
     {
       "name": "openalex",
       "ok": true,
-      "count": 7,
-      "ms": 752,
+      "count": 9,
+      "ms": 2353,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
-      "count": 9,
-      "ms": 16385,
+      "count": 164,
+      "ms": 127462,
       "error": null
     },
     {
       "name": "doaj",
       "ok": true,
       "count": 6,
-      "ms": 11872,
+      "ms": 20690,
       "error": null
     },
     {
       "name": "zenodo",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "ms": 3124,
-      "error": null
+      "ms": 184523,
+      "error": "The operation was aborted due to timeout"
     }
   ]
 }

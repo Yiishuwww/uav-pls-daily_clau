@@ -191,8 +191,10 @@ export async function collectCrossref({ since, today, keywords, config, log = ()
     });
   }
 
-  // 本地先粗筛：标题或摘要至少出现一个 PLS 词
+  // 本地先粗筛：标题或摘要至少出现一个 PLS 词。
+  // 摘要缺失的论文先保留，等 Semantic Scholar 补全后再由 rank.js 判断。
   const filtered = papers.filter((paper) => {
+    if (!paper.abstract) return true;
     const text = normalize(`${paper.title} ${paper.abstract}`);
     return keywords.pls_terms.some((term) => countTerm(text, term) > 0);
   });

@@ -30,6 +30,8 @@ jobs:
       ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
       # 可选：IEEE Xplore 官方 Metadata API key（https://developer.ieee.org/）
       IEEE_API_KEY: ${{ secrets.IEEE_API_KEY }}
+      # 可选：Semantic Scholar 免费 API key，可提高摘要补全的限流额度
+      S2_API_KEY: ${{ secrets.S2_API_KEY }}
 
     steps:
       - name: Checkout
