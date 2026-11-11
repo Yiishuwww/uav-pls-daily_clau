@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { papersToBibtex } from "./bibtex.js";
 import { addDays, cnNow, cnToday, xmlEscape } from "./text.js";
 
 const SOURCE_LABELS = {
@@ -171,6 +172,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   <div class="list-head">
     <div class="list-meta">
       <span id="result-count" aria-live="polite">共 0 篇</span>
+      <button type="button" id="export-bib" class="reset-btn" title="导出当前筛选结果为 BibTeX">导出 BibTeX</button>
       <button type="button" id="reset-filters" class="reset-btn" hidden>重置筛选</button>
     </div>
     <span class="list-hint" id="sort-hint">按发表时间排序</span>
@@ -187,7 +189,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   <div class="wrap">
     <div>数据来源：arXiv API · OpenAlex · Crossref · DOAJ · Zenodo · IEEE Xplore（可选，需 API key）；IEEE / Elsevier / Springer / Wiley 的期刊元数据同时经 Crossref 覆盖；缺失摘要由 Semantic Scholar 补全</div>
     <div>仅收录公开元数据，不存储论文全文。每日 07:00（北京时间）自动更新。</div>
-    <div><a href="${xmlEscape(rssHref)}">RSS 订阅</a> · <a href="${xmlEscape(jsonHref)}">JSON 数据</a> · 预印本论文以灰色「预印本」标记</div>
+    <div><a href="${xmlEscape(rssHref)}">RSS 订阅</a> · <a href="${xmlEscape(jsonHref)}">JSON 数据</a> · <a href="data/papers.bib">BibTeX</a> · 预印本论文以灰色「预印本」标记</div>
   </div>
 </footer>
 
@@ -271,6 +273,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
     `${JSON.stringify({ updatedAt: status?.updatedAt || "", total, papers }, null, 2)}\n`,
     "utf8",
   );
+  fs.writeFileSync(path.join(dataDir, "papers.bib"), papersToBibtex(papers), "utf8");
   fs.writeFileSync(path.join(docsDir, "feed.xml"), buildRss(papers, siteUrl), "utf8");
   fs.writeFileSync(path.join(docsDir, ".nojekyll"), "", { flag: "a" });
 

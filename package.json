@@ -8,6 +8,7 @@
     "start": "node src/main.js",
     "backfill": "node src/main.js --days 90 --bootstrap",
     "render": "node src/main.js --days 1 --no-collect",
+    "notify": "node scripts/notify.mjs",
     "preview": "node scripts/serve.mjs",
     "validate": "node scripts/validate.mjs",
     "worker:dev": "npx --yes wrangler dev",

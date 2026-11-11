@@ -22,6 +22,7 @@
     empty: document.getElementById("empty"),
     more: document.getElementById("load-more"),
     resultCount: document.getElementById("result-count"),
+    exportBib: document.getElementById("export-bib"),
     search: document.getElementById("search"),
     tags: document.getElementById("tags"),
     sort: document.getElementById("sort-filter"),
@@ -171,7 +172,7 @@
 
   // ---------- 渲染 ----------
 
-  function render() {
+  function currentItems() {
     const items = papers.filter(matches);
 
     if (state.sort === "relevance") {
@@ -181,6 +182,12 @@
           || (b.published || "").localeCompare(a.published || ""),
       );
     }
+
+    return items;
+  }
+
+  function render() {
+    const items = currentItems();
 
     els.resultCount.textContent =
       items.length === papers.length
@@ -363,19 +370,36 @@
     if (paper.arxivId) links.push(["arXiv", `https://arxiv.org/abs/${paper.arxivId}`]);
     if (paper.pdfUrl) links.push(["PDF", paper.pdfUrl]);
 
-    if (links.length) {
-      const row = document.createElement("div");
-      row.className = "links";
-      for (const [label, href] of links) {
-        const anchor = document.createElement("a");
-        anchor.href = href;
-        anchor.target = "_blank";
-        anchor.rel = "noopener noreferrer";
-        anchor.textContent = `${label} ↗`;
-        row.appendChild(anchor);
-      }
-      article.appendChild(row);
+    const row = document.createElement("div");
+    row.className = "links";
+    for (const [label, href] of links) {
+      const anchor = document.createElement("a");
+      anchor.href = href;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.textContent = `${label} ↗`;
+      row.appendChild(anchor);
     }
+
+    const bibButton = document.createElement("button");
+    bibButton.type = "button";
+    bibButton.className = "bib-btn";
+    bibButton.textContent = "BibTeX";
+    bibButton.title = "复制该论文的 BibTeX";
+    bibButton.addEventListener("click", async () => {
+      const text = paperToBibtex(paper, bibKey(paper));
+      try {
+        await navigator.clipboard.writeText(text);
+        bibButton.textContent = "已复制";
+      } catch {
+        window.prompt("复制 BibTeX：", text);
+      }
+      window.setTimeout(() => {
+        bibButton.textContent = "BibTeX";
+      }, 1600);
+    });
+    row.appendChild(bibButton);
+    article.appendChild(row);
 
     return article;
   }
@@ -493,6 +517,10 @@
     state.limit = 40;
     syncUrl();
     render();
+  });
+
+  els.exportBib.addEventListener("click", () => {
+    downloadBibtex(currentItems());
   });
 
   els.reset.addEventListener("click", () => {
@@ -615,5 +643,108 @@
     if (/association for computing machinery|\bacm\b/i.test(value)) return "ACM";
     if (/arxiv|cornell/i.test(value)) return "arXiv";
     return value;
+  }
+
+  // ---------- BibTeX（与服务端 src/bibtex.js 保持一致） ----------
+
+  const BIB_ESCAPES = {
+    "\\": "\\textbackslash{}",
+    "&": "\\&",
+    "%": "\\%",
+    "$": "\\$",
+    "#": "\\#",
+    "_": "\\_",
+    "{": "\\{",
+    "}": "\\}",
+    "~": "\\textasciitilde{}",
+    "^": "\\textasciicircum{}",
+  };
+
+  function escapeBib(value) {
+    return String(value ?? "").replace(/[\\&%$#_{}~^]/g, (char) => BIB_ESCAPES[char]);
+  }
+
+  function bibKey(paper) {
+    const firstAuthor =
+      String((paper.authors || [])[0] || "")
+        .split(/\s+/)
+        .filter(Boolean)
+        .pop() || "paper";
+    const year = String(paper.published || "").slice(0, 4) || "0000";
+    const word =
+      String(paper.title || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim()
+        .split(/\s+/)
+        .find((item) => item.length > 2) || "untitled";
+    return `${firstAuthor}${year}${word}`.replace(/[^a-zA-Z0-9]/g, "");
+  }
+
+  function paperToBibtex(paper, key) {
+    const type =
+      paper.type === "journal-article"
+        ? "article"
+        : paper.type === "conference"
+          ? "inproceedings"
+          : "misc";
+    const fields = [["title", escapeBib(paper.title)]];
+
+    if (paper.authors?.length) {
+      fields.push(["author", paper.authors.map(escapeBib).join(" and ")]);
+    }
+
+    const year = String(paper.published || "").slice(0, 4);
+    if (year) fields.push(["year", year]);
+
+    if (paper.venue) {
+      const field =
+        type === "article" ? "journal" : type === "inproceedings" ? "booktitle" : "howpublished";
+      fields.push([field, escapeBib(paper.venue)]);
+    }
+
+    if (paper.publisher && paper.publisher !== paper.venue) {
+      fields.push(["publisher", escapeBib(paper.publisher)]);
+    }
+    if (paper.doi) fields.push(["doi", paper.doi]);
+    if (paper.url) fields.push(["url", paper.url]);
+    if (paper.arxivId) {
+      fields.push(["eprint", paper.arxivId]);
+      fields.push(["archivePrefix", "arXiv"]);
+    }
+    if (paper.tags?.length) {
+      fields.push(["keywords", paper.tags.map(escapeBib).join(", ")]);
+    }
+
+    const body = fields.map(([name, value]) => `  ${name} = {${value}}`).join(",\n");
+    return `@${type}{${key},\n${body}\n}`;
+  }
+
+  function papersToBibtex(items) {
+    const used = new Map();
+    const entries = [];
+    for (const paper of items) {
+      const base = bibKey(paper);
+      const count = used.get(base) || 0;
+      used.set(base, count + 1);
+      const key = count === 0 ? base : `${base}${String.fromCharCode(96 + count)}`;
+      entries.push(paperToBibtex(paper, key));
+    }
+    return `${entries.join("\n\n")}\n`;
+  }
+
+  function downloadBibtex(items) {
+    if (!items.length) return;
+    const blob = new Blob([papersToBibtex(items)], {
+      type: "application/x-bibtex;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `uav-pls-${today || "export"}.bib`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
   }
 })();

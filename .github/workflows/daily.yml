@@ -32,6 +32,10 @@ jobs:
       IEEE_API_KEY: ${{ secrets.IEEE_API_KEY }}
       # 可选：Semantic Scholar 免费 API key，可提高摘要补全的限流额度
       S2_API_KEY: ${{ secrets.S2_API_KEY }}
+      # 可选：微信推送，三选一或全配（见 README）
+      WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
+      PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+      SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
 
     steps:
       - name: Checkout
@@ -51,6 +55,10 @@ jobs:
 
       - name: Validate generated files
         run: node scripts/validate.mjs
+
+      - name: Notify WeChat
+        continue-on-error: true
+        run: node scripts/notify.mjs
 
       - name: Commit changes
         run: |

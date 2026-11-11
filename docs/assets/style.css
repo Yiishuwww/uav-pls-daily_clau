@@ -654,6 +654,20 @@ main {
   gap: 3px;
 }
 
+.bib-btn {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.bib-btn:hover {
+  text-decoration: underline;
+}
+
 .empty {
   text-align: center;
   padding: 70px 20px;

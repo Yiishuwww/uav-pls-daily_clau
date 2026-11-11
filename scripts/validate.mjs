@@ -15,8 +15,9 @@ const storePath = path.join(root, "data", "papers.json");
 const statusPath = path.join(root, "data", "status.json");
 const htmlPath = path.join(root, "docs", "index.html");
 const feedPath = path.join(root, "docs", "feed.xml");
+const bibPath = path.join(root, "docs", "data", "papers.bib");
 
-for (const file of [storePath, statusPath, htmlPath, feedPath]) {
+for (const file of [storePath, statusPath, htmlPath, feedPath, bibPath]) {
   if (!fs.existsSync(file)) {
     fail(`缺少文件 ${file}`);
     process.exit();
@@ -60,8 +61,13 @@ for (const asset of [
   "assets/app.js",
   "assets/chat.js",
   "data/papers.json",
+  "data/papers.bib",
 ]) {
   if (!fs.existsSync(path.join(root, "docs", asset))) fail(`缺少静态资源 docs/${asset}`);
+}
+
+if (!fs.readFileSync(bibPath, "utf8").trim().startsWith("@")) {
+  fail("docs/data/papers.bib 内容异常");
 }
 
 if (!process.exitCode) {

@@ -20,6 +20,8 @@
 - 预印本用灰色小标签标注，不抢视觉
 - 搜索、时间范围、类型、月份、标签筛选，支持“最新发表 / 相关性”排序
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
+- **BibTeX 导出**：导出当前筛选结果，或复制单篇；`docs/data/papers.bib` 提供全量文件
+- **微信推送**（可选）：企业微信群机器人 / PushPlus / Server酱，每天只推当天新增
 - 内置 AI 问答（可选）：基于全部论文元数据回答，支持 `[n]` 引用定位，需部署一个 DeepSeek 代理（见下文）
 
 ## 检索覆盖
@@ -70,6 +72,47 @@ Crossref、IEEE 等来源经常只给题录、不给摘要，导致相关性判�
 - 想更稳，可申请免费 key：<https://www.semanticscholar.org/product/api#api-key-form>（需填写用途，审核 1–3 个工作日）。
 - 申请后在本地设置 `S2_API_KEY`，或在仓库 Secrets 中添加同名 secret；不设置也能正常运行。
 - 只补全**原本没有摘要**的论文，不会覆盖已有摘要；接口失败时记录日志并继续其他数据源。
+
+### 微信推送（可选）
+
+每天采集完成后，`scripts/notify.mjs` 会把当天新增论文（`firstSeen` 为今天）推送到微信。三种渠道任选其一或全配：
+
+| 渠道 | 适合 | 需要设置的 Secret |
+|---|---|---|
+| **企业微信群机器人** | 推到群里，团队可见 | `WECHAT_WEBHOOK` |
+| **PushPlus** | 推到个人微信 | `PUSHPLUS_TOKEN` |
+| **Server酱** | 推到个人微信 | `SERVERCHAN_KEY` |
+
+配置步骤：
+
+1. **企业微信群机器人**：群聊 → 右上角设置 → 群机器人 → 添加机器人 → 复制 Webhook 地址。
+2. **PushPlus**：登录 <https://www.pushplus.plus/> → 一对一推送 → 复制 token。
+3. **Server酱**：登录 <https://sct.ftqq.com/> → 发送消息 → 复制 SendKey。
+
+然后到 GitHub 仓库 **Settings → Secrets and variables → Actions** 添加对应 secret。工作流会自动注入并执行推送；推送失败不会影响当天的提交。
+
+本地预览推送内容（不实际发送）：
+
+```powershell
+npm run notify -- --dry-run
+```
+
+本地实际发送前，先设置环境变量，例如：
+
+```powershell
+$env:WECHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=..."
+$env:SITE_URL = "https://yiishuwww.github.io/uav-pls-daily_clau"
+npm run notify
+```
+
+当天没有新论文时会自动跳过，不会发空消息。
+
+### BibTeX 导出
+
+- 页面右上角 **导出 BibTeX**：导出当前筛选结果（搜索、标签、时间范围都生效）。
+- 每篇论文的链接行有 **BibTeX** 按钮：复制单条到剪贴板。
+- 全量文件：`docs/data/papers.bib`，页脚也有入口。
+- 条目类型：期刊 `@article`、会议 `@inproceedings`、预印本/其他 `@misc`；包含 DOI、URL、arXiv eprint、关键词。
 
 ## 本地运行
 
@@ -354,6 +397,7 @@ uav-pls-daily_clau/
 │  │  └─ zenodo.js
 │  ├─ dedup.js                   # 跨源去重与字段合并
 │  ├─ enrich.js                  # Semantic Scholar 摘要补全
+│  ├─ bibtex.js                  # BibTeX 生成
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
 │  ├─ render.js                  # 网站与 RSS 生成
@@ -365,6 +409,10 @@ uav-pls-daily_clau/
 │     ├─ index.js                # Cloudflare Worker 入口
 │     ├─ chat.js                 # 请求校验、DeepSeek SSE 转发
 │     └─ prompt.js               # system 提示与论文清单
+├─ scripts/
+│  ├─ notify.mjs                 # 微信推送（企业微信 / PushPlus / Server酱）
+│  ├─ validate.mjs               # 生成物校验
+│  └─ serve.mjs                  # 本地预览
 ├─ tencent/
 │  └─ server.mjs                 # 通用 Web 函数入口（阿里云 FC / 腾讯云 SCF 共用）
 ├─ wrangler.toml                 # Cloudflare Worker 配置
@@ -383,6 +431,5 @@ uav-pls-daily_clau/
 ## 二期可扩展
 
 - 接入 Springer / Elsevier 官方 API（免费 key）
-- 微信推送（Server酱 / PushPlus / 企业微信群机器人）
 - 中文一句话摘要（可选 LLM，自带 key）
 - 周报与引用量排序
