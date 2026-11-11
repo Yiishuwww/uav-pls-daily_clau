@@ -10,6 +10,7 @@ const SOURCE_LABELS = {
   crossref: "Crossref",
   doaj: "DOAJ",
   zenodo: "Zenodo",
+  ieee: "IEEE Xplore",
 };
 
 function sourceStatusHtml(status) {
@@ -90,7 +91,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UAV 物理层安全论文日报</title>
-<meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
+<meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
 <meta name="theme-color" content="#0b5f8a">
 <meta name="chat-api-url" content="${xmlEscape(chatApiUrl)}">
 <meta property="og:title" content="UAV 物理层安全论文日报">
@@ -162,7 +163,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
       <span class="guide-title">导读</span>
       <span class="guide-sub">Physical Layer Security for UAV Communications</span>
     </div>
-    <p class="guide-text">本站汇总无人机通信物理层安全方向的最新论文：保密速率、窃听与窃密、隐蔽通信、人工噪声、密钥生成等。数据每日 07:00 自动更新，来源包括 arXiv、OpenAlex、Crossref、DOAJ、Zenodo；摘要保留论文原文，预印本以灰色标签标注。</p>
+    <p class="guide-text">本站汇总无人机通信物理层安全方向的最新论文：保密速率、窃听与窃密、隐蔽通信、人工噪声、密钥生成等。数据每日 07:00 自动更新，来源包括 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore；摘要保留论文原文，预印本以灰色标签标注。</p>
     <p class="guide-text overview" id="overview" aria-live="polite">正在统计当前筛选…</p>
     <p class="guide-hint">「今日 / 近 7 天 / 近 30 天」按本站收录时间统计，卡片日期为论文出版日期。点击标签可筛选；搜索支持标题、作者、摘要和标签；筛选条件会同步到 URL。</p>
   </section>
@@ -184,7 +185,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 
 <footer>
   <div class="wrap">
-    <div>数据来源：arXiv API · OpenAlex · Crossref · DOAJ · Zenodo（IEEE / Elsevier / Springer / Wiley 的期刊元数据经 Crossref 覆盖）</div>
+    <div>数据来源：arXiv API · OpenAlex · Crossref · DOAJ · Zenodo · IEEE Xplore（可选，需 API key）；IEEE / Elsevier / Springer / Wiley 的期刊元数据同时经 Crossref 覆盖</div>
     <div>仅收录公开元数据，不存储论文全文。每日 07:00（北京时间）自动更新。</div>
     <div><a href="${xmlEscape(rssHref)}">RSS 订阅</a> · <a href="${xmlEscape(jsonHref)}">JSON 数据</a> · 预印本论文以灰色「预印本」标记</div>
   </div>

@@ -9,6 +9,7 @@
 ## 功能
 
 - 数据源：**arXiv API + OpenAlex + Crossref + DOAJ + Zenodo**，无需任何密钥
+- 可选接入 **IEEE Xplore 官方 Metadata API**（免费 key）：IEEE 期刊、会议、Early Access 的元数据与摘要
 - 通过 Crossref 的 publisher member 精确覆盖 **IEEE / Elsevier / Springer / Wiley** 的期刊元数据
 - 跨源去重：DOI → arXiv ID → 标题精确匹配 → 标题模糊匹配（≥94%）
 - 相关性硬门槛：标题或摘要中必须同时出现 PLS 词与 UAV 词
@@ -29,17 +30,35 @@
 | Crossref | REST API | 无需 key，按 member 覆盖 IEEE(263)、Elsevier(78)、Springer(297)、Wiley(311) |
 | DOAJ | REST API | 无需 key，开放获取期刊 |
 | Zenodo | REST API | 无需 key；可选 `ZENODO_TOKEN` 提高限额 |
-| IEEE Xplore | 官方 Metadata API | 二期可接，需免费 key |
+| IEEE Xplore | 官方 Metadata API | 可选，需免费 key；设置 `IEEE_API_KEY` 后启用 |
 | Springer Link | Springer Nature Meta API | 二期可接，需免费 key |
 | ScienceDirect / Elsevier | ScienceDirect Search API | 二期可接，需免费 key |
 | Wiley | 无公开免费检索 API | 已由 Crossref 的 10.1002 前缀覆盖 |
 | Web of Science | Starter API | 需机构订阅，暂不接入 |
 
-> 没有 IEEE / Elsevier / Springer 的官方 key，也能拿到这些出版社论文的 DOI、标题、作者、期刊、日期等元数据；部分摘要可能缺失，此时仍可通过标题命中筛选。
+> 没有 IEEE / Elsevier / Springer 的官方 key，也能拿到这些出版社论文的 DOI、标题、作者、期刊、日期等元数据；部分摘要可能缺失，此时仍可通过标题命中筛选。接入 IEEE 官方 API 后，IEEE 论文的摘要和 Early Access 记录会更完整。
 >
 > DOAJ 的复杂布尔查询不稳定，采集器会拆成多条单字段查询并在本地过滤；Zenodo 记录中会排除数据集/软件，只保留论文、预印本和会议论文。
 >
 > Zenodo 在部分网络环境（如国内部分宽带）可能无法解析；采集器会自动跳过并继续其他源。GitHub Actions 运行环境通常可以正常访问。
+
+### 接入 IEEE Xplore 官方 API（可选）
+
+Crossref 已经能拿到 IEEE 的题录，但很多 IEEE 记录在 Crossref 中没有摘要，Early Access 记录也可能滞后。要更完整地收录 IEEE Xplore，可以接入官方 Metadata API：
+
+1. 打开 <https://developer.ieee.org/>，注册账号并申请 **Xplore Metadata API** 的免费 key（审批通常需要几个工作日）。
+2. 本地运行前设置环境变量：
+
+   ```powershell
+   $env:IEEE_API_KEY = "你的key"
+   node src/main.js --days 7
+   ```
+
+3. 部署到 GitHub Actions 时，在仓库 **Settings → Secrets and variables → Actions → New repository secret** 添加 `IEEE_API_KEY`。工作流会自动注入，见 `.github/workflows/daily.yml`。
+
+采集器调用 `https://ieeexploreapi.ieee.org/api/v1/search/articles`，按年份检索期刊、会议和 Early Access 记录，再与 Crossref / OpenAlex 的结果按 DOI 去重合并。没有配置 key 时会自动跳过，不影响其他数据源。
+
+> IEEE 免费 key 有每日调用额度。默认每天 3 条查询、每条 1 页（最多 200 条），远低于常规限额；如需扩大召回，可在 `config/sources.yaml` 的 `ieee.queries` / `max_pages` 中调整。
 
 ## 本地运行
 
@@ -301,7 +320,8 @@ npm run preview
 - 各数据源的开关、每页条数、回溯上限
 - `doaj`：DOAJ 查询页数与每页条数
 - `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
-- 二期要接 IEEE / Springer / Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
+- `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
+- 二期要接 Springer / Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
 
@@ -318,6 +338,7 @@ uav-pls-daily_clau/
 │  │  ├─ openalex.js
 │  │  ├─ crossref.js
 │  │  ├─ doaj.js
+│  │  ├─ ieee.js
 │  │  └─ zenodo.js
 │  ├─ dedup.js                   # 跨源去重与字段合并
 │  ├─ rank.js                    # 相关性门槛、打分、标签
@@ -348,7 +369,7 @@ uav-pls-daily_clau/
 
 ## 二期可扩展
 
-- 接入 IEEE / Springer / Elsevier 官方 API（免费 key）
+- 接入 Springer / Elsevier 官方 API（免费 key）
 - 微信推送（Server酱 / PushPlus / 企业微信群机器人）
 - 中文一句话摘要（可选 LLM，自带 key）
 - 周报与引用量排序

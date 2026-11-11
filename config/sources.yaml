@@ -45,8 +45,20 @@ zenodo:
   page_size: 100
   max_pages: 2
 
+# IEEE Xplore 官方 Metadata API：期刊 / 会议 / Early Access 元数据与摘要。
+# 免费 key 申请：https://developer.ieee.org/ → Get an API Key（审批通常几个工作日）。
+# 申请后在本地设置环境变量 IEEE_API_KEY；GitHub Actions 中用同名 Secret。
+# 没有 key 时该源会自动跳过，不影响其他数据源。
+ieee:
+  enabled: true
+  api_key_env: IEEE_API_KEY
+  page_size: 200      # 单次请求上限 200
+  max_pages: 1        # 每条第 1 页；想多取可调大（注意免费 key 的每日调用额度）
+  # 可选：自定义布尔检索式；留空使用采集器内置的三条查询。
+  # queries:
+  #   - '("physical layer security" OR secrecy) AND (UAV OR drone)'
+
 # 二期（需要免费 API key）可直接在此扩展，并在 src/collectors/ 下新增适配器：
-# ieee:    { enabled: false }   # https://developer.ieee.org
 # springer:{ enabled: false }   # https://dev.springernature.com
 # elsevier:{ enabled: false }   # https://dev.elsevier.com
 # wos:     { enabled: false }   # 需要机构订阅

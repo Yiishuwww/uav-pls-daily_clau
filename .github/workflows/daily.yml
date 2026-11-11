@@ -28,6 +28,8 @@ jobs:
       TZ: Asia/Shanghai
       # 可选：在仓库 Secrets 中设置 ZENODO_TOKEN 可提高 Zenodo 检索限额
       ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+      # 可选：IEEE Xplore 官方 Metadata API key（https://developer.ieee.org/）
+      IEEE_API_KEY: ${{ secrets.IEEE_API_KEY }}
 
     steps:
       - name: Checkout

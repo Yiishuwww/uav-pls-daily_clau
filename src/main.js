@@ -11,6 +11,7 @@ import { collectOpenAlex } from "./collectors/openalex.js";
 import { collectCrossref } from "./collectors/crossref.js";
 import { collectDoaj } from "./collectors/doaj.js";
 import { collectZenodo } from "./collectors/zenodo.js";
+import { collectIeee } from "./collectors/ieee.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
@@ -77,6 +78,7 @@ function sourceLabel(name) {
     crossref: "Crossref",
     doaj: "DOAJ",
     zenodo: "Zenodo",
+    ieee: "IEEE Xplore",
   }[name] ?? name;
 }
 
@@ -148,6 +150,18 @@ async function main() {
         collectCrossref({ since, today, keywords, config: sources.crossref, log }),
       ),
     );
+  }
+  if (sources.ieee?.enabled) {
+    const keyEnv = sources.ieee.api_key_env || "IEEE_API_KEY";
+    if (process.env[keyEnv]) {
+      tasks.push(
+        runSource("ieee", () =>
+          collectIeee({ since, today, config: sources.ieee, log }),
+        ),
+      );
+    } else {
+      log(`IEEE Xplore 未配置 ${keyEnv}，跳过（免费申请：https://developer.ieee.org/）`);
+    }
   }
   if (sources.doaj?.enabled) {
     tasks.push(
