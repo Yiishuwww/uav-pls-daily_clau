@@ -1,34 +1,63 @@
 {
-  "updatedAt": "2026-11-08T11:13:33+08:00",
-  "total": 60,
+  "updatedAt": "2026-11-11T07:29:31+08:00",
+  "total": 62,
   "papers": [
     {
-      "title": "A robust constrained reinforcement learning framework for UAV-assisted secure relay communications",
+      "title": "Minimizing Secure Age of Information in UAV ‐Assisted Short‐Packet Covert Communication",
       "authors": [
-        "Zhenhang Wei",
-        "Gongchao Su",
-        "Mingjun Dai",
-        "Xiaohui Lin"
+        "Ting Zhang",
+        "Mangang Xie",
+        "Jing Wei",
+        "Jie Xu",
+        "Hui Sun"
       ],
-      "abstract": "Abstract Secure communication is essential in UAV-assisted wireless networks, where the broadcast nature of air-to-ground channels makes legitimate transmissions vulnerable to eavesdropping. Physical layer security (PLS) provides an effective means to mitigate this threat, with secrecy rate commonly adopted as the performance metric. However, practical engineering requirements may further require the eavesdropper’s signal-to-interference-plus-noise ratio (SINR) to remain below a prescribed threshold to prevent reliable decoding. The resulting optimization problem is challenging because both the secrecy-rate objective and the eavesdropper-SINR constraint depend on the unknown locations of passive eavesdroppers, while conventional reinforcement learning (RL) cannot explicitly enforce security-related constraints. To address these challenges, we formulate the problem as a constrained Markov decision process and develop a robust soft-fusion SAC-Lagrangian algorithm. The constrained RL component incorporates a long-term discounted eavesdropper-SINR cost into the learning process through a Lagrangian mechanism, enabling secrecy-rate optimization under explicit security requirements. It should be noted that the original per-slot hard SINR constraint is relaxed into a discounted cumulative-cost constraint when the problem is formulated as a CMDP, which is the standard formulation for long-term policy learning. To handle eavesdropper-location uncertainty, the potential eavesdropping region is partitioned into multiple subregions, and parallel reward-critic pairs are used to evaluate the worst-case secrecy performance in each subregion, while a single global cost critic evaluates the softmax-fused constraint cost. Their outputs are then fused to learn a single robust policy that balances secrecy-rate maximization and constraint satisfaction across uncertain eavesdropper locations. Simulation results show that the proposed method achieves faster stabilization of the training curve, a higher average secrecy rate, a higher worst-user secrecy rate, and a significantly lower constraint-violation probability than benchmark schemes.",
-      "doi": "10.1007/s44443-026-01488-7",
-      "venue": "Journal of King Saud University Computer and Information Sciences",
-      "publisher": "Springer Science and Business Media LLC",
+      "abstract": "ABSTRACT This paper investigates the joint optimization of resource allocation and unmanned aerial vehicle (UAV) trajectory in a UAV‐assisted two‐hop status update system, where secure and covert transmission is achieved under the finite blocklength (FBL) regime. A ground source transmits status updates to a destination via a decode‐and‐forward UAV relay, while a passive eavesdropper simultaneously attempts to intercept confidential information and detect the presence of legitimate transmissions. To capture the intricate coupling among information freshness, FBL reliability, physical‐layer security, and communication covertness, we formulate a problem of minimizing the secure age of information (S‐AoI). This formulation jointly accounts for FBL decoding errors, secrecy outage probability, Kullback–Leibler divergence‐based covertness constraints, transmit power limits, UAV mobility, and a safety‐distance requirement. Due to the mixed‐integer and non‐convex nature of the problem, we propose an alternating optimization and successive convex approximation algorithm to iteratively optimize the blocklength, two‐hop transmit powers, and UAV trajectory. Simulation results demonstrate that the proposed scheme achieves a significantly lower average S‐AoI compared to benchmark schemes, validating the effectiveness of the joint design in balancing reliability, security, covertness, and timeliness.",
+      "doi": "10.1002/itl2.70371",
+      "venue": "Internet Technology Letters",
+      "publisher": "Wiley",
       "type": "journal-article",
-      "published": "2026-11-06",
-      "url": "https://doi.org/10.1007/s44443-026-01488-7",
-      "pdfUrl": "https://link.springer.com/content/pdf/10.1007/s44443-026-01488-7.pdf",
+      "published": "2026-11-09",
+      "url": "https://doi.org/10.1002/itl2.70371",
+      "pdfUrl": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/itl2.70371",
       "sources": [
         "crossref"
       ],
       "tags": [
-        "安全速率",
-        "无人机集群",
-        "深度强化学习"
+        "隐蔽通信",
+        "轨迹优化",
+        "无人机集群"
       ],
-      "score": 16.5,
-      "firstSeen": "2026-11-07",
-      "id": "doi:10.1007/s44443-026-01488-7"
+      "score": 34,
+      "firstSeen": "2026-11-10",
+      "id": "doi:10.1002/itl2.70371"
+    },
+    {
+      "title": "DNN-Driven Proactive UAV Trajectory and Beam Steering for Blockage-Resilient Communications",
+      "authors": [
+        "Abdallah S. Ghazy",
+        "Hussein A. Ammar",
+        "James Bayes",
+        "Francois Chan"
+      ],
+      "abstract": "This paper proposes Autonomous UAV Communication (AutUAVCom), a proactive communication system that jointly adapts the flight trajectory and RF beam steering to minimize UAV energy consumption while satisfying secrecy and reliability requirements for rescue teams operating in dynamic, cluttered, and GPS-denied environments. Unlike existing modelbased proactive approaches, AutUAVCom employs a deep neural network-based Tracking and Prediction (T&P) module that combines onboard sensing with spatiotemporal and body-orientation information to track users, localize blocking objects, and predict future trajectories and potential beam blockages. Building on the T&P module, we formulate a constrained optimization problem and develop a two-step iterative numerical approach. Monte Carlo simulations show that, relative to a reactive system, AutUAVCom achieves 10% and 19% gains in energy efficiency and channel secrecy, respectively, while reducing the outage probability by 85%, under a mean blockage arrival interval of 120 seconds and a mean blockage duration of 20 seconds.",
+      "arxivId": "2611.09384",
+      "venue": "arXiv",
+      "publisher": "Cornell University",
+      "type": "preprint",
+      "published": "2026-11-06",
+      "url": "https://doi.org/10.48550/arxiv.2611.09384",
+      "pdfUrl": "https://arxiv.org/pdf/2611.09384v1",
+      "sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "tags": [
+        "轨迹优化"
+      ],
+      "score": 10.5,
+      "firstSeen": "2026-11-10",
+      "id": "doi:10.48550/arxiv.2611.09384",
+      "doi": "10.48550/arxiv.2611.09384"
     },
     {
       "title": "A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications",
@@ -55,7 +84,7 @@
         "波束成形",
         "深度强化学习"
       ],
-      "score": 19,
+      "score": 17,
       "firstSeen": "2026-11-04",
       "id": "doi:10.1109/sr.2025.3639323"
     },
@@ -75,15 +104,46 @@
       "url": "https://doi.org/10.1016/j.phycom.2026.103462",
       "pdfUrl": "",
       "sources": [
-        "crossref"
+        "crossref",
+        "openalex"
       ],
       "tags": [
         "RIS/IRS",
         "隐蔽通信"
       ],
-      "score": 30,
+      "score": 28,
       "firstSeen": "2026-11-07",
       "id": "doi:10.1016/j.phycom.2026.103462"
+    },
+    {
+      "title": "A robust constrained reinforcement learning framework for UAV-assisted secure relay communications",
+      "authors": [
+        "Zhenhang Wei",
+        "Gongchao Su",
+        "Mingjun Dai",
+        "Xiaohui Lin"
+      ],
+      "abstract": "Abstract Secure communication is essential in UAV-assisted wireless networks, where the broadcast nature of air-to-ground channels makes legitimate transmissions vulnerable to eavesdropping. Physical layer security (PLS) provides an effective means to mitigate this threat, with secrecy rate commonly adopted as the performance metric. However, practical engineering requirements may further require the eavesdropper’s signal-to-interference-plus-noise ratio (SINR) to remain below a prescribed threshold to prevent reliable decoding. The resulting optimization problem is challenging because both the secrecy-rate objective and the eavesdropper-SINR constraint depend on the unknown locations of passive eavesdroppers, while conventional reinforcement learning (RL) cannot explicitly enforce security-related constraints. To address these challenges, we formulate the problem as a constrained Markov decision process and develop a robust soft-fusion SAC-Lagrangian algorithm. The constrained RL component incorporates a long-term discounted eavesdropper-SINR cost into the learning process through a Lagrangian mechanism, enabling secrecy-rate optimization under explicit security requirements. It should be noted that the original per-slot hard SINR constraint is relaxed into a discounted cumulative-cost constraint when the problem is formulated as a CMDP, which is the standard formulation for long-term policy learning. To handle eavesdropper-location uncertainty, the potential eavesdropping region is partitioned into multiple subregions, and parallel reward-critic pairs are used to evaluate the worst-case secrecy performance in each subregion, while a single global cost critic evaluates the softmax-fused constraint cost. Their outputs are then fused to learn a single robust policy that balances secrecy-rate maximization and constraint satisfaction across uncertain eavesdropper locations. Simulation results show that the proposed method achieves faster stabilization of the training curve, a higher average secrecy rate, a higher worst-user secrecy rate, and a significantly lower constraint-violation probability than benchmark schemes.",
+      "doi": "10.1007/s44443-026-01488-7",
+      "venue": "Journal of King Saud University Computer and Information Sciences",
+      "publisher": "Springer Science and Business Media LLC",
+      "type": "journal-article",
+      "published": "2026-11-01",
+      "url": "https://doi.org/10.1007/s44443-026-01488-7",
+      "pdfUrl": "https://link.springer.com/content/pdf/10.1007/s44443-026-01488-7.pdf",
+      "sources": [
+        "crossref",
+        "openalex",
+        "doaj"
+      ],
+      "tags": [
+        "安全速率",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 14.5,
+      "firstSeen": "2026-11-07",
+      "id": "doi:10.1007/s44443-026-01488-7"
     },
     {
       "title": "Efficient Joint Trajectory Optimization and Resource Allocation for Secure UAV Networks: A Deep Reinforcement Learning Approach",
@@ -578,31 +638,6 @@
       "id": "doi:10.48550/arxiv.2610.00216"
     },
     {
-      "title": "FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients",
-      "authors": [
-        "Hana Asghari",
-        "Ghosheh Abed Hodtani"
-      ],
-      "abstract": "Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.",
-      "doi": "10.1038/s41598-026-68636-x",
-      "venue": "Scientific Reports",
-      "publisher": "Nature Portfolio",
-      "type": "journal-article",
-      "published": "2026-09-18",
-      "url": "https://doi.org/10.1038/s41598-026-68636-x",
-      "pdfUrl": "https://www.nature.com/articles/s41598-026-68636-x_reference.pdf",
-      "sources": [
-        "openalex",
-        "crossref"
-      ],
-      "tags": [
-        "安全速率"
-      ],
-      "score": 32,
-      "firstSeen": "2026-09-18",
-      "id": "doi:10.1038/s41598-026-68636-x"
-    },
-    {
       "title": "Safeguarding UAV-ISAC networks: Robust covert communications against multiple wardens with location uncertainty",
       "authors": [
         "Haowen Yang",
@@ -776,6 +811,32 @@
       "score": 7,
       "firstSeen": "2026-09-29",
       "id": "doi:10.3390/fi18100522"
+    },
+    {
+      "title": "FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients",
+      "authors": [
+        "Hana Asghari",
+        "Ghosheh Abed Hodtani"
+      ],
+      "abstract": "Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.",
+      "doi": "10.1038/s41598-026-68636-x",
+      "venue": "Scientific Reports",
+      "publisher": "Nature Portfolio",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1038/s41598-026-68636-x",
+      "pdfUrl": "https://www.nature.com/articles/s41598-026-68636-x_reference.pdf",
+      "sources": [
+        "openalex",
+        "crossref",
+        "doaj"
+      ],
+      "tags": [
+        "安全速率"
+      ],
+      "score": 32,
+      "firstSeen": "2026-09-18",
+      "id": "doi:10.1038/s41598-026-68636-x"
     },
     {
       "title": "Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications",
