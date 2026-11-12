@@ -10,6 +10,7 @@ import dns from "node:dns";
 import { fileURLToPath } from "node:url";
 
 import { handleChatRequest } from "./worker/src/chat.js";
+import { handlePushHttp } from "./push.mjs";
 
 // 腾讯云机器访问 GitHub Pages 时优先走 IPv4，避免 IPv6 不通导致超时。
 dns.setDefaultResultOrder("ipv4first");
@@ -107,8 +108,18 @@ const server = http.createServer(async (request, response) => {
         configured: Boolean(process.env.DEEPSEEK_API_KEY),
         model: process.env.DEEPSEEK_MODEL || "deepseek-chat",
         papers: papersCache.papers?.length ?? "not-loaded",
+        push: Boolean(
+          process.env.VAPID_PUBLIC_KEY
+          && process.env.GITHUB_GIST_ID
+          && process.env.GITHUB_TOKEN,
+        ),
       }),
     );
+    return;
+  }
+
+  if (pathname.startsWith("/api/push/")) {
+    await handlePushHttp(request, response, { allowedOrigins });
     return;
   }
 

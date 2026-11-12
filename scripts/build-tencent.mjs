@@ -1,8 +1,10 @@
 // 组装腾讯云 SCF Web 函数部署包：dist/tencent/
 // 结构：
 //   server.mjs
+//   push.mjs
 //   worker/src/chat.js
 //   worker/src/prompt.js
+//   node_modules/@pushforge/builder
 //   papers.json
 
 import fs from "node:fs";
@@ -21,6 +23,11 @@ fs.copyFileSync(
   path.join(outDir, "server.mjs"),
 );
 
+fs.copyFileSync(
+  path.join(root, "tencent", "push.mjs"),
+  path.join(outDir, "push.mjs"),
+);
+
 fs.mkdirSync(path.join(outDir, "worker", "src"), { recursive: true });
 for (const file of ["chat.js", "prompt.js"]) {
   fs.copyFileSync(
@@ -28,6 +35,12 @@ for (const file of ["chat.js", "prompt.js"]) {
     path.join(outDir, "worker", "src", file),
   );
 }
+
+const builderDir = path.join(outDir, "node_modules", "@pushforge", "builder");
+fs.mkdirSync(path.dirname(builderDir), { recursive: true });
+fs.cpSync(path.join(root, "node_modules", "@pushforge", "builder"), builderDir, {
+  recursive: true,
+});
 
 fs.copyFileSync(
   path.join(root, "docs", "data", "papers.json"),

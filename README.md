@@ -128,9 +128,84 @@ npm run notify
 
 只做上面的步骤时，红点只在打开 App 时更新。接入 Web Push 后，即使不打开 App，每天有新论文时也会收到一条通知，并更新主屏幕角标。
 
-**免费**：使用现有 Cloudflare Worker + 免费 KV，个人/实验室规模 0 元。
+前端和 GitHub Action 只认 `PUSH_API_URL`，后端二选一：
 
-#### 1. 创建 KV
+- **方案 A：阿里云 FC**（国内推荐）：复用现有函数计算，订阅存 GitHub secret Gist，免费。
+- **方案 B：Cloudflare Worker**：需要能正常打开 Cloudflare 登录页；订阅存 Worker KV。
+
+#### 方案 A：阿里云 FC（国内推荐）
+
+前提：已按「AI 问答」那节部署过阿里云 FC Web 函数。没有的话先按那节创建函数。
+
+**1. 建一个 secret Gist 存订阅**
+
+- 打开 <https://gist.github.com/>
+- 文件名 `subscriptions.json`，内容 `{"subscriptions":[]}`
+- 创建 **secret gist**，记下 URL 里的 Gist ID
+
+**2. 生成 GitHub token**
+
+- GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+- 只勾选 `gist` 权限，生成并记下 token
+
+**3. 生成 VAPID 密钥**
+
+```bash
+npx @pushforge/builder vapid
+```
+
+- 公钥 → `VAPID_PUBLIC_KEY`
+- 私钥 JWK 整段 JSON → `VAPID_PRIVATE_JWK`
+
+**4. 生成推送密钥**
+
+```bash
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+```
+
+记下，FC 和 GitHub 都要填同一个。
+
+**5. 阿里云 FC 环境变量**
+
+在 FC 控制台给函数添加：
+
+| 变量 | 值 |
+|---|---|
+| `VAPID_PUBLIC_KEY` | 第 3 步公钥 |
+| `VAPID_PRIVATE_JWK` | 第 3 步私钥 JWK 整段 JSON |
+| `VAPID_SUBJECT` | `https://yiishuwww.github.io/uav-pls-daily_clau/` |
+| `PUSH_SEND_SECRET` | 第 4 步密钥 |
+| `GITHUB_GIST_ID` | 第 1 步 Gist ID |
+| `GITHUB_TOKEN` | 第 2 步 token |
+
+**6. 重新构建并上传 FC 代码**
+
+```powershell
+npm run build:alibaba
+tar.exe -a -c -f "dist\uav-pls-chat-alibaba.zip" -C "dist\alibaba" .
+```
+
+在 FC 控制台上传 ZIP；启动命令 `node server.mjs`，端口 9000，执行超时 120 秒。
+
+**7. 验证与 GitHub 配置**
+
+- 打开 `https://<你的FC地址>/health`，看到 `"push": true`
+- Variables：`PUSH_API_URL` = FC 地址（不要带 `/api/...`）
+- Secrets：`PUSH_SEND_SECRET` = 第 4 步密钥
+
+**8. 手机订阅**
+
+删除旧主屏幕图标 → 重新添加 → 从主屏幕打开 → 点 **开启后台推送** → 允许通知。
+
+之后每天 07:00 有新论文时，`scripts/push-notify.mjs` 会调用 FC；FC 从 Gist 读取订阅并发送 Web Push。
+
+> 如果阿里云 FC 访问 `api.github.com` 不稳定，可以把订阅存储换到阿里云 OSS；`tencent/push.mjs` 里只有 `readSubscriptions` / `writeSubscriptions` 两个函数需要改。
+
+#### 方案 B：Cloudflare Worker
+
+> 只有能正常打开 `https://dash.cloudflare.com` 和 `npx wrangler login` 登录页时再用这个方案。
+
+**1. 创建 KV**
 
 ```bash
 npx wrangler kv namespace create PUSH_SUBSCRIPTIONS
@@ -138,7 +213,7 @@ npx wrangler kv namespace create PUSH_SUBSCRIPTIONS
 
 把输出里的 `id` 填到 `wrangler.toml` 的 `[[kv_namespaces]]`。
 
-#### 2. 生成 VAPID 密钥
+**2. 生成 VAPID 密钥**
 
 ```bash
 npx @pushforge/builder vapid
@@ -151,37 +226,31 @@ npx @pushforge/builder vapid
 npx wrangler secret put VAPID_PRIVATE_JWK
 ```
 
-#### 3. 生成推送密钥
+**3. 生成推送密钥**
 
 ```bash
 node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
 npx wrangler secret put PUSH_SEND_SECRET
 ```
 
-记下这个值，GitHub 要填同一个。
-
-#### 4. 部署 Worker
+**4. 部署 Worker**
 
 ```bash
 npx wrangler deploy
 ```
 
-`ALLOWED_ORIGINS` 已包含 GitHub Pages 域名；换域名要改。
+`ALLOWED_ORIGINS` 已包含 GitHub Pages 域名；换域名要改。部署后访问 `https://<worker-name>.<subdomain>.workers.dev/health`，看到 `"push": true` 说明配置生效。
 
-部署后访问 `https://<worker-name>.<subdomain>.workers.dev/health`，看到 `"push": true` 说明 KV 和 VAPID 公钥已生效。
+**5. GitHub 配置**
 
-#### 5. GitHub 配置
-
-- Variables：`PUSH_API_URL` = `https://<worker-name>.<subdomain>.workers.dev`（不要带 `/api/...`）
+- Variables：`PUSH_API_URL` = `https://<worker-name>.<subdomain>.workers.dev`
 - Secrets：`PUSH_SEND_SECRET` = 第 3 步的值
 
-#### 6. 手机上订阅
+**6. 手机订阅**
 
-删除旧主屏幕图标 → 重新添加 → 从主屏幕打开 → 点 **开启红点** → 允许通知。页面会向 Worker 保存订阅。
+删除旧主屏幕图标 → 重新添加 → 从主屏幕打开 → 点 **开启后台推送** → 允许通知。
 
-之后每天 07:00 采集完成后，`scripts/push-notify.mjs` 会调用 Worker；只有当天有新论文时才发送。推送到达时 Service Worker 显示通知并设置角标。
-
-本地手动测试：
+本地手动测试两种方案都一样：
 
 ```powershell
 $env:PUSH_API_URL = "https://..."
@@ -189,7 +258,7 @@ $env:PUSH_SEND_SECRET = "..."
 npm run push
 ```
 
-**限制**：iOS 16.4+、必须添加到主屏幕、必须允许通知；iOS 不支持静默推送，所以会同时显示一条通知。Cloudflare 免费 Worker 单次请求的子请求上限约 50，订阅很多时需要分批。
+**限制**：iOS 16.4+、必须添加到主屏幕、必须允许通知；iOS 不支持静默推送，所以会同时显示一条通知。订阅很多时，FC/Worker 单次发送需要分批。
 
 ## 本地运行
 
@@ -493,7 +562,8 @@ uav-pls-daily_clau/
 │  ├─ validate.mjs               # 生成物校验
 │  └─ serve.mjs                  # 本地预览
 ├─ tencent/
-│  └─ server.mjs                 # 通用 Web 函数入口（阿里云 FC / 腾讯云 SCF 共用）
+│  ├─ server.mjs                 # 通用 Web 函数入口（阿里云 FC / 腾讯云 SCF 共用）
+│  └─ push.mjs                   # FC/SCF 的 Web Push 接口（Gist 存订阅）
 ├─ wrangler.toml                 # Cloudflare Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）
