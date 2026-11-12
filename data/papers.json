@@ -1,68 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-12T09:19:24+08:00",
+  "updatedAt": "2026-11-12T09:29:17+08:00",
   "papers": [
-    {
-      "title": "UAV-Enabled Covert Mobile Edge Computing Network Assisted by Multiple Friendly Jammers",
-      "authors": [
-        "Peng Wu",
-        "Xiaopeng Yuan",
-        "Yulin Hu",
-        "Anke Schmeink"
-      ],
-      "abstract": "The explosive growth of Industrial Internet of Things (IIoT) has been driving adoption of mobile edge computing (MEC) technique, which mitigates the tension between computation-intensive tasks and the limited capabilities of IIoT terminal devices (TDs). To meet the growing computational demands in IIoT applications, unmanned aerial vehicle (UAV)-enabled MEC has emerged as a promising framework. However, stemming from the inherent openness of air-to-ground (A2G) links, the covertness of data offloading behavior in UAV-enabled MEC is exposed to considerable risks. To address this issue, we investigate a UAV-enabled covert MEC network against the detection from an illegal warden under the assistance of multiple jammers. To enhance the computation efficiency, we formulate a joint design problem of UAV trajectory, communication resource and computation resource to maximize the computation data amount while adhering the mobility, energy consumption, resource limitation and especially the covertness constraints. Then, to address the problem with complicated covertness metric under assistance of multiple jammers, we utilize the hypothesis testing theory to derive closed-form expressions of the covertness metric, which is for the first time to analysis the covertness performance with multiple friendly jammer. Subsequently, the monotonicity of the derived metric is analyzed and further utilized to simplify the original covertness constraint into an equivalent but analyzable form. Afterward, a novel convex approximation approach is developed to construct tight convex problem, enabling an efficient algorithm to attain a high-quality solution. Finally, simulations validate the effectiveness of proposed design.",
-      "doi": "10.1109/tmc.2026.3731997",
-      "venue": "IEEE Transactions on Mobile Computing",
-      "publisher": "IEEE",
-      "type": "journal-article",
-      "published": "2026-12-01",
-      "url": "https://doi.org/10.1109/tmc.2026.3731997",
-      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11683679",
-      "sources": [
-        "ieee"
-      ],
-      "tags": [
-        "隐蔽通信",
-        "干扰/人工噪声",
-        "轨迹优化",
-        "边缘计算"
-      ],
-      "score": 34,
-      "firstSeen": "2026-11-12",
-      "id": "doi:10.1109/tmc.2026.3731997"
-    },
-    {
-      "title": "Joint Secure Beamforming and Computation Offloading for MIMO-Enabled SAGIN-ISCC Systems",
-      "authors": [
-        "Yuxuan Li",
-        "Ting Xiong",
-        "Shibing Zhu",
-        "Changqing Li",
-        "Qi Su",
-        "Jianmei Dai"
-      ],
-      "abstract": "Integrated Sensing, Communication, and Computing (ISCC) in Space-Air-Ground Integrated Networks (SAGIN) is a key enabler for 6G intelligent services. However, the open wireless environment and multitier architecture of SAGIN increase vulnerability to eavesdropping, while security provisioning consumes resources that could otherwise enhance sensing, communication, and computing performance. To address this security-efficiency dilemma, we propose a secure multipleinput multiple-output (MIMO)-enabled SAGIN-ISCC framework that jointly optimizes beamforming and computation offloading, assuming the eavesdropper has been identified by dual-functional radar-communication (DFRC)-equipped uncrewed aerial vehicles (UAVs) with its channel state information (CSI) available. We design dualfunctional (sensing/communication) beamformers at ground users (GUs) and UAVs to spatially separate legitimate signals from interference and eavesdroppers, enabling secure transmission without sacrificing spectrum efficiency. The framework unifies ground-layer sensing and communication, UAV-assisted offloading, and satellitecomplementary computing. We formulate a non-convex problem over beamforming vectors, task offloading decisions, and computing resource allocation to minimize total system energy consumption while guaranteeing sensing quality, communication rate, computing latency, and a predefined security level. We develop an iterative algorithm that decouples the problem into six subproblems, solved via fractional programming, minimum mean square error (MMSE) transformation, linearly constrained minimum variance (LCMV) beamforming, and Lagrange-based optimization. Simulation results demonstrate significant energy savings over benchmark schemes, validating the effectiveness of jointly designed secure beamforming and offloading in resolving the security-efficiency dilemma of SAGIN-ISCC systems.",
-      "doi": "10.1109/tmc.2026.3727602",
-      "venue": "IEEE Transactions on Mobile Computing",
-      "publisher": "IEEE",
-      "type": "journal-article",
-      "published": "2026-12-01",
-      "url": "https://doi.org/10.1109/tmc.2026.3727602",
-      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11667071",
-      "sources": [
-        "ieee"
-      ],
-      "tags": [
-        "通感一体化",
-        "波束成形",
-        "空天地网络",
-        "无人机集群",
-        "MIMO"
-      ],
-      "score": 13,
-      "firstSeen": "2026-11-12",
-      "id": "doi:10.1109/tmc.2026.3727602"
-    },
     {
       "title": "Joint UAV Trajectory and Beam Resource Optimization for Secure Communications in LEO-GEO Coexisting Satellite Networks",
       "authors": [
@@ -842,6 +781,35 @@
       "id": "doi:10.1016/j.phycom.2026.103373"
     },
     {
+      "title": "UAV-Enabled Covert Mobile Edge Computing Network Assisted by Multiple Friendly Jammers",
+      "authors": [
+        "Peng Wu",
+        "Xiaopeng Yuan",
+        "Yulin Hu",
+        "Anke Schmeink"
+      ],
+      "abstract": "The explosive growth of Industrial Internet of Things (IIoT) has been driving adoption of mobile edge computing (MEC) technique, which mitigates the tension between computation-intensive tasks and the limited capabilities of IIoT terminal devices (TDs). To meet the growing computational demands in IIoT applications, unmanned aerial vehicle (UAV)-enabled MEC has emerged as a promising framework. However, stemming from the inherent openness of air-to-ground (A2G) links, the covertness of data offloading behavior in UAV-enabled MEC is exposed to considerable risks. To address this issue, we investigate a UAV-enabled covert MEC network against the detection from an illegal warden under the assistance of multiple jammers. To enhance the computation efficiency, we formulate a joint design problem of UAV trajectory, communication resource and computation resource to maximize the computation data amount while adhering the mobility, energy consumption, resource limitation and especially the covertness constraints. Then, to address the problem with complicated covertness metric under assistance of multiple jammers, we utilize the hypothesis testing theory to derive closed-form expressions of the covertness metric, which is for the first time to analysis the covertness performance with multiple friendly jammer. Subsequently, the monotonicity of the derived metric is analyzed and further utilized to simplify the original covertness constraint into an equivalent but analyzable form. Afterward, a novel convex approximation approach is developed to construct tight convex problem, enabling an efficient algorithm to attain a high-quality solution. Finally, simulations validate the effectiveness of proposed design.",
+      "doi": "10.1109/tmc.2026.3731997",
+      "venue": "IEEE Transactions on Mobile Computing",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-09-08",
+      "url": "https://doi.org/10.1109/tmc.2026.3731997",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11683679",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "轨迹优化",
+        "边缘计算"
+      ],
+      "score": 32,
+      "firstSeen": "2026-11-12",
+      "id": "doi:10.1109/tmc.2026.3731997"
+    },
+    {
       "title": "Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system",
       "authors": [
         "Nikita Goel",
@@ -1456,6 +1424,38 @@
       "score": 12,
       "firstSeen": "2026-08-27",
       "id": "doi:10.1109/ojcoms.2026.3725175"
+    },
+    {
+      "title": "Joint Secure Beamforming and Computation Offloading for MIMO-Enabled SAGIN-ISCC Systems",
+      "authors": [
+        "Yuxuan Li",
+        "Ting Xiong",
+        "Shibing Zhu",
+        "Changqing Li",
+        "Qi Su",
+        "Jianmei Dai"
+      ],
+      "abstract": "Integrated Sensing, Communication, and Computing (ISCC) in Space-Air-Ground Integrated Networks (SAGIN) is a key enabler for 6G intelligent services. However, the open wireless environment and multitier architecture of SAGIN increase vulnerability to eavesdropping, while security provisioning consumes resources that could otherwise enhance sensing, communication, and computing performance. To address this security-efficiency dilemma, we propose a secure multipleinput multiple-output (MIMO)-enabled SAGIN-ISCC framework that jointly optimizes beamforming and computation offloading, assuming the eavesdropper has been identified by dual-functional radar-communication (DFRC)-equipped uncrewed aerial vehicles (UAVs) with its channel state information (CSI) available. We design dualfunctional (sensing/communication) beamformers at ground users (GUs) and UAVs to spatially separate legitimate signals from interference and eavesdroppers, enabling secure transmission without sacrificing spectrum efficiency. The framework unifies ground-layer sensing and communication, UAV-assisted offloading, and satellitecomplementary computing. We formulate a non-convex problem over beamforming vectors, task offloading decisions, and computing resource allocation to minimize total system energy consumption while guaranteeing sensing quality, communication rate, computing latency, and a predefined security level. We develop an iterative algorithm that decouples the problem into six subproblems, solved via fractional programming, minimum mean square error (MMSE) transformation, linearly constrained minimum variance (LCMV) beamforming, and Lagrange-based optimization. Simulation results demonstrate significant energy savings over benchmark schemes, validating the effectiveness of jointly designed secure beamforming and offloading in resolving the security-efficiency dilemma of SAGIN-ISCC systems.",
+      "doi": "10.1109/tmc.2026.3727602",
+      "venue": "IEEE Transactions on Mobile Computing",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-08-25",
+      "url": "https://doi.org/10.1109/tmc.2026.3727602",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11667071",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "通感一体化",
+        "波束成形",
+        "空天地网络",
+        "无人机集群",
+        "MIMO"
+      ],
+      "score": 11,
+      "firstSeen": "2026-11-12",
+      "id": "doi:10.1109/tmc.2026.3727602"
     },
     {
       "title": "Resource Allocation for Secure Dual-UAV-Assisted ISAC System",

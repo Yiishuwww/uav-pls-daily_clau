@@ -100,7 +100,7 @@ function pickAuthors(article) {
 }
 
 /** 把 IEEE 原始 articles 转成统一 Paper；单独导出便于离线测试。 */
-export function parseIeeeArticles(articles, since) {
+export function parseIeeeArticles(articles, since, today = "") {
   const papers = [];
   const seen = new Set();
 
@@ -121,17 +121,24 @@ export function parseIeeeArticles(articles, since) {
     const pubDate = parseIeeeDate(pubRaw);
     const inserted = parseIeeeDate(article.insert_date);
     const yearOnly = !pubRaw || /^\d{4}$/.test(pubRaw);
+    // Early Access 的期号可能在几个月后（例如 11 月在线、12 月期）。
+    // 这种情况下用 IEEE 入库日期展示，避免卡片出现未来日期。
+    const futureIssue = Boolean(today && pubDate && pubDate > today);
 
-    // 只有年份或没有出版日期时，用 IEEE 入库日期展示，避免显示成 1 月 1 日。
     const published =
-      (yearOnly ? inserted : pubDate)
+      (yearOnly || futureIssue ? inserted : pubDate)
       || pubDate
       || inserted
       || parseIeeeDate(article.publication_year);
     if (!published) continue;
 
-    // 日更关心“最近入库”，也兼容出版日期落在窗口内的记录。
-    if (!((inserted && inserted >= since) || (pubDate && pubDate >= since))) continue;
+    // 日更关心“最近入库”。出版日期只在窗口内（不是未来期号）时才作为兜底，
+    // 否则会把 8/9 月就已上线、只是期号排到 12 月的论文当成新论文。
+    const insertedInWindow = Boolean(inserted && inserted >= since);
+    const publishedInWindow = Boolean(
+      pubDate && pubDate >= since && (!today || pubDate <= today),
+    );
+    if (!insertedInWindow && !publishedInWindow) continue;
 
     const url =
       article.html_url
@@ -183,6 +190,7 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
   const articles = [];
   const seen = new Set();
   let successful = 0;
+  let requests = 0;
 
   for (let index = 0; index < queries.length; index += 1) {
     const query = queries[index];
@@ -202,6 +210,7 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
 
       let data;
       try {
+        requests += 1;
         data = await fetchJson(API, {
           params,
           timeout: 60_000,
@@ -242,7 +251,9 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
 
   if (successful === 0) throw new Error("IEEE Xplore 所有查询均失败");
 
-  const papers = parseIeeeArticles(articles, since);
-  log(`IEEE 原始记录 ${articles.length} 条，时间窗内 ${papers.length} 条`);
+  const papers = parseIeeeArticles(articles, since, today);
+  log(
+    `IEEE 原始记录 ${articles.length} 条，时间窗内 ${papers.length} 条，共请求 ${requests} 次`,
+  );
   return papers;
 }
