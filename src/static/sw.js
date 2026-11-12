@@ -32,9 +32,13 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     (async () => {
       await self.registration.showNotification(title, options);
-      if ("setAppBadge" in navigator) {
-        const count = Number(data.count) || 1;
-        await navigator.setAppBadge(count);
+      try {
+        if ("setAppBadge" in self.navigator) {
+          // iOS 只接受数字角标；0 会清除，所以至少传 1。
+          await self.navigator.setAppBadge(Math.max(1, Number(data.count) || 1));
+        }
+      } catch {
+        // 角标失败不影响通知展示
       }
     })(),
   );

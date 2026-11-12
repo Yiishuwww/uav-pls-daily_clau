@@ -168,6 +168,8 @@ npx wrangler deploy
 
 `ALLOWED_ORIGINS` 已包含 GitHub Pages 域名；换域名要改。
 
+部署后访问 `https://<worker-name>.<subdomain>.workers.dev/health`，看到 `"push": true` 说明 KV 和 VAPID 公钥已生效。
+
 #### 5. GitHub 配置
 
 - Variables：`PUSH_API_URL` = `https://<worker-name>.<subdomain>.workers.dev`（不要带 `/api/...`）
