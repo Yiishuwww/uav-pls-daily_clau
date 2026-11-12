@@ -1,7 +1,64 @@
 {
-  "updatedAt": "2026-11-12T10:09:22+08:00",
-  "total": 67,
+  "updatedAt": "2026-11-13T07:37:51+08:00",
+  "total": 70,
   "papers": [
+    {
+      "title": "Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading",
+      "authors": [
+        "Nghia Hoang Trong",
+        "Anh Le-Thi",
+        "Trung-Anh Do",
+        "Hoa Tien Nguyen",
+        "Quang-Sang Nguyen"
+      ],
+      "abstract": "Unmanned aerial vehicles (UAVs) have recently emerged as a promising solution for supporting intelligent transportation systems by providing flexible and reliable wireless connectivity among vehicular users. However, the broadcast nature of wireless channels exposes vehicular communications to monitoring and interception by unauthorized vehicles. In this paper, we investigate physical-layer covert communication in a UAV-assisted vehicular network employing rate-splitting multiple access (RSMA) over Nakagami- m fading channels. In the considered system, the UAV simultaneously transmits common and private messages to multiple vehicles, while an eavesdropper vehicle V E attempts to monitor and intercept the transmission. To enhance communication covertness, a friendly vehicular jammer with randomly distributed transmit power is introduced to increase uncertainty at the monitoring vehicle. Closed-form expressions for the outage probabilities of legitimate vehicles are derived to evaluate communication reliability, while the detection error probability and intercept probability are analyzed to characterize covert and security performance. In addition, asymptotic outage analysis is conducted to reveal the diversity behavior determined by Nakagami fading parameters. Monte Carlo simulations verify the accuracy of the analytical results and illustrate the impacts of key system parameters, including power allocation, fading severity, and random jamming power. The results provide useful design insights for secure UAV-assisted transportation communication systems.",
+      "doi": "10.1371/journal.pone.0361873",
+      "venue": "PLOS One",
+      "publisher": "Public Library of Science (PLoS)",
+      "type": "journal-article",
+      "published": "2026-11-12",
+      "url": "https://doi.org/10.1371/journal.pone.0361873",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群"
+      ],
+      "score": 34,
+      "firstSeen": "2026-11-13",
+      "id": "doi:10.1371/journal.pone.0361873"
+    },
+    {
+      "title": "A Comprehensive Survey of Low-Complexity High-Security Techniques for UAV Communications",
+      "authors": [
+        "Jolly Ramesh Nikhade",
+        "Shrikant V. Sonekar"
+      ],
+      "abstract": "Unmanned Aerial Vehicles (UAVs), commonly known as drones, are found to play an important role in the progress of 6G wireless communication technology, including military applications, precision agriculture, intelligent transportation, smart surveillance, and disaster management. UAV-based communication is especially vulnerable to a variety of security risks, including eavesdropping, jamming, spoofing, denial-of-service, and hijacking, because of the wireless channel’s intrinsic accessibility and dynamic nature. Strict limitations on energy, compute, latency, and mobility also apply to the UAVs, making the use of traditional sophisticated cryptography methods impractical. Lightweight cryptography, physical layer security, blockchain-based authentication, federated learning, intrusion detection systems, and reinforcement learning-based secure resource allocation are just a few of the low-complexity and high-security solutions for UAV communications that are thoroughly surveyed in this paper. A wide range of UAV designs, including single UAVs, swarm-based UAVs, cellular-connected UAVs, satellite-assisted UAVs, and ad hoc UAV networks, are thoroughly covered in the survey. To offer a cohesive evaluation viewpoint, the performance metrics—such as energy consumption, latency, throughput, dependability, secrecy rate, computational complexity, and packet delivery ratio—are also included. This study provides the reader with organized data on the design of UAV communication systems that are safe, scalable, and energy-efficient for usage in upcoming wireless networks.",
+      "doi": "10.14445/23488549/ijece-v13i10p115",
+      "venue": "International Journal of Electronics and Communication Engineering",
+      "publisher": "Seventh Sense Research Group Journals",
+      "type": "journal-article",
+      "published": "2026-11-12",
+      "url": "https://doi.org/10.14445/23488549/ijece-v13i10p115",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "安全速率",
+        "空天地网络",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 18,
+      "firstSeen": "2026-11-13",
+      "id": "doi:10.14445/23488549/ijece-v13i10p115"
+    },
     {
       "title": "Joint UAV Trajectory and Beam Resource Optimization for Secure Communications in LEO-GEO Coexisting Satellite Networks",
       "authors": [
@@ -74,7 +131,8 @@
       "url": "https://doi.org/10.21203/rs.3.rs-11176890/v1",
       "pdfUrl": "",
       "sources": [
-        "crossref"
+        "crossref",
+        "openalex"
       ],
       "tags": [
         "NOMA",
@@ -896,6 +954,36 @@
       "score": 10.5,
       "firstSeen": "2026-09-02",
       "id": "doi:10.48550/arxiv.2609.03099"
+    },
+    {
+      "title": "Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning",
+      "authors": [
+        "Yinxuan Wu",
+        "Xiaohao Xia",
+        "Beatriz Lorenzo",
+        "Dennis Goeckel",
+        "Fikadu Dagefu"
+      ],
+      "abstract": "Unmanned aerial vehicle (UAV) swarms increasingly span multiple spectrum bands and radio access technologies (RATs), e.g., Wi-Fi, LoRa, Zigbee, and cellular. With active adversaries capable of protocol-aware jamming, spoofing, traffic analysis, and control-plane exploitation, survivable and timely covert communication is challenging. Moreover, after detection, adversaries may escalate with selective, adaptive attacks that increase latency and hinder recovery. This paper is the first to study covertness recovery under post-detection threat escalation. We design a learning-based mechanism that re-establishes covert communication across learning domains with different Willie densities and attack models, amid stochastic task arrivals, UAV mobility, and uncertain warden locations and behaviors. We jointly optimize RAT selection, resource allocation, and task offloading to minimize Age of Covert Information (AoCI), energy, and threat impact. Warden behavior is modeled via an adaptive attack-selection process capturing detection-triggered escalation and nonstationary strategies. We propose Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting. Across three escalating 30-task sequences, extensive simulations show that CDFALL-PPO raises median packet covert delivery rate (PCR) by 14.5%, increases covert throughput by up to 53.6%, and lowers AoCI by 59.4% relative to PPO. Under the strongest composite attack, mean on-attack PCR improves from 52% to 70%, and mean post-attack recovery PCR rises from 64% to 93%.",
+      "doi": "10.1109/vtc2026-fall68024.2026.11758399",
+      "venue": "2026 IEEE 104th Vehicular Technology Conference (VTC2026-Fall)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11758399",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 25,
+      "firstSeen": "2026-11-13",
+      "id": "doi:10.1109/vtc2026-fall68024.2026.11758399"
     },
     {
       "title": "Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems",
