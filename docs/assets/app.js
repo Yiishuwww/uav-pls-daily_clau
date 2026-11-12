@@ -156,16 +156,19 @@
   }
 
   async function syncPushSubscription() {
-    if (!pushApiUrl) return;
+    if (!pushApiUrl) return false;
     if (typeof Notification === "undefined" || Notification.permission !== "granted") {
-      return;
+      return false;
     }
     try {
       const registration = await navigator.serviceWorker.ready;
       const subscription = await registration.pushManager.getSubscription();
-      if (subscription) await savePushSubscription(subscription);
+      if (!subscription) return false;
+      await savePushSubscription(subscription);
+      return true;
     } catch {
       // 后台同步失败不影响页面
+      return false;
     }
   }
 
@@ -180,7 +183,14 @@
     if (Notification.permission === "granted") {
       button.hidden = true;
       applyAppBadge();
-      syncPushSubscription();
+      if (pushApiUrl) {
+        syncPushSubscription().then((synced) => {
+          if (!synced) {
+            button.textContent = "开启后台推送";
+            button.hidden = false;
+          }
+        });
+      }
       return;
     }
 
@@ -189,14 +199,20 @@
       try {
         const result = await Notification.requestPermission();
         if (result === "granted") {
-          button.hidden = true;
           await applyAppBadge();
           if (pushApiUrl) {
             try {
               await subscribePush();
+              button.hidden = true;
             } catch (error) {
               console.warn("[push] 订阅失败", error);
+              button.textContent = "后台推送未开启";
+              window.setTimeout(() => {
+                button.textContent = "开启后台推送";
+              }, 2200);
             }
+          } else {
+            button.hidden = true;
           }
         } else {
           button.textContent = "未授权";
