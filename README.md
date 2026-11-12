@@ -22,7 +22,7 @@
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
 - **BibTeX 导出**：导出当前筛选结果，或复制单篇；`docs/data/papers.bib` 提供全量文件
 - **微信推送**（可选）：企业微信群机器人 / PushPlus / Server酱，每天只推当天新增
-- **主屏幕红点**：PWA Badging API，iOS 16.4+ / Android Chrome 添加到主屏幕后显示今日新增数量
+- **主屏幕红点**：PWA Badging API，iOS 16.4+ / Android Chrome 添加到主屏幕后显示今日新增数量；可选 Web Push 后台自动更新
 - 内置 AI 问答（可选）：基于全部论文元数据回答，支持 `[n]` 引用定位，需部署一个 DeepSeek 代理（见下文）
 
 ## 检索覆盖
@@ -122,8 +122,72 @@ npm run notify
 - **iOS 16.4+**：Safari 打开页面 → 分享 → 添加到主屏幕 → 从主屏幕打开 → 点右上角 **开启红点** → 允许通知。
 - **Android Chrome**：菜单 → 添加到主屏幕；支持 Badging API 的启动器会显示数字角标。
 - 角标数字 = 今日新增论文数；打开页面时更新。
-- **限制**：页面不打开时，红点不会自动更新。要做到后台自动推送，需要接入 Web Push（VAPID + 服务端）；`sw.js` 已预留 `push` 事件处理，但目前没有推送后端。
 - 如果主屏幕图标没有更新，删除旧图标后重新添加一次。
+
+### Web Push（后台自动推送，可选）
+
+只做上面的步骤时，红点只在打开 App 时更新。接入 Web Push 后，即使不打开 App，每天有新论文时也会收到一条通知，并更新主屏幕角标。
+
+**免费**：使用现有 Cloudflare Worker + 免费 KV，个人/实验室规模 0 元。
+
+#### 1. 创建 KV
+
+```bash
+npx wrangler kv namespace create PUSH_SUBSCRIPTIONS
+```
+
+把输出里的 `id` 填到 `wrangler.toml` 的 `[[kv_namespaces]]`。
+
+#### 2. 生成 VAPID 密钥
+
+```bash
+npx @pushforge/builder vapid
+```
+
+- 公钥填到 `wrangler.toml` 的 `VAPID_PUBLIC_KEY`
+- 私钥 JWK 存为 Worker secret：
+
+```bash
+npx wrangler secret put VAPID_PRIVATE_JWK
+```
+
+#### 3. 生成推送密钥
+
+```bash
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+npx wrangler secret put PUSH_SEND_SECRET
+```
+
+记下这个值，GitHub 要填同一个。
+
+#### 4. 部署 Worker
+
+```bash
+npx wrangler deploy
+```
+
+`ALLOWED_ORIGINS` 已包含 GitHub Pages 域名；换域名要改。
+
+#### 5. GitHub 配置
+
+- Variables：`PUSH_API_URL` = `https://<worker-name>.<subdomain>.workers.dev`（不要带 `/api/...`）
+- Secrets：`PUSH_SEND_SECRET` = 第 3 步的值
+
+#### 6. 手机上订阅
+
+删除旧主屏幕图标 → 重新添加 → 从主屏幕打开 → 点 **开启红点** → 允许通知。页面会向 Worker 保存订阅。
+
+之后每天 07:00 采集完成后，`scripts/push-notify.mjs` 会调用 Worker；只有当天有新论文时才发送。推送到达时 Service Worker 显示通知并设置角标。
+
+本地手动测试：
+
+```powershell
+$env:PUSH_API_URL = "https://..."
+$env:PUSH_SEND_SECRET = "..."
+npm run push
+```
+
+**限制**：iOS 16.4+、必须添加到主屏幕、必须允许通知；iOS 不支持静默推送，所以会同时显示一条通知。Cloudflare 免费 Worker 单次请求的子请求上限约 50，订阅很多时需要分批。
 
 ## 本地运行
 
@@ -419,9 +483,11 @@ uav-pls-daily_clau/
 │  └─ src/
 │     ├─ index.js                # Cloudflare Worker 入口
 │     ├─ chat.js                 # 请求校验、DeepSeek SSE 转发
+│     ├─ push.js                 # Web Push 订阅存储与 VAPID 发送
 │     └─ prompt.js               # system 提示与论文清单
 ├─ scripts/
 │  ├─ notify.mjs                 # 微信推送（企业微信 / PushPlus / Server酱）
+│  ├─ push-notify.mjs            # Web Push 触发
 │  ├─ validate.mjs               # 生成物校验
 │  └─ serve.mjs                  # 本地预览
 ├─ tencent/

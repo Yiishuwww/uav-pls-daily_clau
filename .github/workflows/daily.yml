@@ -36,6 +36,9 @@ jobs:
       WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
       PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
       SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
+      # 可选：Web Push（主屏幕角标）
+      PUSH_API_URL: ${{ vars.PUSH_API_URL }}
+      PUSH_SEND_SECRET: ${{ secrets.PUSH_SEND_SECRET }}
 
     steps:
       - name: Checkout
@@ -59,6 +62,10 @@ jobs:
       - name: Notify WeChat
         continue-on-error: true
         run: node scripts/notify.mjs
+
+      - name: Web Push
+        continue-on-error: true
+        run: node scripts/push-notify.mjs
 
       - name: Commit changes
         run: |

@@ -1,6 +1,7 @@
 // Cloudflare Worker 入口：/api/chat 代理 DeepSeek，并附带健康检查。
 
 import { handleChatRequest } from "./chat.js";
+import { handlePushRequest } from "./push.js";
 
 const DEFAULT_PAPERS_URL =
   "https://yiishuwww.github.io/uav-pls-daily_clau/data/papers.json";
@@ -15,7 +16,12 @@ export default {
         service: "uav-pls-chat",
         configured: Boolean(env.DEEPSEEK_API_KEY),
         model: env.DEEPSEEK_MODEL || "deepseek-chat",
+        push: Boolean(env.PUSH_SUBSCRIPTIONS && env.VAPID_PUBLIC_KEY),
       });
+    }
+
+    if (url.pathname.startsWith("/api/push/")) {
+      return handlePushRequest(request, env, parseOrigins(env.ALLOWED_ORIGINS));
     }
 
     if (url.pathname !== "/api/chat" && url.pathname !== "/chat") {

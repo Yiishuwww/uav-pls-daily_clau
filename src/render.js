@@ -61,7 +61,7 @@ function chatWidgetHtml() {
 </div>`;
 }
 
-function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl }) {
+function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl, pushApiUrl }) {
   const papersForSite = papers.map((paper) => ({
     id: paper.id,
     title: paper.title,
@@ -95,6 +95,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
 <meta name="theme-color" content="#0b5f8a">
 <meta name="chat-api-url" content="${xmlEscape(chatApiUrl)}">
+<meta name="push-api-url" content="${xmlEscape(pushApiUrl)}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -262,6 +263,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
 
   const siteUrl = (process.env.SITE_URL || "").replace(/\/+$/, "");
   const chatApiUrl = (process.env.CHAT_API_URL || "/api/chat").trim() || "/api/chat";
+  const pushApiUrl = (process.env.PUSH_API_URL || "").replace(/\/+$/, "");
 
   const html = renderIndexHtml({
     papers,
@@ -272,6 +274,7 @@ export function renderSite({ root, papers, status, log = () => {} }) {
     weekCount,
     siteUrl,
     chatApiUrl,
+    pushApiUrl,
   });
 
   fs.writeFileSync(path.join(docsDir, "index.html"), html, "utf8");

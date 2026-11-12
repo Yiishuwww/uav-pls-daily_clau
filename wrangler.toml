@@ -11,6 +11,13 @@ compatibility_date = "2025-09-01"
 #   在仓库根目录新建 .dev.vars，写入 DEEPSEEK_API_KEY=sk-...
 #   npx wrangler dev
 
+# Web Push 订阅存储（Cloudflare KV，免费额度足够日报使用）
+# 创建：npx wrangler kv namespace create PUSH_SUBSCRIPTIONS
+# 把输出里的 id 填到下面，再执行 npx wrangler deploy
+[[kv_namespaces]]
+binding = "PUSH_SUBSCRIPTIONS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
 [vars]
 DEEPSEEK_MODEL = "deepseek-chat"
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
@@ -18,3 +25,7 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 PAPERS_URL = "https://yiishuwww.github.io/uav-pls-daily_clau/data/papers.json"
 # 允许调用这个 Worker 的页面来源（协议 + 域名 + 端口，不要带路径）
 ALLOWED_ORIGINS = "https://yiishuwww.github.io,http://localhost:3000,http://127.0.0.1:3000"
+# Web Push 的 VAPID 联系地址（填站点 URL 或 mailto:邮箱）
+VAPID_SUBJECT = "https://yiishuwww.github.io/uav-pls-daily_clau/"
+# 运行 npx @pushforge/builder vapid 后，把公钥填到这里（私钥用 secret 保存）
+VAPID_PUBLIC_KEY = ""

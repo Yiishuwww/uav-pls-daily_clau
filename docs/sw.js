@@ -25,6 +25,7 @@ self.addEventListener("push", (event) => {
     body: data.body || "有新的论文更新",
     icon: "assets/icon-192.png",
     badge: "assets/icon-192.png",
+    tag: "uav-pls-daily",
     data: { url: data.url || "./" },
   };
 

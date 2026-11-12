@@ -14,6 +14,8 @@
   papers = papers.map((paper, index) => ({ ...paper, _n: index + 1 }));
 
   const today = document.body.dataset.today || "";
+  const pushApiUrl = (document.querySelector('meta[name="push-api-url"]')?.content || "")
+    .replace(/\/+$/, "");
   const last7 = addDays(today, -6);
   const last30 = addDays(today, -29);
 
@@ -110,6 +112,63 @@
       || window.navigator.standalone === true;
   }
 
+  function urlBase64ToUint8Array(base64String) {
+    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+    const raw = atob(base64);
+    const bytes = new Uint8Array(raw.length);
+    for (let index = 0; index < raw.length; index += 1) {
+      bytes[index] = raw.charCodeAt(index);
+    }
+    return bytes;
+  }
+
+  async function savePushSubscription(subscription) {
+    const response = await fetch(`${pushApiUrl}/api/push/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(subscription.toJSON()),
+    });
+    if (!response.ok) throw new Error(`订阅保存失败 ${response.status}`);
+  }
+
+  async function subscribePush() {
+    if (!pushApiUrl) return false;
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return false;
+
+    const registration = await navigator.serviceWorker.ready;
+    const keyResponse = await fetch(`${pushApiUrl}/api/push/vapid-public-key`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!keyResponse.ok) throw new Error(`VAPID 公钥接口 ${keyResponse.status}`);
+    const { publicKey } = await keyResponse.json();
+    if (!publicKey) throw new Error("VAPID 公钥为空");
+
+    let subscription = await registration.pushManager.getSubscription();
+    if (!subscription) {
+      subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(publicKey),
+      });
+    }
+    await savePushSubscription(subscription);
+    return true;
+  }
+
+  async function syncPushSubscription() {
+    if (!pushApiUrl) return;
+    if (typeof Notification === "undefined" || Notification.permission !== "granted") {
+      return;
+    }
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      const subscription = await registration.pushManager.getSubscription();
+      if (subscription) await savePushSubscription(subscription);
+    } catch {
+      // 后台同步失败不影响页面
+    }
+  }
+
   function setupBadgeButton() {
     const button = document.getElementById("enable-badge");
     if (!button) return;
@@ -121,6 +180,7 @@
     if (Notification.permission === "granted") {
       button.hidden = true;
       applyAppBadge();
+      syncPushSubscription();
       return;
     }
 
@@ -131,6 +191,13 @@
         if (result === "granted") {
           button.hidden = true;
           await applyAppBadge();
+          if (pushApiUrl) {
+            try {
+              await subscribePush();
+            } catch (error) {
+              console.warn("[push] 订阅失败", error);
+            }
+          }
         } else {
           button.textContent = "未授权";
           window.setTimeout(() => {
