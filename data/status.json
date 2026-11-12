@@ -39,7 +39,7 @@
     },
     {
       "name": "zenodo",
-      "ok": false,
+      "ok": true,
       "count": 0,
       "ms": 4653,
       "error": "fetch failed"
