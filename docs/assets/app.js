@@ -88,9 +88,6 @@
   els.count30.textContent = counts["30d"];
   els.countAll.textContent = counts.all;
 
-  const todayButton = document.querySelector('[data-period="today"]');
-  if (counts.today > 0 && todayButton) todayButton.classList.add("has-new");
-
   // ---------- 主屏幕红点（iOS 16.4+ / 已添加到主屏幕） ----------
 
   const badgeSupported = "setAppBadge" in navigator;
