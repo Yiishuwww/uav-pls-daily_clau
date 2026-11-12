@@ -88,6 +88,67 @@
   els.count30.textContent = counts["30d"];
   els.countAll.textContent = counts.all;
 
+  const todayButton = document.querySelector('[data-period="today"]');
+  if (counts.today > 0 && todayButton) todayButton.classList.add("has-new");
+
+  // ---------- 主屏幕红点（iOS 16.4+ / 已添加到主屏幕） ----------
+
+  const badgeSupported = "setAppBadge" in navigator;
+
+  async function applyAppBadge() {
+    if (!badgeSupported) return;
+    try {
+      if (counts.today > 0) {
+        await navigator.setAppBadge(counts.today);
+      } else if (navigator.clearAppBadge) {
+        await navigator.clearAppBadge();
+      }
+    } catch {
+      // 没有通知权限或系统不支持时静默失败
+    }
+  }
+
+  function isStandalone() {
+    return window.matchMedia("(display-mode: standalone)").matches
+      || window.navigator.standalone === true;
+  }
+
+  function setupBadgeButton() {
+    const button = document.getElementById("enable-badge");
+    if (!button) return;
+    if (!badgeSupported || typeof Notification === "undefined" || !isStandalone()) {
+      button.hidden = true;
+      return;
+    }
+
+    if (Notification.permission === "granted") {
+      button.hidden = true;
+      applyAppBadge();
+      return;
+    }
+
+    button.hidden = false;
+    button.addEventListener("click", async () => {
+      try {
+        const result = await Notification.requestPermission();
+        if (result === "granted") {
+          button.hidden = true;
+          await applyAppBadge();
+        } else {
+          button.textContent = "未授权";
+          window.setTimeout(() => {
+            button.textContent = "开启红点";
+          }, 1800);
+        }
+      } catch {
+        button.textContent = "开启失败";
+        window.setTimeout(() => {
+          button.textContent = "开启红点";
+        }, 1800);
+      }
+    });
+  }
+
   // ---------- 标签 ----------
 
   const tagCounts = new Map();
@@ -606,6 +667,11 @@
   });
 
   // ---------- 初始化 ----------
+
+  setupBadgeButton();
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
 
   renderTags();
   updateThemeButton();

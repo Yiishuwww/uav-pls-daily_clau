@@ -22,6 +22,7 @@
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
 - **BibTeX 导出**：导出当前筛选结果，或复制单篇；`docs/data/papers.bib` 提供全量文件
 - **微信推送**（可选）：企业微信群机器人 / PushPlus / Server酱，每天只推当天新增
+- **主屏幕红点**：PWA Badging API，iOS 16.4+ / Android Chrome 添加到主屏幕后显示今日新增数量
 - 内置 AI 问答（可选）：基于全部论文元数据回答，支持 `[n]` 引用定位，需部署一个 DeepSeek 代理（见下文）
 
 ## 检索覆盖
@@ -113,6 +114,16 @@ npm run notify
 - 每篇论文的链接行有 **BibTeX** 按钮：复制单条到剪贴板。
 - 全量文件：`docs/data/papers.bib`，页脚也有入口。
 - 条目类型：期刊 `@article`、会议 `@inproceedings`、预印本/其他 `@misc`；包含 DOI、URL、arXiv eprint、关键词。
+
+### 主屏幕红点（PWA）
+
+站点已加入 Web App Manifest、Service Worker 和主屏幕图标：
+
+- **iOS 16.4+**：Safari 打开页面 → 分享 → 添加到主屏幕 → 从主屏幕打开 → 点右上角 **开启红点** → 允许通知。
+- **Android Chrome**：菜单 → 添加到主屏幕；支持 Badging API 的启动器会显示数字角标。
+- 角标数字 = 今日新增论文数；打开页面时更新。页面里的 **今日** 按钮也会显示一个红点，所有浏览器都可见。
+- **限制**：页面不打开时，红点不会自动更新。要做到后台自动推送，需要接入 Web Push（VAPID + 服务端）；`sw.js` 已预留 `push` 事件处理，但目前没有推送后端。
+- 如果主屏幕图标没有更新，删除旧图标后重新添加一次。
 
 ## 本地运行
 
@@ -401,7 +412,7 @@ uav-pls-daily_clau/
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
 │  ├─ render.js                  # 网站与 RSS 生成
-│  ├─ static/                    # 前端 CSS / JS（app.js、chat.js、style.css）
+│  ├─ static/                    # 前端 CSS / JS、PWA manifest / sw.js / icons
 │  ├─ http.js                    # 超时与重试
 │  └─ text.js                    # 文本归一化与日期工具
 ├─ worker/                       # 共用 AI 代理逻辑（Cloudflare Worker 入口也在这里）

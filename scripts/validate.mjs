@@ -62,6 +62,11 @@ for (const asset of [
   "assets/chat.js",
   "data/papers.json",
   "data/papers.bib",
+  "manifest.webmanifest",
+  "sw.js",
+  "assets/icon-192.png",
+  "assets/icon-512.png",
+  "assets/apple-touch-icon.png",
 ]) {
   if (!fs.existsSync(path.join(root, "docs", asset))) fail(`缺少静态资源 docs/${asset}`);
 }

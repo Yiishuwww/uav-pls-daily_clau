@@ -95,11 +95,17 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
 <meta name="theme-color" content="#0b5f8a">
 <meta name="chat-api-url" content="${xmlEscape(chatApiUrl)}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="UAV PLS 日报">
 <meta property="og:title" content="UAV 物理层安全论文日报">
 <meta property="og:description" content="每日自动汇总无人机物理层安全方向最新论文">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${xmlEscape(siteUrl ? `${siteUrl}/` : "")}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b5f8a'/%3E%3Cpath d='M32 14l14 6v10c0 10-6 17-14 20-8-3-14-10-14-20V20z' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="UAV 物理层安全论文日报 RSS" href="${xmlEscape(rssHref)}">
 </head>
@@ -119,6 +125,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   <div class="wrap head-meta">
     <span>更新于 ${xmlEscape(updated)}（UTC+8）</span>
     <span class="srcs">${sourceStatusHtml(status)}</span>
+    <button type="button" id="enable-badge" class="badge-enable" title="开启主屏幕红点提醒（需要允许通知）" hidden>开启红点</button>
     <button type="button" id="theme-toggle" class="theme-btn" aria-label="切换深色模式" title="切换深色模式">☾</button>
   </div>
 </header>
@@ -280,6 +287,12 @@ export function renderSite({ root, papers, status, log = () => {} }) {
   const staticDir = path.join(root, "src", "static");
   for (const file of ["style.css", "app.js", "chat.js"]) {
     fs.copyFileSync(path.join(staticDir, file), path.join(assetsDir, file));
+  }
+  for (const file of ["manifest.webmanifest", "sw.js"]) {
+    fs.copyFileSync(path.join(staticDir, file), path.join(docsDir, file));
+  }
+  for (const icon of ["icon-192.png", "icon-512.png", "apple-touch-icon.png"]) {
+    fs.copyFileSync(path.join(staticDir, "icons", icon), path.join(assetsDir, icon));
   }
 
   log(`渲染完成：共 ${total} 篇，今日 ${todayCount} 篇，近 7 天 ${weekCount} 篇`);
