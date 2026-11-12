@@ -43,25 +43,31 @@ const MONTHS = {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/** IEEE 的日期可能是 "2026-05-12"、"May 2026" 或 "2026"，统一成 YYYY-MM-DD。 */
+/** IEEE 的日期可能是 "2026-05-12"、"23-24 July 2026"、"2026" 或 "20261111"，统一成 YYYY-MM-DD。 */
 export function parseIeeeDate(value) {
   const raw = cleanText(value);
+  if (!raw) return "";
+
   const iso = raw.match(/\d{4}-\d{2}-\d{2}/);
   if (iso) return iso[0];
+
+  // insert_date 常见格式：20261111
+  const compact = raw.match(/^(\d{4})(\d{2})(\d{2})$/);
+  if (compact) return `${compact[1]}-${compact[2]}-${compact[3]}`;
 
   // IEEE 有时只给年月，如 "2026-05"。
   const yearMonth = raw.match(/^(\d{4})-(\d{2})$/);
   if (yearMonth) return `${yearMonth[1]}-${yearMonth[2]}-01`;
 
-  const monthYear = raw.match(/([a-z]+)\.?\s+(\d{4})/i);
-  if (monthYear) {
-    const month = MONTHS[monthYear[1].toLowerCase()];
-    if (month) return `${monthYear[2]}-${String(month).padStart(2, "0")}-01`;
+  // 兼容 "January 2026"、"23-24 July 2026"、"15 Feb.15, 2026"
+  const yearMatch = raw.match(/\b(?:19|20)\d{2}\b/);
+  const monthMatch = raw.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?/i);
+  if (yearMatch && monthMatch) {
+    const month = MONTHS[monthMatch[1].toLowerCase()];
+    if (month) return `${yearMatch[0]}-${String(month).padStart(2, "0")}-01`;
   }
 
-  const yearOnly = raw.match(/^(\d{4})$/);
-  if (yearOnly) return `${yearOnly[1]}-01-01`;
-
+  if (/^\d{4}$/.test(raw)) return `${raw}-01-01`;
   return "";
 }
 
@@ -111,16 +117,21 @@ export function parseIeeeArticles(articles, since) {
     const type = mapType(article.content_type);
     if (!type) continue;
 
+    const pubRaw = cleanText(article.publication_date);
+    const pubDate = parseIeeeDate(pubRaw);
+    const inserted = parseIeeeDate(article.insert_date);
+    const yearOnly = !pubRaw || /^\d{4}$/.test(pubRaw);
+
+    // 只有年份或没有出版日期时，用 IEEE 入库日期展示，避免显示成 1 月 1 日。
     const published =
-      parseIeeeDate(article.publication_date)
-      || parseIeeeDate(article.publication_year)
-      || parseIeeeDate(article.insert_date);
+      (yearOnly ? inserted : pubDate)
+      || pubDate
+      || inserted
+      || parseIeeeDate(article.publication_year);
     if (!published) continue;
 
-    const inserted = parseIeeeDate(article.insert_date);
-    // 会议论文的 publication_date 常只精确到月份。若它早于统计窗口，
-    // 但 IEEE 是最近才入库的，仍然收录，避免月初的论文被漏掉。
-    if (published < since && (!inserted || inserted < since)) continue;
+    // 日更关心“最近入库”，也兼容出版日期落在窗口内的记录。
+    if (!((inserted && inserted >= since) || (pubDate && pubDate >= since))) continue;
 
     const url =
       article.html_url
@@ -164,21 +175,14 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
       ? config.queries
       : DEFAULT_QUERIES;
   const pageSize = Math.max(1, Math.min(Number(config.page_size) || 200, 200));
-  const maxPages = Math.max(1, Math.min(Number(config.max_pages) || 1, 10));
+  const maxPages = Math.max(1, Math.min(Number(config.max_pages) || 3, 10));
   const startYear = since.slice(0, 4);
-  const endYear = today.slice(0, 4);
+  // Early Access 的期号可能排到明年，多覆盖一年。
+  const endYear = String(Number(today.slice(0, 4)) + 1);
 
-  // 优先按 article_number 倒序（近似按入库时间，最新在前）；
-  // 若某个排序字段不被接受，依次退到 publication_year、默认相关性。
-  const SORTS = [
-    { sort_field: "article_number", sort_order: "desc" },
-    { sort_field: "publication_year", sort_order: "desc" },
-    null,
-  ];
   const articles = [];
   const seen = new Set();
   let successful = 0;
-  let preferredSort = 0;
 
   for (let index = 0; index < queries.length; index += 1) {
     const query = queries[index];
@@ -188,7 +192,8 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
     for (let page = 0; page < maxPages; page += 1) {
       const params = {
         apikey: apiKey,
-        booleantext: query,
+        // 注意：v1 接口会忽略 booleantext，必须用 querytext。
+        querytext: query,
         start_year: startYear,
         end_year: endYear,
         start_record: page * pageSize + 1,
@@ -197,26 +202,11 @@ export async function collectIeee({ since, today, config = {}, log = () => {} })
 
       let data;
       try {
-        let attempt = preferredSort;
-        while (attempt < SORTS.length) {
-          const sort = SORTS[attempt];
-          try {
-            data = await fetchJson(API, {
-              params: { ...params, ...(sort || {}) },
-              timeout: 60_000,
-              retries: 2,
-            });
-            preferredSort = attempt;
-            break;
-          } catch (error) {
-            if (error.status !== 400) throw error;
-            attempt += 1;
-            if (attempt < SORTS.length) {
-              log(`IEEE 查询被拒绝（${error.message.slice(0, 80)}），尝试下一种排序`);
-            }
-          }
-        }
-        if (!data) throw new Error("IEEE 查询参数均被拒绝");
+        data = await fetchJson(API, {
+          params,
+          timeout: 60_000,
+          retries: 2,
+        });
 
         if (!Array.isArray(data.articles)) {
           const message =

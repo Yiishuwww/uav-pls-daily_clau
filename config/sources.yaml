@@ -62,7 +62,7 @@ ieee:
   enabled: true
   api_key_env: IEEE_API_KEY
   page_size: 200      # 单次请求上限 200
-  max_pages: 1        # 每条第 1 页；想多取可调大（注意免费 key 的每日调用额度）
+  max_pages: 3        # 每条最多翻 3 页（600 条）；IEEE 接口默认按相关性排序，需要翻页才能覆盖近期入库记录
   # 可选：自定义布尔检索式；留空使用采集器内置的三条查询。
   # queries:
   #   - '("physical layer security" OR secrecy) AND (UAV OR drone)'
