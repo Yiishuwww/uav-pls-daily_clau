@@ -17,6 +17,9 @@ const MAX_SUBSCRIPTIONS = 1000;
 
 export async function handlePushHttp(request, response, { allowedOrigins = [] } = {}) {
   const url = new URL(request.url, "http://localhost");
+  const pushIndex = url.pathname.indexOf("/api/push/");
+  // 兼容 FC 2.0 的 /2016-08-15/proxy/... 前缀
+  const pathname = pushIndex >= 0 ? url.pathname.slice(pushIndex) : url.pathname;
   const origin = request.headers.origin || "";
   const cors = corsHeaders(origin, allowedOrigins);
 
@@ -27,7 +30,7 @@ export async function handlePushHttp(request, response, { allowedOrigins = [] } 
   }
 
   try {
-    switch (url.pathname) {
+    switch (pathname) {
       case "/api/push/vapid-public-key":
         sendJson(response, 200, { publicKey: process.env.VAPID_PUBLIC_KEY || "" }, cors);
         return;

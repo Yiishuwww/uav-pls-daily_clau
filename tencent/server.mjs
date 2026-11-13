@@ -118,7 +118,7 @@ const server = http.createServer(async (request, response) => {
     return;
   }
 
-  if (pathname.startsWith("/api/push/")) {
+  if (pathname.includes("/api/push/")) {
     await handlePushHttp(request, response, { allowedOrigins });
     return;
   }
