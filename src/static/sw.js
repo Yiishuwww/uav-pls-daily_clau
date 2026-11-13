@@ -51,10 +51,11 @@ self.addEventListener("notificationclick", (event) => {
   event.waitUntil(
     (async () => {
       try {
-        if ("clearAppBadge" in self.navigator) {
-          await self.navigator.clearAppBadge();
-        } else if ("setAppBadge" in self.navigator) {
+        // iOS 需要用数字 0 清除角标
+        if ("setAppBadge" in self.navigator) {
           await self.navigator.setAppBadge(0);
+        } else if ("clearAppBadge" in self.navigator) {
+          await self.navigator.clearAppBadge();
         }
       } catch {
         // 清除角标失败不影响打开页面

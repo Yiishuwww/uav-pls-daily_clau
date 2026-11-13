@@ -94,27 +94,14 @@
 
   const badgeSupported = "setAppBadge" in navigator;
 
-  async function applyAppBadge() {
-    if (!badgeSupported) return;
-    try {
-      if (counts.today > 0) {
-        await navigator.setAppBadge(counts.today);
-      } else if (navigator.clearAppBadge) {
-        await navigator.clearAppBadge();
-      }
-    } catch {
-      // 没有通知权限或系统不支持时静默失败
-    }
-  }
-
   async function clearAppBadge() {
     if (!badgeSupported) return;
     try {
-      if (navigator.clearAppBadge) {
-        await navigator.clearAppBadge();
-      } else {
-        // iOS 需要用 0 清除，不能传空
+      // iOS 需要用数字 0 清除角标；clearAppBadge 在部分版本上不生效
+      if ("setAppBadge" in navigator) {
         await navigator.setAppBadge(0);
+      } else if (navigator.clearAppBadge) {
+        await navigator.clearAppBadge();
       }
     } catch {
       // 权限未授予或系统不支持时静默失败
@@ -206,10 +193,8 @@
 
     if (Notification.permission === "granted") {
       setBadgeButtonVisible(false);
-      // 有后台推送时，打开 App 视为已读并清除角标；
-      // 没有后台推送时，保留“打开时显示今日数量”的旧行为。
-      if (pushApiUrl) clearAppBadge();
-      else applyAppBadge();
+      // 打开 App 视为已读：无论是否配置后台推送，都清除角标。
+      clearAppBadge();
 
       if (pushApiUrl) {
         syncPushSubscription().then((synced) => {
@@ -227,8 +212,8 @@
       try {
         const result = await Notification.requestPermission();
         if (result === "granted") {
+          await clearAppBadge();
           if (pushApiUrl) {
-            await clearAppBadge();
             try {
               await subscribePush();
               setBadgeButtonVisible(false);
@@ -240,7 +225,6 @@
               }, 2200);
             }
           } else {
-            await applyAppBadge();
             setBadgeButtonVisible(false);
           }
         } else {
@@ -778,7 +762,7 @@
   // ---------- 初始化 ----------
 
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible" && pushApiUrl) {
+    if (document.visibilityState === "visible") {
       clearAppBadge();
     }
   });
