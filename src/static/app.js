@@ -107,6 +107,20 @@
     }
   }
 
+  async function clearAppBadge() {
+    if (!badgeSupported) return;
+    try {
+      if (navigator.clearAppBadge) {
+        await navigator.clearAppBadge();
+      } else {
+        // iOS 需要用 0 清除，不能传空
+        await navigator.setAppBadge(0);
+      }
+    } catch {
+      // 权限未授予或系统不支持时静默失败
+    }
+  }
+
   function isStandalone() {
     return window.matchMedia("(display-mode: standalone)").matches
       || window.navigator.standalone === true;
@@ -182,7 +196,11 @@
 
     if (Notification.permission === "granted") {
       button.hidden = true;
-      applyAppBadge();
+      // 有后台推送时，打开 App 视为已读并清除角标；
+      // 没有后台推送时，保留“打开时显示今日数量”的旧行为。
+      if (pushApiUrl) clearAppBadge();
+      else applyAppBadge();
+
       if (pushApiUrl) {
         syncPushSubscription().then((synced) => {
           if (!synced) {
@@ -199,8 +217,8 @@
       try {
         const result = await Notification.requestPermission();
         if (result === "granted") {
-          await applyAppBadge();
           if (pushApiUrl) {
+            await clearAppBadge();
             try {
               await subscribePush();
               button.hidden = true;
@@ -212,6 +230,7 @@
               }, 2200);
             }
           } else {
+            await applyAppBadge();
             button.hidden = true;
           }
         } else {
@@ -747,6 +766,12 @@
   });
 
   // ---------- 初始化 ----------
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && pushApiUrl) {
+      clearAppBadge();
+    }
+  });
 
   setupBadgeButton();
   if ("serviceWorker" in navigator) {

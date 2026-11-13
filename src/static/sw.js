@@ -50,6 +50,16 @@ self.addEventListener("notificationclick", (event) => {
 
   event.waitUntil(
     (async () => {
+      try {
+        if ("clearAppBadge" in self.navigator) {
+          await self.navigator.clearAppBadge();
+        } else if ("setAppBadge" in self.navigator) {
+          await self.navigator.setAppBadge(0);
+        }
+      } catch {
+        // 清除角标失败不影响打开页面
+      }
+
       const clients = await self.clients.matchAll({
         type: "window",
         includeUncontrolled: true,
