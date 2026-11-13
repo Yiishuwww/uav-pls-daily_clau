@@ -186,16 +186,26 @@
     }
   }
 
+  function setBadgeButtonVisible(visible, collapse = true) {
+    const button = document.getElementById("enable-badge");
+    if (!button) return;
+    button.hidden = !visible;
+    const meta = button.closest(".head-meta");
+    if (meta) meta.classList.toggle("badge-off", !visible && collapse);
+  }
+
   function setupBadgeButton() {
     const button = document.getElementById("enable-badge");
     if (!button) return;
     if (!badgeSupported || typeof Notification === "undefined" || !isStandalone()) {
-      button.hidden = true;
+      // 手机浏览器标签页里也把空位收起来；桌面端保持主题按钮靠右
+      const compact = window.matchMedia("(max-width: 760px)").matches;
+      setBadgeButtonVisible(false, compact);
       return;
     }
 
     if (Notification.permission === "granted") {
-      button.hidden = true;
+      setBadgeButtonVisible(false);
       // 有后台推送时，打开 App 视为已读并清除角标；
       // 没有后台推送时，保留“打开时显示今日数量”的旧行为。
       if (pushApiUrl) clearAppBadge();
@@ -205,14 +215,14 @@
         syncPushSubscription().then((synced) => {
           if (!synced) {
             button.textContent = "开启后台推送";
-            button.hidden = false;
+            setBadgeButtonVisible(true);
           }
         });
       }
       return;
     }
 
-    button.hidden = false;
+    setBadgeButtonVisible(true);
     button.addEventListener("click", async () => {
       try {
         const result = await Notification.requestPermission();
@@ -221,7 +231,7 @@
             await clearAppBadge();
             try {
               await subscribePush();
-              button.hidden = true;
+              setBadgeButtonVisible(false);
             } catch (error) {
               console.warn("[push] 订阅失败", error);
               button.textContent = "后台推送未开启";
@@ -231,7 +241,7 @@
             }
           } else {
             await applyAppBadge();
-            button.hidden = true;
+            setBadgeButtonVisible(false);
           }
         } else {
           button.textContent = "未授权";

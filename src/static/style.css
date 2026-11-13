@@ -245,6 +245,15 @@ select {
   border-color: var(--accent);
 }
 
+.badge-enable[hidden] {
+  display: none !important;
+}
+
+/* 开启后按钮隐藏时，把主题按钮收回，避免中间留出一段空白 */
+.head-meta.badge-off .theme-btn {
+  margin-left: 0;
+}
+
 /* ---------- Toolbar ---------- */
 
 .toolbar {
