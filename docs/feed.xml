@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Nov 2026 14:14:28 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 23:36:23 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading</title>
@@ -682,6 +682,34 @@
       <category>安全速率</category>
       <category>轨迹优化</category>
       <category>无人机集群</category>
+    </item>
+    <item>
+      <title>Deep Reinforcement Learning for Intelligent UAV-assisted Secured Semantic Communications</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757415</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757415</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Uncrewed aerial vehicle (UAV) communication is a promising solution for providing flexible and on-demand connectivity when terrestrial infrastructure is unavailable or unreliable. However, the strong line-of-sight nature of air-to-ground links makes such systems highly vulnerable to eavesdropping, while conventional bit-level transmission remains inefficient under stringent energy and bandwidth constraints. In this paper, we propose a secure and energy-efficient semantic communication framework for UAV-assisted uplink networks. A dual-UAV architecture is considered, where a UAV relay supports multiple terrestrial users in communicating with a remote base station, and a cooperative UAV jammer is deployed to degrade the eavesdropper’s wiretapping capability. To improve transmission efficiency, semantic communication conveys task-relevant information rather than raw bit streams. We formulate an average secrecy semantic throughput maximization problem that jointly optimizes UAV trajectories, transmit power, bandwidth allocation, and cooperative jamming under secrecy requirements and practical constraints, including peak and average power limits, UAV propulsion energy budgets, maximum operational radius, and collision avoidance. Owing to the system’s dynamic behavior and non-convex nature of the optimization problem, it is reformulated as a Markov decision process and solved using a proximal policy optimization-based deep reinforcement learning framework. Finally, the simulation results show that the proposed framework achieves a higher secure semantic throughput than several baseline schemes.</description>
+      <category>干扰/人工噪声</category>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
+    </item>
+    <item>
+      <title>Enhancing Security for UAV Communications in LAWNs via Flexible-Duplex Cell-Free Design</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757217</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757217</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>This paper investigates the physical layer security of uplink UAV communications in low-altitude wireless networks (LAWNs) enabled by a flexible-duplex cell-free (CF) architecture. In the proposed system, each distributed access point (AP) can dynamically operate as a receive AP for uplink UAV collection or as a transmit AP emitting cooperative artificial noise (AN) to suppress eavesdroppers. A comprehensive uplink-Eve signal model is established, capturing inter-user interference, AN coupling, and cross-AP interference. Based on this model, a max-min secrecy-rate (MMSR) problem is formulated to jointly optimize AP mode selection, receive combiners, and AN covariance under duplexing and power constraints. The highly coupled nonconvex problem is addressed by deriving closed-form optimal combiners and developing a penalty dual decomposition (PDD) algorithm with guaranteed convergence. Numerical results demonstrate that the proposed flexible-duplex CF architecture achieves substantial secrecy-rate gains over fixed-mode CF systems and provides more balanced secrecy performance across UAV users.</description>
+      <category>干扰/人工噪声</category>
+      <category>安全速率</category>
+    </item>
+    <item>
+      <title>Leveraging Cyclostationary Features and Continual Learning for Robust RF Fingerprinting in IoT and UAV Networks</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757281</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757281</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Securing IoT and UAV networks requires lightweight yet resilient methods that go beyond traditional cryptography. This paper introduces a deep learning-based RF fingerprinting framework that leverages cyclostationary features and continual learning to enhance device authentication in dynamic wireless environments. By exploiting invariant signal patterns and adapting to transmission variations, the proposed approach achieves robust identification while remaining efficient for resource-constrained platforms. Experimental results demonstrate strong validation accuracy and improved generalization across heterogeneous devices, highlighting its suitability for smart consumer electronics, IoT systems, and UAV communications. This work advances physical-layer security by embedding adaptive fingerprinting into wireless architectures, enabling scalable and secure connectivity in real-world deployments.</description>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
     </item>
     <item>
       <title>Joint UAV trajectory and offloading optimization with robust secrecy for intelligent mining</title>
