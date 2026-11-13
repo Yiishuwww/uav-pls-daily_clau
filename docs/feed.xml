@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Nov 2026 07:52:38 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 13:45:44 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading</title>
