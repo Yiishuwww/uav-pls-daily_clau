@@ -1,7 +1,62 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-14T07:36:23+08:00",
+  "updatedAt": "2026-11-15T07:29:14+08:00",
   "papers": [
+    {
+      "title": "UAV-Based Massive Covert Communications for Sports Venues",
+      "authors": [
+        "Yu Cheng",
+        "Harun Siljak"
+      ],
+      "abstract": "Uncrewed aerial vehicle (UAV) swarms are a promising solution for providing wireless coverage to massive ground users, but the broadcast nature of air-to-ground links exposes their transmissions to distributed adversarial detection, making covert communication a critical requirement in sensitive deployments such as large sports venues. This paper investigates the joint trajectory planning and delay minimization problem for multi-UAV covert communications under multiple passive willies, which is formulated as a mixed-integer non-convex program subject to a closed-form detection error probability constraint derived under bounded noise uncertainty. Since the problem is intractable for conventional optimization, a scalable multi-agent deep reinforcement learning framework, mMATD4, is proposed based on the multi-agent twin delayed deep deterministic policy gradient (MATD3) backbone. Specifically, a massive-user spread layer is designed to transform each agent’s raw observation into a fixed-dimensional permutation-invariant representation independent of the user population, and a fully decentralized independent-learning architecture is adopted to eliminate the centralized critic, so that the framework scales in both the user and agent dimensions and requires no inter-UAV communication during execution. Furthermore, a cumulative shaped-reward mechanism is developed to convert the sparse mission objective into dense covertness-aware feedback. Simulation results demonstrate that the proposed mMATD4 outperforms representative MARL baselines in convergence stability and delay robustness across covertness levels, and achieves complete user coverage with low service delay in a large-scale sports-venue deployment with six UAVs, over one hundred users, and three willies.",
+      "doi": "10.1109/ojcoms.2026.3749813",
+      "venue": "IEEE Open Journal of the Communications Society",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "url": "https://doi.org/10.1109/ojcoms.2026.3749813",
+      "pdfUrl": "",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化",
+        "无人机集群",
+        "深度强化学习"
+      ],
+      "score": 34,
+      "firstSeen": "2026-11-15",
+      "id": "doi:10.1109/ojcoms.2026.3749813"
+    },
+    {
+      "title": "Joint Position and Hybrid Beamforming Design for Secure Directional Modulation in UAV Communications",
+      "authors": [
+        "Yibo Wang",
+        "Bo Zhang",
+        "Zhengyu Wan",
+        "Baoju Zhang",
+        "Xiaoqing Weng",
+        "Jiaxiang Wu"
+      ],
+      "abstract": "Unmanned aerial vehicles (UAVs), with their advantages of high maneuverability and low cost, have become highly promising platforms for wireless communication systems. To address the rate optimization challenge caused by the coupling between beam direction control and deployment position in UAV communication systems, this paper investigates the average spectral efficiency maximization problem based on hybrid beamforming directional modulation (DM). DM preserves the standard constellation diagrams in the desired user directions while intentionally distorting the signal constellation in undesired directions, thereby ensuring physical-layer security. To this end, we jointly optimize the three-dimensional position of the UAV and the hybrid beamforming weights to improve the average achievable rate while guaranteeing the spatial security characteristics of the beam. Considering the strong coupling among the optimization variables, an alternating optimization strategy is proposed: first, the hybrid weights are fixed while the UAV position is optimized to enhance the average spectral efficiency; then, with the position fixed, the hybrid weights are optimized under constant modulus constraints, mainlobe signal fidelity constraints, and sidelobe signal distortion constraints, achieving spatial shaping of the secure DM beam. Simulation results demonstrate that the proposed scheme effectively improves the average spectral efficiency while satisfying beam directivity and security constraints, thereby validating the necessity and effectiveness of jointly optimizing the UAV position and hybrid weights.",
+      "doi": "10.1109/ojcoms.2026.3747412",
+      "venue": "IEEE Open Journal of the Communications Society",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "url": "https://doi.org/10.1109/ojcoms.2026.3747412",
+      "pdfUrl": "",
+      "sources": [
+        "doaj"
+      ],
+      "tags": [
+        "波束成形"
+      ],
+      "score": 14,
+      "firstSeen": "2026-11-15",
+      "id": "doi:10.1109/ojcoms.2026.3747412"
+    },
     {
       "title": "Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading",
       "authors": [
@@ -18,7 +73,7 @@
       "type": "journal-article",
       "published": "2026-11-12",
       "url": "https://doi.org/10.1371/journal.pone.0361873",
-      "pdfUrl": "",
+      "pdfUrl": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0361873&type=printable",
       "sources": [
         "crossref",
         "openalex"
