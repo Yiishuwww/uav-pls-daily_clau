@@ -126,7 +126,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   <div class="wrap head-meta">
     <span>更新于 ${xmlEscape(updated)}（UTC+8）</span>
     <span class="srcs">${sourceStatusHtml(status)}</span>
-    <button type="button" id="enable-badge" class="badge-enable" title="开启主屏幕红点提醒（需要允许通知）" hidden>开启红点</button>
+    <button type="button" id="enable-badge" class="badge-enable" title="开启后台推送（需要允许通知）" hidden>开启后台推送</button>
     <button type="button" id="theme-toggle" class="theme-btn" aria-label="切换深色模式" title="切换深色模式">☾</button>
   </div>
 </header>

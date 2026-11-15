@@ -230,13 +230,13 @@
         } else {
           button.textContent = "未授权";
           window.setTimeout(() => {
-            button.textContent = "开启红点";
+            button.textContent = "开启后台推送";
           }, 1800);
         }
       } catch {
         button.textContent = "开启失败";
         window.setTimeout(() => {
-          button.textContent = "开启红点";
+          button.textContent = "开启后台推送";
         }, 1800);
       }
     });
