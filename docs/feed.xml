@@ -2,11 +2,30 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 Nov 2026 07:26:13 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 07:23:06 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>UAV-Based Massive Covert Communications for Sports Venues</title>
+      <link>https://doi.org/10.1109/ojcoms.2026.3749813</link>
+      <guid isPermaLink="false">doi:10.1109/ojcoms.2026.3749813</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Uncrewed aerial vehicle (UAV) swarms are a promising solution for providing wireless coverage to massive ground users, but the broadcast nature of air-to-ground links exposes their transmissions to distributed adversarial detection, making covert communication a critical requirement in sensitive deployments such as large sports venues. This paper investigates the joint trajectory planning and delay minimization problem for multi-UAV covert communications under multiple passive willies, which is formulated as a mixed-integer non-convex program subject to a closed-form detection error probability constraint derived under bounded noise uncertainty. Since the problem is intractable for conventional optimization, a scalable multi-agent deep reinforcement learning framework, mMATD4, is proposed based on the multi-agent twin delayed deep deterministic policy gradient (MATD3) backbone. Specifically, a massive-user spread layer is designed to transform each agent’s raw observation into a fixed-dimensional permutation-invariant representation independent of the user population, and a fully decentralized independent-learning architecture is adopted to eliminate the centralized critic, so that the framework scales in both the user and agent dimensions and requires no inter-UAV communication during execution. Furthermore, a cumulative shaped-reward mechanism is developed to convert the sparse mission objective into dense covertness-aware feedback. Simulation results demonstrate that the proposed mMATD4 outperforms representative MARL baselines in convergence stability and delay robustness across covertness levels, and achieves complete user coverage with low service delay in a large-scale sports-venue deployment with six UAVs, over one hundred users, and three willies.</description>
+      <category>隐蔽通信</category>
+      <category>轨迹优化</category>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
+    </item>
+    <item>
+      <title>Joint Position and Hybrid Beamforming Design for Secure Directional Modulation in UAV Communications</title>
+      <link>https://doi.org/10.1109/ojcoms.2026.3747412</link>
+      <guid isPermaLink="false">doi:10.1109/ojcoms.2026.3747412</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Unmanned aerial vehicles (UAVs), with their advantages of high maneuverability and low cost, have become highly promising platforms for wireless communication systems. To address the rate optimization challenge caused by the coupling between beam direction control and deployment position in UAV communication systems, this paper investigates the average spectral efficiency maximization problem based on hybrid beamforming directional modulation (DM). DM preserves the standard constellation diagrams in the desired user directions while intentionally distorting the signal constellation in undesired directions, thereby ensuring physical-layer security. To this end, we jointly optimize the three-dimensional position of the UAV and the hybrid beamforming weights to improve the average achievable rate while guaranteeing the spatial security characteristics of the beam. Considering the strong coupling among the optimization variables, an alternating optimization strategy is proposed: first, the hybrid weights are fixed while the UAV position is optimized to enhance the average spectral efficiency; then, with the position fixed, the hybrid weights are optimized under constant modulus constraints, mainlobe signal fidelity constraints, and sidelobe signal distortion constraints, achieving spatial shaping of the secure DM beam. Simulation results demonstrate that the proposed scheme effectively improves the average spectral efficiency while satisfying beam directivity and security constraints, thereby validating the necessity and effectiveness of jointly optimizing the UAV position and hybrid weights.</description>
+      <category>波束成形</category>
+    </item>
     <item>
       <title>Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading</title>
       <link>https://doi.org/10.1371/journal.pone.0361873</link>
@@ -682,6 +701,34 @@
       <category>安全速率</category>
       <category>轨迹优化</category>
       <category>无人机集群</category>
+    </item>
+    <item>
+      <title>Deep Reinforcement Learning for Intelligent UAV-assisted Secured Semantic Communications</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757415</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757415</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Uncrewed aerial vehicle (UAV) communication is a promising solution for providing flexible and on-demand connectivity when terrestrial infrastructure is unavailable or unreliable. However, the strong line-of-sight nature of air-to-ground links makes such systems highly vulnerable to eavesdropping, while conventional bit-level transmission remains inefficient under stringent energy and bandwidth constraints. In this paper, we propose a secure and energy-efficient semantic communication framework for UAV-assisted uplink networks. A dual-UAV architecture is considered, where a UAV relay supports multiple terrestrial users in communicating with a remote base station, and a cooperative UAV jammer is deployed to degrade the eavesdropper’s wiretapping capability. To improve transmission efficiency, semantic communication conveys task-relevant information rather than raw bit streams. We formulate an average secrecy semantic throughput maximization problem that jointly optimizes UAV trajectories, transmit power, bandwidth allocation, and cooperative jamming under secrecy requirements and practical constraints, including peak and average power limits, UAV propulsion energy budgets, maximum operational radius, and collision avoidance. Owing to the system’s dynamic behavior and non-convex nature of the optimization problem, it is reformulated as a Markov decision process and solved using a proximal policy optimization-based deep reinforcement learning framework. Finally, the simulation results show that the proposed framework achieves a higher secure semantic throughput than several baseline schemes.</description>
+      <category>干扰/人工噪声</category>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
+    </item>
+    <item>
+      <title>Enhancing Security for UAV Communications in LAWNs via Flexible-Duplex Cell-Free Design</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757217</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757217</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>This paper investigates the physical layer security of uplink UAV communications in low-altitude wireless networks (LAWNs) enabled by a flexible-duplex cell-free (CF) architecture. In the proposed system, each distributed access point (AP) can dynamically operate as a receive AP for uplink UAV collection or as a transmit AP emitting cooperative artificial noise (AN) to suppress eavesdroppers. A comprehensive uplink-Eve signal model is established, capturing inter-user interference, AN coupling, and cross-AP interference. Based on this model, a max-min secrecy-rate (MMSR) problem is formulated to jointly optimize AP mode selection, receive combiners, and AN covariance under duplexing and power constraints. The highly coupled nonconvex problem is addressed by deriving closed-form optimal combiners and developing a penalty dual decomposition (PDD) algorithm with guaranteed convergence. Numerical results demonstrate that the proposed flexible-duplex CF architecture achieves substantial secrecy-rate gains over fixed-mode CF systems and provides more balanced secrecy performance across UAV users.</description>
+      <category>干扰/人工噪声</category>
+      <category>安全速率</category>
+    </item>
+    <item>
+      <title>Leveraging Cyclostationary Features and Continual Learning for Robust RF Fingerprinting in IoT and UAV Networks</title>
+      <link>https://doi.org/10.1109/vtc2026-spring68026.2026.11757281</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-spring68026.2026.11757281</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Securing IoT and UAV networks requires lightweight yet resilient methods that go beyond traditional cryptography. This paper introduces a deep learning-based RF fingerprinting framework that leverages cyclostationary features and continual learning to enhance device authentication in dynamic wireless environments. By exploiting invariant signal patterns and adapting to transmission variations, the proposed approach achieves robust identification while remaining efficient for resource-constrained platforms. Experimental results demonstrate strong validation accuracy and improved generalization across heterogeneous devices, highlighting its suitability for smart consumer electronics, IoT systems, and UAV communications. This work advances physical-layer security by embedding adaptive fingerprinting into wireless architectures, enabling scalable and secure connectivity in real-world deployments.</description>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
     </item>
     <item>
       <title>Joint UAV trajectory and offloading optimization with robust secrecy for intelligent mining</title>
