@@ -1,7 +1,35 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-16T07:40:06+08:00",
+  "updatedAt": "2026-11-17T07:38:18+08:00",
   "papers": [
+    {
+      "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
+      "authors": [
+        "Chan Gao",
+        "Surui Liu",
+        "Qian Wang",
+        "Taotao Huang"
+      ],
+      "abstract": "Unmanned aerial vehicles (UAVs) provide a flexible platform for covert communication in wireless networks with complex propagation environments. This paper investigates a dual-UAV-assisted covert communication system in the presence of colluding wardens, where one UAV serves as a decode-and-forward relay and the other performs cooperative jamming. To enhance communication covertness, a randomized jamming-power strategy is introduced, in which the wardens know the statistical distribution of the jamming power but not its instantaneous realization, while legitimate receivers are assumed to perform ideal interference cancellation. To characterize the cooperative detection behavior of the two wardens, a decision-level OR fusion rule is adopted, and a cooperation factor α is introduced to represent the probability of successful decision sharing. Considering bounded noise uncertainty and randomized jamming power, the individual false-alarm and missed-detection probabilities are analytically derived, and the joint detection error probability is obtained under the proposed fusion mechanism. The minimum joint detection error probability is then determined by optimizing the detection thresholds of both wardens. Furthermore, the achievable end-to-end covert communication rate under half-duplex decode-and-forward relaying is characterized, and a joint optimization problem involving transmission powers and UAV hovering positions is formulated under a prescribed covertness constraint. The resulting analytical framework enables the investigation of the effects of jamming-power uncertainty, warden cooperation, and system parameters on covert communication performance.",
+      "doi": "10.3390/electronics15225293",
+      "venue": "Electronics",
+      "publisher": "MDPI AG",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "url": "https://doi.org/10.3390/electronics15225293",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群"
+      ],
+      "score": 34,
+      "firstSeen": "2026-11-17",
+      "id": "doi:10.3390/electronics15225293"
+    },
     {
       "title": "UAV-Based Massive Covert Communications for Sports Venues",
       "authors": [
@@ -225,7 +253,7 @@
         "轨迹优化",
         "无人机集群"
       ],
-      "score": 34,
+      "score": 32,
       "firstSeen": "2026-11-10",
       "id": "doi:10.1002/itl2.70371"
     },

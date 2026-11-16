@@ -1,47 +1,47 @@
 {
-  "updatedAt": "2026-11-16T07:40:01+08:00",
-  "updatedCN": "2026-11-16 07:40",
+  "updatedAt": "2026-11-17T07:38:17+08:00",
+  "updatedCN": "2026-11-17 07:38",
   "sources": [
     {
       "name": "arxiv",
       "ok": true,
       "count": 1,
-      "ms": 1887,
+      "ms": 2173,
       "error": null
     },
     {
       "name": "openalex",
       "ok": true,
-      "count": 13,
-      "ms": 751,
+      "count": 12,
+      "ms": 388,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
-      "count": 186,
-      "ms": 17285,
+      "count": 166,
+      "ms": 16847,
       "error": null
     },
     {
       "name": "ieee",
-      "ok": true,
-      "count": 21,
-      "ms": 19317,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "ms": 1572,
+      "error": "IEEE Xplore 所有查询均失败"
     },
     {
       "name": "doaj",
       "ok": true,
       "count": 7,
-      "ms": 12297,
+      "ms": 12146,
       "error": null
     },
     {
       "name": "zenodo",
       "ok": true,
-      "count": 1,
-      "ms": 4834,
+      "count": 2,
+      "ms": 5325,
       "error": null
     }
   ]
