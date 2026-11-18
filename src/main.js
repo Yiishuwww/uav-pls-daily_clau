@@ -12,6 +12,7 @@ import { collectCrossref } from "./collectors/crossref.js";
 import { collectDoaj } from "./collectors/doaj.js";
 import { collectZenodo } from "./collectors/zenodo.js";
 import { collectIeee } from "./collectors/ieee.js";
+import { collectSpringer } from "./collectors/springer.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
 import { enrichAbstracts } from "./enrich.js";
 import { evaluatePaper } from "./rank.js";
@@ -80,6 +81,7 @@ function sourceLabel(name) {
     doaj: "DOAJ",
     zenodo: "Zenodo",
     ieee: "IEEE Xplore",
+    springer: "Springer Nature",
   }[name] ?? name;
 }
 
@@ -162,6 +164,18 @@ async function main() {
       );
     } else {
       log(`IEEE Xplore 未配置 ${keyEnv}，跳过（免费申请：https://developer.ieee.org/）`);
+    }
+  }
+  if (sources.springer?.enabled) {
+    const keyEnv = sources.springer.api_key_env || "SPRINGER_API_KEY";
+    if (process.env[keyEnv]) {
+      tasks.push(
+        runSource("springer", () =>
+          collectSpringer({ since, today, config: sources.springer, log }),
+        ),
+      );
+    } else {
+      log(`Springer 未配置 ${keyEnv}，跳过（免费申请：https://dev.springernature.com/）`);
     }
   }
   if (sources.doaj?.enabled) {

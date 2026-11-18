@@ -10,6 +10,7 @@
 
 - 数据源：**arXiv API + OpenAlex + Crossref + DOAJ + Zenodo**，无需任何密钥
 - 可选接入 **IEEE Xplore 官方 Metadata API**（免费 key）：IEEE 期刊、会议、Early Access 的元数据与摘要
+- 可选接入 **Springer Nature Meta API**（免费 key）：Springer 期刊、会议、章节的元数据与摘要
 - 通过 **Semantic Scholar** 按 DOI / arXiv ID 批量补全缺失摘要（无需 key；可申请免费 key 提高限额）
 - 通过 Crossref 的 publisher member 精确覆盖 **IEEE / Elsevier / Springer / Wiley** 的期刊元数据
 - 跨源去重：DOI → arXiv ID → 标题精确匹配 → 标题模糊匹配（≥94%）
@@ -36,12 +37,12 @@
 | Zenodo | REST API | 无需 key；可选 `ZENODO_TOKEN` 提高限额 |
 | Semantic Scholar | Graph API | 摘要补全；无 key 可用，可选免费 key 提高限额 |
 | IEEE Xplore | 官方 Metadata API | 可选，需免费 key；设置 `IEEE_API_KEY` 后启用 |
-| Springer Link | Springer Nature Meta API | 二期可接，需免费 key |
+| Springer Nature | Meta API | 可选，需免费 key；设置 `SPRINGER_API_KEY` 后启用 |
 | ScienceDirect / Elsevier | ScienceDirect Search API | 二期可接，需免费 key |
 | Wiley | 无公开免费检索 API | 已由 Crossref 的 10.1002 前缀覆盖 |
 | Web of Science | Starter API | 需机构订阅，暂不接入 |
 
-> 没有 IEEE / Elsevier / Springer 的官方 key，也能拿到这些出版社论文的 DOI、标题、作者、期刊、日期等元数据；部分摘要可能缺失，此时仍可通过标题命中筛选。接入 IEEE 官方 API 后，IEEE 论文的摘要和 Early Access 记录会更完整。
+> 没有 IEEE / Springer 的官方 key，也能拿到这些出版社论文的 DOI、标题、作者、期刊、日期等元数据；部分摘要可能缺失，此时仍可通过标题命中筛选。接入官方 API 后，摘要和 Early Access 记录会更完整。
 >
 > DOAJ 的复杂布尔查询不稳定，采集器会拆成多条单字段查询并在本地过滤；Zenodo 记录中会排除数据集/软件，只保留论文、预印本和会议论文。
 >
@@ -64,6 +65,19 @@ Crossref 已经能拿到 IEEE 的题录，但很多 IEEE 记录在 Crossref 中�
 采集器调用 `https://ieeexploreapi.ieee.org/api/v1/search/articles`，按年份检索期刊、会议和 Early Access 记录，再与 Crossref / OpenAlex 的结果按 DOI 去重合并。没有配置 key 时会自动跳过，不影响其他数据源。
 
 > IEEE 免费 key 有每日调用额度。默认每天 3 条查询、每条 1 页（最多 200 条），远低于常规限额；如需扩大召回，可在 `config/sources.yaml` 的 `ieee.queries` / `max_pages` 中调整。
+
+### 接入 Springer Nature Meta API（可选）
+
+1. 打开 <https://dev.springernature.com/>，注册并申请 **Meta API** key（免费，通常即时或几分钟）。
+2. 本地设置后测试：
+
+   ```powershell
+   $env:SPRINGER_API_KEY = "你的key"
+   node src/main.js --days 7
+   ```
+
+3. GitHub Actions：在仓库 **Settings → Secrets and variables → Actions → Secrets** 添加 `SPRINGER_API_KEY`，工作流已注入。
+4. 采集器使用 Springer 的 `q` 检索式 + `datefrom`/`dateto` 时间窗，单次最多 100 条，内置 3 条查询；免费 Basic 额度每天约 500 次，日报远低于限额。
 
 ### Semantic Scholar 摘要补全（可选 key）
 
@@ -521,8 +535,9 @@ npm run preview
 - `doaj`：DOAJ 查询页数与每页条数
 - `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
+- `springer`：Springer Nature Meta API。`api_key_env` 默认 `SPRINGER_API_KEY`，`page_size` 最大 100，`max_pages` 控制翻页；可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `semanticscholar`：摘要补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
-- 二期要接 Springer / Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
+- 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
 
@@ -540,6 +555,7 @@ uav-pls-daily_clau/
 │  │  ├─ crossref.js
 │  │  ├─ doaj.js
 │  │  ├─ ieee.js
+│  │  ├─ springer.js
 │  │  └─ zenodo.js
 │  ├─ dedup.js                   # 跨源去重与字段合并
 │  ├─ enrich.js                  # Semantic Scholar 摘要补全
@@ -579,6 +595,6 @@ uav-pls-daily_clau/
 
 ## 二期可扩展
 
-- 接入 Springer / Elsevier 官方 API（免费 key）
+- 接入 Elsevier 官方 API（免费 key）
 - 中文一句话摘要（可选 LLM，自带 key）
 - 周报与引用量排序

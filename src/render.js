@@ -12,6 +12,7 @@ const SOURCE_LABELS = {
   doaj: "DOAJ",
   zenodo: "Zenodo",
   ieee: "IEEE Xplore",
+  springer: "Springer Nature",
 };
 
 function sourceStatusHtml(status) {
