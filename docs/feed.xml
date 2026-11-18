@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 18 Nov 2026 11:25:38 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 12:05:50 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Secrecy performance analysis of UAV relay‑aided fluid antenna systems</title>
@@ -219,7 +219,9 @@
       <link>https://doi.org/10.1007/s10878-026-01491-8</link>
       <guid isPermaLink="false">doi:10.1007/s10878-026-01491-8</guid>
       <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Journal of Combinatorial Optimization · 2026-10-25 · 空天地网络, 无人机集群</description>
+      <description>Satellite-vehicle communication networks are critical for enabling intelligent transportation systems. However, the inherent broadcast characteristic of wireless channels and long signal propagation distances pose significant challenges to achieve secure transmissions. This paper investigates the physical layer security (PLS) enhancement for satellite-vehicle communication networks by utilizing unmanned aerial vehicles (UAVs) as auxiliary relays. Specifically, UAVs are deployed to forward legitimate information for improving system security capacity and emit artificial noise (AN) to disrupt eavesdropping channels. To optimize the PLS performance, we formulate a novel secrecy capacity maximization problem for UAV relay selection and power allocation (SCMP-RP). The formulated SCMP-RP is a mixed-integer non-convex optimization problem with an enormous solution space, making it difficult to solve directly. In order to solve SCMP-RP efficiently, we propose an iterative method which called improved relay selection and the power allocation (IJRSPA). In detail, IJRSPA solves SCMP-RP by iterating two proposed methods, i.e., a Relay Selection method based on Hungarian Algorithm (RSHA) to solve the relay selection for multi-user communication, and a Power Allocation algorithm based on Momenthum method (MMPA) to obtain the near-optimal power allocation factors. Extensive simulations verify the advantages of the proposed methods not only on secure transmissions, but also on effectiveness and efficiency.</description>
+      <category>干扰/人工噪声</category>
+      <category>安全速率</category>
       <category>空天地网络</category>
       <category>无人机集群</category>
     </item>
@@ -247,8 +249,9 @@
       <link>https://doi.org/10.1007/s42401-026-00541-7</link>
       <guid isPermaLink="false">doi:10.1007/s42401-026-00541-7</guid>
       <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Aerospace Systems · 2026-10-13 · 隐蔽通信</description>
+      <description>With the widespread application of unmanned aerial vehicles in wireless communications, their open channels pose a dual challenge of concealment and security. The study focuses on intelligent reflection-assisted unmanned aerial vehicle communication systems, aiming to achieve the concealment of the communication process and the security of data transmission, and constructs a joint communication optimization model including unmanned aerial vehicles, users, eavesdroppers, and intelligent reflective surfaces. Under a hybrid optimization framework that satisfies strict concealment constraints, relaxation variables are introduced to represent the minimum average safety capacity of users, and the solution is carried out using the minimum secrecy rate optimization algorithm of deep double-Q networks and sequential convex approximations to achieve end-to-end collaborative optimization. Experimental results show that the proposed method achieves a security capacity of 2.41 Mbps while satisfying the concealment constraints. The total energy consumption of the research method is only 4.82 kJ, significantly lower than all other algorithms. The average energy efficiency of the unmanned aerial vehicle is as high as 5.94 Mbit/J, which can effectively meet the requirements of covert communication and secure transmission. The framework proposed in the study has significant advantages and feasibility in balancing dual security goals and building a highly reliable unmanned aerial vehiclecommunication network.</description>
       <category>隐蔽通信</category>
+      <category>安全速率</category>
     </item>
     <item>
       <title>Waveform Randomization for Secure ISAC</title>
@@ -463,6 +466,15 @@
       <category>无人机集群</category>
     </item>
     <item>
+      <title>Physical layer security of ground-to-UAV FSO system considering F-distribution turbulence channel and the presence of eavesdroppers</title>
+      <link>https://doi.org/10.1007/s11801-026-5056-6</link>
+      <guid isPermaLink="false">doi:10.1007/s11801-026-5056-6</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <description>This paper considers the physical layer security (PLS) performance analysis of an unmanned aerial vehicle (UAV)-assisted free-space optical (FSO) communication system over Fisher-Snedecor (F) distributed turbulence fading channel. We consider the combined effects of atmospheric turbulence, pointing error (PE), atmospheric attenuation, and angle-of-arrival (AOA) fluctuations on the channel. The communication between two legitimate peers in the presence of an external eavesdropper is studied from the perspective of communication theory security. Specifically, under two different eavesdropping scenarios where an eavesdropper is located close to the legitimate transmitter or receiver, we derive the exact closed-form expressions of the secrecy outage probability (SOP) and strictly positive secrecy capacity (SPSC), respectively. These analytical results are validated through Monte Carlo simulations. Furthermore, we also analyze the impact of various link parameters for both the main channel and the eavesdropping channel on the system performance.</description>
+      <category>安全速率</category>
+      <category>无人机集群</category>
+    </item>
+    <item>
       <title>UAV-Enabled Covert Communication Against Cooperative Detection Under Nakagami-m Channel</title>
       <link>https://doi.org/10.1109/pimrc69400.2026.11711983</link>
       <guid isPermaLink="false">doi:10.1109/pimrc69400.2026.11711983</guid>
@@ -519,14 +531,6 @@
       <category>干扰/人工噪声</category>
       <category>无人机集群</category>
       <category>边缘计算</category>
-    </item>
-    <item>
-      <title>Physical layer security of ground-to-UAV FSO system considering F-distribution turbulence channel and the presence of eavesdroppers</title>
-      <link>https://doi.org/10.1007/s11801-026-5056-6</link>
-      <guid isPermaLink="false">doi:10.1007/s11801-026-5056-6</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Optoelectronics Letters · 2026-09-01</description>
-
     </item>
     <item>
       <title>RIS-assisted ISAC against heterogeneous malicious entities in low-altitude environments</title>
