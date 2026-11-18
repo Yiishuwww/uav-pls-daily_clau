@@ -41,21 +41,13 @@ semanticscholar:
   api_key_env: S2_API_KEY
   batch_size: 500     # 单次批量查询上限
 
-# Springer Nature Meta API：免费 key（https://dev.springernature.com/ → Meta API）。
+# Springer Nature Meta API：按 DOI 给 Crossref/OpenAlex 里的 Springer/Nature 论文补摘要。
+# Basic 免费 key 不支持字段/日期筛选，也不适合全文检索，所以只按 DOI 查询。
 # 设置环境变量 SPRINGER_API_KEY；GitHub Actions 中用同名 Secret。
 springer:
   enabled: true
   api_key_env: SPRINGER_API_KEY
-  page_size: 25       # Basic 套餐建议 25；Premium 可调到 100
-  max_pages: 6        # Basic key 不能按日期筛选，需要多翻几页再本地过滤
-  # Basic 免费 key 不支持 datefrom/dateto（会返回 403 premium）。
-  # 有 Premium key 时可改成 true，让 Springer 服务端按日期筛选。
-  date_filter: false
-  # 可选：自定义检索式；留空使用采集器内置的简单查询。
-  # Basic 套餐不要用 title:/abstract: 或括号 + OR，会 403 premium。
-  # queries:
-  #   - '"physical layer security" UAV'
-  #   - 'secrecy UAV'
+  max_papers: 20      # 每次最多查多少篇缺摘要的 Springer/Nature 论文
 
 # 开放获取期刊目录，无需 key。DOAJ 的复杂布尔查询不稳定，
 # 采集器使用多条单字段查询，再由本地 PLS/UAV 规则过滤。

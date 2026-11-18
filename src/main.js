@@ -12,9 +12,9 @@ import { collectCrossref } from "./collectors/crossref.js";
 import { collectDoaj } from "./collectors/doaj.js";
 import { collectZenodo } from "./collectors/zenodo.js";
 import { collectIeee } from "./collectors/ieee.js";
-import { collectSpringer } from "./collectors/springer.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
 import { enrichAbstracts } from "./enrich.js";
+import { enrichSpringer } from "./enrich-springer.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
 import { loadStatus, loadStore, saveStatus, saveStore } from "./store.js";
@@ -166,18 +166,6 @@ async function main() {
       log(`IEEE Xplore 未配置 ${keyEnv}，跳过（免费申请：https://developer.ieee.org/）`);
     }
   }
-  if (sources.springer?.enabled) {
-    const keyEnv = sources.springer.api_key_env || "SPRINGER_API_KEY";
-    if (process.env[keyEnv]) {
-      tasks.push(
-        runSource("springer", () =>
-          collectSpringer({ since, today, config: sources.springer, log }),
-        ),
-      );
-    } else {
-      log(`Springer 未配置 ${keyEnv}，跳过（免费申请：https://dev.springernature.com/）`);
-    }
-  }
   if (sources.doaj?.enabled) {
     tasks.push(
       runSource("doaj", () =>
@@ -238,7 +226,8 @@ async function main() {
     incoming,
   );
 
-  // Crossref / IEEE 等来源常缺摘要，按 DOI/arXiv ID 批量补全后再做相关性判断。
+  // Springer/Nature 论文先按 DOI 补摘要，再用 Semantic Scholar 补其余来源。
+  await enrichSpringer(merged, { config: sources.springer ?? {}, log });
   await enrichAbstracts(merged, { config: sources.semanticscholar ?? {}, log });
 
   let added = 0;
