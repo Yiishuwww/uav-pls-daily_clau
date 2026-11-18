@@ -13,8 +13,9 @@ import { collectDoaj } from "./collectors/doaj.js";
 import { collectZenodo } from "./collectors/zenodo.js";
 import { collectIeee } from "./collectors/ieee.js";
 import { finalizePaper, mergeAll, sortPapers } from "./dedup.js";
-import { enrichAbstracts } from "./enrich.js";
+import { enrichSemanticScholar } from "./enrich.js";
 import { enrichSpringer } from "./enrich-springer.js";
+import { enrichChineseSummaries } from "./summarize.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
 import { loadStatus, loadStore, saveStatus, saveStore } from "./store.js";
@@ -228,7 +229,7 @@ async function main() {
 
   // Springer/Nature 论文先按 DOI 补摘要，再用 Semantic Scholar 补其余来源。
   await enrichSpringer(merged, { config: sources.springer ?? {}, log });
-  await enrichAbstracts(merged, { config: sources.semanticscholar ?? {}, log });
+  await enrichSemanticScholar(merged, { config: sources.semanticscholar ?? {}, log });
 
   let added = 0;
   const kept = [];
@@ -241,6 +242,9 @@ async function main() {
     if (paper.isNew) added += 1;
     kept.push(paper);
   }
+
+  // 只为最终入选的论文生成中文摘要，避免为无关论文浪费调用。
+  await enrichChineseSummaries(kept, { config: sources.summary ?? {}, log });
 
   const papers = sortPapers(kept.map(finalizePaper));
   const nextStore = {

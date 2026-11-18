@@ -11,7 +11,8 @@
 - 数据源：**arXiv API + OpenAlex + Crossref + DOAJ + Zenodo**，无需任何密钥
 - 可选接入 **IEEE Xplore 官方 Metadata API**（免费 key）：IEEE 期刊、会议、Early Access 的元数据与摘要
 - 可选接入 **Springer Nature Meta API**（免费 key）：对 Crossref/OpenAlex 中的 Springer/Nature 论文按 DOI 补摘要
-- 通过 **Semantic Scholar** 按 DOI / arXiv ID 批量补全缺失摘要（无需 key；可申请免费 key 提高限额）
+- 通过 **Semantic Scholar** 按 DOI / arXiv ID 批量补全缺失摘要、**引用量、TLDR 与开放获取 PDF 链接**（无需 key；可申请免费 key 提高限额）
+- 可选接入 **智谱 GLM-4-Flash**（免费模型）：为入选论文生成中文一句话摘要
 - 通过 Crossref 的 publisher member 精确覆盖 **IEEE / Elsevier / Springer / Wiley** 的期刊元数据
 - 跨源去重：DOI → arXiv ID → 标题精确匹配 → 标题模糊匹配（≥94%）
 - 相关性硬门槛：标题或摘要中必须同时出现 PLS 词与 UAV 词
@@ -19,7 +20,8 @@
 - 中文界面，论文标题与摘要保留英文原文
 - 顶部中文导读 + 随筛选变化的“本期概览”
 - 预印本用灰色小标签标注，不抢视觉
-- 搜索、时间范围、类型、月份、标签筛选，支持“最新发表 / 相关性”排序
+- 搜索、时间范围、类型、月份、标签筛选，支持“最新发表 / 相关性 / 高引用”排序
+- 卡片显示中文一句话摘要（或 Semantic Scholar TLDR）、引用量与 OA PDF 链接
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
 - **BibTeX 导出**：导出当前筛选结果，或复制单篇；`docs/data/papers.bib` 提供全量文件
 - **微信推送**（可选）：企业微信群机器人 / PushPlus / Server酱，每天只推当天新增
@@ -35,7 +37,7 @@
 | Crossref | REST API | 无需 key，按 member 覆盖 IEEE(263)、Elsevier(78)、Springer(297)、Wiley(311) |
 | DOAJ | REST API | 无需 key，开放获取期刊 |
 | Zenodo | REST API | 无需 key；可选 `ZENODO_TOKEN` 提高限额 |
-| Semantic Scholar | Graph API | 摘要补全；无 key 可用，可选免费 key 提高限额 |
+| Semantic Scholar | Graph API | 摘要、引用量、TLDR、OA PDF 补全；无 key 可用，可选免费 key 提高限额 |
 | IEEE Xplore | 官方 Metadata API | 可选，需免费 key；设置 `IEEE_API_KEY` 后启用 |
 | Springer Nature | Meta API | 按 DOI 补摘要；可选免费 key，设置 `SPRINGER_API_KEY` 后启用 |
 | ScienceDirect / Elsevier | ScienceDirect Search API | 二期可接，需免费 key |
@@ -83,14 +85,44 @@ Springer 论文在 Crossref/OpenAlex 里通常有题录但缺摘要。Basic 免�
 5. 每次最多查 `max_papers` 篇（默认 20），每天通常 0–5 次请求，远低于免费额度 500 次/天。
 6. 想先验证 key 能否按 DOI 查到记录，可以运行 `node scripts/springer-doi-check.mjs <DOI>`。
 
-### Semantic Scholar 摘要补全（可选 key）
+### Semantic Scholar 补全（可选 key）
 
-Crossref、IEEE 等来源经常只给题录、不给摘要，导致相关性判断只能看标题。项目会在合并后、打分前，用 Semantic Scholar 的批量接口按 DOI / arXiv ID 补全缺失摘要：
+Crossref、IEEE 等来源经常只给题录、不给摘要，导致相关性判断只能看标题。项目会在合并后、打分前，用 Semantic Scholar 的批量接口按 DOI / arXiv ID 补全：
+
+- **缺失摘要**：只在原本没有摘要时填充，不覆盖已有摘要。
+- **引用量**：每次运行更新，页面可切换“高引用”排序，卡片显示引用数。
+- **TLDR**：Semantic Scholar 生成的英文一句话概述；没有中文摘要时作为补充显示。
+- **开放获取 PDF**：论文有 OA 版本时，卡片链接区增加“OA PDF”。
+
+调用细节：
 
 - 无 key 直接可用，但走共享限流（约 1 次/秒）；每次日报通常只需要 1 次批量请求。
 - 想更稳，可申请免费 key：<https://www.semanticscholar.org/product/api#api-key-form>（需填写用途，审核 1–3 个工作日）。
 - 申请后在本地设置 `S2_API_KEY`，或在仓库 Secrets 中添加同名 secret；不设置也能正常运行。
-- 只补全**原本没有摘要**的论文，不会覆盖已有摘要；接口失败时记录日志并继续其他数据源。
+- 接口失败时记录日志并继续其他数据源。
+
+### 中文一句话摘要（可选，智谱 GLM-4-Flash）
+
+配置免费的智谱 key 后，每天会为**最终入选**的论文生成 1–2 句中文摘要，显示在卡片 TLDR 的位置：
+
+1. 打开 <https://open.bigmodel.cn/>，注册并完成实名认证（免费）。
+2. 在控制台的 **API 密钥** 页面创建 key。
+3. 本地运行：
+
+   ```powershell
+   $env:GLM_API_KEY = "你的key"
+   node src/main.js --days 7
+   ```
+
+4. GitHub Actions：在仓库 **Settings → Secrets and variables → Actions → Secrets** 添加 `GLM_API_KEY`。
+
+说明：
+
+- 使用 OpenAI 兼容接口 `https://open.bigmodel.cn/api/paas/v4/chat/completions`，模型 `glm-4-flash`（免费）。
+- 每次最多生成 `summary.max_papers` 篇（默认 50）；历史论文会在后续运行中逐步补齐，已生成的不会重复调用。
+- 未配置 key 时自动跳过，不影响采集、渲染和推送。
+- 生成失败连续 3 次会停止本次调用，避免浪费额度。
+- 摘要由模型生成，可能存在偏差；页面优先显示中文摘要，没有时才显示 Semantic Scholar 的英文 TLDR。
 
 ### 微信推送（可选）
 
@@ -540,7 +572,8 @@ npm run preview
 - `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `springer`：Springer Nature Meta API 摘要补全。`api_key_env` 默认 `SPRINGER_API_KEY`，`max_papers` 控制每次最多补多少篇；不做全文检索，只按 DOI 查询缺摘要的 Springer/Nature 论文。未设置 key 时自动跳过
-- `semanticscholar`：摘要补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
+- `semanticscholar`：摘要、引用量、TLDR、OA PDF 补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
+- `summary`：中文一句话摘要。`api_key_env` 默认 `GLM_API_KEY`，`model` 默认 `glm-4-flash`，`base_url` 可换兼容网关，`max_papers` 控制每次最多生成多少篇；未设置 key 时自动跳过
 - 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
@@ -561,8 +594,9 @@ uav-pls-daily_clau/
 │  │  ├─ ieee.js
 │  │  └─ zenodo.js
 │  ├─ dedup.js                   # 跨源去重与字段合并
-│  ├─ enrich.js                  # Semantic Scholar 摘要补全
+│  ├─ enrich.js                  # Semantic Scholar 摘要 / 引用量 / TLDR / OA PDF
 │  ├─ enrich-springer.js         # Springer/Nature 按 DOI 补摘要
+│  ├─ summarize.js               # 智谱 GLM-4-Flash 中文一句话摘要
 │  ├─ bibtex.js                  # BibTeX 生成
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
@@ -600,5 +634,5 @@ uav-pls-daily_clau/
 ## 二期可扩展
 
 - 接入 Elsevier 官方 API（免费 key）
-- 中文一句话摘要（可选 LLM，自带 key）
-- 周报与引用量排序
+- 周报推送
+- 按引用量/发表时间组合的个性化推荐

@@ -72,7 +72,8 @@
   state.tag = params.get("tag") || "all";
   state.type = params.get("type") || "all";
   state.month = params.get("month") || "all";
-  state.sort = params.get("sort") === "relevance" ? "relevance" : "latest";
+  const sortParam = params.get("sort");
+  state.sort = ["relevance", "citations"].includes(sortParam) ? sortParam : "latest";
 
   if (!["all", "journal-article", "conference", "preprint"].includes(state.type)) {
     state.type = "all";
@@ -311,6 +312,8 @@
         paper.title,
         (paper.authors || []).join(" "),
         paper.abstract,
+        paper.summaryZh,
+        paper.tldr,
         paper.venue,
         paper.publisher,
         (paper.tags || []).join(" "),
@@ -335,6 +338,12 @@
           (b.score || 0) - (a.score || 0)
           || (b.published || "").localeCompare(a.published || ""),
       );
+    } else if (state.sort === "citations") {
+      items.sort(
+        (a, b) =>
+          (b.citationCount || 0) - (a.citationCount || 0)
+          || (b.published || "").localeCompare(a.published || ""),
+      );
     }
 
     return items;
@@ -347,7 +356,12 @@
       items.length === papers.length
         ? `共 ${items.length} 篇`
         : `共 ${items.length} 篇（筛选自 ${papers.length} 篇）`;
-    els.sortHint.textContent = state.sort === "relevance" ? "按相关性排序" : "按发表时间排序";
+    els.sortHint.textContent =
+      state.sort === "relevance"
+        ? "按相关性排序"
+        : state.sort === "citations"
+          ? "按引用量排序"
+          : "按发表时间排序";
 
     els.list.textContent = "";
 
@@ -450,6 +464,13 @@
       top.appendChild(date);
     }
 
+    if (paper.citationCount > 0) {
+      const citations = document.createElement("span");
+      citations.className = "citations";
+      citations.textContent = `引用 ${paper.citationCount}`;
+      top.appendChild(citations);
+    }
+
     article.appendChild(top);
 
     const heading = document.createElement("h2");
@@ -488,6 +509,18 @@
       article.appendChild(venue);
     }
 
+    if (paper.summaryZh) {
+      const summary = document.createElement("p");
+      summary.className = "summary-zh";
+      summary.textContent = `中文摘要：${paper.summaryZh}`;
+      article.appendChild(summary);
+    } else if (paper.tldr) {
+      const tldr = document.createElement("p");
+      tldr.className = "tldr";
+      tldr.textContent = `TLDR: ${paper.tldr}`;
+      article.appendChild(tldr);
+    }
+
     if (paper.abstract) {
       const abstract = document.createElement("p");
       abstract.className = "abstract";
@@ -523,6 +556,9 @@
     if (paper.doi) links.push(["DOI", `https://doi.org/${paper.doi}`]);
     if (paper.arxivId) links.push(["arXiv", `https://arxiv.org/abs/${paper.arxivId}`]);
     if (paper.pdfUrl) links.push(["PDF", paper.pdfUrl]);
+    if (paper.oaPdfUrl && paper.oaPdfUrl !== paper.pdfUrl) {
+      links.push(["OA PDF", paper.oaPdfUrl]);
+    }
 
     const row = document.createElement("div");
     row.className = "links";
@@ -651,7 +687,9 @@
 
   els.sort.value = state.sort;
   els.sort.addEventListener("change", () => {
-    state.sort = els.sort.value === "relevance" ? "relevance" : "latest";
+    state.sort = ["relevance", "citations"].includes(els.sort.value)
+      ? els.sort.value
+      : "latest";
     state.limit = 40;
     syncUrl();
     render();

@@ -1,4 +1,4 @@
-// Semantic Scholar Graph API 摘要补全（按 DOI / arXiv ID 批量查询）。
+// Semantic Scholar Graph API 补全：摘要、引用量、TLDR、OA PDF。
 // 无 key 也能用（共享限流）；免费 key 申请：
 // https://www.semanticscholar.org/product/api#api-key-form
 
@@ -6,7 +6,7 @@ import { fetchJson } from "./http.js";
 import { cleanText } from "./text.js";
 
 const API = "https://api.semanticscholar.org/graph/v1/paper/batch";
-const FIELDS = "title,abstract";
+const FIELDS = "title,abstract,citationCount,openAccessPdf,tldr";
 const MAX_BATCH = 500;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -21,16 +21,22 @@ function hasAbstract(paper) {
   return Boolean(String(paper.abstract ?? "").trim());
 }
 
+function pickTldr(item) {
+  if (!item?.tldr) return "";
+  if (typeof item.tldr === "string") return cleanText(item.tldr);
+  return cleanText(item.tldr.text);
+}
+
 /**
- * 给缺少摘要的论文补全 abstract（原地修改）。
- * 只处理有 DOI 或 arXiv ID 的论文；失败时记录日志并继续。
+ * 对有 DOI / arXiv ID 的论文补全摘要、引用量、TLDR、OA PDF（原地修改）。
+ * 摘要只在原本缺失时填充；引用量和 TLDR 会随每次运行更新。
  */
-export async function enrichAbstracts(papers, { config = {}, log = () => {} } = {}) {
+export async function enrichSemanticScholar(papers, { config = {}, log = () => {} } = {}) {
   if (config.enabled === false) return { queried: 0, filled: 0 };
 
-  const targets = papers.filter((paper) => !hasAbstract(paper) && paperId(paper));
+  const targets = papers.filter((paper) => paperId(paper));
   if (targets.length === 0) {
-    log("Semantic Scholar：没有需要补摘要的论文");
+    log("Semantic Scholar：没有可查询的论文");
     return { queried: 0, filled: 0 };
   }
 
@@ -41,6 +47,8 @@ export async function enrichAbstracts(papers, { config = {}, log = () => {} } = 
   );
   let queried = 0;
   let filled = 0;
+  let citations = 0;
+  let tldrs = 0;
 
   for (let start = 0; start < targets.length; start += batchSize) {
     const chunk = targets.slice(start, start + batchSize);
@@ -65,20 +73,48 @@ export async function enrichAbstracts(papers, { config = {}, log = () => {} } = 
 
       queried += chunk.length;
       results.forEach((item, index) => {
-        if (!item || hasAbstract(chunk[index])) return;
+        if (!item) return;
+        const paper = chunk[index];
+
+        if (item.citationCount != null && Number.isFinite(Number(item.citationCount))) {
+          paper.citationCount = Number(item.citationCount);
+          citations += 1;
+        }
+
+        const tldr = pickTldr(item);
+        if (tldr) {
+          paper.tldr = tldr;
+          tldrs += 1;
+        }
+
+        const oaPdf = String(item.openAccessPdf?.url || "").trim();
+        if (oaPdf) paper.oaPdfUrl = oaPdf;
+
+        if (hasAbstract(paper)) return;
         const abstract = cleanText(item.abstract);
         if (!abstract) return;
-        chunk[index].abstract = abstract;
+        paper.abstract = abstract;
         filled += 1;
       });
     } catch (error) {
-      log(`Semantic Scholar 补摘要失败：${error.message}`);
-      break;
+      // 整批 ID 都未被 S2 收录时返回 400；跳过该批，不要影响后续批次。
+      if (error.status === 400 && /no valid paper ids/i.test(error.message)) {
+        log(`Semantic Scholar：本批 ${chunk.length} 篇均未收录，跳过`);
+      } else {
+        log(`Semantic Scholar 补全失败：${error.message}`);
+        break;
+      }
     }
 
     if (start + batchSize < targets.length) await sleep(1100);
   }
 
-  log(`Semantic Scholar 补摘要：查询 ${queried} 篇，补全 ${filled} 篇`);
-  return { queried, filled };
+  log(
+    `Semantic Scholar：查询 ${queried} 篇，补摘要 ${filled} 篇，`
+      + `引用 ${citations} 篇，TLDR ${tldrs} 篇`,
+  );
+  return { queried, filled, citations, tldrs };
 }
+
+// 兼容旧调用名
+export const enrichAbstracts = enrichSemanticScholar;

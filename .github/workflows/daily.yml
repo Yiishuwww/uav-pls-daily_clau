@@ -34,6 +34,8 @@ jobs:
       SPRINGER_API_KEY: ${{ secrets.SPRINGER_API_KEY }}
       # 可选：Semantic Scholar 免费 API key，可提高摘要补全的限流额度
       S2_API_KEY: ${{ secrets.S2_API_KEY }}
+      # 可选：智谱 GLM-4-Flash 免费 key，用于中文一句话摘要
+      GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
       # 可选：微信推送，三选一或全配（见 README）
       WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
       PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
