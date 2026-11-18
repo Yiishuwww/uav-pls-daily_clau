@@ -113,11 +113,19 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
       ? config.queries
       : DEFAULT_QUERIES;
   const pageSize = Math.max(1, Math.min(Number(config.page_size) || 100, 100));
-  const maxPages = Math.max(1, Math.min(Number(config.max_pages) || 1, 10));
+  const maxPages = Math.max(1, Math.min(Number(config.max_pages) || 3, 10));
+  // Basic 免费 key 不支持服务端日期筛选（403 premium）；默认在本地按日期过滤。
+  // Premium key 可在 sources.yaml 设置 date_filter: true。
+  const useDateFilter = config.date_filter === true;
+
+  if (!useDateFilter) {
+    log("Springer Basic key：不使用服务端日期筛选，改为本地过滤，必要时会多翻页");
+  }
 
   const records = [];
   const seen = new Set();
   let successful = 0;
+  let lastError = "";
 
   for (let index = 0; index < queries.length; index += 1) {
     const query = queries[index];
@@ -125,7 +133,9 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
     let added = 0;
 
     for (let page = 0; page < maxPages; page += 1) {
-      const q = `${query} datefrom:${since} dateto:${today}`;
+      const q = useDateFilter
+        ? `${query} datefrom:${since} dateto:${today}`
+        : query;
       let data;
       try {
         data = await fetchJson(API, {
@@ -139,12 +149,14 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
           retries: 2,
         });
       } catch (error) {
+        lastError = error.message;
         log(`Springer 查询失败（第 ${index + 1} 条，第 ${page + 1} 页）：${error.message}`);
         break;
       }
 
       if (!Array.isArray(data.records)) {
-        log(`Springer 返回结构异常：${data.apiMessage || "缺少 records"}`);
+        lastError = String(data.apiMessage || "缺少 records");
+        log(`Springer 返回结构异常：${lastError}`);
         break;
       }
 
@@ -167,7 +179,9 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
     if (index < queries.length - 1) await sleep(700);
   }
 
-  if (successful === 0) throw new Error("Springer 所有查询均失败");
+  if (successful === 0) {
+    throw new Error(`Springer 所有查询均失败${lastError ? `：${lastError}` : ""}`);
+  }
 
   const papers = parseSpringerRecords(records, since);
   log(`Springer 原始记录 ${records.length} 条，时间窗内 ${papers.length} 条`);

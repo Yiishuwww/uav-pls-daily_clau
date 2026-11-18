@@ -47,7 +47,10 @@ springer:
   enabled: true
   api_key_env: SPRINGER_API_KEY
   page_size: 100      # 单次最大 100
-  max_pages: 1
+  max_pages: 3        # Basic key 不能按日期筛选，需要多翻几页再本地过滤
+  # Basic 免费 key 不支持 datefrom/dateto（会返回 403 premium）。
+  # 有 Premium key 时可改成 true，让 Springer 服务端按日期筛选。
+  date_filter: false
   # 可选：自定义检索式；留空使用采集器内置的三条查询。
   # queries:
   #   - '(("physical layer security" OR secrecy) AND (UAV OR drone))'

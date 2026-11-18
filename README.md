@@ -77,7 +77,8 @@ Crossref 已经能拿到 IEEE 的题录，但很多 IEEE 记录在 Crossref 中�
    ```
 
 3. GitHub Actions：在仓库 **Settings → Secrets and variables → Actions → Secrets** 添加 `SPRINGER_API_KEY`，工作流已注入。
-4. 采集器使用 Springer 的 `q` 检索式 + `datefrom`/`dateto` 时间窗，单次最多 100 条，内置 3 条查询；免费 Basic 额度每天约 500 次，日报远低于限额。
+4. 采集器使用 Springer 的 `q` 检索式，单次最多 100 条，内置 3 条查询；免费 Basic 额度每天约 500 次，日报远低于限额。
+5. **Basic 免费 key 不支持 `datefrom`/`dateto` 服务端日期筛选**（会返回 403 premium），所以默认 `date_filter: false`，多翻几页后在本地按日期过滤。Premium key 才能把 `date_filter` 设为 `true`。
 
 ### Semantic Scholar 摘要补全（可选 key）
 
@@ -535,7 +536,7 @@ npm run preview
 - `doaj`：DOAJ 查询页数与每页条数
 - `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
-- `springer`：Springer Nature Meta API。`api_key_env` 默认 `SPRINGER_API_KEY`，`page_size` 最大 100，`max_pages` 控制翻页；可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
+- `springer`：Springer Nature Meta API。`api_key_env` 默认 `SPRINGER_API_KEY`，`page_size` 最大 100，`max_pages` 控制翻页；Basic 免费 key 需保持 `date_filter: false`（服务端日期筛选是 Premium 功能），采集器会多翻页后本地过滤；可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `semanticscholar`：摘要补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
 - 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
