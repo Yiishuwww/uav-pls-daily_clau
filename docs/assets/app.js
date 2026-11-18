@@ -38,6 +38,8 @@
     count30: document.getElementById("count-30d"),
     countAll: document.getElementById("count-all"),
     theme: document.getElementById("theme-toggle"),
+    guideToggle: document.getElementById("guide-toggle"),
+    guideBody: document.getElementById("guide-body"),
   };
 
   const TYPE_LABEL = {
@@ -510,9 +512,36 @@
     }
 
     if (paper.summaryZh) {
-      const summary = document.createElement("p");
+      const summary = document.createElement("div");
       summary.className = "summary-zh";
-      summary.textContent = `中文摘要：${paper.summaryZh}`;
+
+      const text = document.createElement("p");
+      text.className = "summary-text";
+      text.textContent = `摘要：${paper.summaryZh}`;
+      summary.appendChild(text);
+
+      if (paper.tldr) {
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "tldr-toggle";
+        toggle.textContent = "查看英文导读";
+        toggle.setAttribute("aria-expanded", "false");
+
+        const tldr = document.createElement("p");
+        tldr.className = "summary-tldr";
+        tldr.hidden = true;
+        tldr.textContent = `英文导读：${paper.tldr}`;
+
+        toggle.addEventListener("click", () => {
+          const open = tldr.hidden;
+          tldr.hidden = !open;
+          toggle.textContent = open ? "收起英文导读" : "查看英文导读";
+          toggle.setAttribute("aria-expanded", String(open));
+        });
+
+        summary.append(toggle, tldr);
+      }
+
       article.appendChild(summary);
     } else if (paper.tldr) {
       const tldr = document.createElement("p");
@@ -671,6 +700,15 @@
 
   for (const button of periodButtons) {
     button.addEventListener("click", () => setPeriod(button.dataset.period));
+  }
+
+  if (els.guideToggle && els.guideBody) {
+    const setGuideOpen = (open) => {
+      els.guideBody.hidden = !open;
+      els.guideToggle.textContent = open ? "收起" : "展开";
+      els.guideToggle.setAttribute("aria-expanded", String(open));
+    };
+    els.guideToggle.addEventListener("click", () => setGuideOpen(els.guideBody.hidden));
   }
 
   els.search.value = state.q;
