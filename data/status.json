@@ -1,54 +1,54 @@
 {
-  "updatedAt": "2026-11-18T18:32:37+08:00",
-  "updatedCN": "2026-11-18 18:32",
+  "updatedAt": "2026-11-18T18:47:22+08:00",
+  "updatedCN": "2026-11-18 18:47",
   "sources": [
     {
       "name": "arxiv",
       "ok": true,
       "count": 2,
-      "ms": 1712,
+      "ms": 506,
       "error": null
     },
     {
       "name": "openalex",
       "ok": true,
       "count": 11,
-      "ms": 773,
+      "ms": 1496,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
       "count": 179,
-      "ms": 52747,
+      "ms": 19906,
       "error": null
     },
     {
       "name": "ieee",
       "ok": true,
       "count": 23,
-      "ms": 22505,
+      "ms": 22741,
       "error": null
     },
     {
       "name": "springer",
-      "ok": false,
-      "count": 0,
-      "ms": 3469,
-      "error": "Springer 所有查询均失败：HTTP 403 api.springernature.com/meta/v2/json: {\"status\":\"Fail\",\"message\":\"Access to this resource is restricted. This is a premium feature\",\"error\":{\"error\":\"Forbidden\",\"error_description\":\"You are attempting to access a premium feature. Please write to supportapi@springernature.com fo"
+      "ok": true,
+      "count": 20,
+      "ms": 82506,
+      "error": null
     },
     {
       "name": "doaj",
       "ok": true,
       "count": 13,
-      "ms": 14386,
+      "ms": 12946,
       "error": null
     },
     {
       "name": "zenodo",
       "ok": true,
       "count": 2,
-      "ms": 6551,
+      "ms": 7280,
       "error": null
     }
   ]
