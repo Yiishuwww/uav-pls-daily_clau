@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T20:00:52+08:00",
+  "updatedAt": "2026-11-18T20:35:27+08:00",
   "total": 82,
   "papers": [
     {
@@ -1798,7 +1798,8 @@
       "id": "doi:10.1109/pimrc69400.2026.11711783",
       "citationCount": 0,
       "tldr": "An unmanned aerial vehicle (UAV) -mounted sixdimensional movable IRS-assisted secure ISAC system is investigated, where the IRS location, orientation, and reflection coefficients are jointly optimized with the BS beamformer to maximize the secrecy rate under communication quality-of-service (QoS), power, unitmodulus, and visibility constraints.",
-      "oaPdfUrl": "https://arxiv.org/pdf/2608.20278"
+      "oaPdfUrl": "https://arxiv.org/pdf/2608.20278",
+      "summaryZh": "研究问题：如何通过联合优化无人机搭载的可移动智能反射面（IRS）的位置、方向和反射系数，以及基站波束成形器，在通信质量、功率、单位模量和可见性约束下，最大化无人机-IRS辅助的集成感知与通信（ISAC）系统的保密率。 方法：提出了一种三块交替优化（AO）框架，通过线性化ADMM、带预热启动的粒子群优化和黎曼梯度下降分别更新主动波束成形器、IRS姿态和被动反射向量。 主要结论：仿真结果表明，所提出的设计在保密率方面显著优于固定位置和仅方向基线。"
     },
     {
       "title": "Federated learning assisted power control for covert and secure UAV-enabled IoT communications",
@@ -1831,7 +1832,8 @@
       "firstSeen": "2026-08-31",
       "id": "doi:10.47974/jios-2358",
       "citationCount": 0,
-      "oaPdfUrl": "https://tarupublications.com/journals/jios/volume/47/issue/8/federated-learning-assisted-power-control-for-covert-and-secure-uav-enabled-iot-communications/pdf"
+      "oaPdfUrl": "https://tarupublications.com/journals/jios/volume/47/issue/8/federated-learning-assisted-power-control-for-covert-and-secure-uav-enabled-iot-communications/pdf",
+      "summaryZh": "研究问题：如何实现无人机辅助物联网通信中的隐蔽和安全性，同时解决信息泄露和窃听风险。 方法：提出了一种基于联邦学习的迭代凸近似（FL-SCA）框架，用于联合优化无人机辅助物联网通信中的隐蔽性和安全性。 主要结论：FL-SCA框架能够有效提高隐蔽性和资源效率，适用于动态无线网络中的安全隐蔽无人机辅助物联网通信。"
     },
     {
       "title": "Active IRS-Enhanced UAV Relaying for Secure Hybrid RF/FSO Communications: Joint Phase Shift, Beamforming, and Power Optimization",
@@ -1863,7 +1865,8 @@
       "firstSeen": "2026-08-31",
       "id": "doi:10.18280/jesa.590808",
       "citationCount": 0,
-      "oaPdfUrl": "https://iieta.org/download/file/fid/199749"
+      "oaPdfUrl": "https://iieta.org/download/file/fid/199749",
+      "summaryZh": "研究问题：如何利用无人机辅助无线通信网络，结合智能反射面技术，在混合射频/自由空间光通信中提高物理层安全性和可靠性，对抗窃听。 方法：提出一种无人机实现的协同解码转发中继方案，结合RF/FSO链路，通过部署智能反射面（主动或被动）来重构无线传播路径，并优化相位、波束成形和功率，以降低中断概率并提升保密性能。 主要结论：仿真结果表明，具有多个元素的空中智能反射面显著降低了保密中断概率，主动智能反射面不仅能补偿乘性路径损耗，还能实现显著的保密容量增益。"
     },
     {
       "title": "Toward Secure Communications for a UAV Swarm with Movable Antennas in SAGIN: CKM-Enabled Multi-Agent Reinforcement Learning Framework",
@@ -1894,7 +1897,8 @@
       ],
       "score": 24,
       "firstSeen": "2026-08-28",
-      "id": "doi:10.48550/arxiv.2608.27973"
+      "id": "doi:10.48550/arxiv.2608.27973",
+      "summaryZh": "研究问题：在SAGIN环境下，如何通过联合优化UAV群的可移动天线位置、轨迹和链路选择，以实现安全的下行链路通信并提高保密通信性能。 方法：提出了一种基于CKM的多人强化学习框架，通过Kriging插值构建CKM，结合卫星星历信息实现CSI的高效存储和检索，并利用刚体动力学模型降低MA阵列的动作空间维度和计算复杂度。 主要结论：该方法能够有效提高UAV群的保密能量效率，同时降低实时CSI获取开销。"
     },
     {
       "title": "Quantization-Aware Learning for Secure and Resilient UAV-STAR-RIS-Enabled 6G Systems",
@@ -1926,7 +1930,8 @@
       "id": "doi:10.1109/ojcoms.2026.3725175",
       "citationCount": 2,
       "tldr": "Investigation of phase quantization in a UAV-mounted STAR-RIS-assisted downlink non-orthogonal multiple access (NOMA) network to maximize secrecy rate demonstrates that QAT enables efficient low-bit STAR-RIS operation, reducing hardware complexity and signaling overhead while preserving secrecy performance, thereby enhancing the practical viability of the proposed framework.",
-      "oaPdfUrl": "https://doi.org/10.1109/ojcoms.2026.3725175"
+      "oaPdfUrl": "https://doi.org/10.1109/ojcoms.2026.3725175",
+      "summaryZh": "研究问题：如何通过量化感知学习提高无人机搭载STAR-RIS辅助的6G系统中的保密率。 方法：采用后训练量化（PTQ）和量化感知训练（QAT）两种方法，利用TD3智能体联合优化STAR-RIS相移和无人机定位，同时满足用户的最小服务质量（QoS）要求。 主要结论：量化感知训练（QAT）在低分辨率下优于后训练量化（PTQ），在3比特分辨率下QAT保持接近连续的性能，且保密率损失小于1%，显著降低了2比特分辨率下的性能下降。"
     },
     {
       "title": "Joint Secure Beamforming and Computation Offloading for MIMO-Enabled SAGIN-ISCC Systems",
@@ -1961,7 +1966,8 @@
       "id": "doi:10.1109/tmc.2026.3727602",
       "citationCount": 0,
       "tldr": "This work proposes a secure multipleinput multiple-output (MIMO)-enabled SAGIN-ISCC framework that jointly optimizes beamforming and computation offloading, and designs dualfunctional beamformers at ground users and UAVs to spatially separate legitimate signals from interference and eavesdroppers, enabling secure transmission without sacrificing spectrum efficiency.",
-      "oaPdfUrl": "https://doi.org/10.1109/tmc.2026.3727602"
+      "oaPdfUrl": "https://doi.org/10.1109/tmc.2026.3727602",
+      "summaryZh": "研究问题：在SAGIN-ISCC系统中，如何实现安全高效的联合波束成形和计算卸载。 方法：设计双功能（感知/通信）波束成形器，联合优化波束成形和计算卸载，并使用迭代算法求解非凸优化问题。 主要结论：提出的框架能够在不牺牲频谱效率的情况下，实现安全传输，同时降低系统总能耗。"
     },
     {
       "title": "Resource Allocation for Secure Dual-UAV-Assisted ISAC System",
@@ -1997,7 +2003,8 @@
       "firstSeen": "2026-08-25",
       "id": "doi:10.48550/arxiv.2608.24398",
       "citationCount": 1,
-      "tldr": "This work investigates the secrecy performance of a dual-uncrewed aerial vehicle (UAV)-assisted secure ISAC system, and maximizes the average secrecy rate by optimizing user scheduling strategies, time allocation, transmit power, and UAV trajectories."
+      "tldr": "This work investigates the secrecy performance of a dual-uncrewed aerial vehicle (UAV)-assisted secure ISAC system, and maximizes the average secrecy rate by optimizing user scheduling strategies, time allocation, transmit power, and UAV trajectories.",
+      "summaryZh": "研究问题：如何优化资源分配以提升双无人机辅助安全集成感知与通信（ISAC）系统的保密性能。方法：通过优化用户调度策略、时间分配、传输功率和无人机轨迹，并采用迭代算法解决非凸优化问题。主要结论：所提算法能够有效提高平均保密率，并通过数值结果验证了算法的收敛性和有效性。"
     },
     {
       "title": "Low-Rank Modeling of Continuous Threat Regions for Cooperative Secure Beamforming in UAV Networks",
@@ -2027,7 +2034,8 @@
       "id": "doi:10.3390/electronics15163608",
       "citationCount": 0,
       "tldr": "A low-rank threat-subspace method for cooperative secure beamforming from distributed ground transmitters to a legitimate UAV, which proves global optimality of the normalized projection for every feasible retained rank, and derives a leakage bound from the first discarded singular value.",
-      "oaPdfUrl": "https://doi.org/10.3390/electronics15163608"
+      "oaPdfUrl": "https://doi.org/10.3390/electronics15163608",
+      "summaryZh": "研究问题：如何通过低秩建模连续威胁区域，实现无人机网络中的协同安全波束成形。 方法：提出一种基于低秩威胁子空间的协同安全波束成形方法，通过采样威胁区域的导频向量构建训练矩阵，并利用其主左奇异向量紧凑地表示区域暴露情况，对合法导频向量进行正交投影和功率归一化。 主要结论：该方法在默认设置下，六种模式保留了98%的扇区能量，平均泄漏降低至-26.25 dB，比点波束成形降低-19.41 dB，比最大比传输降低-9.89 dB。边界误差测试表明，区间填充可以在牺牲所需增益的情况下稳定泄漏，而多区域测试量化了有效区域的有效性逐渐增加"
     },
     {
       "title": "Secure Coverage Enhancement in Aerial Reconfigurable Intelligent Surface-Assisted High-Speed Train Communication Systems",
@@ -2063,7 +2071,8 @@
       "id": "arxiv:2608.12046",
       "citationCount": 0,
       "tldr": "A joint optimization algorithm is proposed using the block coordinate descent method for maximizing the weighted sum secrecy rate of ARIS-aided HST communication systems, which achieves a higher secrecy rate compared to existing methods in the literature.",
-      "oaPdfUrl": "https://arxiv.org/pdf/2608.12046"
+      "oaPdfUrl": "https://arxiv.org/pdf/2608.12046",
+      "summaryZh": "研究问题：如何通过集成空中可重构智能表面（ARIS）来增强高速列车通信系统中的物理层安全性（PLS）。 方法：提出了一种基于块坐标下降法的联合优化算法，通过优化基站（BS）的主动波束成形和ARIS的相位调整，以最大化加权保密速率，同时满足BS发射功率和ARIS反射系数模长为1的约束。 主要结论：通过联合优化BS的波束成形和ARIS的相位调整，实现了高速列车通信系统中ARIS辅助的物理层安全性提升。"
     },
     {
       "title": "Gbps-rate sub-noise free-space optical communication using optical frequency comb diversity",
@@ -2093,7 +2102,8 @@
       "firstSeen": "2026-08-12",
       "id": "doi:10.1364/optcon.603969",
       "citationCount": 0,
-      "oaPdfUrl": "https://doi.org/10.1364/optcon.603969"
+      "oaPdfUrl": "https://doi.org/10.1364/optcon.603969",
+      "summaryZh": "研究问题：如何实现Gbps速率的亚噪声自由空间光通信？ 方法：提出了一种利用光频梳（OFC）多样性的Gbps速率自由空间光（FSO）亚噪声通信方案。 主要结论：通过40线OFC的相干组合，该方案从噪声主导的观测中提取通信信号，实现了15 dB的处理增益，并在极端输入信噪比（SNR）为-8 dB的情况下可靠地恢复10 Gbps的载波抑制双边带（CS-DSB）信号，满足10^-3的前向纠错（FEC）阈值，并通过KL散度分析证实了该方案的统计隐蔽性。"
     },
     {
       "title": "DRL-based joint optimization for secure and efficient communication in UAV-RIS assisted 6G networks",
@@ -2129,7 +2139,8 @@
       "firstSeen": "2026-08-10",
       "id": "doi:10.1016/j.iot.2026.102060",
       "citationCount": 0,
-      "oaPdfUrl": "https://doi.org/10.1016/j.iot.2026.102060"
+      "oaPdfUrl": "https://doi.org/10.1016/j.iot.2026.102060",
+      "summaryZh": "研究问题：如何优化无人机-可重构智能表面辅助的6G网络中的安全高效通信。 方法：提出一种基于深度强化学习的联合优化框架，利用BCD和ADMM算法优化无人机轨迹、RIS相位配置和功率分配，并采用AN辅助波束成形方案增强物理层安全。 主要结论：该框架能够实时调整无人机轨迹和RIS配置，提高能量利用、保密率和网络性能。"
     },
     {
       "title": "Dynamic Role Allocation in Cooperative Secure UAV-ISAC Networks",
@@ -2163,7 +2174,8 @@
       "id": "doi:10.1109/ojcoms.2026.3719395",
       "citationCount": 0,
       "tldr": "Numerical results demonstrate that the proposed dynamic-role architecture consistently outperforms both a static dedicated-jammer scheme and a fully optimized all-ISAC embedded-AN benchmark, confirming that its secrecy advantage arises from adaptive spatial-functional specialization rather than from artificial-noise transmission alone.",
-      "oaPdfUrl": "https://doi.org/10.1109/ojcoms.2026.3719395"
+      "oaPdfUrl": "https://doi.org/10.1109/ojcoms.2026.3719395",
+      "summaryZh": "研究问题：在对抗环境中，如何通过动态角色分配机制最大化合法地面用户的保密速率，同时满足目标照明最小传感波束图案增益约束。 方法：提出了一种基于交替优化的算法，该算法结合了基于惩罚的凸凹过程、半定松弛和信任域连续凸近似来解决高度耦合的混合整数非线性规划问题。 主要结论：动态角色架构在保密性方面优于静态专用干扰器方案和完全优化的全ISAC内嵌干扰器基准，其优势源于自适应空间-功能专业化而非仅人工噪声传输。"
     },
     {
       "title": "DRL-Based Secure Transmission for Rotatable Antenna-Enabled Low-Altitude ISAC Systems",
@@ -2196,7 +2208,8 @@
       ],
       "score": 13,
       "firstSeen": "2026-08-07",
-      "id": "doi:10.48550/arxiv.2608.07170"
+      "id": "doi:10.48550/arxiv.2608.07170",
+      "summaryZh": "研究问题：如何通过旋转天线技术提高低空综合感知与通信系统（ISAC）的通信安全性，并最大化最小保密速率（SR）。 方法：提出一种基于多智能体近端策略优化算法（MAPPO-T）的联合优化方法，用于优化发射波束成形矩阵和旋转天线指向矩阵。 主要结论：引入旋转天线可以有效提升SR性能，且MAPPO-T算法在性能上优于标准MAPPO算法。"
     },
     {
       "title": "Robust Beamforming for Physical-Layer Security in RIS-Assisted UAV Networks",
@@ -2221,7 +2234,8 @@
       ],
       "score": 26,
       "firstSeen": "2026-08-05",
-      "id": "title:1snc1de"
+      "id": "title:1snc1de",
+      "summaryZh": "研究问题：如何提高RIS辅助无人机网络中的物理层安全性，特别是在存在信道状态信息不完美的情况下。 方法：提出了一种鲁棒的波束成形优化框架，通过联合优化无人机和RIS的波束成形向量，以最大化合法通信链路的最大秘密速率。 主要结论：该框架通过考虑信道不确定性，有效地提高了无人机网络在存在恶意窃听时的物理层安全性。"
     },
     {
       "title": "Joint UAV Placement and Active IRS Gain Optimization for Covert Communications",
@@ -2256,7 +2270,8 @@
       "id": "doi:10.3390/s26165244",
       "citationCount": 0,
       "tldr": "An unmanned aerial vehicle -assisted active-IRS architecture under probabilistic line-of-sight and non-line-of-sight propagation conditions that accounts for direct leakage from the transmitter to the warden together with residual jammer cancellation and always-on IRS circuit noise under a finite output power budget is proposed.",
-      "oaPdfUrl": "https://doi.org/10.3390/s26165244"
+      "oaPdfUrl": "https://doi.org/10.3390/s26165244",
+      "summaryZh": "研究问题：如何平衡无人机辅助的智能反射面（IRS）在隐蔽通信中的可靠性和隐蔽性。 方法：提出了一种在概率视距和非视距传播条件下，考虑直接泄漏、残余干扰消除和IRS电路噪声的无人机辅助主动IRS架构，并使用Kullback-Leibler分析将隐蔽性要求转化为保守增益界限。 主要结论：该方法在评估的设置中显示出比被动反射和单元素中继更好的SINR优势，并通过增益退避强制实施规定的隐蔽中断限制。"
     },
     {
       "title": "Covert Communication in UAV Assisted Symbiotic Radio Systems",
@@ -2288,7 +2303,8 @@
       "id": "doi:10.1109/iccc70295.2026.11680510",
       "citationCount": 0,
       "tldr": "A covert communication enhancement framework for symbiotic radio systems is proposed through the joint optimization of UAV trajectory planning and ground device scheduling, which analyzes the outage probability of the symbiotic radio system and the minimum detection error probability of the eavesdropper.",
-      "oaPdfUrl": "https://doi.org/10.1109/iccc70295.2026.11680510"
+      "oaPdfUrl": "https://doi.org/10.1109/iccc70295.2026.11680510",
+      "summaryZh": "研究问题：如何提高无人机辅助共生无线电系统的安全性，特别是针对隐蔽通信的挑战。 方法：通过联合优化无人机轨迹规划和地面设备调度，构建了在隐蔽性、能量和飞行约束下的最大通信速率优化问题，并采用在线学习方法求解近似最优解。 主要结论：所提出的方法能够有效提高无人机辅助共生无线电系统的隐蔽通信性能，并通过仿真分析验证了其有效性和鲁棒性。"
     },
     {
       "title": "Air-to-Ground Two-Phase Covert Transmission Aided by a Full-Duplex UAV Relay",
@@ -2322,7 +2338,8 @@
       "id": "doi:10.1109/iccc70295.2026.11680065",
       "citationCount": 0,
       "tldr": "Numerical results demonstrate that the proposed AtG-TPCT is capable of achieving rapid convergence to its optimal covertness, while can distinctively outperform in performance with its benchmark counterpart.",
-      "oaPdfUrl": "https://doi.org/10.1109/iccc70295.2026.11680065"
+      "oaPdfUrl": "https://doi.org/10.1109/iccc70295.2026.11680065",
+      "summaryZh": "研究问题：探讨一种基于全双工无人机中继的空中到地面的两阶段隐蔽传输系统，并针对守卫位置的不确定性，提出了一种鲁棒平均隐蔽率最大化问题。方法：通过联合优化无人机中继的3D轨迹和无人机发射机与中继的发射功率，并引入最坏情况下的隐蔽性约束，构建了一个非凸优化问题。主要结论：所提出的迭代优化算法能够快速收敛到最优隐蔽性，并在性能上显著优于基准方案。"
     },
     {
       "title": "Covert communication method for UAV based on telemetry- type messages of the MAVLink protocol",
@@ -2345,7 +2362,8 @@
       ],
       "score": 30,
       "firstSeen": "2026-08-01",
-      "id": "title:sohq7h"
+      "id": "title:sohq7h",
+      "summaryZh": "研究问题：如何在不修改MAVLink协议标准的情况下，实现无人机在受限环境中的隐蔽通信。 方法：提出了一种基于MAVLink协议遥测信息的隐写术方案，将信息嵌入到浮点数的尾数最低两位，并设计了预测-校正嵌入算法。 主要结论：在静态悬停场景下，实现了1.38 kbit/s的平均容量，对应理论容量的96.5%；在动态机动场景下，容量保持在0.95 kbit/s左右，表明该方案能满足大多数隐蔽通信任务的实时性要求。"
     },
     {
       "title": "Resource Allocation for Covert Transmission in a UAV-Assisted Integrated Sensing, Computing and Communication System",
@@ -2427,7 +2445,8 @@
       ],
       "score": 16,
       "firstSeen": "2026-08-01",
-      "id": "doi:10.19678/j.issn.1000-3428.0070720"
+      "id": "doi:10.19678/j.issn.1000-3428.0070720",
+      "summaryZh": "研究问题：如何构建基于RIS-UAV的无线通信系统以有效应对潜在的窃听风险。 方法：提出一种基于RIS-UAV的物理层安全无线通信系统，通过相位调整和UAV飞行轨迹优化来最大化系统平均安全率，并采用迭代凸近似方法求解非凸问题。 主要结论：与基准方案相比，所提系统的平均保密率提高了约12.5%。"
     },
     {
       "title": "Deep Reinforcement Learning for Intelligent UAV-assisted Secured Semantic Communications",
@@ -2459,7 +2478,8 @@
       "id": "doi:10.1109/vtc2026-spring68026.2026.11757415",
       "citationCount": 0,
       "tldr": "An average secrecy semantic throughput maximization problem is formulated that jointly optimizes UAV trajectories, transmit power, bandwidth allocation, and cooperative jamming under secrecy requirements and practical constraints, including peak and average power limits, UAV propulsion energy budgets, maximum operational radius, and collision avoidance.",
-      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757415"
+      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757415",
+      "summaryZh": "研究问题：如何通过深度强化学习实现无人机辅助的语义通信，以提升无人机通信的安全性、效率和能量效率。 方法：提出了一种基于双无人机架构的语义通信框架，通过深度强化学习优化无人机轨迹、传输功率、带宽分配和合作干扰策略。 主要结论：仿真结果表明，所提出的方法能够有效提高无人机辅助通信的保密语义吞吐量，同时满足能量和带宽约束。"
     },
     {
       "title": "Enhancing Security for UAV Communications in LAWNs via Flexible-Duplex Cell-Free Design",
@@ -2491,7 +2511,8 @@
       "id": "doi:10.1109/vtc2026-spring68026.2026.11757217",
       "citationCount": 0,
       "tldr": "Numerical results demonstrate that the proposed flexible-duplex CF architecture achieves substantial secrecy-rate gains over fixed-mode CF systems and provides more balanced secrecy performance across UAV users.",
-      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757217"
+      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757217",
+      "summaryZh": "研究问题：探讨低空无线网络（LAWN）中无人机通信的物理层安全，提出一种灵活双工无中心（CF）架构。 方法：建立全面的无人机上链路Eve信号模型，包括用户间干扰、人工噪声（AN）耦合和跨AP干扰，并基于此模型联合优化AP模式选择、接收组合器和AN协方差。 主要结论：提出的灵活双工CF架构在保密率方面相较于固定模式的CF系统有显著提升，并提供了更均衡的无人机用户保密性能。"
     },
     {
       "title": "Leveraging Cyclostationary Features and Continual Learning for Robust RF Fingerprinting in IoT and UAV Networks",
@@ -2520,7 +2541,8 @@
       "id": "doi:10.1109/vtc2026-spring68026.2026.11757281",
       "citationCount": 1,
       "tldr": "A deep learning-based RF fingerprinting framework that leverages cyclostationary features and continual learning to enhance device authentication in dynamic wireless environments is introduced, enabling scalable and secure connectivity in real-world deployments.",
-      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757281"
+      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757281",
+      "summaryZh": "研究问题：如何利用循环平稳特性和持续学习在物联网和无人机网络中进行鲁棒的射频指纹识别。方法：提出一种基于深度学习的射频指纹识别框架，利用循环平稳特征和持续学习来增强动态无线环境中的设备认证。主要结论：该方法通过利用不变信号模式和适应传输变化，实现了鲁棒的识别，同时保持了在资源受限平台上的高效性，实验结果表明其在异构设备上具有强验证准确性和改进的泛化能力，适用于智能消费电子产品、物联网系统和无人机通信，推动了物理层安全的发展。"
     },
     {
       "title": "Joint UAV trajectory and offloading optimization with robust secrecy for intelligent mining",
@@ -2552,7 +2574,8 @@
       "id": "doi:10.1038/s41598-026-54506-z",
       "citationCount": 0,
       "tldr": "A robust energy-efficiency maximization that epigraphs worst-case eavesdropper rates, introduces secrecy-QoS slack variables for feasibility, and enforces slot-level task causality is formulated–validating near-real-time feasibility for secure, energy-efficient offloading in mining operations.",
-      "oaPdfUrl": "https://www.nature.com/articles/s41598-026-54506-z_reference.pdf"
+      "oaPdfUrl": "https://www.nature.com/articles/s41598-026-54506-z_reference.pdf",
+      "summaryZh": "研究问题：在智能采矿中，如何实现无人机轨迹和卸载的联合优化，同时保证鲁棒的保密性。 方法：构建了一个双边缘架构，通过地面基站和空中边缘服务器协同服务空中用户，同时保护干扰无人机根据速度/加速度限制和旋翼推进适应其轨迹。模型考虑了3GPP A2G信道和被动地面窃听者，并提出了鲁棒能量效率最大化问题，引入了保密-QoS松弛变量，并强制执行时隙级任务因果性。 主要结论：所提出的方案在3GPP Urban Macro校准下，实现了每焦耳60.5 kbits的效率，比STRO高22.2%，比SHJ高116.1%。在窃听者不确定性为15米"
     },
     {
       "title": "Intelligent Reflecting Surface for Secrecy Rate Enhancement in UAV-Assisted Wireless Powered Communication",
@@ -2579,7 +2602,8 @@
       ],
       "score": 20.5,
       "firstSeen": "2026-09-08",
-      "id": "title:3m74b8"
+      "id": "title:3m74b8",
+      "summaryZh": "研究问题：如何通过智能反射面和3D波束成形技术提升无人机辅助无线供电通信网络的保密率。方法：通过联合优化无人机轨迹和智能反射面相位配置，最大化保密率，同时考虑用户能量收集约束。主要结论：智能反射面和3D波束成形技术显著提升了能量收集和保密率。"
     }
   ]
 }
