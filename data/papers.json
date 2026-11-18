@@ -1,7 +1,203 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15T15:23:06+08:00",
+  "updatedAt": "2026-11-18T12:04:21+08:00",
   "papers": [
+    {
+      "title": "Secrecy performance analysis of UAV relay‑aided fluid antenna systems",
+      "authors": [
+        "Xinran He",
+        "Rui Ma",
+        "Tuanwei Tian",
+        "Jinlong Zhang"
+      ],
+      "abstract": "In this work, the secrecy performance of UAV relay-aided communications is investigated with the incorporation of a fluid antenna system (FAS). Specifically, a multi-antenna transmitter sends private data to a legitimate receiver via an aerial UAV relay, while multiple ground eavesdroppers seek to intercept the relayed signal. The user is equipped with a planar FAS, while the base station and eavesdroppers use conventional fixedposition antennas. Both colluding and non-colluding eavesdropping modes are considered. To characterize the dependence among FAS ports, the copula-based spatial correlation model is adopted. Subsequently, the secrecy outage probability and ergodic secrecy capacity are evaluated analytically via the inverse Laplace transform and Gaussian-Laguerre quadrature. Asymptotic analyses are further carried out in the high-power regime to reveal the effects of the number of ports, fading parameter, and eavesdropping mode. Simulation results validate that the FAS offers substantial secrecy gains over fixed-position antennas, with the gain gradually saturating as the number of ports grows.",
+      "doi": "10.1117/12.3134002",
+      "venue": "International Conference on Progressive Information and Communication Technologies (AICTech 2026)",
+      "publisher": "SPIE",
+      "type": "conference",
+      "published": "2026-11-17",
+      "url": "https://doi.org/10.1117/12.3134002",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "安全速率"
+      ],
+      "score": 25.5,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1117/12.3134002"
+    },
+    {
+      "title": "Deep learning-based secure beamforming for zeRIS-assisted UAV communications under partial blockage",
+      "authors": [
+        "Ming Yang",
+        "Huina Li",
+        "Tuanwei Tian",
+        "Rui Ma"
+      ],
+      "abstract": "This paper investigates secure unmanned aerial vehicle (UAV) communications assisted by a zero-energy reconfigurable intelligent surface (zeRIS) under partial building blockage and imperfect channel state information (CSI). The zeRIS provides an alternative reflected path when the direct links are attenuated, subject to an energy activation constraint. A deep learning (DL) framework is developed to jointly design the information beamforming vector and artificial-noise matrix at the UAV, while the RIS phase shifts are determined using a low-complexity phase-alignment rule that enhances a selected cascaded channel component toward the legitimate receiver. Simulation results show that the proposed zeRIS-assisted DL schemes outperform the considered No- RIS and generalized eigenvalue decomposition (GEVD) baselines under the simulated blockage conditions. The results further indicate that enlarging the RIS surface relieves the secrecy-rate degradation induced by severe blockage of the direct link.",
+      "doi": "10.1117/12.3134523",
+      "venue": "International Conference on Progressive Information and Communication Technologies (AICTech 2026)",
+      "publisher": "SPIE",
+      "type": "conference",
+      "published": "2026-11-17",
+      "url": "https://doi.org/10.1117/12.3134523",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "干扰/人工噪声",
+        "安全速率",
+        "波束成形",
+        "深度强化学习"
+      ],
+      "score": 15,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1117/12.3134523"
+    },
+    {
+      "title": "Robust SAC-Enabled UAV-RIS Assisted Secure MISO Systems With Untrusted EH Receivers",
+      "authors": [
+        "Hamid Reza Hashempour",
+        "Le-Nam Tran",
+        "Duy H. N. Nguyen",
+        "Hien Quoc Ngo"
+      ],
+      "abstract": "Secure downlink transmission in UAV-mounted reconfigurable intelligent surface (RIS)-assisted multi-user multiple-input single-output (MISO) networks is challenged by imperfect channel state information (CSI), internal eavesdropping by untrusted energy-harvesting receivers (UEHRs), discrete RIS phase shifts, and nonlinear energy harvesting (EH). This paper jointly optimizes the UAV hovering position, base station (BS) transmit power allocation, and discrete RIS phase shifts to maximize the worst-case secrecy energy efficiency (WCSEE) under bounded CSI uncertainty and nonlinear EH constraints. The resulting problem is a highly non-convex mixed-integer fractional optimization problem with tightly coupled spatial, power, and RIS variables. To address these challenges, we develop two complementary solution frameworks. First, for perfect CSI and continuous RIS phase shifts, we derive an analytical benchmark based on block coordinate descent (BCD) and successive convex approximation (SCA). Second, for the general robust setting with discrete phase quantization and CSI uncertainty, we propose a customized soft actor–critic (SAC) framework that incorporates continuous-to-discrete action projection, twin critics to mitigate value overestimation, and a feasibility-aware reward mechanism. Numerical results demonstrate that the proposed SAC policy achieves up to 28%, 16%, and 6% higher WCSEE than the SCA benchmark, DDPG, and TD3, respectively, while exhibiting faster convergence and maintaining stable performance across varying user densities, UEHR counts, and CSI uncertainty levels.",
+      "doi": "10.1109/twc.2026.3754901",
+      "venue": "IEEE Transactions on Wireless Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-17",
+      "url": "https://doi.org/10.1109/twc.2026.3754901",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11803186",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "RIS/IRS"
+      ],
+      "score": 14.5,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1109/twc.2026.3754901"
+    },
+    {
+      "title": "Joint Trajectory and Beamforming Optimization for Wireless Information Surveillance in Suspicious Maritime Communications",
+      "authors": [
+        "Zheng Hu",
+        "Qichao Xu",
+        "Zhou Su",
+        "Minghui Dai",
+        "Yuntao Wang"
+      ],
+      "abstract": "To facilitate the timely detection of vessels involved in potentially illegal maritime activities for strengthening maritime safety in modern maritime operations, wireless information surveillance based on remote eavesdropping has attracted increasing attention. However, effective surveillance of maritime wireless links remains difficult due to the highly dynamic ocean environment and the potential exposure risk when surveillance is conducted at short distances. To address these challenges, a cooperative maritime wireless information surveillance scheme is developed by jointly employing an unmanned surface vehicle (USV) and an unmanned aerial vehicle (UAV). Within this scheme, a proactive eavesdropping framework is established, where a multi-antenna UAV transmits beamformed jamming signals to degrade the achievable rate of the suspicious link, while the USV is responsible for intercepting the signals transmitted over the suspicious link. An optimization problem is then formulated to enhance the average eavesdropping rate through the joint design of the UAV trajectory, the USV trajectory, and the UAV beamforming vector, subject to mobility, power, and concealment constraints. To efficiently solve the formulated problem, a block coordinate descent (BCD)-based alternating optimization algorithm is proposed, which decomposes the original problem into three interrelated subproblems. Each subproblem is converted into a convex approximation using successive convex approximation (SCA) and solved by a convex optimization algorithm iteratively. Simulation results show that the proposed scheme achieves improved performance in terms of average eavesdropping rate and concealment performance compared with conventional approaches.",
+      "doi": "10.1109/tcc.2026.3754920",
+      "venue": "IEEE Transactions on Cloud Computing",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-17",
+      "url": "https://doi.org/10.1109/tcc.2026.3754920",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11803019",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "干扰/人工噪声",
+        "轨迹优化",
+        "波束成形"
+      ],
+      "score": 11,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1109/tcc.2026.3754920"
+    },
+    {
+      "title": "Embodied Intelligence for UAV Covert Communications: From Open-Loop Design to Closed-Loop Autonomy",
+      "authors": [
+        "Kaiji Zhu",
+        "Ruiqian Ma",
+        "Zhi Lin",
+        "Yue Ma",
+        "Fang Xu",
+        "Yong Wang"
+      ],
+      "abstract": "The rapid rise of the low-altitude economy, driven by uncrewed aerial vehicle (UAV)-centric Internet of Things (IoT), imposes unprecedented security demands on air-to-ground wireless links. Covert communication thus emerges as a promising safeguard for sensitive low-altitude missions. Nevertheless, the unique features of low-altitude scenarios: three-dimensional mobility, dynamic channel conditions, and uncertain warden positions, render conventional covert schemes inadequate. To address these challenges, this article investigates embodied intelligence as an enabling paradigm for UAV covert communication, redefining the UAV from a passive transceiver into an autonomous agent that integrates cognition, optimization, and communication through a closed perception–decision–execution (PDE) loop. We first present a system architecture for embodied-intelligence-enabled UAV communication and reveal its inherent synergy with covert communications. We then review the key technical enablers across the power, time-frequency, spatial, and polarization domains, as well as their multi-domain coordination. A representative case study demonstrates that embodied intelligence effectively mitigates channel state information staleness through onboard closed-loop perception–decision–execution, outperforming centralized baselines. Finally, we outline major challenges and promising directions toward practical deployment of this paradigm.",
+      "doi": "10.1109/miot.2026.3743183",
+      "venue": "IEEE Internet of Things Magazine",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-16",
+      "url": "https://doi.org/10.1109/miot.2026.3743183",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11797927",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信"
+      ],
+      "score": 32,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1109/miot.2026.3743183"
+    },
+    {
+      "title": "Contract-Theoretic Semantic Abstraction for Covert Communication in LAENets",
+      "authors": [
+        "Yansheng Liu",
+        "Jinbo Wen",
+        "Kun Zhu",
+        "Hui Li",
+        "Yang Zhang",
+        "Jiawen Kang"
+      ],
+      "abstract": "In Low-Altitude Economy Networks (LAENets), Unmanned Aerial Vehicles (UAVs) provide diverse low-altitude services to the Base Station (BS) by transmitting task-related information under stringent low-probability-of-detection constraints. These constraints severely limit the available transmission resources, making it challenging to reliably deliver task-relevant information using conventional bit-level communication. Fortunately, Semantic Communication (SemCom) can be a promising solution by prioritizing task-relevant information over bit-level accuracy. However, different levels of semantic abstraction inherently introduce different degrees of information loss and redundancy, which may either compromise task reliability or incur excessive transmission overhead if not properly controlled. Moreover, since the BS cannot directly observe or reliably verify the semantic processing capabilities and abstraction-dependent transmission costs of UAVs, information asymmetry naturally arises in SemCom service provision. To this end, we propose an incentive-aware semantic abstraction framework for covert communications in LAENets. Specifically, we adjust the semantic abstraction level at the UAV side to provide differentiated covert semantic services under fixed-dimensional transmission payloads, thereby enabling reliable task information delivery under stringent covert constraints. Regarding the issue of information asymmetry, we propose a contract-theoretic model and adopt Prospect Theory (PT) to capture risk-sensitive semantic abstraction decisions under uncertainty. Furthermore, we design a Regularized Diffusion-based Soft Actor-Critic (RDSAC) algorithm for optimal contract design under PT. This algorithm enhances contract design by introducing diffusion entropy regularization together with action entropy regularization. Numerical results show the effectiveness of the proposed framework and demonstrate that RDSAC achieves average reward improvements of 6.77% over the SAC algorithm and 31.78% over the proximal policy optimization algorithm.",
+      "doi": "10.1109/tccn.2026.3754558",
+      "venue": "IEEE Transactions on Cognitive Communications and Networking",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-16",
+      "url": "https://doi.org/10.1109/tccn.2026.3754558",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11797961",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信"
+      ],
+      "score": 23,
+      "firstSeen": "2026-11-18",
+      "id": "doi:10.1109/tccn.2026.3754558"
+    },
+    {
+      "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
+      "authors": [
+        "Chan Gao",
+        "Surui Liu",
+        "Qian Wang",
+        "Taotao Huang"
+      ],
+      "abstract": "Unmanned aerial vehicles (UAVs) provide a flexible platform for covert communication in wireless networks with complex propagation environments. This paper investigates a dual-UAV-assisted covert communication system in the presence of colluding wardens, where one UAV serves as a decode-and-forward relay and the other performs cooperative jamming. To enhance communication covertness, a randomized jamming-power strategy is introduced, in which the wardens know the statistical distribution of the jamming power but not its instantaneous realization, while legitimate receivers are assumed to perform ideal interference cancellation. To characterize the cooperative detection behavior of the two wardens, a decision-level OR fusion rule is adopted, and a cooperation factor α is introduced to represent the probability of successful decision sharing. Considering bounded noise uncertainty and randomized jamming power, the individual false-alarm and missed-detection probabilities are analytically derived, and the joint detection error probability is obtained under the proposed fusion mechanism. The minimum joint detection error probability is then determined by optimizing the detection thresholds of both wardens. Furthermore, the achievable end-to-end covert communication rate under half-duplex decode-and-forward relaying is characterized, and a joint optimization problem involving transmission powers and UAV hovering positions is formulated under a prescribed covertness constraint. The resulting analytical framework enables the investigation of the effects of jamming-power uncertainty, warden cooperation, and system parameters on covert communication performance.",
+      "doi": "10.3390/electronics15225293",
+      "venue": "Electronics",
+      "publisher": "MDPI AG",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "url": "https://doi.org/10.3390/electronics15225293",
+      "pdfUrl": "",
+      "sources": [
+        "crossref",
+        "openalex"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群"
+      ],
+      "score": 34,
+      "firstSeen": "2026-11-17",
+      "id": "doi:10.3390/electronics15225293"
+    },
     {
       "title": "UAV-Based Massive Covert Communications for Sports Venues",
       "authors": [
@@ -225,7 +421,7 @@
         "轨迹优化",
         "无人机集群"
       ],
-      "score": 34,
+      "score": 32,
       "firstSeen": "2026-11-10",
       "id": "doi:10.1002/itl2.70371"
     },
@@ -1292,7 +1488,8 @@
       "url": "https://doi.org/10.1016/j.dcan.2026.09.003",
       "pdfUrl": "https://www.sciencedirect.com/science/article/pii/S2352864826001148/pdf",
       "sources": [
-        "openalex"
+        "openalex",
+        "doaj"
       ],
       "tags": [
         "安全速率",
