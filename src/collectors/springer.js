@@ -7,11 +7,16 @@ import { cleanText, dateOnly } from "../text.js";
 
 const API = "https://api.springernature.com/meta/v2/json";
 
-// 用多条短查询，避免单条布尔式过长；日期由 datefrom/dateto 约束。
+// Basic 免费 key 不支持字段限制（title:/abstract:）和高级分组布尔（括号 + OR），
+// 会返回 403 premium。这里只用「带引号的短语 + 一个词」的简单查询。
 const DEFAULT_QUERIES = [
-  '(("physical layer security" OR secrecy OR eavesdropper) AND (UAV OR drone))',
-  '((covert OR wiretap OR "artificial noise") AND (UAV OR drone))',
-  '(("secure transmission" OR jamming) AND (UAV OR drone))',
+  '"physical layer security" UAV',
+  'secrecy UAV',
+  'covert UAV',
+  'eavesdropper UAV',
+  'wiretap UAV',
+  '"artificial noise" UAV',
+  'jamming UAV',
 ];
 
 const TYPE_MAP = {
@@ -112,7 +117,8 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
     Array.isArray(config.queries) && config.queries.length > 0
       ? config.queries
       : DEFAULT_QUERIES;
-  const pageSize = Math.max(1, Math.min(Number(config.page_size) || 100, 100));
+  // Basic 套餐单页建议 25 条；Premium 可调高到 100。
+  const pageSize = Math.max(1, Math.min(Number(config.page_size) || 25, 100));
   const maxPages = Math.max(1, Math.min(Number(config.max_pages) || 3, 10));
   // Basic 免费 key 不支持服务端日期筛选（403 premium）；默认在本地按日期过滤。
   // Premium key 可在 sources.yaml 设置 date_filter: true。
@@ -170,7 +176,15 @@ export async function collectSpringer({ since, today, config = {}, log = () => {
         added += 1;
       }
 
-      if (batch.length < pageSize || !data.nextPage) break;
+      const total = Number(
+        data.result?.[0]?.total ?? data.result?.total ?? 0,
+      );
+      const nextStart = page * pageSize + batch.length + 1;
+      if (batch.length < pageSize) break;
+      if (total && nextStart > total) break;
+      if (!total && !data.nextPage) break;
+      // Basic 约 100 次/分钟，翻页之间也留间隔。
+      if (page + 1 < maxPages) await sleep(700);
     }
 
     if (queryOk) successful += 1;

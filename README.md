@@ -536,7 +536,7 @@ npm run preview
 - `doaj`：DOAJ 查询页数与每页条数
 - `zenodo`：Zenodo 每页条数；如需更高限额，在仓库 **Settings → Secrets and variables → Actions** 中添加 `ZENODO_TOKEN`
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
-- `springer`：Springer Nature Meta API。`api_key_env` 默认 `SPRINGER_API_KEY`，`page_size` 最大 100，`max_pages` 控制翻页；Basic 免费 key 需保持 `date_filter: false`（服务端日期筛选是 Premium 功能），采集器会多翻页后本地过滤；可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
+- `springer`：Springer Nature Meta API。`api_key_env` 默认 `SPRINGER_API_KEY`，Basic 套餐 `page_size` 建议 25（最大 100），`max_pages` 控制翻页；Basic 免费 key 需保持 `date_filter: false`（服务端日期筛选是 Premium 功能），且不要用 `title:`/`abstract:` 字段或括号 + `OR` 的高级布尔，采集器会多翻页后本地过滤；可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `semanticscholar`：摘要补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
 - 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
