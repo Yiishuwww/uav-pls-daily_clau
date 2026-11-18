@@ -1,47 +1,54 @@
 {
-  "updatedAt": "2026-11-18T12:04:18+08:00",
-  "updatedCN": "2026-11-18 12:04",
+  "updatedAt": "2026-11-18T13:10:25+08:00",
+  "updatedCN": "2026-11-18 13:10",
   "sources": [
     {
       "name": "arxiv",
-      "ok": true,
-      "count": 2,
-      "ms": 11828,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "ms": 133753,
+      "error": "HTTP 429 export.arxiv.org/api/query: Rate exceeded."
     },
     {
       "name": "openalex",
       "ok": true,
       "count": 11,
-      "ms": 990,
+      "ms": 1746,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
-      "count": 173,
-      "ms": 17730,
+      "count": 172,
+      "ms": 17442,
       "error": null
     },
     {
       "name": "ieee",
       "ok": true,
       "count": 23,
-      "ms": 19225,
+      "ms": 19602,
       "error": null
+    },
+    {
+      "name": "springer",
+      "ok": false,
+      "count": 0,
+      "ms": 3915,
+      "error": "Springer 所有查询均失败"
     },
     {
       "name": "doaj",
       "ok": true,
       "count": 13,
-      "ms": 11917,
+      "ms": 12092,
       "error": null
     },
     {
       "name": "zenodo",
       "ok": true,
       "count": 2,
-      "ms": 5241,
+      "ms": 5914,
       "error": null
     }
   ]
