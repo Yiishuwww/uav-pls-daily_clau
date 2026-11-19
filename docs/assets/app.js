@@ -27,6 +27,7 @@
     tags: document.getElementById("tags"),
     sort: document.getElementById("sort-filter"),
     type: document.getElementById("type-filter"),
+    source: document.getElementById("source-filter"),
     month: document.getElementById("month-filter"),
     reset: document.getElementById("reset-filters"),
     overview: document.getElementById("overview"),
@@ -54,11 +55,20 @@
     preprint: "preprint",
   };
 
+  function isIeeePaper(paper) {
+    const doi = String(paper.doi || "").toLowerCase();
+    return (paper.sources || []).includes("ieee")
+      || doi.startsWith("10.1109/")
+      || /\bieee\b/i.test(paper.publisher || "")
+      || /\bieee\b/i.test(paper.venue || "");
+  }
+
   const state = {
     period: "30d",
     q: "",
     tag: "all",
     type: "all",
+    source: "all",
     month: "all",
     sort: "latest",
     limit: 40,
@@ -71,12 +81,16 @@
   state.q = (params.get("q") || "").trim();
   state.tag = params.get("tag") || "all";
   state.type = params.get("type") || "all";
+  state.source = params.get("source") || "all";
   state.month = params.get("month") || "all";
   const sortParam = params.get("sort");
-  state.sort = ["relevance", "citations"].includes(sortParam) ? sortParam : "latest";
+  state.sort = ["recent", "relevance", "citations"].includes(sortParam) ? sortParam : "latest";
 
   if (!["all", "journal-article", "conference", "preprint"].includes(state.type)) {
     state.type = "all";
+  }
+  if (!["all", "ieee", "other"].includes(state.source)) {
+    state.source = "all";
   }
 
   const counts = {
@@ -175,6 +189,8 @@
     if (state.period === "7d" && !(paper.firstSeen >= last7)) return false;
     if (state.period === "30d" && !(paper.firstSeen >= last30)) return false;
     if (state.type !== "all" && paper.type !== state.type) return false;
+    if (state.source === "ieee" && !isIeeePaper(paper)) return false;
+    if (state.source === "other" && isIeeePaper(paper)) return false;
     if (state.month !== "all" && !(paper.published || "").startsWith(state.month)) return false;
     if (state.tag !== "all" && !(paper.tags || []).includes(state.tag)) return false;
 
@@ -187,6 +203,8 @@
         paper.tldr,
         paper.venue,
         paper.publisher,
+        paper.doi,
+        paper.arxivId,
         (paper.tags || []).join(" "),
       ]
         .join(" ")
@@ -203,7 +221,13 @@
   function currentItems() {
     const items = papers.filter(matches);
 
-    if (state.sort === "relevance") {
+    if (state.sort === "recent") {
+      items.sort(
+        (a, b) =>
+          (b.firstSeen || "").localeCompare(a.firstSeen || "")
+          || (b.published || "").localeCompare(a.published || ""),
+      );
+    } else if (state.sort === "relevance") {
       items.sort(
         (a, b) =>
           (b.score || 0) - (a.score || 0)
@@ -228,11 +252,13 @@
         ? `共 ${items.length} 篇`
         : `共 ${items.length} 篇（筛选自 ${papers.length} 篇）`;
     els.sortHint.textContent =
-      state.sort === "relevance"
-        ? "按相关性排序"
-        : state.sort === "citations"
-          ? "按引用量排序"
-          : "按发表时间排序";
+      state.sort === "recent"
+        ? "按收录时间排序"
+        : state.sort === "relevance"
+          ? "按相关性排序"
+          : state.sort === "citations"
+            ? "按引用量排序"
+            : "按发表时间排序";
 
     els.list.textContent = "";
 
@@ -309,6 +335,7 @@
       || Boolean(state.q)
       || state.tag !== "all"
       || state.type !== "all"
+      || state.source !== "all"
       || state.month !== "all"
       || state.sort !== "latest";
     els.reset.hidden = !active;
@@ -551,6 +578,7 @@
       q: state.q,
       tag: state.tag,
       type: state.type,
+      source: state.source,
       month: state.month,
       sort: state.sort,
     }),
@@ -594,7 +622,7 @@
 
   els.sort.value = state.sort;
   els.sort.addEventListener("change", () => {
-    state.sort = ["relevance", "citations"].includes(els.sort.value)
+    state.sort = ["recent", "relevance", "citations"].includes(els.sort.value)
       ? els.sort.value
       : "latest";
     state.limit = 40;
@@ -605,6 +633,14 @@
   els.type.value = state.type;
   els.type.addEventListener("change", () => {
     state.type = els.type.value;
+    state.limit = 40;
+    syncUrl();
+    render();
+  });
+
+  els.source.value = state.source;
+  els.source.addEventListener("change", () => {
+    state.source = els.source.value;
     state.limit = 40;
     syncUrl();
     render();
@@ -627,11 +663,13 @@
     state.q = "";
     state.tag = "all";
     state.type = "all";
+    state.source = "all";
     state.month = "all";
     state.sort = "latest";
     state.limit = 40;
     els.search.value = "";
     els.type.value = "all";
+    els.source.value = "all";
     els.month.value = "all";
     els.sort.value = "latest";
     for (const button of periodButtons) {
@@ -673,11 +711,12 @@
   function syncUrl() {
     const url = new URL(window.location.href);
     const query = url.searchParams;
-    for (const key of ["period", "q", "tag", "type", "month", "sort"]) query.delete(key);
+    for (const key of ["period", "q", "tag", "type", "source", "month", "sort"]) query.delete(key);
     if (state.period !== "30d") query.set("period", state.period);
     if (state.q) query.set("q", state.q);
     if (state.tag !== "all") query.set("tag", state.tag);
     if (state.type !== "all") query.set("type", state.type);
+    if (state.source !== "all") query.set("source", state.source);
     if (state.month !== "all") query.set("month", state.month);
     if (state.sort !== "latest") query.set("sort", state.sort);
 

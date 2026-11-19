@@ -2,6 +2,7 @@
 // 只依赖 Web 标准 API（Request / Response / fetch / ReadableStream），不依赖 Node 专有模块。
 
 import { buildSystemPrompt, buildUserContent } from "./prompt.js";
+import { selectRelevantPapers } from "./retrieve.js";
 
 const MAX_QUESTION_CHARS = 1000;
 const MAX_HISTORY_MESSAGES = 8;
@@ -10,7 +11,7 @@ const MAX_HISTORY_ITEM_CHARS = 2000;
 const MAX_OUTPUT_TOKENS = 1200;
 const UPSTREAM_TIMEOUT_MS = 120000;
 
-const FILTER_KEYS = ["period", "q", "tag", "type", "month", "sort"];
+const FILTER_KEYS = ["period", "q", "tag", "type", "source", "month", "sort"];
 
 /**
  * 处理一次 /api/chat 请求。
@@ -84,7 +85,13 @@ export async function handleChatRequest(request, options = {}) {
   }
 
   const today = new Date().toISOString().slice(0, 10);
-  const system = buildSystemPrompt({ papers, today });
+  const historyText = history.map((item) => item.content).join("\n");
+  const selected = selectRelevantPapers(papers, question, filters, {
+    today,
+    extraText: `${question}\n${historyText}`,
+  });
+  console.log(`[chat] 检索到 ${selected.length}/${papers.length} 篇相关论文`);
+  const system = buildSystemPrompt({ papers, today, selected });
   const messages = [
     { role: "system", content: system },
     ...history,

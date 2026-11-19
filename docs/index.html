@@ -52,7 +52,7 @@
       </div>
       <label class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-        <input id="search" type="search" placeholder="搜索标题、作者、摘要、标签…" autocomplete="off" aria-label="搜索论文">
+        <input id="search" type="search" placeholder="搜索标题、作者、摘要、DOI、标签…" autocomplete="off" aria-label="搜索论文">
       </label>
     </div>
     <div class="toolbar-row two">
@@ -60,6 +60,7 @@
       <div class="selects">
         <select id="sort-filter" aria-label="排序方式">
           <option value="latest">最新发表</option>
+          <option value="recent">最新收录</option>
           <option value="relevance">相关性</option>
           <option value="citations">高引用</option>
         </select>
@@ -68,6 +69,11 @@
           <option value="journal-article">期刊</option>
           <option value="conference">会议</option>
           <option value="preprint">预印本</option>
+        </select>
+        <select id="source-filter" aria-label="论文来源">
+          <option value="all">全部来源</option>
+          <option value="ieee">IEEE</option>
+          <option value="other">非 IEEE</option>
         </select>
         <select id="month-filter" aria-label="按月份筛选">
           <option value="all">全部月份</option>
@@ -87,7 +93,7 @@
       <span class="guide-sub">Physical Layer Security for UAV Communications</span>
       <p class="guide-text">本站汇总无人机通信物理层安全方向的最新论文：保密速率、窃听与窃密、隐蔽通信、人工噪声、密钥生成等。数据每日 07:00 自动更新，来源包括 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore；摘要保留论文原文，缺失时通过 Semantic Scholar 自动补全，并附引用量、TLDR 与中文一句话摘要，预印本以灰色标签标注。</p>
       <p class="guide-text overview" id="overview" aria-live="polite">正在统计当前筛选…</p>
-      <p class="guide-hint">「今日 / 近 7 天 / 近 30 天」按本站收录时间统计，卡片日期为论文出版日期。点击标签可筛选；搜索支持标题、作者、摘要和标签；筛选条件会同步到 URL。</p>
+      <p class="guide-hint">「今日 / 近 7 天 / 近 30 天」按本站收录时间统计，卡片日期为论文出版日期。点击标签可筛选；搜索支持标题、作者、摘要、DOI 和标签；可按来源筛选 IEEE 论文；筛选条件会同步到 URL。</p>
     </div>
   </section>
 

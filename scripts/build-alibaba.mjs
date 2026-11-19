@@ -3,6 +3,7 @@
 //   server.mjs
 //   worker/src/chat.js
 //   worker/src/prompt.js
+//   worker/src/retrieve.js
 //   papers.json
 //
 // FC 控制台创建函数时：
@@ -27,7 +28,7 @@ fs.copyFileSync(
 );
 
 fs.mkdirSync(path.join(outDir, "worker", "src"), { recursive: true });
-for (const file of ["chat.js", "prompt.js"]) {
+for (const file of ["chat.js", "prompt.js", "retrieve.js"]) {
   fs.copyFileSync(
     path.join(root, "worker", "src", file),
     path.join(outDir, "worker", "src", file),
