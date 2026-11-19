@@ -255,6 +255,16 @@ ${items}
 `;
 }
 
+function existingChatApiUrl(docsDir) {
+  try {
+    const html = fs.readFileSync(path.join(docsDir, "index.html"), "utf8");
+    const match = html.match(/<meta name="chat-api-url" content="([^"]*)">/);
+    return match ? match[1].trim() : "";
+  } catch {
+    return "";
+  }
+}
+
 export function renderSite({ root, papers, status, log = () => {} }) {
   const docsDir = path.join(root, "docs");
   const assetsDir = path.join(docsDir, "assets");
@@ -269,7 +279,11 @@ export function renderSite({ root, papers, status, log = () => {} }) {
   const weekCount = papers.filter((paper) => paper.firstSeen >= last7).length;
 
   const siteUrl = (process.env.SITE_URL || "").replace(/\/+$/, "");
-  const chatApiUrl = (process.env.CHAT_API_URL || "/api/chat").trim() || "/api/chat";
+  // 本地重渲染时没有 CHAT_API_URL，沿用页面里已有的地址，避免把线上 AI 问答地址重置为 /api/chat。
+  const chatApiUrl =
+    (process.env.CHAT_API_URL || "").trim()
+    || existingChatApiUrl(docsDir)
+    || "/api/chat";
 
   const html = renderIndexHtml({
     papers,
