@@ -499,6 +499,65 @@
     els.reset.hidden = !active;
   }
 
+  const SUMMARY_LABELS = [
+    "研究问题",
+    "研究背景",
+    "研究动机",
+    "研究方法",
+    "研究目标",
+    "主要结论",
+    "主要方法",
+    "主要结果",
+    "主要贡献",
+    "优化目标",
+    "系统模型",
+    "实验设置",
+    "创新点",
+    "结论",
+    "结果",
+    "方法",
+    "贡献",
+    "背景",
+    "动机",
+  ];
+
+  function appendSummaryLines(container, raw) {
+    const text = String(raw || "")
+      .replace(/^(?:中文摘要|摘要)[：:]\s*/, "")
+      .trim();
+    if (!text) return;
+
+    const pattern = new RegExp(`(${SUMMARY_LABELS.join("|")})\\s*[：:]`, "g");
+    const matches = [...text.matchAll(pattern)];
+
+    const addLine = (label, content) => {
+      const line = document.createElement("p");
+      line.className = "summary-line";
+      if (label) {
+        const strong = document.createElement("strong");
+        strong.textContent = `${label}：`;
+        line.appendChild(strong);
+      }
+      if (content) line.appendChild(document.createTextNode(content));
+      container.appendChild(line);
+    };
+
+    if (matches.length === 0) {
+      addLine("", text);
+      return;
+    }
+
+    if (matches[0].index > 0) {
+      addLine("", text.slice(0, matches[0].index).trim());
+    }
+
+    for (let index = 0; index < matches.length; index += 1) {
+      const start = matches[index].index + matches[index][0].length;
+      const end = index + 1 < matches.length ? matches[index + 1].index : text.length;
+      addLine(matches[index][1], text.slice(start, end).trim());
+    }
+  }
+
   function card(paper) {
     const article = document.createElement("article");
     article.className = "paper";
@@ -571,9 +630,9 @@
       const summary = document.createElement("div");
       summary.className = "summary-zh";
 
-      const text = document.createElement("p");
+      const text = document.createElement("div");
       text.className = "summary-text";
-      text.textContent = `摘要：${paper.summaryZh}`;
+      appendSummaryLines(text, paper.summaryZh);
       summary.appendChild(text);
 
       if (paper.abstract) {

@@ -59,8 +59,9 @@ export async function enrichChineseSummaries(papers, { config = {}, log = () => 
             {
               role: "system",
               content:
-                "你是学术文献助手。请用 1-2 句中文概括论文的研究问题、方法和主要结论。"
-                + "不要编造，不要使用 Markdown，不要重复标题。",
+                "你是学术文献助手。请用中文概括论文，严格按以下格式输出 2-3 行：\n"
+                + "研究问题：...\n方法：...\n主要结论：...\n"
+                + "没有的信息可以省略；不要编造，不要使用 Markdown，不要重复标题。",
             },
             {
               role: "user",
@@ -70,7 +71,7 @@ export async function enrichChineseSummaries(papers, { config = {}, log = () => 
             },
           ],
           temperature: 0.3,
-          max_tokens: 160,
+          max_tokens: 220,
         }),
         timeout: 60_000,
         retries: 2,
