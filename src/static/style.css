@@ -154,6 +154,7 @@ select {
 
 .head-stats {
   display: flex;
+  align-items: flex-end;
   gap: 26px;
   padding-bottom: 3px;
 }
@@ -820,6 +821,7 @@ footer a {
   }
 
   .head-stats {
+    width: 100%;
     gap: 22px;
   }
 

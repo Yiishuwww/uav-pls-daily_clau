@@ -125,12 +125,12 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
       <div class="stat"><span class="num">${total}</span><span class="lbl">总收录</span></div>
       <div class="stat"><span class="num">${todayCount}</span><span class="lbl">今日新增</span></div>
       <div class="stat"><span class="num">${weekCount}</span><span class="lbl">近 7 天</span></div>
+      <button type="button" id="theme-toggle" class="theme-btn" aria-label="切换深色模式" title="切换深色模式">☾</button>
     </div>
   </div>
   <div class="wrap head-meta">
     <span>更新于 ${xmlEscape(updated)}（UTC+8）</span>
     <span class="srcs">${sourceStatusHtml(status)}</span>
-    <button type="button" id="theme-toggle" class="theme-btn" aria-label="切换深色模式" title="切换深色模式">☾</button>
   </div>
 </header>
 
