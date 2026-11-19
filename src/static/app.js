@@ -14,8 +14,6 @@
   papers = papers.map((paper, index) => ({ ...paper, _n: index + 1 }));
 
   const today = document.body.dataset.today || "";
-  const pushApiUrl = (document.querySelector('meta[name="push-api-url"]')?.content || "")
-    .replace(/\/+$/, "");
   const last7 = addDays(today, -6);
   const last30 = addDays(today, -29);
 
@@ -92,158 +90,6 @@
   els.countWeek.textContent = counts["7d"];
   els.count30.textContent = counts["30d"];
   els.countAll.textContent = counts.all;
-
-  // ---------- 主屏幕红点（iOS 16.4+ / 已添加到主屏幕） ----------
-
-  const badgeSupported = "setAppBadge" in navigator;
-
-  async function clearAppBadge() {
-    if (!badgeSupported) return;
-    try {
-      // iOS 需要用数字 0 清除角标；clearAppBadge 在部分版本上不生效
-      if ("setAppBadge" in navigator) {
-        await navigator.setAppBadge(0);
-      } else if (navigator.clearAppBadge) {
-        await navigator.clearAppBadge();
-      }
-    } catch {
-      // 权限未授予或系统不支持时静默失败
-    }
-  }
-
-  function isStandalone() {
-    return window.matchMedia("(display-mode: standalone)").matches
-      || window.navigator.standalone === true;
-  }
-
-  function urlBase64ToUint8Array(base64String) {
-    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-    const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
-    const raw = atob(base64);
-    const bytes = new Uint8Array(raw.length);
-    for (let index = 0; index < raw.length; index += 1) {
-      bytes[index] = raw.charCodeAt(index);
-    }
-    return bytes;
-  }
-
-  async function savePushSubscription(subscription) {
-    const response = await fetch(`${pushApiUrl}/api/push/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(subscription.toJSON()),
-    });
-    if (!response.ok) throw new Error(`订阅保存失败 ${response.status}`);
-  }
-
-  async function subscribePush() {
-    if (!pushApiUrl) return false;
-    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return false;
-
-    const registration = await navigator.serviceWorker.ready;
-    const keyResponse = await fetch(`${pushApiUrl}/api/push/vapid-public-key`, {
-      headers: { Accept: "application/json" },
-    });
-    if (!keyResponse.ok) throw new Error(`VAPID 公钥接口 ${keyResponse.status}`);
-    const { publicKey } = await keyResponse.json();
-    if (!publicKey) throw new Error("VAPID 公钥为空");
-
-    let subscription = await registration.pushManager.getSubscription();
-    if (!subscription) {
-      subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicKey),
-      });
-    }
-    await savePushSubscription(subscription);
-    return true;
-  }
-
-  async function syncPushSubscription() {
-    if (!pushApiUrl) return false;
-    if (typeof Notification === "undefined" || Notification.permission !== "granted") {
-      return false;
-    }
-    try {
-      const registration = await navigator.serviceWorker.ready;
-      const subscription = await registration.pushManager.getSubscription();
-      if (!subscription) return false;
-      await savePushSubscription(subscription);
-      return true;
-    } catch {
-      // 后台同步失败不影响页面
-      return false;
-    }
-  }
-
-  function setBadgeButtonVisible(visible, collapse = true) {
-    const button = document.getElementById("enable-badge");
-    if (!button) return;
-    button.hidden = !visible;
-    const meta = button.closest(".head-meta");
-    if (meta) meta.classList.toggle("badge-off", !visible && collapse);
-  }
-
-  function setupBadgeButton() {
-    const button = document.getElementById("enable-badge");
-    if (!button) return;
-    if (!badgeSupported || typeof Notification === "undefined" || !isStandalone()) {
-      // 手机浏览器标签页里也把空位收起来；桌面端保持主题按钮靠右
-      const compact = window.matchMedia("(max-width: 760px)").matches;
-      setBadgeButtonVisible(false, compact);
-      return;
-    }
-
-    if (Notification.permission === "granted") {
-      setBadgeButtonVisible(false);
-      // 打开 App 视为已读：无论是否配置后台推送，都清除角标。
-      clearAppBadge();
-
-      if (pushApiUrl) {
-        syncPushSubscription().then((synced) => {
-          if (!synced) {
-            button.textContent = "开启后台推送";
-            setBadgeButtonVisible(true);
-          }
-        });
-      }
-      return;
-    }
-
-    setBadgeButtonVisible(true);
-    button.addEventListener("click", async () => {
-      try {
-        const result = await Notification.requestPermission();
-        if (result === "granted") {
-          await clearAppBadge();
-          if (pushApiUrl) {
-            try {
-              await subscribePush();
-              setBadgeButtonVisible(false);
-            } catch (error) {
-              console.warn("[push] 订阅失败", error);
-              button.textContent = "后台推送未开启";
-              window.setTimeout(() => {
-                button.textContent = "开启后台推送";
-              }, 2200);
-            }
-          } else {
-            setBadgeButtonVisible(false);
-          }
-        } else {
-          button.textContent = "未授权";
-          window.setTimeout(() => {
-            button.textContent = "开启后台推送";
-          }, 1800);
-        }
-      } catch {
-        button.textContent = "开启失败";
-        window.setTimeout(() => {
-          button.textContent = "开启后台推送";
-        }, 1800);
-      }
-    });
-  }
 
   // ---------- 标签 ----------
 
@@ -836,13 +682,6 @@
 
   // ---------- 初始化 ----------
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") {
-      clearAppBadge();
-    }
-  });
-
-  setupBadgeButton();
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {});
   }

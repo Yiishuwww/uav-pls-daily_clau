@@ -229,31 +229,6 @@ select {
   border-color: var(--border-strong);
 }
 
-.badge-enable {
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--accent);
-  border-radius: 999px;
-  padding: 4px 9px;
-  font-size: 11.5px;
-  font-family: inherit;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.badge-enable:hover {
-  border-color: var(--accent);
-}
-
-.badge-enable[hidden] {
-  display: none !important;
-}
-
-/* 开启后按钮隐藏时，把主题按钮收回，避免中间留出一段空白 */
-.head-meta.badge-off .theme-btn {
-  margin-left: 0;
-}
-
 /* ---------- Toolbar ---------- */
 
 .toolbar {
