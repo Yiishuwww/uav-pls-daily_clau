@@ -105,6 +105,9 @@
 
   if (state.tag !== "all" && !tagCounts.has(state.tag)) state.tag = "all";
 
+  const MOBILE_TAG_LIMIT = 9;
+  let tagsExpanded = false;
+
   function renderTags() {
     els.tags.textContent = "";
     const entries = [["all", papers.length], ...displayTags];
@@ -112,7 +115,17 @@
       entries.push([state.tag, tagCounts.get(state.tag) || 0]);
     }
 
-    for (const [name, count] of entries) {
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    const collapsible = isMobile && entries.length > MOBILE_TAG_LIMIT;
+    let visible = entries;
+    if (collapsible && !tagsExpanded) {
+      visible = entries.slice(0, MOBILE_TAG_LIMIT);
+      if (state.tag !== "all" && !visible.some(([name]) => name === state.tag)) {
+        visible = [...visible, entries.find(([name]) => name === state.tag)];
+      }
+    }
+
+    for (const [name, count] of visible) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = `chip${state.tag === name ? " active" : ""}`;
@@ -124,6 +137,17 @@
       n.textContent = count;
       button.appendChild(n);
       els.tags.appendChild(button);
+    }
+
+    if (collapsible) {
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "chips-toggle";
+      toggle.setAttribute("aria-expanded", String(tagsExpanded));
+      toggle.textContent = tagsExpanded
+        ? "收起标签"
+        : `展开全部标签（共 ${entries.length - 1} 个）`;
+      els.tags.appendChild(toggle);
     }
   }
 
@@ -627,6 +651,11 @@
   });
 
   els.tags.addEventListener("click", (event) => {
+    if (event.target.closest(".chips-toggle")) {
+      tagsExpanded = !tagsExpanded;
+      renderTags();
+      return;
+    }
     const chip = event.target.closest(".chip");
     if (!chip) return;
     state.tag = chip.dataset.tag || "all";
