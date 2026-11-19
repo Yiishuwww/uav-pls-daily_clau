@@ -19,7 +19,7 @@
 - 自动打标签：RIS、NOMA、通感一体化、隐蔽通信、轨迹优化、波束成形、毫米波/THz、空天地网络等
 - 中文界面，论文标题与摘要保留英文原文
 - 顶部中文导读 + 随筛选变化的“本期概览”
-- **本周周报**：自动汇总近 7 天新增、类型/IEEE 分布、热门主题和本周值得关注的 3 篇论文
+- **本周周报**：点击列表上方的「本周周报」按钮打开弹窗，汇总近 7 天新增、类型/IEEE 分布、热门主题和值得关注的 3 篇论文；导语可由 GLM 生成，失败自动回退模板
 - 预印本用灰色小标签标注，不抢视觉
 - 搜索（标题、作者、摘要、DOI、标签）、时间范围、类型、来源（IEEE / 非 IEEE）、月份、标签筛选；支持“最新发表 / 最新收录 / 相关性 / 高引用”排序
 - 卡片显示中文一句话摘要（或 Semantic Scholar TLDR）、引用量与 OA PDF 链接
@@ -157,6 +157,16 @@ npm run notify
 ```
 
 当天没有新论文时会自动跳过，不会发空消息。
+
+### 本周周报
+
+页面列表上方的「本周周报」按钮会打开弹窗，展示近 7 天的统计和重点论文：
+
+- 统计由 `src/weekly.js` 在每日构建时计算，写入 `data/weekly.json`，页面同时提供 `docs/data/weekly.json`
+- 配置 `GLM_API_KEY` 后，导语由 GLM-4-Flash 根据代码算好的事实生成 2–3 句中文；数据没变化时复用缓存，不重复调用
+- 未配置 key 或接口失败时自动使用模板文字，不影响页面
+- 页面不会直接调用 GLM，key 只在 GitHub Actions 中使用
+- 打开 `?weekly=1` 可以直接显示周报弹窗，方便分享
 
 ### BibTeX 导出
 
@@ -437,7 +447,7 @@ npm run preview
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `springer`：Springer Nature Meta API 摘要补全。`api_key_env` 默认 `SPRINGER_API_KEY`，`max_papers` 控制每次最多补多少篇；不做全文检索，只按 DOI 查询缺摘要的 Springer/Nature 论文。未设置 key 时自动跳过
 - `semanticscholar`：摘要、引用量、TLDR、OA PDF 补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
-- `summary`：中文一句话摘要。`api_key_env` 默认 `GLM_API_KEY`，`model` 默认 `glm-4-flash`，`base_url` 可换兼容网关，`max_papers` 控制每次最多生成多少篇；未设置 key 时自动跳过
+- `summary`：中文一句话摘要与周报导语。`api_key_env` 默认 `GLM_API_KEY`，`model` 默认 `glm-4-flash`，`base_url` 可换兼容网关，`max_papers` 控制每次最多生成多少篇摘要；未设置 key 时自动跳过或使用模板
 - 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
@@ -461,6 +471,7 @@ uav-pls-daily_clau/
 │  ├─ enrich.js                  # Semantic Scholar 摘要 / 引用量 / TLDR / OA PDF
 │  ├─ enrich-springer.js         # Springer/Nature 按 DOI 补摘要
 │  ├─ summarize.js               # 智谱 GLM-4-Flash 中文一句话摘要
+│  ├─ weekly.js                  # 本周周报统计与可选 AI 导语
 │  ├─ bibtex.js                  # BibTeX 生成
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
@@ -483,6 +494,7 @@ uav-pls-daily_clau/
 ├─ wrangler.toml                 # Cloudflare Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）
+│  ├─ weekly.json                # 本周周报统计与导语
 │  └─ status.json                # 各数据源运行状态
 └─ docs/                         # 生成的静态网站（GitHub Pages 源）
 ```

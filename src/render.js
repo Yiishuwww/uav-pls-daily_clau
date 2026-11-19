@@ -62,7 +62,7 @@ function chatWidgetHtml() {
 </div>`;
 }
 
-function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl }) {
+function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl, weekly }) {
   const papersForSite = papers.map((paper) => ({
     id: paper.id,
     title: paper.title,
@@ -87,6 +87,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   }));
 
   const papersJson = JSON.stringify(papersForSite).replace(/</g, "\\u003c");
+  const weeklyJson = JSON.stringify(weekly || {}).replace(/</g, "\\u003c");
   const updated = status?.updatedCN || cnNow();
   const rssHref = siteUrl ? `${siteUrl}/feed.xml` : "feed.xml";
   const jsonHref = "data/papers.json";
@@ -190,24 +191,10 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
     </div>
   </section>
 
-  <section class="weekly" aria-label="本周周报">
-    <div class="weekly-head">
-      <span class="weekly-title">本周周报</span>
-      <span class="weekly-range" id="weekly-range"></span>
-      <button type="button" id="weekly-toggle" class="guide-toggle" aria-expanded="true" aria-controls="weekly-body">收起</button>
-    </div>
-    <div class="weekly-body" id="weekly-body">
-      <p class="weekly-summary" id="weekly-summary">正在统计本周论文…</p>
-      <div class="weekly-topics" id="weekly-topics" aria-label="本周热门主题"></div>
-      <p class="weekly-label" id="weekly-picks-label">本周值得关注</p>
-      <ol class="weekly-picks" id="weekly-picks" aria-label="本周值得关注"></ol>
-      <button type="button" id="weekly-view" class="weekly-view">查看本周论文 →</button>
-    </div>
-  </section>
-
   <div class="list-head">
     <div class="list-meta">
       <span id="result-count" aria-live="polite">共 0 篇</span>
+      <button type="button" id="weekly-open" class="reset-btn weekly-open" aria-haspopup="dialog" aria-expanded="false">本周周报</button>
       <button type="button" id="export-bib" class="reset-btn" title="导出当前筛选结果为 BibTeX">导出 BibTeX</button>
       <button type="button" id="reset-filters" class="reset-btn" hidden>重置筛选</button>
     </div>
@@ -231,6 +218,30 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 
 ${chatWidgetHtml()}
 
+<div class="weekly-modal" id="weekly-modal" hidden>
+  <div class="weekly-backdrop" data-weekly-close></div>
+  <section class="weekly-dialog" role="dialog" aria-modal="true" aria-labelledby="weekly-dialog-title">
+    <header class="weekly-dialog-head">
+      <div class="weekly-dialog-title">
+        <strong id="weekly-dialog-title">本周周报</strong>
+        <span id="weekly-range"></span>
+      </div>
+      <button type="button" id="weekly-close" class="weekly-close" aria-label="关闭周报">✕</button>
+    </header>
+    <div class="weekly-dialog-body">
+      <span class="weekly-ai-badge" id="weekly-ai-badge" hidden>AI 总结</span>
+      <p class="weekly-ai" id="weekly-ai"></p>
+      <div class="weekly-facts" id="weekly-facts"></div>
+      <p class="weekly-label" id="weekly-topics-label">热门主题</p>
+      <div class="weekly-topics" id="weekly-topics" aria-label="热门主题"></div>
+      <p class="weekly-label" id="weekly-picks-label">本周值得关注</p>
+      <ol class="weekly-picks" id="weekly-picks" aria-label="本周值得关注"></ol>
+      <button type="button" id="weekly-view" class="weekly-view">查看本周论文 →</button>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="weekly-data">${weeklyJson}</script>
 <script type="application/json" id="papers-data">${papersJson}</script>
 <script src="assets/app.js" defer></script>
 <script src="assets/chat.js" defer></script>
@@ -286,7 +297,7 @@ function existingChatApiUrl(docsDir) {
   }
 }
 
-export function renderSite({ root, papers, status, log = () => {} }) {
+export function renderSite({ root, papers, status, weekly = null, log = () => {} }) {
   const docsDir = path.join(root, "docs");
   const assetsDir = path.join(docsDir, "assets");
   const dataDir = path.join(docsDir, "data");
@@ -315,9 +326,15 @@ export function renderSite({ root, papers, status, log = () => {} }) {
     weekCount,
     siteUrl,
     chatApiUrl,
+    weekly,
   });
 
   fs.writeFileSync(path.join(docsDir, "index.html"), html, "utf8");
+  fs.writeFileSync(
+    path.join(dataDir, "weekly.json"),
+    `${JSON.stringify(weekly ?? {}, null, 2)}\n`,
+    "utf8",
+  );
   fs.writeFileSync(
     path.join(dataDir, "papers.json"),
     `${JSON.stringify({ updatedAt: status?.updatedAt || "", total, papers }, null, 2)}\n`,

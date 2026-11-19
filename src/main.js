@@ -19,6 +19,7 @@ import { enrichChineseSummaries } from "./summarize.js";
 import { evaluatePaper } from "./rank.js";
 import { renderSite } from "./render.js";
 import { loadStatus, loadStore, saveStatus, saveStore } from "./store.js";
+import { buildWeeklyReport, loadWeekly, saveWeekly } from "./weekly.js";
 import { addDays, cnNow, cnNowIso, cnToday } from "./text.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -125,7 +126,14 @@ async function main() {
   if (!args.collect) {
     log(`跳过采集，直接渲染 ${existing.length} 篇论文`);
     const status = loadStatus(ROOT);
-    renderSite({ root: ROOT, papers: existing, status, log });
+    const weekly = await buildWeeklyReport(existing, {
+      config: sources.summary ?? {},
+      log,
+      previous: loadWeekly(ROOT),
+      generateSummary: false,
+    });
+    saveWeekly(ROOT, weekly);
+    renderSite({ root: ROOT, papers: existing, status, weekly, log });
     log("网站已重新生成");
     return;
   }
@@ -256,8 +264,16 @@ async function main() {
 
   log(`入库完成：总计 ${papers.length} 篇，本次新增 ${added} 篇`);
 
+  const weekly = await buildWeeklyReport(papers, {
+    config: sources.summary ?? {},
+    log,
+    previous: loadWeekly(ROOT),
+    generateSummary: true,
+  });
+  saveWeekly(ROOT, weekly);
+
   if (args.render) {
-    renderSite({ root: ROOT, papers, status, log });
+    renderSite({ root: ROOT, papers, status, weekly, log });
     log("网站已生成：docs/index.html");
   }
 }

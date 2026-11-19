@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-11-19T21:34:05+08:00",
+  "rangeStart": "2026-11-13",
+  "rangeEnd": "2026-11-19",
+  "count": 17,
+  "typeCounts": {
+    "journal-article": 11,
+    "conference": 6,
+    "preprint": 0
+  },
+  "ieeeCount": 12,
+  "topTags": [
+    [
+      "干扰/人工噪声",
+      9
+    ],
+    [
+      "隐蔽通信",
+      8
+    ],
+    [
+      "深度强化学习",
+      6
+    ],
+    [
+      "资源分配",
+      5
+    ]
+  ],
+  "picks": [
+    {
+      "id": "doi:10.1109/ojcoms.2026.3747412",
+      "title": "Joint Position and Hybrid Beamforming Design for Secure Directional Modulation in UAV Communications",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "citationCount": 1,
+      "url": "https://doi.org/10.1109/ojcoms.2026.3747412"
+    },
+    {
+      "id": "doi:10.1109/vtc2026-spring68026.2026.11757281",
+      "title": "Leveraging Cyclostationary Features and Continual Learning for Robust RF Fingerprinting in IoT and UAV Networks",
+      "type": "conference",
+      "published": "2026-06-01",
+      "citationCount": 1,
+      "url": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757281"
+    },
+    {
+      "id": "doi:10.3390/electronics15225293",
+      "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "citationCount": 0,
+      "url": "https://doi.org/10.3390/electronics15225293"
+    }
+  ],
+  "fingerprint": "2026-11-13|2026-11-19|doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/ojcoms.2026.3747412,doi:10.1109/ojcoms.2026.3749813,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1109/vtc2026-fall68024.2026.11758399,doi:10.1109/vtc2026-spring68026.2026.11757217,doi:10.1109/vtc2026-spring68026.2026.11757281,doi:10.1109/vtc2026-spring68026.2026.11757415,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.1371/journal.pone.0361873,doi:10.14445/23488549/ijece-v13i10p115,doi:10.3390/electronics15225293|干扰/人工噪声:9,隐蔽通信:8,深度强化学习:6,资源分配:5|doi:10.1109/ojcoms.2026.3747412,doi:10.1109/vtc2026-spring68026.2026.11757281,doi:10.3390/electronics15225293",
+  "summary": "本周（11.13–11.19）新增 17 篇：期刊 11、会议 6；其中 IEEE 论文 12 篇。热门主题：干扰/人工噪声、隐蔽通信、深度强化学习。",
+  "summarySource": "template"
+}
