@@ -144,16 +144,28 @@ tags:
   - name: 隐蔽通信
     patterns:
       - 'covert'
+  - name: 主动窃听
+    patterns:
+      - 'active eavesdrop'
+      - 'active wiretap'
   - name: 干扰/人工噪声
     patterns:
       - 'jamming'
       - 'artificial noise'
       - 'jammer'
+  - name: 协作干扰
+    patterns:
+      - 'cooperative jamming'
+      - 'friendly jamming'
+      - 'cooperative jammer'
   - name: 安全速率
     patterns:
       - 'secrecy rate'
       - 'secrecy capacity'
       - 'secure rate'
+  - name: 保密中断
+    patterns:
+      - 'secrecy outage'
   - name: 轨迹优化
     patterns:
       - 'trajectory'
@@ -179,13 +191,37 @@ tags:
       - 'multi uav'
       - 'multiple uav'
       - 'uav network'
-      - 'uav assisted'
+  - name: 无人机中继
+    patterns:
+      - 'uav relay'
+      - 'aerial relay'
+      - 'drone relay'
+      - 'relay assisted uav'
+      - 'uav aided relay'
   - name: 深度强化学习
     patterns:
       - 'deep reinforcement'
       - 'reinforcement learning'
-      - 'deep learning'
+      - '\bdrl\b'
+      - '\bdqn\b'
+      - '\bddpg\b'
+      - '\bppo\b'
+      - '\btd3\b'
+      - '\bsac\b'
+      - 'actor critic'
+  - name: 机器学习
+    patterns:
       - 'machine learning'
+      - 'deep learning'
+      - 'neural network'
+  - name: 联邦学习
+    patterns:
+      - 'federated learning'
+  - name: 语义通信
+    patterns:
+      - 'semantic communication'
+      - 'semantic transmission'
+      - 'semantic aware'
   - name: 密钥生成
     patterns:
       - 'key generation'
@@ -198,6 +234,20 @@ tags:
       - 'mobile edge computing'
       - '\bmec\b'
       - 'edge computing'
+  - name: 资源分配
+    patterns:
+      - 'resource allocation'
+      - 'power allocation'
+      - 'power control'
+      - 'subcarrier allocation'
+      - 'bandwidth allocation'
+  - name: 携能/能量收集
+    patterns:
+      - 'swipt'
+      - 'energy harvesting'
+      - 'wireless power transfer'
+      - 'wireless energy transfer'
+      - 'simultaneous wireless'
   - name: MIMO
     patterns:
       - '\bmimo\b'

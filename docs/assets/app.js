@@ -255,8 +255,7 @@
   }
 
   const displayTags = [...tagCounts.entries()]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"))
-    .slice(0, 10);
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"));
 
   if (state.tag !== "all" && !tagCounts.has(state.tag)) state.tag = "all";
 

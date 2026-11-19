@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
+    <link></link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 19 Nov 2026 04:01:33 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 08:30:05 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications</title>
@@ -15,7 +15,7 @@
       <description>This paper investigates covert and secure convergecast communications in a UAV relay-assisted Internet of Things (IoT) system consisting of multiple sources, a destination, a full-duplex (FD) UAV relay, a warden (Willie), and an eavesdropper (Eve). In this system, each source transmits confidential information to the UAV via the time-division multiple access, and the FD UAV forwards the information to the destination using the amplify-and-forward (AF) protocol. The system prevents Eve from intercepting information while keeping UAV transmissions undetectable to Willie. We define the average throughput among sources (ATAS) and average secrecy throughput (AST), and derive Willie’s minimum detection error probability (DEP) under a noise uncertainty model. To enhance system performance while ensuring fairness among sources, we formulate the maximization of minimum ATAS as an optimization problem by jointly optimizing the UAV’s horizontal trajectory, flight altitude, transmit power, and source scheduling, subject to UAV flight, AST, and covertness constraints. We further develop a penalty-based successive convex approximation (P-SCA) algorithm to solve this complex problem. Numerical results demonstrate the effectiveness of the proposed framework and reveal the impact of key system parameters on system performance.</description>
       <category>隐蔽通信</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
+      <category>无人机中继</category>
       <category>全双工</category>
     </item>
     <item>
@@ -27,6 +27,7 @@
       <category>通感一体化</category>
       <category>隐蔽通信</category>
       <category>干扰/人工噪声</category>
+      <category>协作干扰</category>
       <category>波束成形</category>
       <category>空天地网络</category>
       <category>全双工</category>
@@ -38,6 +39,8 @@
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>In this work, the secrecy performance of UAV relay-aided communications is investigated with the incorporation of a fluid antenna system (FAS). Specifically, a multi-antenna transmitter sends private data to a legitimate receiver via an aerial UAV relay, while multiple ground eavesdroppers seek to intercept the relayed signal. The user is equipped with a planar FAS, while the base station and eavesdroppers use conventional fixedposition antennas. Both colluding and non-colluding eavesdropping modes are considered. To characterize the dependence among FAS ports, the copula-based spatial correlation model is adopted. Subsequently, the secrecy outage probability and ergodic secrecy capacity are evaluated analytically via the inverse Laplace transform and Gaussian-Laguerre quadrature. Asymptotic analyses are further carried out in the high-power regime to reveal the effects of the number of ports, fading parameter, and eavesdropping mode. Simulation results validate that the FAS offers substantial secrecy gains over fixed-position antennas, with the gain gradually saturating as the number of ports grows.</description>
       <category>安全速率</category>
+      <category>保密中断</category>
+      <category>无人机中继</category>
     </item>
     <item>
       <title>Deep learning-based secure beamforming for zeRIS-assisted UAV communications under partial blockage</title>
@@ -49,7 +52,7 @@
       <category>干扰/人工噪声</category>
       <category>安全速率</category>
       <category>波束成形</category>
-      <category>深度强化学习</category>
+      <category>机器学习</category>
     </item>
     <item>
       <title>Robust SAC-Enabled UAV-RIS Assisted Secure MISO Systems With Untrusted EH Receivers</title>
@@ -58,6 +61,9 @@
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>Secure downlink transmission in UAV-mounted reconfigurable intelligent surface (RIS)-assisted multi-user multiple-input single-output (MISO) networks is challenged by imperfect channel state information (CSI), internal eavesdropping by untrusted energy-harvesting receivers (UEHRs), discrete RIS phase shifts, and nonlinear energy harvesting (EH). This paper jointly optimizes the UAV hovering position, base station (BS) transmit power allocation, and discrete RIS phase shifts to maximize the worst-case secrecy energy efficiency (WCSEE) under bounded CSI uncertainty and nonlinear EH constraints. The resulting problem is a highly non-convex mixed-integer fractional optimization problem with tightly coupled spatial, power, and RIS variables. To address these challenges, we develop two complementary solution frameworks. First, for perfect CSI and continuous RIS phase shifts, we derive an analytical benchmark based on block coordinate descent (BCD) and successive convex approximation (SCA). Second, for the general robust setting with discrete phase quantization and CSI uncertainty, we propose a customized soft actor–critic (SAC) framework that incorporates continuous-to-discrete action projection, twin critics to mitigate value overestimation, and a feasibility-aware reward mechanism. Numerical results demonstrate that the proposed SAC policy achieves up to 28%, 16%, and 6% higher WCSEE than the SCA benchmark, DDPG, and TD3, respectively, while exhibiting faster convergence and maintaining stable performance across varying user densities, UEHR counts, and CSI uncertainty levels.</description>
       <category>RIS/IRS</category>
+      <category>深度强化学习</category>
+      <category>资源分配</category>
+      <category>携能/能量收集</category>
     </item>
     <item>
       <title>Joint Trajectory and Beamforming Optimization for Wireless Information Surveillance in Suspicious Maritime Communications</title>
@@ -65,6 +71,7 @@
       <guid isPermaLink="false">doi:10.1109/tcc.2026.3754920</guid>
       <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
       <description>To facilitate the timely detection of vessels involved in potentially illegal maritime activities for strengthening maritime safety in modern maritime operations, wireless information surveillance based on remote eavesdropping has attracted increasing attention. However, effective surveillance of maritime wireless links remains difficult due to the highly dynamic ocean environment and the potential exposure risk when surveillance is conducted at short distances. To address these challenges, a cooperative maritime wireless information surveillance scheme is developed by jointly employing an unmanned surface vehicle (USV) and an unmanned aerial vehicle (UAV). Within this scheme, a proactive eavesdropping framework is established, where a multi-antenna UAV transmits beamformed jamming signals to degrade the achievable rate of the suspicious link, while the USV is responsible for intercepting the signals transmitted over the suspicious link. An optimization problem is then formulated to enhance the average eavesdropping rate through the joint design of the UAV trajectory, the USV trajectory, and the UAV beamforming vector, subject to mobility, power, and concealment constraints. To efficiently solve the formulated problem, a block coordinate descent (BCD)-based alternating optimization algorithm is proposed, which decomposes the original problem into three interrelated subproblems. Each subproblem is converted into a convex approximation using successive convex approximation (SCA) and solved by a convex optimization algorithm iteratively. Simulation results show that the proposed scheme achieves improved performance in terms of average eavesdropping rate and concealment performance compared with conventional approaches.</description>
+      <category>主动窃听</category>
       <category>干扰/人工噪声</category>
       <category>轨迹优化</category>
       <category>波束成形</category>
@@ -84,6 +91,8 @@
       <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
       <description>In Low-Altitude Economy Networks (LAENets), Unmanned Aerial Vehicles (UAVs) provide diverse low-altitude services to the Base Station (BS) by transmitting task-related information under stringent low-probability-of-detection constraints. These constraints severely limit the available transmission resources, making it challenging to reliably deliver task-relevant information using conventional bit-level communication. Fortunately, Semantic Communication (SemCom) can be a promising solution by prioritizing task-relevant information over bit-level accuracy. However, different levels of semantic abstraction inherently introduce different degrees of information loss and redundancy, which may either compromise task reliability or incur excessive transmission overhead if not properly controlled. Moreover, since the BS cannot directly observe or reliably verify the semantic processing capabilities and abstraction-dependent transmission costs of UAVs, information asymmetry naturally arises in SemCom service provision. To this end, we propose an incentive-aware semantic abstraction framework for covert communications in LAENets. Specifically, we adjust the semantic abstraction level at the UAV side to provide differentiated covert semantic services under fixed-dimensional transmission payloads, thereby enabling reliable task information delivery under stringent covert constraints. Regarding the issue of information asymmetry, we propose a contract-theoretic model and adopt Prospect Theory (PT) to capture risk-sensitive semantic abstraction decisions under uncertainty. Furthermore, we design a Regularized Diffusion-based Soft Actor-Critic (RDSAC) algorithm for optimal contract design under PT. This algorithm enhances contract design by introducing diffusion entropy regularization together with action entropy regularization. Numerical results show the effectiveness of the proposed framework and demonstrate that RDSAC achieves average reward improvements of 6.77% over the SAC algorithm and 31.78% over the proximal policy optimization algorithm.</description>
       <category>隐蔽通信</category>
+      <category>深度强化学习</category>
+      <category>语义通信</category>
     </item>
     <item>
       <title>Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens</title>
@@ -93,7 +102,7 @@
       <description>Unmanned aerial vehicles (UAVs) provide a flexible platform for covert communication in wireless networks with complex propagation environments. This paper investigates a dual-UAV-assisted covert communication system in the presence of colluding wardens, where one UAV serves as a decode-and-forward relay and the other performs cooperative jamming. To enhance communication covertness, a randomized jamming-power strategy is introduced, in which the wardens know the statistical distribution of the jamming power but not its instantaneous realization, while legitimate receivers are assumed to perform ideal interference cancellation. To characterize the cooperative detection behavior of the two wardens, a decision-level OR fusion rule is adopted, and a cooperation factor α is introduced to represent the probability of successful decision sharing. Considering bounded noise uncertainty and randomized jamming power, the individual false-alarm and missed-detection probabilities are analytically derived, and the joint detection error probability is obtained under the proposed fusion mechanism. The minimum joint detection error probability is then determined by optimizing the detection thresholds of both wardens. Furthermore, the achievable end-to-end covert communication rate under half-duplex decode-and-forward relaying is characterized, and a joint optimization problem involving transmission powers and UAV hovering positions is formulated under a prescribed covertness constraint. The resulting analytical framework enables the investigation of the effects of jamming-power uncertainty, warden cooperation, and system parameters on covert communication performance.</description>
       <category>隐蔽通信</category>
       <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
+      <category>协作干扰</category>
     </item>
     <item>
       <title>UAV-Based Massive Covert Communications for Sports Venues</title>
@@ -122,7 +131,7 @@
       <description>Unmanned aerial vehicles (UAVs) have recently emerged as a promising solution for supporting intelligent transportation systems by providing flexible and reliable wireless connectivity among vehicular users. However, the broadcast nature of wireless channels exposes vehicular communications to monitoring and interception by unauthorized vehicles. In this paper, we investigate physical-layer covert communication in a UAV-assisted vehicular network employing rate-splitting multiple access (RSMA) over Nakagami- m fading channels. In the considered system, the UAV simultaneously transmits common and private messages to multiple vehicles, while an eavesdropper vehicle V E attempts to monitor and intercept the transmission. To enhance communication covertness, a friendly vehicular jammer with randomly distributed transmit power is introduced to increase uncertainty at the monitoring vehicle. Closed-form expressions for the outage probabilities of legitimate vehicles are derived to evaluate communication reliability, while the detection error probability and intercept probability are analyzed to characterize covert and security performance. In addition, asymptotic outage analysis is conducted to reveal the diversity behavior determined by Nakagami fading parameters. Monte Carlo simulations verify the accuracy of the analytical results and illustrate the impacts of key system parameters, including power allocation, fading severity, and random jamming power. The results provide useful design insights for secure UAV-assisted transportation communication systems.</description>
       <category>隐蔽通信</category>
       <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>A Comprehensive Survey of Low-Complexity High-Security Techniques for UAV Communications</title>
@@ -135,6 +144,8 @@
       <category>空天地网络</category>
       <category>无人机集群</category>
       <category>深度强化学习</category>
+      <category>联邦学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Joint UAV Trajectory and Beam Resource Optimization for Secure Communications in LEO-GEO Coexisting Satellite Networks</title>
@@ -144,7 +155,7 @@
       <description>This paper investigates interference management and uncrewed aerial vehicle (UAV)-assisted secure communications in LEO-GEO coexisting satellite networks (CSNs). In the considered network, LEO and GEO satellites simultaneously serve different ground users within the same area, while the LEO downlinks are subject to eavesdropping. To enhance the security of LEO satellite systems while guaranteeing the quality-of-service (QoS) requirements of GEO users, we formulate a joint optimization problem of UAV trajectory, beam hopping pattern (BHP), and beam power allocation, which is an NP-hard mixed-integer nonlinear programming problem. Therefore, we propose a joint UAV trajectory and beam resource allocation scheme. We develop a large-time-scale UAV trajectory optimization algorithm exploiting the slow variation of satellite-ground channels and the statistical traffic demand of LEO cells. At the time-slot level, we design an interference-aware BHP design method based on a beam search algorithm while accounting for beam switching cost and inter-beam interference, and propose a beam power allocation optimization algorithm that employs the concave-convex procedure and successive convex approximation to solve the non-convex problem. Simulation results demonstrate that our proposed scheme improves the secrecy data throughput of LEO systems while strictly satisfying the QoS requirements of GEO users, achieves efficient interference management and security enhancement, and exhibits good scalability in LEO-GEO CSNs.</description>
       <category>轨迹优化</category>
       <category>空天地网络</category>
-      <category>无人机集群</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Energy-Aware Air-Ground Covert Federated Learning for Terrestrial Devices</title>
@@ -154,7 +165,7 @@
       <description>Federated learning (FL) can preserve privacy, but it is limited by the coverage of static edge servers and vulnerable to security risks due to the frequent exchange of model parameters. To address these issues, we establish an unmanned aerial vehicle (UAV)-assisted covert FL framework to protect the transmission of local models from detection by an aerial warden. Acting as a flying server, the UAV aggregates local models from distributed ground devices to improve transmission efficiency. We aim to minimize the energy consumption of terrestrial devices in the presence of a severe security threat to the FL, where the warden adopts the minimum error detection probability. To meet the requirements of energy-sensitive applications, the UAV trajectory, transmission power, local accuracy, model upload time, and local computation capacity are jointly optimized. We decompose the optimization problem into three subproblems, and a low-complexity algorithm is developed. Specifically, for a given UAV trajectory, we derive the closed-form solutions for other variables to reduce the computational complexity. The UAV trajectory is then optimized using successive convex approximation. Numerical results demonstrate the effectiveness of the proposed UAV-assisted covert FL scheme in minimizing the energy consumption while guaranteeing the secrecy.</description>
       <category>隐蔽通信</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
+      <category>联邦学习</category>
     </item>
     <item>
       <title>Energy- and Latency-Efficient Offloading for Secure Cooperative UAV-NOMA-Enabled Mobile Edge Computing Networks</title>
@@ -164,6 +175,7 @@
       <description>Abstract This work investigates energy- and latency-efficient computation offloading for secure cooperative UAV-NOMA-enabled MEC networks in the presence of an eavesdropper. A subset of UAVs serves as jammers to mitigate eavesdropping, while the rest perform partial offloading. Given the passive eavesdropper assumption, secrecy outage probability is adopted as the secrecy metric, and its closed-form expression is derived by analyzing SINR statistics at the ground access point and the eavesdropper. Three non-convex optimization problems are formulated: minimizing individual UAV energy consumption, minimizing total energy of offloading and jamming UAVs, and minimizing task latency under an energy budget. Suboptimal solutions are obtained via constraint simplification, multi-to-single-variable transformation, and numerical methods. Results demonstrate that partial offloading balances energy and latency, with optimal offloading bits and jamming power; larger latency deadlines, secrecy outage probability thresholds, or energy budgets enhance performance.</description>
       <category>NOMA</category>
       <category>干扰/人工噪声</category>
+      <category>保密中断</category>
       <category>边缘计算</category>
     </item>
     <item>
@@ -173,8 +185,10 @@
       <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
       <description>ABSTRACT This paper investigates the joint optimization of resource allocation and unmanned aerial vehicle (UAV) trajectory in a UAV‐assisted two‐hop status update system, where secure and covert transmission is achieved under the finite blocklength (FBL) regime. A ground source transmits status updates to a destination via a decode‐and‐forward UAV relay, while a passive eavesdropper simultaneously attempts to intercept confidential information and detect the presence of legitimate transmissions. To capture the intricate coupling among information freshness, FBL reliability, physical‐layer security, and communication covertness, we formulate a problem of minimizing the secure age of information (S‐AoI). This formulation jointly accounts for FBL decoding errors, secrecy outage probability, Kullback–Leibler divergence‐based covertness constraints, transmit power limits, UAV mobility, and a safety‐distance requirement. Due to the mixed‐integer and non‐convex nature of the problem, we propose an alternating optimization and successive convex approximation algorithm to iteratively optimize the blocklength, two‐hop transmit powers, and UAV trajectory. Simulation results demonstrate that the proposed scheme achieves a significantly lower average S‐AoI compared to benchmark schemes, validating the effectiveness of the joint design in balancing reliability, security, covertness, and timeliness.</description>
       <category>隐蔽通信</category>
+      <category>保密中断</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
+      <category>无人机中继</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>DNN-Driven Proactive UAV Trajectory and Beam Steering for Blockage-Resilient Communications</title>
@@ -183,6 +197,7 @@
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
       <description>This paper proposes Autonomous UAV Communication (AutUAVCom), a proactive communication system that jointly adapts the flight trajectory and RF beam steering to minimize UAV energy consumption while satisfying secrecy and reliability requirements for rescue teams operating in dynamic, cluttered, and GPS-denied environments. Unlike existing modelbased proactive approaches, AutUAVCom employs a deep neural network-based Tracking and Prediction (T&amp;P) module that combines onboard sensing with spatiotemporal and body-orientation information to track users, localize blocking objects, and predict future trajectories and potential beam blockages. Building on the T&amp;P module, we formulate a constrained optimization problem and develop a two-step iterative numerical approach. Monte Carlo simulations show that, relative to a reactive system, AutUAVCom achieves 10% and 19% gains in energy efficiency and channel secrecy, respectively, while reducing the outage probability by 85%, under a mean blockage arrival interval of 120 seconds and a mean blockage duration of 20 seconds.</description>
       <category>轨迹优化</category>
+      <category>机器学习</category>
     </item>
     <item>
       <title>A Comprehensive Survey on Energy-Efficient Intelligent Reflecting Surfaces-Assisted Unmanned Aerial Vehicle-Based Communications</title>
@@ -194,6 +209,8 @@
       <category>轨迹优化</category>
       <category>波束成形</category>
       <category>深度强化学习</category>
+      <category>语义通信</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>An unmanned aerial vehicle-carried RIS covert communication mechanism</title>
@@ -211,7 +228,6 @@
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
       <description>Abstract Secure communication is essential in UAV-assisted wireless networks, where the broadcast nature of air-to-ground channels makes legitimate transmissions vulnerable to eavesdropping. Physical layer security (PLS) provides an effective means to mitigate this threat, with secrecy rate commonly adopted as the performance metric. However, practical engineering requirements may further require the eavesdropper’s signal-to-interference-plus-noise ratio (SINR) to remain below a prescribed threshold to prevent reliable decoding. The resulting optimization problem is challenging because both the secrecy-rate objective and the eavesdropper-SINR constraint depend on the unknown locations of passive eavesdroppers, while conventional reinforcement learning (RL) cannot explicitly enforce security-related constraints. To address these challenges, we formulate the problem as a constrained Markov decision process and develop a robust soft-fusion SAC-Lagrangian algorithm. The constrained RL component incorporates a long-term discounted eavesdropper-SINR cost into the learning process through a Lagrangian mechanism, enabling secrecy-rate optimization under explicit security requirements. It should be noted that the original per-slot hard SINR constraint is relaxed into a discounted cumulative-cost constraint when the problem is formulated as a CMDP, which is the standard formulation for long-term policy learning. To handle eavesdropper-location uncertainty, the potential eavesdropping region is partitioned into multiple subregions, and parallel reward-critic pairs are used to evaluate the worst-case secrecy performance in each subregion, while a single global cost critic evaluates the softmax-fused constraint cost. Their outputs are then fused to learn a single robust policy that balances secrecy-rate maximization and constraint satisfaction across uncertain eavesdropper locations. Simulation results show that the proposed method achieves faster stabilization of the training curve, a higher average secrecy rate, a higher worst-user secrecy rate, and a significantly lower constraint-violation probability than benchmark schemes.</description>
       <category>安全速率</category>
-      <category>无人机集群</category>
       <category>深度强化学习</category>
     </item>
     <item>
@@ -225,6 +241,8 @@
       <category>轨迹优化</category>
       <category>无人机集群</category>
       <category>深度强化学习</category>
+      <category>资源分配</category>
+      <category>携能/能量收集</category>
     </item>
     <item>
       <title>Poster: Secrecy rate analysis of RIS-assisted UAV networks using DDQN Network</title>
@@ -247,7 +265,8 @@
       <category>干扰/人工噪声</category>
       <category>安全速率</category>
       <category>空天地网络</category>
-      <category>无人机集群</category>
+      <category>无人机中继</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Statistical covertness-constrained 3D UAV trajectory design for ambient backscatter communications</title>
@@ -286,6 +305,7 @@
       <category>通感一体化</category>
       <category>干扰/人工噪声</category>
       <category>波束成形</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Beamforming and Trajectory Optimization for Aerial RIS-Aided Secure ISAC via Model Predictive Control</title>
@@ -307,8 +327,10 @@
       <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
       <description>Unmanned aerial vehicle (UAV)-enabled communications provides a cost-effective option for next-generation wireless networks. Nevertheless, the inherently open characteristics of air-to-ground links leave such communications particularly susceptible to eavesdropping. Motivated by this vulnerability, this paper studies a secure UAV communication system supported by cooperative jamming from the perspective of physical layer security (PLS). We introduce a new mechanism in which UAVs dynamically alternate between the source and jammer roles according to time-varying channel conditions. A security optimization problem is then formulated to jointly determine the role assignments, UAV trajectories, and transmission power control, with the objective of maximizing the worst-case secrecy rate (WCSR). The formulated problem is highly non-convex because of its binary role assignment variables, coupled decision variables, and semi-infinite constraints. To address this problem, we develop an optimization framework termed OASIS, which partitions the original formulation into tractable subproblems and iteratively solves them through successive convex approximation (SCA) and the S-procedure. Under simulation scenarios with K = 2 and K = 4 potential eavesdroppers and a maximum location-uncertainty radius of 20 m, the proposed strategy achieves a higher WCSR than the evaluated fixed-role, partial-optimization, and dynamic non-robust benchmark schemes.</description>
       <category>干扰/人工噪声</category>
+      <category>协作干扰</category>
       <category>安全速率</category>
       <category>轨迹优化</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Novel framework for physical-layer secrecy and network secrecy energy efficiency of UAV-assisted device-to-device communication</title>
@@ -316,7 +338,7 @@
       <guid isPermaLink="false">doi:10.3389/fphy.2026.1964844</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
       <description>Introduction Wireless networks are anticipated to continue connecting billions of devices and producing enormous amounts of data with the next sixth-generation (6G) technologies, propelling the development of artificial intelligence applications in a variety of industries. Unmanned aerial vehicles have shown promise in this regard as a way to deal with the problems brought on by the expanding environment. UAVs are especially well-suited for delivering on-demand services to mobile devices because of their special qualities, which include their mobility, flexibility, and capacity to create line-of-sight communication links. This is especially true in areas with limited terrestrial infrastructure, such as hot areas and disaster communication. Therefore, by acting as relaying points, aerial base stations, and data collectors, UAVs may greatly increase the capacity and reach of networks. Methods To address the challenges of energy limitations, spectrum scarcity, and severe co-channel interference in device-to-device (D2D) communication networks supporting UAVs in passive eavesdropping environments, the concept of secrecy energy-efficiency was introduced by considering each user’s privacy level and transmission power limitations. Based on physical layer secure transmission theory, the common problem of optimizing spectrum multiplexing and energy management strategies to maximize the energy efficiency of network secrecy was studied. A resource allocation algorithm combining the two algorithms was proposed to ensure the convergence of the original problem to a global optimal solution using the Dinkelbach algorithm and to transform the non-convex optimization problem into a geometric planning problem using the convex approximation algorithm. The problem was non-linear and non-convex. Results and Discussion Simulation results show that the recommended approach can effectively reduce co-channel interference, improve the energy efficiency of network privacy, and achieve a balance between network energy consumption and secure communication performance.</description>
-      <category>无人机集群</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Exploiting UAV Attitude for Covert Communications: Dynamics-Consistent Trajectory-Attitude Co-Design</title>
@@ -335,7 +357,8 @@
       <description>Abstract The rate-splitting multiple access (RSMA) systems have redefined the way noise and interference is tackled in wireless networks. Nevertheless, RSMA technique is susceptible to eavesdropping due to free space wireless channel. The present research work aims to propose a mitigation against physical channel information intrusion where conditional generative adversarial network (cGANs) is utilized. In order to make the cGAN model more adaptive and robust, the cosine interpolation of latent space is proposed. More so, the latent space is populated by Gamma random variables which has the capability to represent the wireless fading channel more closely compared to Gaussian noise which is generally used in GAN architectures. An unmanned aerial vehicle (UAV) is assumed to communicate with multiple users on the ground plane in the presence of eavesdroppers. The proposed cosine interpolated Gamma latent space cGAN (CIGLScGAN) deep learning model is used to mitigate the eavesdropping by generating a jamming signal. Further, this artificial jamming signal effects the intruding signal strength, however, generating a residual interference (RI) component which slightly lowers the overall performance. The results show a significant amount of improvement in the secrecy performance of the UAV-RSMA system model in terms of secrecy outage probability and secrecy capacity due to jamming caused by the CIGLScGAN trained model.</description>
       <category>干扰/人工噪声</category>
       <category>安全速率</category>
-      <category>深度强化学习</category>
+      <category>保密中断</category>
+      <category>机器学习</category>
     </item>
     <item>
       <title>Closed-Form Expression of Probability of Strictly Positive Secrecy Capacity over UAV-to-Ground Channels with Shadowing</title>
@@ -352,6 +375,7 @@
       <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
       <description>Aerial base stations (ABSs) can rapidly establish connectivity in ad hoc, infrastructure-deprived environments, but their broadcast, line-of-sight transmissions leak far beyond the intended service area, exposing communications to passive eavesdropping and interference. Prior physical layer defenses based on cooperative jamming typically assume known eavesdropper locations, simplified statistical channels, or continuously repositioned jammers. We instead pose the problem as a radio frequency (RF) containment: confining usable signal to a user-defined, arbitrarily-shaped target zone while denying it elsewhere independent of eavesdropper location. We present ARCTAN, a gradient-based optimization framework that jointly optimizes the position, orientation, and transmit power of stationary ABSs and cooperative jammers (CJs) by backpropagating through site-specific, differentiable 3D ray traced channels. Evaluated in a high-fidelity digital twin across three target zone geometries, ARCTAN achieves a mean in-zone SINR of approximately 10 dB while reducing mean out-of-zone SINR from 13-16 dB to -3-5 dB, and suppressing signal-leakage ratios from over 93% to below 46% requiring at most 10 of 12 candidate CJs.</description>
       <category>干扰/人工噪声</category>
+      <category>协作干扰</category>
     </item>
     <item>
       <title>Analysis of Unmanned Aerial Vehicle Compromising Emissions in Terms of the Possibility of Reconstructing the Transmitted Image</title>
@@ -417,7 +441,7 @@
       <description>Abstract The integration of intelligent reflecting surfaces (IRS) with unmanned aerial vehicle (UAV) is rapidly emerging as a groundbreaking approach to enhancing the performance of 5G and beyond (5G+) wireless networks. This paper considers UAV-assisted-IRS-aided ground-to-ground (G2G) communication (UA-IRS-G2G) for improving the reliability of ground users (GUs) in infrastructure-less scenarios. To develop the mathematical framework for UA-IRS-G2G system, a height-dependent Nakagami- m fading channel is assumed for the IRS-to-GU links, while a Rayleigh fading channel is adopted for the G2G links, accounting for the multipath effect between the GUs. For the same, the cumulative distribution function (CDF) of the end-to-end signal-to-noise ratio (SNR) for signals transmitted via UA-IRS is derived. Furthermore, the closed-form expressions of secrecy outage probability (SOP) and secrecy capacity are also derived for the considered scenario. Additionally, diversity order is employed to enhance the reliability of the received signal at the receiver node in the proposed scenario. At the end numerical simulations are conducted to validate the accuracy of these theoretical derivations. The performance of the proposed work is compared with the existing state-of-the-art method reported in 11 . The results demonstrate that the proposed approach achieves better performance than the existing method in 11 .</description>
       <category>RIS/IRS</category>
       <category>安全速率</category>
-      <category>无人机集群</category>
+      <category>保密中断</category>
     </item>
     <item>
       <title>Reliability and physical-layer security of fluid antenna-assisted UAV cooperative NOMA networks</title>
@@ -435,7 +459,6 @@
       <description>In this paper, we propose an energy-efficient and reliable communication system for non-terrestrial networks deployed in dynamic GPS-denied wireless environments, enabled by a Vision--Inertial Tracking-Assisted UAV Communication (VIT-UAVCom) system. To the best of our knowledge, this is the first work to exploit onboard UAV cameras and IMU sensors for UAV-assisted communications. We consider a complete VIT-UAVCom system that incorporates the key design parameters while explicitly accounting for system noise and residual tracking inaccuracies. Building on this framework, we formulate an optimization problem for jointly designing the UAV trajectory and communication performance to improve propulsion energy efficiency, reduce outage probability, and enhance physical-layer security. We then develop a dedicated solution framework to efficiently compute near-optimal trajectory and communication control actions in dynamic scenarios. Furthermore, to enable real-time implementation, we propose and evaluate three optimizers, namely linear search (LS), binary search (BS), and genetic search. Our numerical results demonstrate that our proposed VIT-UAVCom framework significantly outperforms the K-means benchmark in terms of energy consumption while maintaining robust secrecy performance and reliable user coverage. Specifically, our proposed framework improves the energy efficiency by 144% compared to the benchmark. Interestingly, our results also show that, compared with the LS, the BS reduces the computational time by approximately 50%.</description>
       <category>轨迹优化</category>
       <category>空天地网络</category>
-      <category>无人机集群</category>
     </item>
     <item>
       <title>Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning</title>
@@ -447,6 +470,7 @@
       <category>干扰/人工噪声</category>
       <category>无人机集群</category>
       <category>深度强化学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems</title>
@@ -457,7 +481,10 @@
       <category>RIS/IRS</category>
       <category>波束成形</category>
       <category>深度强化学习</category>
+      <category>机器学习</category>
+      <category>联邦学习</category>
       <category>边缘计算</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>FGM copula-based analysis of physical layer security in UAV wiretap channels with correlated Rician coefficients</title>
@@ -466,6 +493,7 @@
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>Abstract Securing unmanned aerial vehicle (UAV) communications against eavesdropping is critical due to the vulnerability of dominant air-to-ground line-of-sight links. This work examines physical-layer security under a practical yet often neglected condition: statistical correlation between the fading channels of the legitimate receiver and the eavesdropper. We propose an analytical framework employing the Farlie–Gumbel–Morgenstern (FGM) copula to model this correlation within a Rician fading environment, which accurately captures UAV channel characteristics. Mathematical expressions for the joint distribution, the average secrecy capacity (ASC), the secrecy outage probability (SOP) are derived. The numerical analysis demonstrates that negative dependence parameter substantially improves both ASC and SOP compared to independent and positive dependence parameter in correlated fading, providing approximately 23% gain in ASC and 46% reduction in SOP at low transmit power. These performance advantages diminish at high SNR, where dependence parameter effects become less dominant.</description>
       <category>安全速率</category>
+      <category>保密中断</category>
     </item>
     <item>
       <title>Deep Reinforcement Learning for Semantic Secure Energy Efficiency Optimization in IRS-Assisted UAV Communications</title>
@@ -476,6 +504,8 @@
       <category>RIS/IRS</category>
       <category>轨迹优化</category>
       <category>深度强化学习</category>
+      <category>语义通信</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Multi-Beam Cooperative Time-Varying Directional Modulation for Secure Satellite Downlink Transmission to UAV Swarms</title>
@@ -496,7 +526,7 @@
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>This paper considers the physical layer security (PLS) performance analysis of an unmanned aerial vehicle (UAV)-assisted free-space optical (FSO) communication system over Fisher-Snedecor (F) distributed turbulence fading channel. We consider the combined effects of atmospheric turbulence, pointing error (PE), atmospheric attenuation, and angle-of-arrival (AOA) fluctuations on the channel. The communication between two legitimate peers in the presence of an external eavesdropper is studied from the perspective of communication theory security. Specifically, under two different eavesdropping scenarios where an eavesdropper is located close to the legitimate transmitter or receiver, we derive the exact closed-form expressions of the secrecy outage probability (SOP) and strictly positive secrecy capacity (SPSC), respectively. These analytical results are validated through Monte Carlo simulations. Furthermore, we also analyze the impact of various link parameters for both the main channel and the eavesdropping channel on the system performance.</description>
       <category>安全速率</category>
-      <category>无人机集群</category>
+      <category>保密中断</category>
     </item>
     <item>
       <title>UAV-Enabled Covert Communication Against Cooperative Detection Under Nakagami-m Channel</title>
@@ -514,6 +544,7 @@
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>This paper investigates bursty covert communication in a finite-buffer two-hop unmanned aerial vehicle (UAV) relay network for autonomous vehicular systems. Multiple autonomous vehicles generate status and emergency packets and forward them to a traffic-control gateway through a decodeand-forward UAV relay. Different from conventional smoothtraffic models, the packet generation process is represented by a two-state bursty Poisson model with a normal monitoring state and an emergency burst state. The UAV relay is equipped with a finite buffer, so emergency packet surges may cause buffer overflow when the covert forwarding capability is insufficient. The legitimate and eavesdropping links are subject to distance-dependent path loss, Nakagami- m fading, aggregate interference, and noise. A tractable covert success model is developed by jointly considering legitimate decoding and worstcase eavesdropper detectability on both hops. Based on this model, we derive the effective covert arrival rate, effective covert service rate, finite-buffer evolution, blocking probability, and effective covert throughput. The simulation results show how emergency burstiness, buffer size, relay transmit power, number of eavesdroppers, and aggregate interference affect covert throughput and packet blocking. The results also show that covert throughput may saturate when the effective covert arrival rate exceeds the covert relay service rate, and that interference has a dual role in covert UAV relay communication.</description>
       <category>隐蔽通信</category>
+      <category>无人机中继</category>
     </item>
     <item>
       <title>Utility Maximization Integrating Secrecy, Energy Consumption, and Latency for UAV-Assisted MEC Systems via Dual-Replay TD3</title>
@@ -523,7 +554,7 @@
       <description>Unmanned aerial vehicle (UAV)-assisted mobile edge computing (MEC) has emerged as a practical means of providing computation and communication support for geographically dispersed Internet of Things (IoT) terminals. However, the broadcast nature of wireless links makes offloading data vulnerable to cooperative eavesdropping. Moreover, the limited onboard energy of UAVs and the latency-sensitive characteristics of MEC services lead to a challenging trade-off between the secrecy rate, energy consumption, and latency. To address this issue, we formulate a utility maximization problem to jointly optimize UAV trajectory and task-offloading decisions in UAV-assisted MEC systems against multiple eavesdroppers. Due to the strong coupling among optimization variables and the non-convexity of the problem, an enhanced twin-delayed deep deterministic policy gradient (TD3) framework integrating Hindsight Experience Replay (HER) and Prioritized Experience Replay (PER) is proposed to improve convergence efficiency and learning stability. Furthermore, a system utility-driven reward function is designed to balance the secrecy rate, energy consumption, and processing latency under different application requirements. The simulation results demonstrate that the proposed approach consistently outperforms DDQN, DDPG, and conventional TD3 in terms of system utility, secrecy performance, convergence speed, and adaptability to different scenarios.</description>
       <category>安全速率</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
+      <category>深度强化学习</category>
       <category>边缘计算</category>
     </item>
     <item>
@@ -543,8 +574,8 @@
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>This paper investigates robust physical-layer security (PLS) for UAV-assisted double-layer heterogeneous networks (HetNets) under channel state information (CSI) uncertainty. A joint channel assignment and power control optimization problem is formulated to maximize system sum capacity while satisfying worst-case secrecy constraints. To address the resulting mixed-integer nonlinear programming (MINLP) problem and multi-agent non-stationarity, we propose a Robust Action-Masked Multi-Agent Deep Reinforcement Learning (RAM-MADRL) framework. In this framework, the action-masking mechanism enforces physical feasibility during decision making, while the cooperative mini-batch mechanism is adopted as a training strategy to improve learning stability under the CTDE architecture. Simulation results under a representative setup with four UAVs, seven U2A links, a secrecy-rate requirement of c 0 = 2 bps/Hz, and a UAV altitude of 20 m show that the proposed RAM-MADRL achieves about a 10% improvement in system sum capacity over learning-based baselines while maintaining robust secrecy performance under CSI uncertainty.</description>
       <category>安全速率</category>
-      <category>无人机集群</category>
       <category>深度强化学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Robust Secrecy-Throughput Efficiency Maximization for UAV-Assisted Mobile Edge Computing under Imperfect CSI</title>
@@ -553,7 +584,6 @@
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>UAV-assisted mobile edge computing (MEC) is a promising solution for computation-intensive and securitysensitive applications, especially in infrastructure-limited environments. However, most existing secure UAV-MEC designs assume perfect channel state information (CSI), which is unrealistic in practice due to channel estimation errors, quantization noise, and feedback delays. In this paper, we study robust secrecy-throughput efficiency (STE) maximization for a dual-UAV secure MEC system under imperfect CSI, where a computing UAV (UAV-C) collects computation tasks from multiple ground users and a jamming UAV (UAV-J) interferes with a passive eavesdropper. To account for CSI uncertainty, we adopt bounded multiplicative error sets and formulate a worst-case robust optimization problem that jointly optimizes user transmit power, task offloading allocation, and UAV trajectories. To solve the resulting non-convex fractional program, we develop an iterative algorithm based on Dinkelbach’s method, block coordinate descent (BCD), and successive convex approximation (SCA). Simulation results show that the proposed robust design achieves a provable worst-case STE guarantee under channel uncertainty, while incurring only marginal averageperformance loss compared with the perfect-CSI baseline.</description>
       <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
       <category>边缘计算</category>
     </item>
     <item>
@@ -566,7 +596,6 @@
       <category>通感一体化</category>
       <category>干扰/人工噪声</category>
       <category>波束成形</category>
-      <category>无人机集群</category>
     </item>
     <item>
       <title>Rating-aware graded security offloading and cost optimization for UAV-assisted MEC networks</title>
@@ -574,8 +603,8 @@
       <guid isPermaLink="false">doi:10.1007/s44443-026-01228-x</guid>
       <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
       <description>UAV-assisted mobile edge computing (MEC) provides a flexible way to process computation-intensive tasks for ground users, but the open air-to-ground transmission links expose offloaded data to eavesdropping risks. Existing secure offloading schemes often apply fixed protection policies to all tasks, which may introduce unnecessary overhead for low-sensitivity data while providing insufficient adaptation for highly sensitive data. To address this issue, this paper proposes a rating-aware graded security offloading framework for UAV-assisted MEC networks. Each task is assigned a normalized sensitivity rating, and the rating is mapped to a security-strength coefficient that affects encryption/decryption delay, security-related energy consumption, and offloading cost. Based on this model, the offloading decision among local computing, UAV-MEC computing, and cloud computing is jointly optimized with transmission power and computing resource allocation. The resulting mixed-integer non-convex problem is solved by a tailored alternating optimization algorithm. Simulation results under the same baseline parameter settings show that the proposed framework maintains a higher offloading ratio and lower system cost than the fixed-security and no-rating baselines in the considered hover-based UAV-MEC scenario.</description>
-      <category>无人机集群</category>
       <category>边缘计算</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Secrecy Rate Maximization for UAV-Mounted Six-Dimensional Movable IRS-Assisted ISAC Systems</title>
@@ -597,7 +626,8 @@
       <description>UAVs enhance IoT communication in dynamic, infrastructure-limited settings but face risks of information leakage and eavesdropping.The majority of existing works on covert communication are based on deterministic models and assume a centralized optimization with global CSI, which is not suitable for dynamic UAV-IoT scenarios.To address these challenges, this paper presents a framework, FL-SCA (federated learning-assisted successive convex approximation), for joint secrecy-covertness optimization in UAV-enabled IoT communications.In this context, the distributed IoT devices are trained using the developed FL model to estimate the warden&apos;s detection error probability, while keeping their data private to safeguard their collected data and reduce overused communication resources.The learned detection predictor is used to solve the power-control optimization problem of maximizing the achievable secrecy rate subject to covert communication and transmitpower constraints.Successive Convex Approximation (SCA) is used to solve the non-convex problem and Monte Carlo simulations verify the improvement in terms of secrecy-covertness and resource efficiency.As a result, distributed learning-assisted optimization is applicable to the secure and covert UAV-assisted IoT communication in the dynamic wireless networks.</description>
       <category>隐蔽通信</category>
       <category>安全速率</category>
-      <category>无人机集群</category>
+      <category>联邦学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Active IRS-Enhanced UAV Relaying for Secure Hybrid RF/FSO Communications: Joint Phase Shift, Beamforming, and Power Optimization</title>
@@ -608,8 +638,9 @@
       <category>RIS/IRS</category>
       <category>干扰/人工噪声</category>
       <category>安全速率</category>
+      <category>保密中断</category>
       <category>波束成形</category>
-      <category>无人机集群</category>
+      <category>无人机中继</category>
     </item>
     <item>
       <title>Toward Secure Communications for a UAV Swarm with Movable Antennas in SAGIN: CKM-Enabled Multi-Agent Reinforcement Learning Framework</title>
@@ -630,6 +661,7 @@
       <category>RIS/IRS</category>
       <category>NOMA</category>
       <category>安全速率</category>
+      <category>深度强化学习</category>
     </item>
     <item>
       <title>Joint Secure Beamforming and Computation Offloading for MIMO-Enabled SAGIN-ISCC Systems</title>
@@ -640,7 +672,7 @@
       <category>通感一体化</category>
       <category>波束成形</category>
       <category>空天地网络</category>
-      <category>无人机集群</category>
+      <category>资源分配</category>
       <category>MIMO</category>
     </item>
     <item>
@@ -652,7 +684,7 @@
       <category>通感一体化</category>
       <category>干扰/人工噪声</category>
       <category>安全速率</category>
-      <category>无人机集群</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Low-Rank Modeling of Continuous Threat Regions for Cooperative Secure Beamforming in UAV Networks</title>
@@ -692,6 +724,7 @@
       <category>安全速率</category>
       <category>波束成形</category>
       <category>深度强化学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Dynamic Role Allocation in Cooperative Secure UAV-ISAC Networks</title>
@@ -715,6 +748,7 @@
       <category>通感一体化</category>
       <category>安全速率</category>
       <category>波束成形</category>
+      <category>深度强化学习</category>
     </item>
     <item>
       <title>Robust Beamforming for Physical-Layer Security in RIS-Assisted UAV Networks</title>
@@ -736,7 +770,6 @@
       <category>RIS/IRS</category>
       <category>隐蔽通信</category>
       <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
     </item>
     <item>
       <title>Covert Communication in UAV Assisted Symbiotic Radio Systems</title>
@@ -746,7 +779,6 @@
       <description>Symbiotic radio owing to its open characteristics, poses a substantial threat to system security. With the integration of unmanned aerial vehicle (UAV) technology, the challenges to enhancing the security performance of such systems become even more severe. This article first propose a covert communication enhancement framework for symbiotic radio systems, which is realized through the joint optimization of UAV trajectory planning and ground device scheduling. It analyzes the outage probability of the symbiotic radio system and the minimum detection error probability of the eavesdropper, and then constructs the problem of optimizing the maximum communication rate of UAV flight trajectory and ground equipment scheduling under concealment constraints, energy constraints, and flight constraints. Due to the approximate expression of outage probability and the non convexity of the optimization problem, online learning is used to solve the approximate optimal solution. Finally, the effectiveness and robustness of the proposed method are demonstrated through simulation analysis.</description>
       <category>隐蔽通信</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
     </item>
     <item>
       <title>Air-to-Ground Two-Phase Covert Transmission Aided by a Full-Duplex UAV Relay</title>
@@ -756,6 +788,7 @@
       <description>This paper investigates an air-to-ground two phase covert transmission (AtG-TPCT) system, which is associated with an unmanned aerial vehicle transmitter Alice (UAV-A), a fullduplex UAV relay (UAV-R) and multiple uncertainly located wardens. Accordingly, given the bounded location uncertainty of wardens, we formulate a robust average covert rate (ACR) maximization problem by jointly optimizing the 3D trajectory of UAV-R, and the transmit powers of UAV-A and UAV-R, with the worst-case covertness constraint. The problem is explicitly non-convex due to factors that, the covert end-to-end achievable rate is coupled with the two adjacent legitimate transmission phases, while the coupled dependence is observed among the relay self-interference, transmit powers, and the UAV-R trajectory. To tackle this issue, an iterative optimization algorithm is developed based on block coordinate descent and successive convex approximation. Numerical results demonstrate that, regarding the performance metric of ACR, the proposed AtG-TPCT is capable of achieving rapid convergence to its optimal covertness, while can distinctively outperform in performance with its benchmark counterpart.</description>
       <category>隐蔽通信</category>
       <category>轨迹优化</category>
+      <category>无人机中继</category>
       <category>全双工</category>
     </item>
     <item>
@@ -771,9 +804,9 @@
       <link>https://doi.org/10.23919/nanacps00070.2026.00082</link>
       <guid isPermaLink="false">doi:10.23919/nanacps00070.2026.00082</guid>
       <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
-      <description>2026 International Conference on Networking and Network Applications (NaNA) · 2026-08-01 · 隐蔽通信, 无人机集群</description>
+      <description>2026 International Conference on Networking and Network Applications (NaNA) · 2026-08-01 · 隐蔽通信, 资源分配</description>
       <category>隐蔽通信</category>
-      <category>无人机集群</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Performance Analysis and Optimization of Covert Communications Under UAV Surveillance</title>
@@ -792,7 +825,6 @@
       <category>RIS/IRS</category>
       <category>安全速率</category>
       <category>轨迹优化</category>
-      <category>无人机集群</category>
     </item>
     <item>
       <title>Deep Reinforcement Learning for Intelligent UAV-assisted Secured Semantic Communications</title>
@@ -801,8 +833,11 @@
       <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
       <description>Uncrewed aerial vehicle (UAV) communication is a promising solution for providing flexible and on-demand connectivity when terrestrial infrastructure is unavailable or unreliable. However, the strong line-of-sight nature of air-to-ground links makes such systems highly vulnerable to eavesdropping, while conventional bit-level transmission remains inefficient under stringent energy and bandwidth constraints. In this paper, we propose a secure and energy-efficient semantic communication framework for UAV-assisted uplink networks. A dual-UAV architecture is considered, where a UAV relay supports multiple terrestrial users in communicating with a remote base station, and a cooperative UAV jammer is deployed to degrade the eavesdropper’s wiretapping capability. To improve transmission efficiency, semantic communication conveys task-relevant information rather than raw bit streams. We formulate an average secrecy semantic throughput maximization problem that jointly optimizes UAV trajectories, transmit power, bandwidth allocation, and cooperative jamming under secrecy requirements and practical constraints, including peak and average power limits, UAV propulsion energy budgets, maximum operational radius, and collision avoidance. Owing to the system’s dynamic behavior and non-convex nature of the optimization problem, it is reformulated as a Markov decision process and solved using a proximal policy optimization-based deep reinforcement learning framework. Finally, the simulation results show that the proposed framework achieves a higher secure semantic throughput than several baseline schemes.</description>
       <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
+      <category>协作干扰</category>
+      <category>无人机中继</category>
       <category>深度强化学习</category>
+      <category>语义通信</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Enhancing Security for UAV Communications in LAWNs via Flexible-Duplex Cell-Free Design</title>
@@ -820,7 +855,7 @@
       <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
       <description>Securing IoT and UAV networks requires lightweight yet resilient methods that go beyond traditional cryptography. This paper introduces a deep learning-based RF fingerprinting framework that leverages cyclostationary features and continual learning to enhance device authentication in dynamic wireless environments. By exploiting invariant signal patterns and adapting to transmission variations, the proposed approach achieves robust identification while remaining efficient for resource-constrained platforms. Experimental results demonstrate strong validation accuracy and improved generalization across heterogeneous devices, highlighting its suitability for smart consumer electronics, IoT systems, and UAV communications. This work advances physical-layer security by embedding adaptive fingerprinting into wireless architectures, enabling scalable and secure connectivity in real-world deployments.</description>
       <category>无人机集群</category>
-      <category>深度强化学习</category>
+      <category>机器学习</category>
     </item>
     <item>
       <title>Joint UAV trajectory and offloading optimization with robust secrecy for intelligent mining</title>
@@ -841,7 +876,7 @@
       <category>安全速率</category>
       <category>轨迹优化</category>
       <category>波束成形</category>
-      <category>无人机集群</category>
+      <category>携能/能量收集</category>
     </item>
   </channel>
 </rss>
