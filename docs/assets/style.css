@@ -11,6 +11,7 @@
   --accent: #0b5f8a;
   --accent-strong: #084a6c;
   --accent-soft: #e6f2f8;
+  --summary-bg: #f4fafd;
   --journal-bg: #eaf1ff;
   --journal-fg: #1f4fd8;
   --conf-bg: #f3edff;
@@ -37,6 +38,7 @@
     --accent: #63bce4;
     --accent-strong: #8fd3f2;
     --accent-soft: #102f3e;
+    --summary-bg: #0d1f29;
     --journal-bg: #152441;
     --journal-fg: #93b4ff;
     --conf-bg: #251b42;
@@ -62,6 +64,7 @@ html[data-theme="dark"] {
   --accent: #63bce4;
   --accent-strong: #8fd3f2;
   --accent-soft: #102f3e;
+  --summary-bg: #0d1f29;
   --journal-bg: #152441;
   --journal-fg: #93b4ff;
   --conf-bg: #251b42;
@@ -804,7 +807,7 @@ main {
   margin: 0 0 11px;
   padding: 8px 10px;
   border-left: 3px solid var(--accent);
-  background: var(--accent-soft);
+  background: var(--summary-bg);
   border-radius: 6px;
   color: var(--text-2);
   font-size: 13.3px;
@@ -815,31 +818,33 @@ main {
   margin: 0;
 }
 
-.tldr-toggle {
-  display: inline-block;
-  margin-top: 4px;
+.summary-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.abstract-toggle {
   padding: 0;
   border: 0;
   background: none;
   color: var(--accent-strong);
   font-size: 12px;
+  font-family: inherit;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.summary-tldr {
-  margin: 7px 0 0;
-  padding-top: 7px;
-  border-top: 1px dashed var(--border-strong);
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.6;
-  font-style: italic;
+.abstract-full {
+  margin: 0 0 11px;
+  color: var(--text-2);
+  font-size: 13.6px;
+  line-height: 1.72;
 }
 
-.summary-tldr[hidden] {
-  display: none;
+.abstract-full[hidden] {
+  display: none !important;
 }
 
 .tldr {

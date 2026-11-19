@@ -565,6 +565,8 @@
       article.appendChild(venue);
     }
 
+    let abstractInSummary = false;
+
     if (paper.summaryZh) {
       const summary = document.createElement("div");
       summary.className = "summary-zh";
@@ -574,29 +576,35 @@
       text.textContent = `摘要：${paper.summaryZh}`;
       summary.appendChild(text);
 
-      if (paper.tldr) {
+      if (paper.abstract) {
+        const actions = document.createElement("div");
+        actions.className = "summary-actions";
+
         const toggle = document.createElement("button");
         toggle.type = "button";
-        toggle.className = "tldr-toggle";
-        toggle.textContent = "查看英文导读";
+        toggle.className = "abstract-toggle";
+        toggle.textContent = "查看英文摘要";
         toggle.setAttribute("aria-expanded", "false");
 
-        const tldr = document.createElement("p");
-        tldr.className = "summary-tldr";
-        tldr.hidden = true;
-        tldr.textContent = `英文导读：${paper.tldr}`;
+        const abstract = document.createElement("p");
+        abstract.className = "abstract-full";
+        abstract.hidden = true;
+        abstract.textContent = paper.abstract;
 
         toggle.addEventListener("click", () => {
-          const open = tldr.hidden;
-          tldr.hidden = !open;
-          toggle.textContent = open ? "收起英文导读" : "查看英文导读";
+          const open = abstract.hidden;
+          abstract.hidden = !open;
+          toggle.textContent = open ? "收起英文摘要" : "查看英文摘要";
           toggle.setAttribute("aria-expanded", String(open));
         });
 
-        summary.append(toggle, tldr);
+        actions.appendChild(toggle);
+        summary.appendChild(actions);
+        article.append(summary, abstract);
+        abstractInSummary = true;
+      } else {
+        article.appendChild(summary);
       }
-
-      article.appendChild(summary);
     } else if (paper.tldr) {
       const tldr = document.createElement("p");
       tldr.className = "tldr";
@@ -604,7 +612,7 @@
       article.appendChild(tldr);
     }
 
-    if (paper.abstract) {
+    if (paper.abstract && !abstractInSummary) {
       const abstract = document.createElement("p");
       abstract.className = "abstract";
       abstract.textContent = paper.abstract;
