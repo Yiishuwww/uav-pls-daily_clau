@@ -39,6 +39,14 @@
     theme: document.getElementById("theme-toggle"),
     guideToggle: document.getElementById("guide-toggle"),
     guideBody: document.getElementById("guide-body"),
+    weeklyToggle: document.getElementById("weekly-toggle"),
+    weeklyBody: document.getElementById("weekly-body"),
+    weeklyRange: document.getElementById("weekly-range"),
+    weeklySummary: document.getElementById("weekly-summary"),
+    weeklyTopics: document.getElementById("weekly-topics"),
+    weeklyPicks: document.getElementById("weekly-picks"),
+    weeklyPicksLabel: document.getElementById("weekly-picks-label"),
+    weeklyView: document.getElementById("weekly-view"),
   };
 
   const TYPE_LABEL = {
@@ -329,6 +337,97 @@
     els.overview.textContent = `${text}。`;
   }
 
+  function renderWeekly() {
+    const weekly = papers.filter((paper) => paper.firstSeen >= last7);
+    const range = `${formatMonthDay(last7)}–${formatMonthDay(today)}`;
+    els.weeklyRange.textContent = range;
+
+    if (weekly.length === 0) {
+      els.weeklySummary.textContent = "本周暂无新增论文。";
+      els.weeklyTopics.textContent = "";
+      els.weeklyPicks.textContent = "";
+      els.weeklyPicksLabel.hidden = true;
+      els.weeklyView.hidden = true;
+      return;
+    }
+
+    const typeCounts = { "journal-article": 0, conference: 0, preprint: 0 };
+    const tagCounts = new Map();
+    let ieee = 0;
+    for (const paper of weekly) {
+      if (typeCounts[paper.type] != null) typeCounts[paper.type] += 1;
+      if (isIeeePaper(paper)) ieee += 1;
+      for (const tag of paper.tags || []) {
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      }
+    }
+
+    const typeText = [
+      typeCounts["journal-article"] ? `期刊 ${typeCounts["journal-article"]}` : "",
+      typeCounts.conference ? `会议 ${typeCounts.conference}` : "",
+      typeCounts.preprint ? `预印本 ${typeCounts.preprint}` : "",
+    ].filter(Boolean).join("、");
+
+    const topTags = [...tagCounts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"))
+      .slice(0, 4);
+
+    let summary = `本周（${range}）新增 ${weekly.length} 篇`;
+    if (typeText) summary += `：${typeText}`;
+    summary += ieee > 0 ? `；其中 IEEE 论文 ${ieee} 篇。` : "。";
+    if (topTags.length > 0) {
+      summary += `热门主题：${topTags.slice(0, 3).map(([name]) => name).join("、")}。`;
+    }
+    els.weeklySummary.textContent = summary;
+
+    els.weeklyTopics.textContent = "";
+    for (const [name, count] of topTags) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "weekly-topic";
+      button.dataset.tag = name;
+      button.title = `筛选本周「${name}」论文`;
+      button.textContent = name;
+
+      const n = document.createElement("span");
+      n.className = "n";
+      n.textContent = count;
+      button.appendChild(n);
+      els.weeklyTopics.appendChild(button);
+    }
+
+    const picks = [...weekly]
+      .sort((a, b) =>
+        (b.citationCount || 0) - (a.citationCount || 0)
+        || (b.score || 0) - (a.score || 0)
+        || (b.published || "").localeCompare(a.published || ""))
+      .slice(0, 3);
+
+    els.weeklyPicks.textContent = "";
+    for (const paper of picks) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = paper.url || "#";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = paper.title || "(无标题)";
+
+      const meta = document.createElement("span");
+      meta.className = "weekly-meta";
+      meta.textContent = [
+        TYPE_LABEL[paper.type] || "其他",
+        paper.published,
+        paper.citationCount > 0 ? `引用 ${paper.citationCount}` : "",
+      ].filter(Boolean).join(" · ");
+
+      item.append(link, meta);
+      els.weeklyPicks.appendChild(item);
+    }
+
+    els.weeklyPicksLabel.hidden = false;
+    els.weeklyView.hidden = false;
+  }
+
   function updateResetButton() {
     const active =
       state.period !== "30d"
@@ -608,6 +707,46 @@
     els.guideToggle.addEventListener("click", () => setGuideOpen(els.guideBody.hidden));
   }
 
+  if (els.weeklyToggle && els.weeklyBody) {
+    const setWeeklyOpen = (open) => {
+      els.weeklyBody.hidden = !open;
+      els.weeklyToggle.textContent = open ? "收起" : "展开";
+      els.weeklyToggle.setAttribute("aria-expanded", String(open));
+    };
+    els.weeklyToggle.addEventListener("click", () => setWeeklyOpen(els.weeklyBody.hidden));
+  }
+
+  function showWeekly(tag = "all") {
+    state.period = "7d";
+    state.q = "";
+    state.tag = tag;
+    state.type = "all";
+    state.source = "all";
+    state.month = "all";
+    state.sort = "latest";
+    state.limit = 40;
+    els.search.value = "";
+    els.type.value = "all";
+    els.source.value = "all";
+    els.month.value = "all";
+    els.sort.value = "latest";
+    for (const button of periodButtons) {
+      button.classList.toggle("active", button.dataset.period === "7d");
+    }
+    renderTags();
+    syncUrl();
+    render();
+    document.getElementById("list").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  els.weeklyTopics.addEventListener("click", (event) => {
+    const topic = event.target.closest(".weekly-topic");
+    if (!topic) return;
+    showWeekly(topic.dataset.tag || "all");
+  });
+
+  els.weeklyView.addEventListener("click", () => showWeekly("all"));
+
   els.search.value = state.q;
   let searchTimer;
   els.search.addEventListener("input", () => {
@@ -755,6 +894,7 @@
   }
 
   renderTags();
+  renderWeekly();
   updateThemeButton();
   els.sort.value = state.sort;
   for (const button of periodButtons) {
@@ -777,6 +917,10 @@
     if (month === "unknown") return "日期未知";
     const [year, value] = month.split("-");
     return `${year}年${Number(value)}月`;
+  }
+
+  function formatMonthDay(isoDate) {
+    return String(isoDate || "").slice(5).replace("-", ".");
   }
 
   function prettyPublisher(name) {

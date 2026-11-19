@@ -97,6 +97,21 @@
     </div>
   </section>
 
+  <section class="weekly" aria-label="本周周报">
+    <div class="weekly-head">
+      <span class="weekly-title">本周周报</span>
+      <span class="weekly-range" id="weekly-range"></span>
+      <button type="button" id="weekly-toggle" class="guide-toggle" aria-expanded="true" aria-controls="weekly-body">收起</button>
+    </div>
+    <div class="weekly-body" id="weekly-body">
+      <p class="weekly-summary" id="weekly-summary">正在统计本周论文…</p>
+      <div class="weekly-topics" id="weekly-topics" aria-label="本周热门主题"></div>
+      <p class="weekly-label" id="weekly-picks-label">本周值得关注</p>
+      <ol class="weekly-picks" id="weekly-picks" aria-label="本周值得关注"></ol>
+      <button type="button" id="weekly-view" class="weekly-view">查看本周论文 →</button>
+    </div>
+  </section>
+
   <div class="list-head">
     <div class="list-meta">
       <span id="result-count" aria-live="polite">共 0 篇</span>
