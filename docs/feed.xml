@@ -5,8 +5,32 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 18 Nov 2026 12:38:47 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 04:01:33 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications</title>
+      <link>https://doi.org/10.1109/jiot.2026.3754897</link>
+      <guid isPermaLink="false">doi:10.1109/jiot.2026.3754897</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>This paper investigates covert and secure convergecast communications in a UAV relay-assisted Internet of Things (IoT) system consisting of multiple sources, a destination, a full-duplex (FD) UAV relay, a warden (Willie), and an eavesdropper (Eve). In this system, each source transmits confidential information to the UAV via the time-division multiple access, and the FD UAV forwards the information to the destination using the amplify-and-forward (AF) protocol. The system prevents Eve from intercepting information while keeping UAV transmissions undetectable to Willie. We define the average throughput among sources (ATAS) and average secrecy throughput (AST), and derive Willie’s minimum detection error probability (DEP) under a noise uncertainty model. To enhance system performance while ensuring fairness among sources, we formulate the maximization of minimum ATAS as an optimization problem by jointly optimizing the UAV’s horizontal trajectory, flight altitude, transmit power, and source scheduling, subject to UAV flight, AST, and covertness constraints. We further develop a penalty-based successive convex approximation (P-SCA) algorithm to solve this complex problem. Numerical results demonstrate the effectiveness of the proposed framework and reveal the impact of key system parameters on system performance.</description>
+      <category>隐蔽通信</category>
+      <category>轨迹优化</category>
+      <category>无人机集群</category>
+      <category>全双工</category>
+    </item>
+    <item>
+      <title>Joint Beamforming and Computation Resource Design for Covert Task Offloading in ISCC-Enabled SAGIS</title>
+      <link>https://doi.org/10.1109/tmc.2026.3754831</link>
+      <guid isPermaLink="false">doi:10.1109/tmc.2026.3754831</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>This paper investigates covert task offloading against adversarial detection in an integrated sensing, communication, and computation (ISCC)-enabled full-duplex space-air-ground integrated system (SAGIS). A ground user covertly offloads computation tasks to a full-duplex unmanned aerial vehicle (UAV) equipped with an edge server, while remaining undetectable to a ground warden with the help of a cooperative jammer. The UAV simultaneously performs target sensing and forwards partial tasks to a satellite via integrated sensing and communication (ISAC) beamforming. To ensure the covert task offloading performance, this paper maximizes the covert offloading rate by jointly designing beamforming and computation resources, including the allocation between local computation and offloaded tasks, and the UAV CPU frequency. We establish a task processing unit based on a pipelined offloading and computation protocol and analyze the system&apos;s offloading, computation, and sensing performance. We further derive the minimum detection error probability to measure covertness. Then, we formulate the covert offloading rate maximization as an optimization problem with the constraints of maximum transmit power, CPU frequency, sensing, offloading rate threshold, computation performance, energy consumption, and covertness. To solve this non-convex problem, we propose a semidefinite relaxation-successive convex approximation (SDR-SCA) method. With the method, we first transform the beamforming vectors into matrices, and then reformulate the optimization problem as a new convex one by transforming non-convex constraints. This convex problem is solved iteratively to achieve the maximum covert offloading rate. Numerical results reveal the impact of system parameters on covert offloading performance and show that the joint beamforming and computation resource design enhances it by coordinating offloading, sensing, and computing.</description>
+      <category>通感一体化</category>
+      <category>隐蔽通信</category>
+      <category>干扰/人工噪声</category>
+      <category>波束成形</category>
+      <category>空天地网络</category>
+      <category>全双工</category>
+    </item>
     <item>
       <title>Secrecy performance analysis of UAV relay‑aided fluid antenna systems</title>
       <link>https://doi.org/10.1117/12.3134002</link>

@@ -1,7 +1,75 @@
 {
-  "updatedAt": "2026-11-18T20:35:27+08:00",
-  "total": 82,
+  "updatedAt": "2026-11-19T12:00:51+08:00",
+  "total": 84,
   "papers": [
+    {
+      "title": "Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications",
+      "authors": [
+        "Kai Yang",
+        "Bin Yang",
+        "Shikai Shen",
+        "Jun He",
+        "Kaiguo Qian",
+        "Yumei She",
+        "Weiming Shen"
+      ],
+      "abstract": "This paper investigates covert and secure convergecast communications in a UAV relay-assisted Internet of Things (IoT) system consisting of multiple sources, a destination, a full-duplex (FD) UAV relay, a warden (Willie), and an eavesdropper (Eve). In this system, each source transmits confidential information to the UAV via the time-division multiple access, and the FD UAV forwards the information to the destination using the amplify-and-forward (AF) protocol. The system prevents Eve from intercepting information while keeping UAV transmissions undetectable to Willie. We define the average throughput among sources (ATAS) and average secrecy throughput (AST), and derive Willie’s minimum detection error probability (DEP) under a noise uncertainty model. To enhance system performance while ensuring fairness among sources, we formulate the maximization of minimum ATAS as an optimization problem by jointly optimizing the UAV’s horizontal trajectory, flight altitude, transmit power, and source scheduling, subject to UAV flight, AST, and covertness constraints. We further develop a penalty-based successive convex approximation (P-SCA) algorithm to solve this complex problem. Numerical results demonstrate the effectiveness of the proposed framework and reveal the impact of key system parameters on system performance.",
+      "doi": "10.1109/jiot.2026.3754897",
+      "venue": "IEEE Internet of Things Journal",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-18",
+      "url": "https://doi.org/10.1109/jiot.2026.3754897",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11804325",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "轨迹优化",
+        "无人机集群",
+        "全双工"
+      ],
+      "score": 26.5,
+      "firstSeen": "2026-11-19",
+      "summaryZh": "研究问题：针对无人机辅助物联网系统中的隐蔽和保密汇聚通信，如何联合优化无人机轨迹、功率和用户调度以提升系统性能并确保公平性。 方法：通过定义平均吞吐量（ATAS）和平均保密吞吐量（AST），以及推导威利（Willie）的最小检测错误概率（DEP），构建了基于ATAS最大化的优化问题，并采用基于惩罚的连续凸近似（P-SCA）算法求解。 主要结论：所提出的框架有效提升了系统性能，并揭示了关键系统参数对系统性能的影响。",
+      "id": "doi:10.1109/jiot.2026.3754897"
+    },
+    {
+      "title": "Joint Beamforming and Computation Resource Design for Covert Task Offloading in ISCC-Enabled SAGIS",
+      "authors": [
+        "Yangfan Xu",
+        "Bin Yang",
+        "Shikai Shen",
+        "Yulong Shen",
+        "Xiaobo Zhou",
+        "Jun He",
+        "Xiaohong Jiang"
+      ],
+      "abstract": "This paper investigates covert task offloading against adversarial detection in an integrated sensing, communication, and computation (ISCC)-enabled full-duplex space-air-ground integrated system (SAGIS). A ground user covertly offloads computation tasks to a full-duplex unmanned aerial vehicle (UAV) equipped with an edge server, while remaining undetectable to a ground warden with the help of a cooperative jammer. The UAV simultaneously performs target sensing and forwards partial tasks to a satellite via integrated sensing and communication (ISAC) beamforming. To ensure the covert task offloading performance, this paper maximizes the covert offloading rate by jointly designing beamforming and computation resources, including the allocation between local computation and offloaded tasks, and the UAV CPU frequency. We establish a task processing unit based on a pipelined offloading and computation protocol and analyze the system's offloading, computation, and sensing performance. We further derive the minimum detection error probability to measure covertness. Then, we formulate the covert offloading rate maximization as an optimization problem with the constraints of maximum transmit power, CPU frequency, sensing, offloading rate threshold, computation performance, energy consumption, and covertness. To solve this non-convex problem, we propose a semidefinite relaxation-successive convex approximation (SDR-SCA) method. With the method, we first transform the beamforming vectors into matrices, and then reformulate the optimization problem as a new convex one by transforming non-convex constraints. This convex problem is solved iteratively to achieve the maximum covert offloading rate. Numerical results reveal the impact of system parameters on covert offloading performance and show that the joint beamforming and computation resource design enhances it by coordinating offloading, sensing, and computing.",
+      "doi": "10.1109/tmc.2026.3754831",
+      "venue": "IEEE Transactions on Mobile Computing",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-18",
+      "url": "https://doi.org/10.1109/tmc.2026.3754831",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11804403",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "通感一体化",
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "波束成形",
+        "空天地网络",
+        "全双工"
+      ],
+      "score": 19,
+      "firstSeen": "2026-11-19",
+      "summaryZh": "研究问题：在ISCC-Enabled SAGIS中，如何实现隐蔽任务卸载以对抗敌方检测。 方法：通过联合设计波束成形和计算资源，包括本地计算与卸载任务之间的分配以及UAV CPU频率，以最大化隐蔽卸载速率。 主要结论：提出了一种基于半定松弛-连续凸逼近（SDR-SCA）的方法来解决非凸优化问题，并通过仿真验证了所提方法的有效性。",
+      "id": "doi:10.1109/tmc.2026.3754831"
+    },
     {
       "title": "Secrecy performance analysis of UAV relay‑aided fluid antenna systems",
       "authors": [
@@ -27,7 +95,9 @@
       "score": 25.5,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1117/12.3134002",
-      "summaryZh": "研究问题：探讨无人机中继辅助通信中，结合流体天线系统（FAS）的保密性能；方法：采用基于Copula的空间相关性模型分析FAS端口之间的依赖关系，并通过逆拉普拉斯变换和高斯-拉盖尔求积法分析保密中断概率和遍历保密容量；主要结论：FAS相较于固定位置天线提供了显著的保密增益，随着端口数量的增加，增益逐渐饱和。"
+      "summaryZh": "研究问题：探讨无人机中继辅助通信中，结合流体天线系统（FAS）的保密性能；方法：采用基于Copula的空间相关性模型分析FAS端口之间的依赖关系，并通过逆拉普拉斯变换和高斯-拉盖尔求积法分析保密中断概率和遍历保密容量；主要结论：FAS相较于固定位置天线提供了显著的保密增益，随着端口数量的增加，增益逐渐饱和。",
+      "citationCount": 0,
+      "tldr": "Simulation results validate that the FAS offers substantial secrecy gains over fixed-position antennas, with the gain gradually saturating as the number of ports grows."
     },
     {
       "title": "Deep learning-based secure beamforming for zeRIS-assisted UAV communications under partial blockage",
@@ -58,7 +128,9 @@
       "score": 15,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1117/12.3134523",
-      "summaryZh": "研究问题：在部分遮挡和信道状态信息不完美的情况下，如何利用零能耗可重构智能表面（zeRIS）辅助无人机通信实现安全波束成形。 方法：提出一种基于深度学习的框架，联合设计无人机的信息波束成形向量和人工噪声矩阵，并使用低复杂度的相位对齐规则确定RIS的相位偏移。 主要结论：所提出的zeRIS辅助深度学习方案在模拟的遮挡条件下优于无RIS和广义特征值分解（GEVD）基线，且增大RIS表面可以缓解直接链路严重遮挡引起的保密率下降。"
+      "summaryZh": "研究问题：在部分遮挡和信道状态信息不完美的情况下，如何利用零能耗可重构智能表面（zeRIS）辅助无人机通信实现安全波束成形。 方法：提出一种基于深度学习的框架，联合设计无人机的信息波束成形向量和人工噪声矩阵，并使用低复杂度的相位对齐规则确定RIS的相位偏移。 主要结论：所提出的zeRIS辅助深度学习方案在模拟的遮挡条件下优于无RIS和广义特征值分解（GEVD）基线，且增大RIS表面可以缓解直接链路严重遮挡引起的保密率下降。",
+      "citationCount": 0,
+      "tldr": "Simulation results show that the proposed zeRIS-assisted DL schemes outperform the considered No- RIS and generalized eigenvalue decomposition (GEVD) baselines under the simulated blockage conditions and indicate that enlarging the RIS surface relieves the secrecy-rate degradation induced by severe blockage of the direct link."
     },
     {
       "title": "Robust SAC-Enabled UAV-RIS Assisted Secure MISO Systems With Untrusted EH Receivers",
@@ -144,7 +216,9 @@
       "score": 32,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/miot.2026.3743183",
-      "summaryZh": "研究问题：如何解决低空无人机隐蔽通信中的三维移动性、动态信道条件和不确定的守卫位置等挑战。方法：通过引入具身智能，将无人机从被动接收器转变为集认知、优化和通信于一体的自主代理，实现闭环感知-决策-执行（PDE）循环。主要结论：具身智能有效缓解了信道状态信息陈旧问题，在闭环感知-决策-执行方面优于集中式基线，为实际部署提供了有前景的方向。"
+      "summaryZh": "研究问题：如何解决低空无人机隐蔽通信中的三维移动性、动态信道条件和不确定的守卫位置等挑战。方法：通过引入具身智能，将无人机从被动接收器转变为集认知、优化和通信于一体的自主代理，实现闭环感知-决策-执行（PDE）循环。主要结论：具身智能有效缓解了信道状态信息陈旧问题，在闭环感知-决策-执行方面优于集中式基线，为实际部署提供了有前景的方向。",
+      "citationCount": 0,
+      "oaPdfUrl": "https://doi.org/10.1109/miot.2026.3743183"
     },
     {
       "title": "Contract-Theoretic Semantic Abstraction for Covert Communication in LAENets",
@@ -173,7 +247,10 @@
       "score": 23,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/tccn.2026.3754558",
-      "summaryZh": "研究问题：在低空经济网络（LAENets）中，如何通过语义通信（SemCom）在无人机（UAVs）与基站（BS）之间实现隐蔽通信，同时解决信息不对称问题。 方法：提出一个激励感知的语义抽象框架，通过调整UAV侧的语义抽象级别，在固定维度的传输负载下提供差异化的隐蔽语义服务，并采用合同理论模型解决信息不对称问题。 主要结论：该框架能够可靠地在严格的隐蔽通信约束下传输任务信息，同时通过合同理论模型有效解决信息不对称问题。"
+      "summaryZh": "研究问题：在低空经济网络（LAENets）中，如何通过语义通信（SemCom）在无人机（UAVs）与基站（BS）之间实现隐蔽通信，同时解决信息不对称问题。 方法：提出一个激励感知的语义抽象框架，通过调整UAV侧的语义抽象级别，在固定维度的传输负载下提供差异化的隐蔽语义服务，并采用合同理论模型解决信息不对称问题。 主要结论：该框架能够可靠地在严格的隐蔽通信约束下传输任务信息，同时通过合同理论模型有效解决信息不对称问题。",
+      "citationCount": 0,
+      "tldr": "This work proposes an incentive-aware semantic abstraction framework for covert communications in LAENets and adjusts UAV-side semantic abstraction levels to provide differentiated covert semantic services under fixed-dimensional transmission payloads, and designs a Regularized Diffusion-based Soft Actor-Critic algorithm for optimal contract design under PT.",
+      "oaPdfUrl": "https://doi.org/10.1109/tccn.2026.3754558"
     },
     {
       "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
@@ -203,7 +280,10 @@
       "score": 34,
       "firstSeen": "2026-11-17",
       "id": "doi:10.3390/electronics15225293",
-      "summaryZh": "研究问题：在存在勾结守卫的情况下，分析双无人机系统中隐蔽通信的性能。 方法：引入随机干扰功率策略，采用决策级OR融合规则，并优化守卫的检测阈值，同时考虑半双工解码转发中可达的端到端隐蔽通信速率。 主要结论：通过优化检测阈值和传输功率，实现了在隐蔽通信约束下的最小联合检测错误概率。"
+      "summaryZh": "研究问题：在存在勾结守卫的情况下，分析双无人机系统中隐蔽通信的性能。 方法：引入随机干扰功率策略，采用决策级OR融合规则，并优化守卫的检测阈值，同时考虑半双工解码转发中可达的端到端隐蔽通信速率。 主要结论：通过优化检测阈值和传输功率，实现了在隐蔽通信约束下的最小联合检测错误概率。",
+      "citationCount": 0,
+      "tldr": "This paper investigates a dual-UAV-assisted covert communication system in the presence of colluding wardens, where one UAV serves as a decode-and-forward relay and the other performs cooperative jamming.",
+      "oaPdfUrl": "https://doi.org/10.3390/electronics15225293"
     },
     {
       "title": "UAV-Based Massive Covert Communications for Sports Venues",
@@ -361,7 +441,7 @@
         "空天地网络",
         "无人机集群"
       ],
-      "score": 28,
+      "score": 26,
       "firstSeen": "2026-11-12",
       "id": "doi:10.1109/tcomm.2026.3752707",
       "citationCount": 0,
@@ -392,7 +472,7 @@
         "轨迹优化",
         "无人机集群"
       ],
-      "score": 17,
+      "score": 15,
       "firstSeen": "2026-11-12",
       "id": "doi:10.1109/tcomm.2026.3752697",
       "citationCount": 0,
@@ -421,7 +501,7 @@
         "干扰/人工噪声",
         "边缘计算"
       ],
-      "score": 14.5,
+      "score": 12.5,
       "firstSeen": "2026-11-11",
       "id": "doi:10.21203/rs.3.rs-11176890/v1",
       "summaryZh": "研究问题：在存在窃听者的情况下，如何实现能量和延迟高效的计算卸载，以保障无人机-NOMA-辅助的移动边缘计算网络的保密性。方法：通过部分卸载和干扰窃听者的无人机子集来降低窃听风险，并采用秘密中断概率作为保密性指标，通过分析地面接入点和窃听者的SINR统计量推导出其闭式表达式。主要结论：部分卸载在平衡能量和延迟方面表现良好，并确定了最优卸载比特数和干扰功率；更大的延迟截止时间、秘密中断概率阈值或能量预算可以提升网络性能。"
