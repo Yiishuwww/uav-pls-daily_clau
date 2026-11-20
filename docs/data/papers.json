@@ -1,7 +1,41 @@
 {
-  "updatedAt": "2026-11-19T12:00:51+08:00",
-  "total": 84,
+  "updatedAt": "2026-11-20T11:54:13+08:00",
+  "total": 85,
   "papers": [
+    {
+      "title": "Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach",
+      "authors": [
+        "Jianyu Wei",
+        "Yan Guo",
+        "Haichao Wang",
+        "Jiangchun Gu",
+        "Shengbin Lin",
+        "Junhui Huang",
+        "Guoru Ding"
+      ],
+      "abstract": "Unmanned aerial vehicle (UAV) covert data collection plays a critical role in communication security for the low-altitude economy. However, channel fading in complex urban environments poses significant challenges to the UAV covert data collection. This paper investigates a multi-user UAV covert data collection system based on the integration of movable antenna (MA). To enhance covert performance, the UAV simultaneously transmits active jamming signals toward the Warden while collecting data, thereby further disrupting its surveillance capabilities. We aim to maximize the minimum covert rate through the joint optimization of the UAV’s trajectory, jamming power, the transmit beamforming, MA positions, and frequency band allocation. Firstly, the closed-form expressions for the minimum detection error probability and the optimal detection threshold of the Warden are derived. Then, to address the highly non-convex optimization problem inherent in the dynamic and heterogeneous system, we propose a heterogeneous multi-agent twin delayed deep deterministic policy gradient (HMATD3) algorithm. Specifically, the UAV, users, and MA are formalized as heterogeneous agents, with their action spaces, state spaces, and reward functions designed based on the original problem. Furthermore, a centralized training and decentralized execution framework combined with offline learning is designed, enabling real-time covert data collection decisions with polynomial complexity. To address the dimensional imbalance arising from heterogeneous agents, the modular design of the networks is designed. Simulation results demonstrate that HMATD3 outperforms baseline algorithms across multiple metrics, including convergence behavior, algorithmic stability, and covert performance. Furthermore, compared to the fixed position antenna scheme, the MA technology improves the covert performance in the data collection system, especially in the multi-user scenario.",
+      "doi": "10.1109/tcomm.2026.3755456",
+      "venue": "IEEE Transactions on Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-19",
+      "url": "https://doi.org/10.1109/tcomm.2026.3755456",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11804977",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "轨迹优化",
+        "波束成形",
+        "深度强化学习"
+      ],
+      "score": 32,
+      "firstSeen": "2026-11-20",
+      "summaryZh": "研究问题：如何通过集成可移动天线来提高无人机在复杂城市环境中的隐蔽数据收集性能。 方法：提出了一种基于异构多智能体深度强化学习（HMATD3）算法的联合优化方法，包括无人机轨迹、干扰功率、发射波束成形、MA位置和频率分配。 主要结论：通过优化算法实现了实时隐蔽数据收集决策，并提高了隐蔽性能。",
+      "id": "doi:10.1109/tcomm.2026.3755456"
+    },
     {
       "title": "Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications",
       "authors": [
@@ -163,7 +197,10 @@
       "score": 14.5,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/twc.2026.3754901",
-      "summaryZh": "研究问题：在UAV-RIS辅助的MISO系统中，如何实现安全的下行传输，并优化UAV悬停位置、基站发射功率分配和RIS相移，以最大化在有限CSI不确定性和非线性能量收集约束下的最坏情况保密能量效率。 方法：提出了一种基于SAC框架的鲁棒优化方法，结合了连续到离散的动作投影、双批评家以减少价值高估和可行性感知奖励机制。 主要结论：所提出的SAC策略在保密能量效率方面比SCA基准、DDPG和TD3分别提高了28%、16%和6%，同时表现出更快的收敛速度和主要性能优势。"
+      "summaryZh": "研究问题：在UAV-RIS辅助的MISO系统中，如何实现安全的下行传输，并优化UAV悬停位置、基站发射功率分配和RIS相移，以最大化在有限CSI不确定性和非线性能量收集约束下的最坏情况保密能量效率。 方法：提出了一种基于SAC框架的鲁棒优化方法，结合了连续到离散的动作投影、双批评家以减少价值高估和可行性感知奖励机制。 主要结论：所提出的SAC策略在保密能量效率方面比SCA基准、DDPG和TD3分别提高了28%、16%和6%，同时表现出更快的收敛速度和主要性能优势。",
+      "citationCount": 0,
+      "tldr": "Simulation results show that the proposed SAC method consistently outperforms conventional optimization and deep reinforcement learning (DRL)-based benchmarks, including deep deterministic policy gradient (DDPG) and twin delayed deep deterministic policy gradient (TD3), while maintaining robustness to CSI uncertainty and stable performance across system configurations.",
+      "oaPdfUrl": "https://doi.org/10.1109/twc.2026.3754901"
     },
     {
       "title": "Joint Trajectory and Beamforming Optimization for Wireless Information Surveillance in Suspicious Maritime Communications",
@@ -194,7 +231,9 @@
       "score": 11,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/tcc.2026.3754920",
-      "summaryZh": "研究问题：如何通过联合优化无人机轨迹、水面无人艇轨迹和无人机波束成形向量，在移动性、功率和隐蔽性约束下提高无线信息监听的平均率，以有效监控涉嫌非法活动的船只。 方法：提出了一种基于无人机和水面无人艇的协同无线信息监听方案，并采用块坐标下降（BCD）交替优化算法解决联合优化问题。 主要结论：所提出的优化方法能够有效提高无线信息监听的平均率，从而加强现代航海中的海事安全。"
+      "summaryZh": "研究问题：如何通过联合优化无人机轨迹、水面无人艇轨迹和无人机波束成形向量，在移动性、功率和隐蔽性约束下提高无线信息监听的平均率，以有效监控涉嫌非法活动的船只。 方法：提出了一种基于无人机和水面无人艇的协同无线信息监听方案，并采用块坐标下降（BCD）交替优化算法解决联合优化问题。 主要结论：所提出的优化方法能够有效提高无线信息监听的平均率，从而加强现代航海中的海事安全。",
+      "citationCount": 0,
+      "oaPdfUrl": "https://doi.org/10.1109/tcc.2026.3754920"
     },
     {
       "title": "Embodied Intelligence for UAV Covert Communications: From Open-Loop Design to Closed-Loop Autonomy",
@@ -383,7 +422,7 @@
         "干扰/人工噪声",
         "资源分配"
       ],
-      "score": 34,
+      "score": 32,
       "firstSeen": "2026-11-13",
       "id": "doi:10.1371/journal.pone.0361873",
       "citationCount": 0,
@@ -418,7 +457,7 @@
         "联邦学习",
         "资源分配"
       ],
-      "score": 18,
+      "score": 16,
       "firstSeen": "2026-11-13",
       "id": "doi:10.14445/23488549/ijece-v13i10p115",
       "citationCount": 0,
@@ -2252,7 +2291,7 @@
       "firstSeen": "2026-08-10",
       "id": "doi:10.1016/j.iot.2026.102060",
       "citationCount": 0,
-      "oaPdfUrl": "https://doi.org/10.1016/j.iot.2026.102060",
+      "oaPdfUrl": "https://www.sciencedirect.com/science/article/pii/S2542660526001903/pdf",
       "summaryZh": "研究问题：如何优化无人机-可重构智能表面辅助的6G网络中的安全高效通信。 方法：提出一种基于深度强化学习的联合优化框架，利用BCD和ADMM算法优化无人机轨迹、RIS相位配置和功率分配，并采用AN辅助波束成形方案增强物理层安全。 主要结论：该框架能够实时调整无人机轨迹和RIS配置，提高能量利用、保密率和网络性能。"
     },
     {

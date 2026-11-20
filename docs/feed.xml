@@ -2,11 +2,23 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 19 Nov 2026 13:50:18 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 03:54:56 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach</title>
+      <link>https://doi.org/10.1109/tcomm.2026.3755456</link>
+      <guid isPermaLink="false">doi:10.1109/tcomm.2026.3755456</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Unmanned aerial vehicle (UAV) covert data collection plays a critical role in communication security for the low-altitude economy. However, channel fading in complex urban environments poses significant challenges to the UAV covert data collection. This paper investigates a multi-user UAV covert data collection system based on the integration of movable antenna (MA). To enhance covert performance, the UAV simultaneously transmits active jamming signals toward the Warden while collecting data, thereby further disrupting its surveillance capabilities. We aim to maximize the minimum covert rate through the joint optimization of the UAV’s trajectory, jamming power, the transmit beamforming, MA positions, and frequency band allocation. Firstly, the closed-form expressions for the minimum detection error probability and the optimal detection threshold of the Warden are derived. Then, to address the highly non-convex optimization problem inherent in the dynamic and heterogeneous system, we propose a heterogeneous multi-agent twin delayed deep deterministic policy gradient (HMATD3) algorithm. Specifically, the UAV, users, and MA are formalized as heterogeneous agents, with their action spaces, state spaces, and reward functions designed based on the original problem. Furthermore, a centralized training and decentralized execution framework combined with offline learning is designed, enabling real-time covert data collection decisions with polynomial complexity. To address the dimensional imbalance arising from heterogeneous agents, the modular design of the networks is designed. Simulation results demonstrate that HMATD3 outperforms baseline algorithms across multiple metrics, including convergence behavior, algorithmic stability, and covert performance. Furthermore, compared to the fixed position antenna scheme, the MA technology improves the covert performance in the data collection system, especially in the multi-user scenario.</description>
+      <category>隐蔽通信</category>
+      <category>干扰/人工噪声</category>
+      <category>轨迹优化</category>
+      <category>波束成形</category>
+      <category>深度强化学习</category>
+    </item>
     <item>
       <title>Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications</title>
       <link>https://doi.org/10.1109/jiot.2026.3754897</link>

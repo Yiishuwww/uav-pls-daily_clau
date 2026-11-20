@@ -1,47 +1,47 @@
 {
-  "updatedAt": "2026-11-19T12:00:51+08:00",
-  "updatedCN": "2026-11-19 12:00",
+  "updatedAt": "2026-11-20T11:54:13+08:00",
+  "updatedCN": "2026-11-20 11:54",
   "sources": [
     {
       "name": "arxiv",
       "ok": true,
       "count": 1,
-      "ms": 10045,
+      "ms": 2458,
       "error": null
     },
     {
       "name": "openalex",
       "ok": true,
-      "count": 8,
-      "ms": 31003,
+      "count": 5,
+      "ms": 485,
       "error": null
     },
     {
       "name": "crossref",
       "ok": true,
-      "count": 154,
-      "ms": 17277,
+      "count": 163,
+      "ms": 17328,
       "error": null
     },
     {
       "name": "ieee",
       "ok": true,
-      "count": 18,
-      "ms": 19903,
+      "count": 12,
+      "ms": 18302,
       "error": null
     },
     {
       "name": "doaj",
       "ok": true,
       "count": 12,
-      "ms": 17602,
+      "ms": 13261,
       "error": null
     },
     {
       "name": "zenodo",
       "ok": true,
-      "count": 2,
-      "ms": 5597,
+      "count": 1,
+      "ms": 3213,
       "error": null
     }
   ]
