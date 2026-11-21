@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-21T11:51:19+08:00",
+  "updatedAt": "2026-11-21T22:41:16+08:00",
   "papers": [
     {
       "title": "Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges",
@@ -31,6 +31,39 @@
       "firstSeen": "2026-11-21",
       "summaryZh": "研究问题：Pinching天线辅助索引调制（PA-IM）在6G网络中的应用及其挑战 方法：介绍PA-IM的基本原理，探讨其在ISAC、NGMA、PLS和UAV网络中的应用 主要结论：PA-IM具有提高频谱效率、能量效率和系统性能的潜力，同时存在一些挑战和机遇",
       "id": "doi:10.1109/mwc.2026.3751244"
+    },
+    {
+      "title": "Joint localization and performance optimization in RSMA-based 6G aerial networks via particle filtering",
+      "authors": [
+        "Nguyễn Quang Vịnh",
+        "Viet-Hung Dang",
+        "Hung Tran",
+        "Dinh-Hieu Tran",
+        "Symeon Chatzinotas",
+        "Nguyễn Văn Huynh",
+        "Chakchai So–In",
+        "Xuan-Truong Quach",
+        "Van Nhan Vo"
+      ],
+      "abstract": "Unmanned aerial vehicles (UAVs) are envisioned as a key enabling technology for 6G wireless networks due to their high mobility, flexible deployment, and capability to enhance communication coverage and spectrum efficiency. However, the open nature of wireless aerial communications also introduces significant security challenges, particularly when malicious UAV eavesdroppers (UEs) attempt to intercept confidential transmissions. To address these issues, this paper investigates a secure cognitive radio (CR)-enabled UAV communication system employing rate-splitting multiple access (RSMA) for efficient spectrum sharing and multiuser transmission. The main contributions of this paper are threefold. First, a particle filter (PF)-based localization scheme is proposed to accurately estimate the position of a UE using received signal strength measurements. Second, closed-form expressions for outage probability (OP) and information leakage probability (ILP) are derived to characterize the reliability and secrecy performance of the considered system. Third, an optimization framework based on a hybrid PF-GAO algorithm is developed to maximize the secondary network performance while satisfying interference and secrecy constraints. Numerical results demonstrate the effectiveness of the proposed localization and optimization methods in improving both communication reliability and physical-layer security. The obtained findings provide valuable insights into the design of secure and intelligent UAV-assisted 6G aerial networks.",
+      "doi": "10.1007/s10586-026-06787-2",
+      "venue": "Cluster Computing",
+      "publisher": "Springer Science+Business Media",
+      "type": "journal-article",
+      "published": "2026-11-19",
+      "url": "https://doi.org/10.1007/s10586-026-06787-2",
+      "pdfUrl": "",
+      "sources": [
+        "openalex",
+        "springer"
+      ],
+      "tags": [],
+      "score": 18,
+      "firstSeen": "2026-11-21",
+      "citationCount": 0,
+      "tldr": "This paper investigates a secure cognitive radio (CR)-enabled UAV communication system employing rate-splitting multiple access (RSMA) for efficient spectrum sharing and multiuser transmission and demonstrates the effectiveness of the proposed localization and optimization methods in improving both communication reliability and physical-layer security.",
+      "summaryZh": "研究问题：如何通过粒子滤波在基于RSMA的6G无人机网络中实现联合定位和性能优化。 方法：提出基于粒子滤波的定位方案，推导中断概率和信息泄露概率的闭式表达式，并开发基于混合PF-GAO算法的优化框架。 主要结论：所提出的定位和优化方法有效提高了通信可靠性和物理层安全性。",
+      "id": "doi:10.1007/s10586-026-06787-2"
     },
     {
       "title": "Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach",
@@ -232,7 +265,7 @@
       "summaryZh": "研究问题：在UAV-RIS辅助的MISO系统中，如何实现安全的下行传输，并优化UAV悬停位置、基站发射功率分配和RIS相移，以最大化在有限CSI不确定性和非线性能量收集约束下的最坏情况保密能量效率。 方法：提出了一种基于SAC框架的鲁棒优化方法，结合了连续到离散的动作投影、双批评家以减少价值高估和可行性感知奖励机制。 主要结论：所提出的SAC策略在保密能量效率方面比SCA基准、DDPG和TD3分别提高了28%、16%和6%，同时表现出更快的收敛速度和主要性能优势。",
       "citationCount": 0,
       "tldr": "This paper jointly optimizes the UAV hovering position, base station (BS) transmit power allocation, and discrete RIS phase shifts to maximize the worst-case secrecy energy efficiency (WCSEE) under bounded CSI uncertainty and nonlinear EH constraints.",
-      "oaPdfUrl": "https://doi.org/10.1109/twc.2026.3754901"
+      "oaPdfUrl": "https://arxiv.org/pdf/2602.14191"
     },
     {
       "title": "Joint Trajectory and Beamforming Optimization for Wireless Information Surveillance in Suspicious Maritime Communications",
@@ -330,7 +363,7 @@
       "summaryZh": "研究问题：在低空经济网络（LAENets）中，如何通过语义通信（SemCom）在无人机（UAVs）与基站（BS）之间实现隐蔽通信，同时解决信息不对称问题。 方法：提出一个激励感知的语义抽象框架，通过调整UAV侧的语义抽象级别，在固定维度的传输负载下提供差异化的隐蔽语义服务，并采用合同理论模型解决信息不对称问题。 主要结论：该框架能够可靠地在严格的隐蔽通信约束下传输任务信息，同时通过合同理论模型有效解决信息不对称问题。",
       "citationCount": 0,
       "tldr": "This work proposes an incentive-aware semantic abstraction framework for covert communications in LAENets and adjusts UAV-side semantic abstraction levels to provide differentiated covert semantic services under fixed-dimensional transmission payloads, and designs a Regularized Diffusion-based Soft Actor-Critic algorithm for optimal contract design under PT.",
-      "oaPdfUrl": "https://doi.org/10.1109/tccn.2026.3754558"
+      "oaPdfUrl": "https://arxiv.org/pdf/2603.01478"
     },
     {
       "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",

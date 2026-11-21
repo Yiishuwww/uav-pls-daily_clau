@@ -5,7 +5,7 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Nov 2026 03:51:22 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 14:41:20 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges</title>
@@ -15,6 +15,14 @@
       <description>Pinching antenna-assisted index modulation (PA-IM) is a promising sixth-generation (6G) technique that has the potential to enhance spectral efficiency, energy efficiency, and system performance and represents a new extension of conventional PA systems. This article first introduces the fundamental principles of PA-IM and then investigates its applications in integrated sensing and communication (ISAC) networks, next-generation multiple access (NGMA) networks, physical-layer security (PLS) networks, and low-altitude unmanned aerial vehicle (UAV) networks, thereby highlighting the flexibility and practical potential of PA-IM. Finally, we identify some potential challenges and research opportunities for PA-IM. This article aims to attract attention from both academia and industry and ultimately promote the practical deployment of PA-IM in future 6G networks.</description>
       <category>通感一体化</category>
       <category>无人机集群</category>
+    </item>
+    <item>
+      <title>Joint localization and performance optimization in RSMA-based 6G aerial networks via particle filtering</title>
+      <link>https://doi.org/10.1007/s10586-026-06787-2</link>
+      <guid isPermaLink="false">doi:10.1007/s10586-026-06787-2</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Unmanned aerial vehicles (UAVs) are envisioned as a key enabling technology for 6G wireless networks due to their high mobility, flexible deployment, and capability to enhance communication coverage and spectrum efficiency. However, the open nature of wireless aerial communications also introduces significant security challenges, particularly when malicious UAV eavesdroppers (UEs) attempt to intercept confidential transmissions. To address these issues, this paper investigates a secure cognitive radio (CR)-enabled UAV communication system employing rate-splitting multiple access (RSMA) for efficient spectrum sharing and multiuser transmission. The main contributions of this paper are threefold. First, a particle filter (PF)-based localization scheme is proposed to accurately estimate the position of a UE using received signal strength measurements. Second, closed-form expressions for outage probability (OP) and information leakage probability (ILP) are derived to characterize the reliability and secrecy performance of the considered system. Third, an optimization framework based on a hybrid PF-GAO algorithm is developed to maximize the secondary network performance while satisfying interference and secrecy constraints. Numerical results demonstrate the effectiveness of the proposed localization and optimization methods in improving both communication reliability and physical-layer security. The obtained findings provide valuable insights into the design of secure and intelligent UAV-assisted 6G aerial networks.</description>
+
     </item>
     <item>
       <title>Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach</title>
