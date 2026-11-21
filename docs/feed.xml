@@ -5,8 +5,17 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 Nov 2026 03:54:56 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 03:51:22 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges</title>
+      <link>https://doi.org/10.1109/mwc.2026.3751244</link>
+      <guid isPermaLink="false">doi:10.1109/mwc.2026.3751244</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Pinching antenna-assisted index modulation (PA-IM) is a promising sixth-generation (6G) technique that has the potential to enhance spectral efficiency, energy efficiency, and system performance and represents a new extension of conventional PA systems. This article first introduces the fundamental principles of PA-IM and then investigates its applications in integrated sensing and communication (ISAC) networks, next-generation multiple access (NGMA) networks, physical-layer security (PLS) networks, and low-altitude unmanned aerial vehicle (UAV) networks, thereby highlighting the flexibility and practical potential of PA-IM. Finally, we identify some potential challenges and research opportunities for PA-IM. This article aims to attract attention from both academia and industry and ultimately promote the practical deployment of PA-IM in future 6G networks.</description>
+      <category>通感一体化</category>
+      <category>无人机集群</category>
+    </item>
     <item>
       <title>Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach</title>
       <link>https://doi.org/10.1109/tcomm.2026.3755456</link>
@@ -136,7 +145,7 @@
       <category>波束成形</category>
     </item>
     <item>
-      <title>Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading</title>
+      <title>Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading.</title>
       <link>https://doi.org/10.1371/journal.pone.0361873</link>
       <guid isPermaLink="false">doi:10.1371/journal.pone.0361873</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>

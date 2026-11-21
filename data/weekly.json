@@ -1,19 +1,15 @@
 {
-  "generatedAt": "2026-11-20T11:54:56+08:00",
-  "rangeStart": "2026-11-14",
-  "rangeEnd": "2026-11-20",
-  "count": 15,
+  "generatedAt": "2026-11-21T11:51:22+08:00",
+  "rangeStart": "2026-11-15",
+  "rangeEnd": "2026-11-21",
+  "count": 13,
   "typeCounts": {
-    "journal-article": 10,
-    "conference": 5,
+    "journal-article": 11,
+    "conference": 2,
     "preprint": 0
   },
-  "ieeeCount": 12,
+  "ieeeCount": 10,
   "topTags": [
-    [
-      "干扰/人工噪声",
-      7
-    ],
     [
       "隐蔽通信",
       7
@@ -23,8 +19,12 @@
       5
     ],
     [
-      "深度强化学习",
+      "干扰/人工噪声",
       5
+    ],
+    [
+      "轨迹优化",
+      4
     ]
   ],
   "picks": [
@@ -37,23 +37,23 @@
       "url": "https://doi.org/10.1109/ojcoms.2026.3747412"
     },
     {
-      "id": "doi:10.1109/vtc2026-spring68026.2026.11757281",
-      "title": "Leveraging Cyclostationary Features and Continual Learning for Robust RF Fingerprinting in IoT and UAV Networks",
-      "type": "conference",
-      "published": "2026-06-01",
-      "citationCount": 1,
-      "url": "https://doi.org/10.1109/vtc2026-spring68026.2026.11757281"
-    },
-    {
       "id": "doi:10.3390/electronics15225293",
       "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
       "type": "journal-article",
       "published": "2026-11-14",
       "citationCount": 0,
       "url": "https://doi.org/10.3390/electronics15225293"
+    },
+    {
+      "id": "doi:10.1109/ojcoms.2026.3749813",
+      "title": "UAV-Based Massive Covert Communications for Sports Venues",
+      "type": "journal-article",
+      "published": "2026-11-14",
+      "citationCount": 0,
+      "url": "https://doi.org/10.1109/ojcoms.2026.3749813"
     }
   ],
-  "fingerprint": "2026-11-14|2026-11-20|doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/ojcoms.2026.3747412,doi:10.1109/ojcoms.2026.3749813,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1109/vtc2026-spring68026.2026.11757217,doi:10.1109/vtc2026-spring68026.2026.11757281,doi:10.1109/vtc2026-spring68026.2026.11757415,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|干扰/人工噪声:7,隐蔽通信:7,波束成形:5,深度强化学习:5|doi:10.1109/ojcoms.2026.3747412,doi:10.1109/vtc2026-spring68026.2026.11757281,doi:10.3390/electronics15225293",
-  "summary": "本周共新增15篇论文，IEEE论文占比超80%。热门主题包括干扰/人工噪声、隐蔽通信、波束成形和深度强化学习。值得关注论文有《联合无人机通信中安全方向调制的联合位置和混合波束成形设计》、《利用循环平稳特性和持续学习在物联网和无人机网络中进行鲁棒射频指纹识别》及《具有勾结看护人的双无人机系统中隐蔽通信的性能分析》。",
+  "fingerprint": "2026-11-15|2026-11-21|doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/mwc.2026.3751244,doi:10.1109/ojcoms.2026.3747412,doi:10.1109/ojcoms.2026.3749813,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|隐蔽通信:7,波束成形:5,干扰/人工噪声:5,轨迹优化:4|doi:10.1109/ojcoms.2026.3747412,doi:10.3390/electronics15225293,doi:10.1109/ojcoms.2026.3749813",
+  "summary": "本周共新增13篇论文，涵盖期刊与会议论文，IEEE论文占多数。热门主题包括隐蔽通信、波束成形、干扰/人工噪声和轨迹优化。值得关注的有《联合位置和混合波束成形设计用于无人机通信中的安全方向调制》等论文。",
   "summarySource": "ai"
 }

@@ -1,7 +1,37 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T11:54:49+08:00",
+  "updatedAt": "2026-11-21T11:51:19+08:00",
   "papers": [
+    {
+      "title": "Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges",
+      "authors": [
+        "Jun Li",
+        "Qixin Chen",
+        "Shuping Dang",
+        "Qiang Li",
+        "Yiwei Tao",
+        "Miaowen Wen"
+      ],
+      "abstract": "Pinching antenna-assisted index modulation (PA-IM) is a promising sixth-generation (6G) technique that has the potential to enhance spectral efficiency, energy efficiency, and system performance and represents a new extension of conventional PA systems. This article first introduces the fundamental principles of PA-IM and then investigates its applications in integrated sensing and communication (ISAC) networks, next-generation multiple access (NGMA) networks, physical-layer security (PLS) networks, and low-altitude unmanned aerial vehicle (UAV) networks, thereby highlighting the flexibility and practical potential of PA-IM. Finally, we identify some potential challenges and research opportunities for PA-IM. This article aims to attract attention from both academia and industry and ultimately promote the practical deployment of PA-IM in future 6G networks.",
+      "doi": "10.1109/mwc.2026.3751244",
+      "venue": "IEEE Wireless Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-20",
+      "url": "https://doi.org/10.1109/mwc.2026.3751244",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11806768",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "通感一体化",
+        "无人机集群"
+      ],
+      "score": 11,
+      "firstSeen": "2026-11-21",
+      "summaryZh": "研究问题：Pinching天线辅助索引调制（PA-IM）在6G网络中的应用及其挑战 方法：介绍PA-IM的基本原理，探讨其在ISAC、NGMA、PLS和UAV网络中的应用 主要结论：PA-IM具有提高频谱效率、能量效率和系统性能的潜力，同时存在一些挑战和机遇",
+      "id": "doi:10.1109/mwc.2026.3751244"
+    },
     {
       "title": "Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach",
       "authors": [
@@ -67,7 +97,8 @@
       "score": 26.5,
       "firstSeen": "2026-11-19",
       "summaryZh": "研究问题：针对无人机辅助物联网系统中的隐蔽和保密汇聚通信，如何联合优化无人机轨迹、功率和用户调度以提升系统性能并确保公平性。 方法：通过定义平均吞吐量（ATAS）和平均保密吞吐量（AST），以及推导威利（Willie）的最小检测错误概率（DEP），构建了基于ATAS最大化的优化问题，并采用基于惩罚的连续凸近似（P-SCA）算法求解。 主要结论：所提出的框架有效提升了系统性能，并揭示了关键系统参数对系统性能的影响。",
-      "id": "doi:10.1109/jiot.2026.3754897"
+      "id": "doi:10.1109/jiot.2026.3754897",
+      "citationCount": 0
     },
     {
       "title": "Joint Beamforming and Computation Resource Design for Covert Task Offloading in ISCC-Enabled SAGIS",
@@ -103,7 +134,8 @@
       "score": 19,
       "firstSeen": "2026-11-19",
       "summaryZh": "研究问题：在ISCC-Enabled SAGIS中，如何实现隐蔽任务卸载以对抗敌方检测。 方法：通过联合设计波束成形和计算资源，包括本地计算与卸载任务之间的分配以及UAV CPU频率，以最大化隐蔽卸载速率。 主要结论：提出了一种基于半定松弛-连续凸逼近（SDR-SCA）的方法来解决非凸优化问题，并通过仿真验证了所提方法的有效性。",
-      "id": "doi:10.1109/tmc.2026.3754831"
+      "id": "doi:10.1109/tmc.2026.3754831",
+      "citationCount": 0
     },
     {
       "title": "Secrecy performance analysis of UAV relay‑aided fluid antenna systems",
@@ -199,7 +231,7 @@
       "id": "doi:10.1109/twc.2026.3754901",
       "summaryZh": "研究问题：在UAV-RIS辅助的MISO系统中，如何实现安全的下行传输，并优化UAV悬停位置、基站发射功率分配和RIS相移，以最大化在有限CSI不确定性和非线性能量收集约束下的最坏情况保密能量效率。 方法：提出了一种基于SAC框架的鲁棒优化方法，结合了连续到离散的动作投影、双批评家以减少价值高估和可行性感知奖励机制。 主要结论：所提出的SAC策略在保密能量效率方面比SCA基准、DDPG和TD3分别提高了28%、16%和6%，同时表现出更快的收敛速度和主要性能优势。",
       "citationCount": 0,
-      "tldr": "Simulation results show that the proposed SAC method consistently outperforms conventional optimization and deep reinforcement learning (DRL)-based benchmarks, including deep deterministic policy gradient (DDPG) and twin delayed deep deterministic policy gradient (TD3), while maintaining robustness to CSI uncertainty and stable performance across system configurations.",
+      "tldr": "This paper jointly optimizes the UAV hovering position, base station (BS) transmit power allocation, and discrete RIS phase shifts to maximize the worst-case secrecy energy efficiency (WCSEE) under bounded CSI uncertainty and nonlinear EH constraints.",
       "oaPdfUrl": "https://doi.org/10.1109/twc.2026.3754901"
     },
     {
@@ -397,7 +429,7 @@
       "summaryZh": "研究问题：如何通过联合优化无人机位置和混合波束成形权重来提高无人机通信系统中基于混合波束成形方向调制的平均谱效率，同时保证波束的空间安全性。 方法：提出了一种交替优化策略，首先固定混合权重优化无人机位置以提升平均谱效率，然后固定位置优化混合权重以满足常模约束、主瓣信号保真度约束和旁瓣信号失真度约束，实现安全DM波束的空间成形。 主要结论：仿真结果表明，所提方案有效提升了平均谱效率，同时满足了波束方向性和安全性约束。"
     },
     {
-      "title": "Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading",
+      "title": "Physical layer covert communication for UAV-aided transportation systems via rate-splitting multiple access over Nakagami-m fading.",
       "authors": [
         "Nghia Hoang Trong",
         "Anh Le-Thi",
@@ -415,7 +447,8 @@
       "pdfUrl": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0361873&type=printable",
       "sources": [
         "crossref",
-        "openalex"
+        "openalex",
+        "doaj"
       ],
       "tags": [
         "隐蔽通信",
