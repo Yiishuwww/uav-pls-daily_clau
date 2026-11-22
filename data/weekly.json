@@ -1,40 +1,48 @@
 {
-  "generatedAt": "2026-11-21T22:41:20+08:00",
-  "rangeStart": "2026-11-15",
-  "rangeEnd": "2026-11-21",
-  "count": 14,
+  "generatedAt": "2026-11-22T10:53:56+08:00",
+  "rangeStart": "2026-11-16",
+  "rangeEnd": "2026-11-22",
+  "count": 12,
   "typeCounts": {
-    "journal-article": 12,
+    "journal-article": 10,
     "conference": 2,
     "preprint": 0
   },
-  "ieeeCount": 10,
+  "ieeeCount": 8,
   "topTags": [
     [
       "隐蔽通信",
-      7
-    ],
-    [
-      "波束成形",
-      5
+      6
     ],
     [
       "干扰/人工噪声",
       5
     ],
     [
-      "轨迹优化",
+      "波束成形",
       4
+    ],
+    [
+      "轨迹优化",
+      3
     ]
   ],
   "picks": [
     {
-      "id": "doi:10.1109/ojcoms.2026.3747412",
-      "title": "Joint Position and Hybrid Beamforming Design for Secure Directional Modulation in UAV Communications",
+      "id": "doi:10.1109/tcomm.2026.3755456",
+      "title": "Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach",
       "type": "journal-article",
-      "published": "2026-11-14",
-      "citationCount": 1,
-      "url": "https://doi.org/10.1109/ojcoms.2026.3747412"
+      "published": "2026-11-19",
+      "citationCount": 0,
+      "url": "https://doi.org/10.1109/tcomm.2026.3755456"
+    },
+    {
+      "id": "doi:10.1109/miot.2026.3743183",
+      "title": "Embodied Intelligence for UAV Covert Communications: From Open-Loop Design to Closed-Loop Autonomy",
+      "type": "journal-article",
+      "published": "2026-11-16",
+      "citationCount": 0,
+      "url": "https://doi.org/10.1109/miot.2026.3743183"
     },
     {
       "id": "doi:10.3390/electronics15225293",
@@ -43,17 +51,9 @@
       "published": "2026-11-14",
       "citationCount": 0,
       "url": "https://doi.org/10.3390/electronics15225293"
-    },
-    {
-      "id": "doi:10.1109/ojcoms.2026.3749813",
-      "title": "UAV-Based Massive Covert Communications for Sports Venues",
-      "type": "journal-article",
-      "published": "2026-11-14",
-      "citationCount": 0,
-      "url": "https://doi.org/10.1109/ojcoms.2026.3749813"
     }
   ],
-  "fingerprint": "2026-11-15|2026-11-21|doi:10.1007/s10586-026-06787-2,doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/mwc.2026.3751244,doi:10.1109/ojcoms.2026.3747412,doi:10.1109/ojcoms.2026.3749813,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|隐蔽通信:7,波束成形:5,干扰/人工噪声:5,轨迹优化:4|doi:10.1109/ojcoms.2026.3747412,doi:10.3390/electronics15225293,doi:10.1109/ojcoms.2026.3749813",
-  "summary": "本周共新增论文14篇，涵盖期刊与会议论文。热门主题包括隐蔽通信、波束成形、干扰/人工噪声和轨迹优化。值得关注论文有《基于无人机通信的联合位置和混合波束成形设计以实现安全方向调制》等。",
+  "fingerprint": "2026-11-16|2026-11-22|doi:10.1007/s10586-026-06787-2,doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/mwc.2026.3751244,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|隐蔽通信:6,干扰/人工噪声:5,波束成形:4,轨迹优化:3|doi:10.1109/tcomm.2026.3755456,doi:10.1109/miot.2026.3743183,doi:10.3390/electronics15225293",
+  "summary": "本周共新增12篇论文，涵盖期刊与会议类型，IEEE论文占8篇。热门主题包括隐蔽通信、干扰/人工噪声、波束成形和轨迹优化。值得关注论文有《Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach》等。",
   "summarySource": "ai"
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T22:40:38+08:00",
+  "updatedAt": "2026-11-22T10:53:13+08:00",
   "total": 87,
   "papers": [
     {
@@ -97,7 +97,8 @@
       "score": 32,
       "firstSeen": "2026-11-20",
       "summaryZh": "研究问题：如何通过集成可移动天线来提高无人机在复杂城市环境中的隐蔽数据收集性能。 方法：提出了一种基于异构多智能体深度强化学习（HMATD3）算法的联合优化方法，包括无人机轨迹、干扰功率、发射波束成形、MA位置和频率分配。 主要结论：通过优化算法实现了实时隐蔽数据收集决策，并提高了隐蔽性能。",
-      "id": "doi:10.1109/tcomm.2026.3755456"
+      "id": "doi:10.1109/tcomm.2026.3755456",
+      "citationCount": 0
     },
     {
       "title": "Joint Trajectory, Power, and User Scheduling Optimization for UAV-Assisted Covert and Secure Convergecast Communications",
@@ -390,7 +391,7 @@
         "干扰/人工噪声",
         "协作干扰"
       ],
-      "score": 34,
+      "score": 32,
       "firstSeen": "2026-11-17",
       "id": "doi:10.3390/electronics15225293",
       "summaryZh": "研究问题：在存在勾结守卫的情况下，分析双无人机系统中隐蔽通信的性能。 方法：引入随机干扰功率策略，采用决策级OR融合规则，并优化守卫的检测阈值，同时考虑半双工解码转发中可达的端到端隐蔽通信速率。 主要结论：通过优化检测阈值和传输功率，实现了在隐蔽通信约束下的最小联合检测错误概率。",
@@ -421,7 +422,7 @@
         "无人机集群",
         "深度强化学习"
       ],
-      "score": 34,
+      "score": 32,
       "firstSeen": "2026-11-15",
       "id": "doi:10.1109/ojcoms.2026.3749813",
       "citationCount": 0,
@@ -453,7 +454,7 @@
       "tags": [
         "波束成形"
       ],
-      "score": 14,
+      "score": 12,
       "firstSeen": "2026-11-15",
       "id": "doi:10.1109/ojcoms.2026.3747412",
       "citationCount": 1,
