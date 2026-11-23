@@ -22,6 +22,7 @@
   if (!weeklyData || typeof weeklyData !== "object") weeklyData = null;
 
   const today = document.body.dataset.today || "";
+  const assetVersion = document.querySelector('meta[name="asset-version"]')?.content || "";
   const last7 = addDays(today, -6);
   const last30 = addDays(today, -29);
 
@@ -91,7 +92,7 @@
     source: "all",
     month: "all",
     sort: "latest",
-    limit: 40,
+    limit: 12,
   };
 
   const params = new URLSearchParams(window.location.search);
@@ -812,7 +813,7 @@
 
   function setPeriod(period) {
     state.period = period;
-    state.limit = 40;
+    state.limit = 12;
     for (const button of periodButtons) {
       button.classList.toggle("active", button.dataset.period === period);
     }
@@ -866,7 +867,7 @@
     state.source = "all";
     state.month = "all";
     state.sort = "latest";
-    state.limit = 40;
+    state.limit = 12;
     els.search.value = "";
     els.type.value = "all";
     els.source.value = "all";
@@ -899,7 +900,7 @@
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       state.q = els.search.value.trim();
-      state.limit = 40;
+      state.limit = 12;
       syncUrl();
       render();
     }, 140);
@@ -910,7 +911,7 @@
     state.sort = ["recent", "relevance", "citations"].includes(els.sort.value)
       ? els.sort.value
       : "latest";
-    state.limit = 40;
+    state.limit = 12;
     syncUrl();
     render();
   });
@@ -918,7 +919,7 @@
   els.type.value = state.type;
   els.type.addEventListener("change", () => {
     state.type = els.type.value;
-    state.limit = 40;
+    state.limit = 12;
     syncUrl();
     render();
   });
@@ -926,7 +927,7 @@
   els.source.value = state.source;
   els.source.addEventListener("change", () => {
     state.source = els.source.value;
-    state.limit = 40;
+    state.limit = 12;
     syncUrl();
     render();
   });
@@ -934,7 +935,7 @@
   els.month.value = state.month;
   els.month.addEventListener("change", () => {
     state.month = els.month.value;
-    state.limit = 40;
+    state.limit = 12;
     syncUrl();
     render();
   });
@@ -951,7 +952,7 @@
     state.source = "all";
     state.month = "all";
     state.sort = "latest";
-    state.limit = 40;
+    state.limit = 12;
     els.search.value = "";
     els.type.value = "all";
     els.source.value = "all";
@@ -982,16 +983,26 @@
     const chip = event.target.closest(".chip");
     if (!chip) return;
     state.tag = chip.dataset.tag || "all";
-    state.limit = 40;
+    state.limit = 12;
     renderTags();
     syncUrl();
     render();
   });
 
   els.more.addEventListener("click", () => {
-    state.limit += 40;
+    state.limit += 12;
     render();
   });
+
+  if ("IntersectionObserver" in window) {
+    const moreObserver = new IntersectionObserver((entries) => {
+      if (!els.more.hidden && entries.some((entry) => entry.isIntersecting)) {
+        state.limit += 12;
+        render();
+      }
+    }, { rootMargin: "400px 0px" });
+    moreObserver.observe(els.more);
+  }
 
   function syncUrl() {
     const url = new URL(window.location.href);
@@ -1034,6 +1045,26 @@
   });
 
   // ---------- 初始化 ----------
+
+  const chatToggle = document.getElementById("chat-toggle");
+  if (chatToggle) {
+    let chatLoading = false;
+    chatToggle.addEventListener("click", () => {
+      if (window.__uavChatLoaded || chatLoading) return;
+      chatLoading = true;
+      const script = document.createElement("script");
+      script.src = `assets/chat.js${assetVersion ? `?v=${assetVersion}` : ""}`;
+      script.onload = () => {
+        window.__uavChatLoaded = true;
+        chatLoading = false;
+        chatToggle.click();
+      };
+      script.onerror = () => {
+        chatLoading = false;
+      };
+      document.body.appendChild(script);
+    });
+  }
 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {});

@@ -1,5 +1,6 @@
 // 静态网站与 RSS 生成
 
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { papersToBibtex } from "./bibtex.js";
@@ -62,7 +63,7 @@ function chatWidgetHtml() {
 </div>`;
 }
 
-function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl, weekly }) {
+function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, siteUrl, chatApiUrl, weekly, assetVersion }) {
   const papersForSite = papers.map((paper) => ({
     id: paper.id,
     title: paper.title,
@@ -101,6 +102,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <meta name="description" content="每日自动汇总 arXiv、OpenAlex、Crossref、DOAJ、Zenodo、IEEE Xplore 中无人机物理层安全（Physical Layer Security for UAV Communications）方向的最新论文。">
 <meta name="theme-color" content="#0b5f8a">
 <meta name="chat-api-url" content="${xmlEscape(chatApiUrl)}">
+<meta name="asset-version" content="${xmlEscape(assetVersion)}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -112,7 +114,8 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b5f8a'/%3E%3Cpath d='M32 14l14 6v10c0 10-6 17-14 20-8-3-14-10-14-20V20z' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preload" href="assets/app.js?v=${xmlEscape(assetVersion)}" as="script" fetchpriority="high">
+<link rel="stylesheet" href="assets/style.css?v=${xmlEscape(assetVersion)}">
 <link rel="alternate" type="application/rss+xml" title="UAV 物理层安全论文日报 RSS" href="${xmlEscape(rssHref)}">
 </head>
 <body data-today="${xmlEscape(today)}">
@@ -243,8 +246,7 @@ ${chatWidgetHtml()}
 
 <script type="application/json" id="weekly-data">${weeklyJson}</script>
 <script type="application/json" id="papers-data">${papersJson}</script>
-<script src="assets/app.js" defer></script>
-<script src="assets/chat.js" defer></script>
+<script src="assets/app.js?v=${xmlEscape(assetVersion)}" defer></script>
 </body>
 </html>
 `;
@@ -317,6 +319,15 @@ export function renderSite({ root, papers, status, weekly = null, log = () => {}
     || existingChatApiUrl(docsDir)
     || "/api/chat";
 
+  const staticDir = path.join(root, "src", "static");
+  const assetVersion = crypto
+    .createHash("sha1")
+    .update(fs.readFileSync(path.join(staticDir, "style.css")))
+    .update(fs.readFileSync(path.join(staticDir, "app.js")))
+    .update(fs.readFileSync(path.join(staticDir, "chat.js")))
+    .digest("hex")
+    .slice(0, 10);
+
   const html = renderIndexHtml({
     papers,
     status,
@@ -327,6 +338,7 @@ export function renderSite({ root, papers, status, weekly = null, log = () => {}
     siteUrl,
     chatApiUrl,
     weekly,
+    assetVersion,
   });
 
   fs.writeFileSync(path.join(docsDir, "index.html"), html, "utf8");
@@ -344,7 +356,6 @@ export function renderSite({ root, papers, status, weekly = null, log = () => {}
   fs.writeFileSync(path.join(docsDir, "feed.xml"), buildRss(papers, siteUrl), "utf8");
   fs.writeFileSync(path.join(docsDir, ".nojekyll"), "", { flag: "a" });
 
-  const staticDir = path.join(root, "src", "static");
   for (const file of ["style.css", "app.js", "chat.js"]) {
     fs.copyFileSync(path.join(staticDir, file), path.join(assetsDir, file));
   }

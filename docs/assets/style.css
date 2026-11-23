@@ -748,6 +748,8 @@ main {
   border-radius: var(--radius);
   padding: 19px 22px 17px;
   margin-bottom: 13px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 340px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
