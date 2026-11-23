@@ -3,8 +3,8 @@
 每日自动汇总 **无人机通信物理层安全**（Physical Layer Security for UAV Communications）方向的最新论文，生成静态网站并部署到 GitHub Pages。
 
 - 网站：`https://yiishuwww.github.io/uav-pls-daily_clau/`
-- 更新：每天北京时间 **07:00**（GitHub Actions，UTC 23:00）
-- 费用：零 API key、公开仓库零成本
+- 更新：计划每天北京时间 **07:00**（GitHub Actions，UTC 23:00）；GitHub 定时任务为尽力而为，实际可能延迟
+- 费用：基础功能零成本；AI 问答使用 DeepSeek，按量计费
 
 ## 功能
 
@@ -12,7 +12,7 @@
 - 可选接入 **IEEE Xplore 官方 Metadata API**（免费 key）：IEEE 期刊、会议、Early Access 的元数据与摘要
 - 可选接入 **Springer Nature Meta API**（免费 key）：对 Crossref/OpenAlex 中的 Springer/Nature 论文按 DOI 补摘要
 - 通过 **Semantic Scholar** 按 DOI / arXiv ID 批量补全缺失摘要、**引用量、TLDR 与开放获取 PDF 链接**（无需 key；可申请免费 key 提高限额）
-- 可选接入 **智谱 GLM-4-Flash**（免费模型）：为入选论文生成中文一句话摘要
+- 可选接入 **智谱 GLM-4-Flash**（免费模型）：为入选论文生成「研究问题 / 方法 / 主要结论」结构化中文摘要
 - 通过 Crossref 的 publisher member 精确覆盖 **IEEE / Elsevier / Springer / Wiley** 的期刊元数据
 - 跨源去重：DOI → arXiv ID → 标题精确匹配 → 标题模糊匹配（≥94%）
 - 相关性硬门槛：标题或摘要中必须同时出现 PLS 词与 UAV 词
@@ -22,8 +22,9 @@
 - **周报**：点击列表上方的「周报」按钮打开弹窗，汇总最近一个完整自然周（周一至周日）的新增、类型/IEEE 分布、热门主题和值得关注的 3 篇论文；每个自然周生成一次，导语可由 GLM 生成，失败自动回退模板
 - 预印本用灰色小标签标注，不抢视觉
 - 搜索（标题、作者、摘要、DOI、标签）、时间范围、类型、来源（IEEE / 非 IEEE）、月份、标签筛选；支持“最新发表 / 最新收录 / 相关性 / 高引用”排序
-- 卡片显示中文一句话摘要，框右下角可展开英文摘要；没有中文摘要时显示 Semantic Scholar TLDR；同时显示引用量与 OA PDF 链接
+- 卡片显示结构化中文摘要，框右下角可展开英文摘要；没有中文摘要时显示 Semantic Scholar TLDR；同时显示引用量与 OA PDF 链接
 - 支持 URL 参数分享；深色模式；手机适配；RSS 与 JSON 数据
+- 页面性能：首屏只渲染 12 篇并滚动加载；Service Worker 缓存静态资源；AI 面板按需加载；CSS/JS 带内容哈希版本号
 - **BibTeX 导出**：导出当前筛选结果，或复制单篇；`docs/data/papers.bib` 提供全量文件
 - **微信推送**（可选）：企业微信群机器人 / PushPlus / Server酱，每天只推当天新增
 - 内置 AI 问答（可选）：先用 BM25 检索相关论文，再交给 DeepSeek 回答，支持 `[n]` 引用定位（见下文）
@@ -101,9 +102,9 @@ Crossref、IEEE 等来源经常只给题录、不给摘要，导致相关性判�
 - 申请后在本地设置 `S2_API_KEY`，或在仓库 Secrets 中添加同名 secret；不设置也能正常运行。
 - 接口失败时记录日志并继续其他数据源。
 
-### 中文一句话摘要（可选，智谱 GLM-4-Flash）
+### 中文结构化摘要（可选，智谱 GLM-4-Flash）
 
-配置免费的智谱 key 后，每天会为**最终入选**的论文生成 1–2 句中文摘要，显示在卡片摘要框中；框右下角的「查看英文摘要」可展开原文摘要：
+配置免费的智谱 key 后，每天会为**最终入选**的论文生成「研究问题 / 方法 / 主要结论」结构化中文摘要，显示在卡片摘要框中；框右下角的「查看英文摘要」可展开原文摘要：
 
 1. 打开 <https://open.bigmodel.cn/>，注册并完成实名认证（免费）。
 2. 在控制台的 **API 密钥** 页面创建 key。
@@ -183,6 +184,15 @@ npm run notify
 - iPhone：Safari 打开页面 → 分享 → 添加到主屏幕
 - Android：Chrome 菜单 → 添加到主屏幕
 
+### 页面性能
+
+- 首屏只渲染 12 篇论文，滚动到底部自动加载更多
+- `content-visibility` 跳过屏幕外卡片的布局与绘制
+- Service Worker 缓存 CSS/JS/图标，重复访问直接读缓存；页面导航仍网络优先
+- `chat.js` 在第一次点击「问 AI」时才加载
+- CSS/JS 带内容哈希版本号，更新后不会继续使用旧缓存
+- GitHub Pages 在国内的链路延迟仍然存在；如果访问不稳定，长期方案是换国内可访问的静态托管/CDN
+
 ## 本地运行
 
 需要 **Node.js 20+**。
@@ -226,9 +236,9 @@ npm run validate
 4. 仓库 **Actions** 页面：
    - 如果提示工作流未启用，点击启用
    - 选择 **Daily update → Run workflow**，`days` 填 `7` 即可（仓库已带 90 天回填数据）
-5. 之后每天 UTC 23:00（北京时间 07:00）自动更新。
+5. 之后计划每天 UTC 23:00（北京时间 07:00）自动更新；GitHub 定时任务可能延迟。
 
-> GitHub 的定时任务在高峰期可能延迟 5–30 分钟。公开仓库的 Actions 分钟数免费；每日提交也会避免仓库因 60 天无活动而被暂停定时任务。
+> GitHub 的定时任务在高峰期可能延迟几分钟到数小时，无法保证准确时间。公开仓库的 Actions 分钟数免费；每日提交也会避免仓库因 60 天无活动而被暂停定时任务。
 
 ## AI 问答（可选，DeepSeek）
 
@@ -286,7 +296,7 @@ tar.exe -a -c -f "dist\uav-pls-chat-alibaba.zip" -C "dist\alibaba" .
 https://<FC公网地址>/health
 ```
 
-看到 `"configured": true` 和 `"papers": 60` 就成功了。
+看到 `"configured": true` 和 `"papers"` 为当前打包的论文数就成功了。
 
 #### 4. 让页面指向 FC
 
@@ -315,7 +325,7 @@ npm run build:tencent
 tar.exe -a -c -f "dist\uav-pls-chat-tencent.zip" -C "dist\tencent" .
 ```
 
-生成的 ZIP 里包含 `server.mjs`、`worker/src/chat.js`、`worker/src/prompt.js` 和 `papers.json`（打包时的论文库）。
+生成的 ZIP 里包含 `server.mjs`、`worker/src/chat.js`、`worker/src/prompt.js`、`worker/src/retrieve.js` 和 `papers.json`（打包时的论文库）。
 
 #### 2. 创建 Web 函数
 
@@ -350,7 +360,7 @@ tar.exe -a -c -f "dist\uav-pls-chat-tencent.zip" -C "dist\tencent" .
 https://<函数URL>/health
 ```
 
-看到 `"configured": true` 和 `"papers": 60`（打包时的论文数）就成功了。
+看到 `"configured": true` 和 `"papers"` 为打包时的论文数就成功了。
 
 #### 4. 让页面指向腾讯云函数
 
@@ -421,7 +431,7 @@ npm run preview
 
 #### 说明与限制
 
-- 每次提问会先用 BM25（英文词 + 中文二元组）从论文库里检索最多 16 篇相关论文，再把标题、作者、摘要、标签等发送给 DeepSeek，不再发送完整论文库。当前 84 篇时，提示词从约 9 万字符降到约 3 万字符。
+- 每次提问会先用 BM25（英文词 + 中文二元组）从论文库里检索最多 16 篇相关论文，再把标题、作者、摘要、标签等发送给 DeepSeek，不再发送完整论文库。当前约 90 篇时，提示词从约 9 万字符降到约 3 万字符。
 - 页面当前筛选会作为检索范围：例如选中「RIS/IRS」标签或「仅 IEEE」时，只在该子集里找相关论文。
 - 用户消息或历史里明确引用过的 `[n]` 会强制加入本次清单，保证追问不会丢失上下文。
 - 论文超过约 300–500 篇后，可以把 BM25 换成 embedding 检索；当前无需向量库。
@@ -448,14 +458,14 @@ npm run preview
 - `ieee`：IEEE Xplore 官方 API。`api_key_env` 指定读取哪个环境变量（默认 `IEEE_API_KEY`），`page_size` 最大 200，`max_pages` 控制每条查询翻几页；也可用 `queries` 覆盖内置检索式。未设置 key 时自动跳过
 - `springer`：Springer Nature Meta API 摘要补全。`api_key_env` 默认 `SPRINGER_API_KEY`，`max_papers` 控制每次最多补多少篇；不做全文检索，只按 DOI 查询缺摘要的 Springer/Nature 论文。未设置 key 时自动跳过
 - `semanticscholar`：摘要、引用量、TLDR、OA PDF 补全。`api_key_env` 默认 `S2_API_KEY`（可留空），`batch_size` 最大 500；`enabled: false` 可关闭
-- `summary`：中文一句话摘要与周报导语。`api_key_env` 默认 `GLM_API_KEY`，`model` 默认 `glm-4-flash`，`base_url` 可换兼容网关，`max_papers` 控制每次最多生成多少篇摘要；未设置 key 时自动跳过或使用模板
+- `summary`：中文结构化摘要与周报导语。`api_key_env` 默认 `GLM_API_KEY`，`model` 默认 `glm-4-flash`，`base_url` 可换兼容网关，`max_papers` 控制每次最多生成多少篇摘要；未设置 key 时自动跳过或使用模板
 - 二期要接 Elsevier 时，在此添加配置并在 `src/collectors/` 下新增适配器
 
 ## 项目结构
 
 ```
 uav-pls-daily_clau/
-├─ .github/workflows/daily.yml   # 每天 07:00（北京时间）运行
+├─ .github/workflows/daily.yml   # 计划每天 07:00（北京时间）运行
 ├─ config/
 │  ├─ sources.yaml               # 数据源配置
 │  └─ keywords.yaml              # 检索词、标签、打分
@@ -471,7 +481,7 @@ uav-pls-daily_clau/
 │  ├─ dedup.js                   # 跨源去重与字段合并
 │  ├─ enrich.js                  # Semantic Scholar 摘要 / 引用量 / TLDR / OA PDF
 │  ├─ enrich-springer.js         # Springer/Nature 按 DOI 补摘要
-│  ├─ summarize.js               # 智谱 GLM-4-Flash 中文一句话摘要
+│  ├─ summarize.js               # 智谱 GLM-4-Flash 中文结构化摘要
 │  ├─ weekly.js                  # 自然周周报统计与可选 AI 导语
 │  ├─ bibtex.js                  # BibTeX 生成
 │  ├─ rank.js                    # 相关性门槛、打分、标签
@@ -504,10 +514,13 @@ uav-pls-daily_clau/
 
 - 仅收录公开元数据，不存储论文全文。
 - `data/papers.json` 保留每条论文的来源、首次发现日期、标签与分数，可直接用于二次分析。
+- `data/weekly.json` 保存最近一个完整自然周（周一至周日）的统计、重点论文和导语；周内复用同一份。
 - 若某天没有新论文，网站仍会更新时间戳并提交，保证定时任务持续运行。
 
 ## 二期可扩展
 
 - 接入 Elsevier 官方 API（免费 key）
-- 周报推送
+- 周报微信推送（每周一次）
+- 作者机构 / 国家统计与筛选（OpenAlex 机构字段）
+- 收藏 / 稍后读，并导出收藏 BibTeX
 - 按引用量/发表时间组合的个性化推荐
