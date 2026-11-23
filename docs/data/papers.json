@@ -1,7 +1,31 @@
 {
-  "updatedAt": "2026-11-22T10:53:13+08:00",
-  "total": 87,
+  "updatedAt": "2026-11-23T11:35:39+08:00",
+  "total": 88,
   "papers": [
+    {
+      "title": "Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches",
+      "authors": [
+        "Junhan Wang"
+      ],
+      "abstract": "A wireless relaying system in the presence of an active eavesdropper is considered, using an unmanned aerial vehicle (UAV) as an amplify-and-forward (AF) relay. While reproducing and extending a prior received-signal-statistics detection framework [6], we identified a power-scaling inconsistency in the channel simulation: transmit power terms were applied linearly to signal amplitude rather than as their square root, which artificially inflates the apparent separability between normal and attack conditions. After correcting this inconsistency, we show, both analytically and empirically, that under an idealized AF relay with exact power normalization to a fixed transmit power, none of six candidate received-signal features, including the physics-motivated received power, retain any discriminative power (AUC ≈ 0.50) across the entire tested eavesdropper power range. We further show that large accuracy swings previously observed under class-imbalanced test conditions are a separate, well-known artifact of biased classifiers scored by raw accuracy rather than genuine detection ability. These findings indicate that passive statistical detection based on received amplitude/power alone is not viable under the idealized AF power-normalization model, and we highlight the specific simulation pitfall responsible so that future work in this area can avoid it.",
+      "doi": "10.1117/12.3139788",
+      "venue": "International Conference on Machine Learning, Neural Networks, and Computer Software (MLNNCS 2026)",
+      "publisher": "SPIE",
+      "type": "conference",
+      "published": "2026-11-22",
+      "url": "https://doi.org/10.1117/12.3139788",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "主动窃听"
+      ],
+      "score": 23,
+      "firstSeen": "2026-11-23",
+      "summaryZh": "研究问题：在无人机辅助无线系统中，如何进行窃听检测？ 方法：通过比较无监督和监督方法，分析并纠正了信道模拟中的功率缩放不一致性，并评估了不同接收信号特征在理想化放大转发（AF）中是否具有判别力。 主要结论：在理想化的AF功率归一化模型下，基于接收幅度/功率的被动统计检测不可行，并指出了特定的模拟陷阱。",
+      "id": "doi:10.1117/12.3139788"
+    },
     {
       "title": "Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges",
       "authors": [
@@ -1422,41 +1446,6 @@
       "summaryZh": "研究问题：如何构建一个在多个友好干扰器辅助下的无人机移动边缘计算网络，以实现数据卸载行为的隐蔽性并提高计算效率。方法：通过联合设计无人机轨迹、通信资源和计算资源，最大化计算数据量，同时满足移动性、能耗、资源限制和隐蔽性约束。主要结论：利用假设检验理论推导出隐蔽性指标的闭式表达式，并分析了该指标的单调性，从而将原始隐蔽性约束简化为等效且可分析的形式。"
     },
     {
-      "title": "Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system",
-      "authors": [
-        "Nikita Goel",
-        "Pankaj Kumar",
-        "Sandesh Jain",
-        "Manoj Tolani",
-        "Swati Varun Yadav",
-        "Sam Darshi"
-      ],
-      "abstract": "Abstract The integration of intelligent reflecting surfaces (IRS) with unmanned aerial vehicle (UAV) is rapidly emerging as a groundbreaking approach to enhancing the performance of 5G and beyond (5G+) wireless networks. This paper considers UAV-assisted-IRS-aided ground-to-ground (G2G) communication (UA-IRS-G2G) for improving the reliability of ground users (GUs) in infrastructure-less scenarios. To develop the mathematical framework for UA-IRS-G2G system, a height-dependent Nakagami- m fading channel is assumed for the IRS-to-GU links, while a Rayleigh fading channel is adopted for the G2G links, accounting for the multipath effect between the GUs. For the same, the cumulative distribution function (CDF) of the end-to-end signal-to-noise ratio (SNR) for signals transmitted via UA-IRS is derived. Furthermore, the closed-form expressions of secrecy outage probability (SOP) and secrecy capacity are also derived for the considered scenario. Additionally, diversity order is employed to enhance the reliability of the received signal at the receiver node in the proposed scenario. At the end numerical simulations are conducted to validate the accuracy of these theoretical derivations. The performance of the proposed work is compared with the existing state-of-the-art method reported in 11 . The results demonstrate that the proposed approach achieves better performance than the existing method in 11 .",
-      "doi": "10.1038/s41598-026-69991-5",
-      "venue": "Scientific Reports",
-      "publisher": "Nature Portfolio",
-      "type": "journal-article",
-      "published": "2026-09-08",
-      "url": "https://doi.org/10.1038/s41598-026-69991-5",
-      "pdfUrl": "https://www.nature.com/articles/s41598-026-69991-5_reference.pdf",
-      "sources": [
-        "openalex",
-        "crossref"
-      ],
-      "tags": [
-        "RIS/IRS",
-        "安全速率",
-        "保密中断"
-      ],
-      "score": 22,
-      "firstSeen": "2026-09-08",
-      "id": "doi:10.1038/s41598-026-69991-5",
-      "citationCount": 0,
-      "tldr": "The results demonstrate that the proposed approach achieves better performance than the existing method in 11, compared with the existing state-of-the-art method reported in 11.",
-      "oaPdfUrl": "https://www.nature.com/articles/s41598-026-69991-5_reference.pdf",
-      "summaryZh": "研究问题：探讨无人机辅助智能反射面（IRS）辅助的G2G系统中的保密中断和容量分析。 方法：建立UA-IRS-G2G系统的数学框架，推导端到端信噪比累积分布函数，并得到保密中断概率和保密容量的闭式表达式，同时采用分集阶数提高接收节点信号的可靠性。 主要结论：与现有方法相比，所提出的方法在保密中断和容量方面表现出更好的性能。"
-    },
-    {
       "title": "Reliability and physical-layer security of fluid antenna-assisted UAV cooperative NOMA networks",
       "authors": [
         "Haiyan Huang",
@@ -1688,6 +1677,42 @@
       "tldr": "A multi-beam cooperative time-varying directional modulation framework for secure satellite downlinks whose pointing states and beam-dependent symbol mappings are randomly updated at the symbol rate, thereby introducing controlled randomness for physical-layer security.",
       "oaPdfUrl": "https://doi.org/10.3390/drones10090690",
       "summaryZh": "研究问题：如何通过多波束合作时间变向调制（TVDM）提高卫星对无人机群下链传输的安全性。 方法：提出了一种基于随机更新的多波束合作TVDM框架，通过子阵列的分区和符号映射来引入物理层安全性，并使用混合离散-连续优化方法来降低不安全覆盖和旁瓣泄漏。 主要结论：仿真结果表明，所提出的方法能够有效提高卫星对无人机群下链传输的安全性，并降低不安全覆盖和旁瓣泄漏。"
+    },
+    {
+      "title": "Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system",
+      "authors": [
+        "Nikita Goel",
+        "Pankaj Kumar",
+        "Sandesh Jain",
+        "Manoj Tolani",
+        "Swati Varun Yadav",
+        "Sam Darshi"
+      ],
+      "abstract": "Abstract The integration of intelligent reflecting surfaces (IRS) with unmanned aerial vehicle (UAV) is rapidly emerging as a groundbreaking approach to enhancing the performance of 5G and beyond (5G+) wireless networks. This paper considers UAV-assisted-IRS-aided ground-to-ground (G2G) communication (UA-IRS-G2G) for improving the reliability of ground users (GUs) in infrastructure-less scenarios. To develop the mathematical framework for UA-IRS-G2G system, a height-dependent Nakagami- m fading channel is assumed for the IRS-to-GU links, while a Rayleigh fading channel is adopted for the G2G links, accounting for the multipath effect between the GUs. For the same, the cumulative distribution function (CDF) of the end-to-end signal-to-noise ratio (SNR) for signals transmitted via UA-IRS is derived. Furthermore, the closed-form expressions of secrecy outage probability (SOP) and secrecy capacity are also derived for the considered scenario. Additionally, diversity order is employed to enhance the reliability of the received signal at the receiver node in the proposed scenario. At the end numerical simulations are conducted to validate the accuracy of these theoretical derivations. The performance of the proposed work is compared with the existing state-of-the-art method reported in 11 . The results demonstrate that the proposed approach achieves better performance than the existing method in 11 .",
+      "doi": "10.1038/s41598-026-69991-5",
+      "venue": "Scientific Reports",
+      "publisher": "Nature Portfolio",
+      "type": "journal-article",
+      "published": "2026-09-01",
+      "url": "https://doi.org/10.1038/s41598-026-69991-5",
+      "pdfUrl": "https://www.nature.com/articles/s41598-026-69991-5_reference.pdf",
+      "sources": [
+        "openalex",
+        "crossref",
+        "doaj"
+      ],
+      "tags": [
+        "RIS/IRS",
+        "安全速率",
+        "保密中断"
+      ],
+      "score": 22,
+      "firstSeen": "2026-09-08",
+      "id": "doi:10.1038/s41598-026-69991-5",
+      "citationCount": 0,
+      "tldr": "The results demonstrate that the proposed approach achieves better performance than the existing method in 11, compared with the existing state-of-the-art method reported in 11.",
+      "oaPdfUrl": "https://www.nature.com/articles/s41598-026-69991-5_reference.pdf",
+      "summaryZh": "研究问题：探讨无人机辅助智能反射面（IRS）辅助的G2G系统中的保密中断和容量分析。 方法：建立UA-IRS-G2G系统的数学框架，推导端到端信噪比累积分布函数，并得到保密中断概率和保密容量的闭式表达式，同时采用分集阶数提高接收节点信号的可靠性。 主要结论：与现有方法相比，所提出的方法在保密中断和容量方面表现出更好的性能。"
     },
     {
       "title": "Physical layer security of ground-to-UAV FSO system considering F-distribution turbulence channel and the presence of eavesdroppers",

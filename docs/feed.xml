@@ -5,8 +5,16 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Nov 2026 02:53:56 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 03:36:14 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches</title>
+      <link>https://doi.org/10.1117/12.3139788</link>
+      <guid isPermaLink="false">doi:10.1117/12.3139788</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
+      <description>A wireless relaying system in the presence of an active eavesdropper is considered, using an unmanned aerial vehicle (UAV) as an amplify-and-forward (AF) relay. While reproducing and extending a prior received-signal-statistics detection framework [6], we identified a power-scaling inconsistency in the channel simulation: transmit power terms were applied linearly to signal amplitude rather than as their square root, which artificially inflates the apparent separability between normal and attack conditions. After correcting this inconsistency, we show, both analytically and empirically, that under an idealized AF relay with exact power normalization to a fixed transmit power, none of six candidate received-signal features, including the physics-motivated received power, retain any discriminative power (AUC ≈ 0.50) across the entire tested eavesdropper power range. We further show that large accuracy swings previously observed under class-imbalanced test conditions are a separate, well-known artifact of biased classifiers scored by raw accuracy rather than genuine detection ability. These findings indicate that passive statistical detection based on received amplitude/power alone is not viable under the idealized AF power-normalization model, and we highlight the specific simulation pitfall responsible so that future work in this area can avoid it.</description>
+      <category>主动窃听</category>
+    </item>
     <item>
       <title>Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges</title>
       <link>https://doi.org/10.1109/mwc.2026.3751244</link>
@@ -463,16 +471,6 @@
       <category>边缘计算</category>
     </item>
     <item>
-      <title>Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system</title>
-      <link>https://doi.org/10.1038/s41598-026-69991-5</link>
-      <guid isPermaLink="false">doi:10.1038/s41598-026-69991-5</guid>
-      <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Abstract The integration of intelligent reflecting surfaces (IRS) with unmanned aerial vehicle (UAV) is rapidly emerging as a groundbreaking approach to enhancing the performance of 5G and beyond (5G+) wireless networks. This paper considers UAV-assisted-IRS-aided ground-to-ground (G2G) communication (UA-IRS-G2G) for improving the reliability of ground users (GUs) in infrastructure-less scenarios. To develop the mathematical framework for UA-IRS-G2G system, a height-dependent Nakagami- m fading channel is assumed for the IRS-to-GU links, while a Rayleigh fading channel is adopted for the G2G links, accounting for the multipath effect between the GUs. For the same, the cumulative distribution function (CDF) of the end-to-end signal-to-noise ratio (SNR) for signals transmitted via UA-IRS is derived. Furthermore, the closed-form expressions of secrecy outage probability (SOP) and secrecy capacity are also derived for the considered scenario. Additionally, diversity order is employed to enhance the reliability of the received signal at the receiver node in the proposed scenario. At the end numerical simulations are conducted to validate the accuracy of these theoretical derivations. The performance of the proposed work is compared with the existing state-of-the-art method reported in 11 . The results demonstrate that the proposed approach achieves better performance than the existing method in 11 .</description>
-      <category>RIS/IRS</category>
-      <category>安全速率</category>
-      <category>保密中断</category>
-    </item>
-    <item>
       <title>Reliability and physical-layer security of fluid antenna-assisted UAV cooperative NOMA networks</title>
       <link>https://doi.org/10.1016/j.phycom.2026.103338</link>
       <guid isPermaLink="false">doi:10.1016/j.phycom.2026.103338</guid>
@@ -547,6 +545,16 @@
       <category>波束成形</category>
       <category>空天地网络</category>
       <category>无人机集群</category>
+    </item>
+    <item>
+      <title>Secrecy outage and capacity analysis for UAV-assisted IRS-aided G2G system</title>
+      <link>https://doi.org/10.1038/s41598-026-69991-5</link>
+      <guid isPermaLink="false">doi:10.1038/s41598-026-69991-5</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Abstract The integration of intelligent reflecting surfaces (IRS) with unmanned aerial vehicle (UAV) is rapidly emerging as a groundbreaking approach to enhancing the performance of 5G and beyond (5G+) wireless networks. This paper considers UAV-assisted-IRS-aided ground-to-ground (G2G) communication (UA-IRS-G2G) for improving the reliability of ground users (GUs) in infrastructure-less scenarios. To develop the mathematical framework for UA-IRS-G2G system, a height-dependent Nakagami- m fading channel is assumed for the IRS-to-GU links, while a Rayleigh fading channel is adopted for the G2G links, accounting for the multipath effect between the GUs. For the same, the cumulative distribution function (CDF) of the end-to-end signal-to-noise ratio (SNR) for signals transmitted via UA-IRS is derived. Furthermore, the closed-form expressions of secrecy outage probability (SOP) and secrecy capacity are also derived for the considered scenario. Additionally, diversity order is employed to enhance the reliability of the received signal at the receiver node in the proposed scenario. At the end numerical simulations are conducted to validate the accuracy of these theoretical derivations. The performance of the proposed work is compared with the existing state-of-the-art method reported in 11 . The results demonstrate that the proposed approach achieves better performance than the existing method in 11 .</description>
+      <category>RIS/IRS</category>
+      <category>安全速率</category>
+      <category>保密中断</category>
     </item>
     <item>
       <title>Physical layer security of ground-to-UAV FSO system considering F-distribution turbulence channel and the presence of eavesdroppers</title>
