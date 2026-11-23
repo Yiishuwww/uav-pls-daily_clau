@@ -1,10 +1,10 @@
-// 本周周报：统计事实 + 可选 GLM-4-Flash 导语。
+// 自然周周报：统计事实 + 可选 GLM-4-Flash 导语。
 // 统计由代码计算，AI 只负责把事实写成 2–3 句中文，避免编造数字或趋势。
 
 import path from "node:path";
 import { fetchJson } from "./http.js";
 import { readJson, writeJson } from "./store.js";
-import { addDays, cleanText, cnNowIso, cnToday } from "./text.js";
+import { cleanText, cnNowIso, cnToday } from "./text.js";
 
 const DEFAULT_BASE = "https://open.bigmodel.cn/api/paas/v4";
 const DEFAULT_MODEL = "glm-4-flash";
@@ -31,7 +31,7 @@ function templateSummary({ rangeStart, rangeEnd, count, typeCounts, ieeeCount, t
     typeCounts.preprint ? `预印本 ${typeCounts.preprint}` : "",
   ].filter(Boolean).join("、");
 
-  let text = `本周（${monthDay(rangeStart)}–${monthDay(rangeEnd)}）新增 ${count} 篇`;
+  let text = `该周（${monthDay(rangeStart)}–${monthDay(rangeEnd)}）新增 ${count} 篇`;
   if (typeText) text += `：${typeText}`;
   text += ieeeCount > 0 ? `；其中 IEEE 论文 ${ieeeCount} 篇。` : "。";
   if (topTags.length > 0) {
@@ -40,10 +40,29 @@ function templateSummary({ rangeStart, rangeEnd, count, typeCounts, ieeeCount, t
   return text;
 }
 
+/** 最近一个完整的自然周：上周一至上周日。 */
+function lastCompletedWeek(today) {
+  const date = new Date(`${today}T00:00:00Z`);
+  const sinceMonday = (date.getUTCDay() + 6) % 7;
+  const thisMonday = new Date(date);
+  thisMonday.setUTCDate(date.getUTCDate() - sinceMonday);
+
+  const start = new Date(thisMonday);
+  start.setUTCDate(thisMonday.getUTCDate() - 7);
+
+  const end = new Date(thisMonday);
+  end.setUTCDate(thisMonday.getUTCDate() - 1);
+
+  return {
+    rangeStart: start.toISOString().slice(0, 10),
+    rangeEnd: end.toISOString().slice(0, 10),
+  };
+}
+
 function buildFacts(papers, today) {
-  const rangeStart = addDays(today, -6);
+  const { rangeStart, rangeEnd } = lastCompletedWeek(today);
   const weekly = papers.filter(
-    (paper) => paper.firstSeen && paper.firstSeen >= rangeStart && paper.firstSeen <= today,
+    (paper) => paper.firstSeen && paper.firstSeen >= rangeStart && paper.firstSeen <= rangeEnd,
   );
 
   const typeCounts = { "journal-article": 0, conference: 0, preprint: 0 };
@@ -79,7 +98,7 @@ function buildFacts(papers, today) {
 
   const fingerprint = [
     rangeStart,
-    today,
+    rangeEnd,
     weekly.map((paper) => paper.id).sort().join(","),
     topTags.map(([name, count]) => `${name}:${count}`).join(","),
     picks.map((paper) => paper.id).join(","),
@@ -87,7 +106,7 @@ function buildFacts(papers, today) {
 
   return {
     rangeStart,
-    rangeEnd: today,
+    rangeEnd,
     count: weekly.length,
     typeCounts,
     ieeeCount,
@@ -106,11 +125,11 @@ function buildPrompt(facts) {
   ].filter(Boolean).join("、");
 
   return [
-    "你是学术论文日报的编辑。请根据下面的统计数据，用 2-3 句简体中文写一段本周周报导语。",
+    "你是学术论文日报的编辑。请根据下面的统计数据，用 2-3 句简体中文写一段周报导语。",
     "要求：",
     "1. 只使用给出的信息，不要编造论文、数字、方法或趋势。",
     "2. 不要使用 Markdown，不要分点，不超过 120 字。",
-    "3. 先概括本周新增情况，再点出 2-3 个热门主题；如果有值得关注的论文，可以提一篇标题。",
+    "3. 先概括这一周的新增情况，再点出 2-3 个热门主题；如果有值得关注的论文，可以提一篇标题。",
     "",
     `日期范围：${rangeStart} 至 ${rangeEnd}`,
     `新增论文：${count} 篇`,
@@ -162,7 +181,7 @@ async function generateAiSummary(facts, config, log) {
 }
 
 /**
- * 生成周报。previous 传入上一次的 data/weekly.json，可在数据未变时复用 AI 导语。
+ * 生成周报。每个自然周只生成一次，周内复用上一份报告。
  * generateSummary=false 时不请求网络，适合 --no-collect 或离线渲染。
  */
 export async function buildWeeklyReport(
@@ -170,30 +189,27 @@ export async function buildWeeklyReport(
   { config = {}, log = () => {}, previous = null, generateSummary = true, today = cnToday() } = {},
 ) {
   const facts = buildFacts(papers, today);
-  const cached = previous
+  const sameWeek = previous
     && previous.rangeStart === facts.rangeStart
-    && previous.rangeEnd === facts.rangeEnd
-    && previous.fingerprint === facts.fingerprint
+    && previous.rangeEnd === facts.rangeEnd;
+  const reusable = sameWeek
     && previous.summary
-    // 只有已有 AI 导语时才复用它；模板导语在配置 key 后应允许升级。
-    && (!generateSummary || previous.summarySource === "ai")
-    ? previous
+    // 模板导语允许在配置 key 后升级为 AI 导语。
+    && (!generateSummary || previous.summarySource === "ai");
+
+  if (reusable) return previous;
+
+  let summary = "";
+  let summarySource = "template";
+
+  const aiSummary = generateSummary
+    ? await generateAiSummary(facts, config, log)
     : null;
-
-  let summary = cached?.summary || "";
-  let summarySource = cached?.summarySource || "template";
-
-  if (!summary) {
-    const aiSummary = generateSummary
-      ? await generateAiSummary(facts, config, log)
-      : null;
-    if (aiSummary) {
-      summary = aiSummary;
-      summarySource = "ai";
-    } else {
-      summary = templateSummary(facts);
-      summarySource = "template";
-    }
+  if (aiSummary) {
+    summary = aiSummary;
+    summarySource = "ai";
+  } else {
+    summary = templateSummary(facts);
   }
 
   return {

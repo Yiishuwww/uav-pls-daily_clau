@@ -197,7 +197,7 @@ function renderIndexHtml({ papers, status, today, total, todayCount, weekCount, 
   <div class="list-head">
     <div class="list-meta">
       <span id="result-count" aria-live="polite">共 0 篇</span>
-      <button type="button" id="weekly-open" class="reset-btn weekly-open" aria-haspopup="dialog" aria-expanded="false">本周周报</button>
+      <button type="button" id="weekly-open" class="reset-btn weekly-open" aria-haspopup="dialog" aria-expanded="false">周报</button>
       <button type="button" id="export-bib" class="reset-btn" title="导出当前筛选结果为 BibTeX">导出 BibTeX</button>
       <button type="button" id="reset-filters" class="reset-btn" hidden>重置筛选</button>
     </div>
@@ -226,7 +226,7 @@ ${chatWidgetHtml()}
   <section class="weekly-dialog" role="dialog" aria-modal="true" aria-labelledby="weekly-dialog-title">
     <header class="weekly-dialog-head">
       <div class="weekly-dialog-title">
-        <strong id="weekly-dialog-title">本周周报</strong>
+        <strong id="weekly-dialog-title">周报</strong>
         <span id="weekly-range"></span>
       </div>
       <button type="button" id="weekly-close" class="weekly-close" aria-label="关闭周报">✕</button>
@@ -239,7 +239,7 @@ ${chatWidgetHtml()}
       <div class="weekly-topics" id="weekly-topics" aria-label="热门主题"></div>
       <p class="weekly-label" id="weekly-picks-label">本周值得关注</p>
       <ol class="weekly-picks" id="weekly-picks" aria-label="本周值得关注"></ol>
-      <button type="button" id="weekly-view" class="weekly-view">查看本周论文 →</button>
+      <button type="button" id="weekly-view" class="weekly-view">查看这一周论文 →</button>
     </div>
   </section>
 </div>

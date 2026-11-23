@@ -19,7 +19,7 @@
 - 自动打标签：RIS、NOMA、通感一体化、隐蔽通信、轨迹优化、波束成形、毫米波/THz、空天地网络等
 - 中文界面，论文标题与摘要保留英文原文
 - 顶部中文导读 + 随筛选变化的“本期概览”
-- **本周周报**：点击列表上方的「本周周报」按钮打开弹窗，汇总近 7 天新增、类型/IEEE 分布、热门主题和值得关注的 3 篇论文；导语可由 GLM 生成，失败自动回退模板
+- **周报**：点击列表上方的「周报」按钮打开弹窗，汇总最近一个完整自然周（周一至周日）的新增、类型/IEEE 分布、热门主题和值得关注的 3 篇论文；每个自然周生成一次，导语可由 GLM 生成，失败自动回退模板
 - 预印本用灰色小标签标注，不抢视觉
 - 搜索（标题、作者、摘要、DOI、标签）、时间范围、类型、来源（IEEE / 非 IEEE）、月份、标签筛选；支持“最新发表 / 最新收录 / 相关性 / 高引用”排序
 - 卡片显示中文一句话摘要，框右下角可展开英文摘要；没有中文摘要时显示 Semantic Scholar TLDR；同时显示引用量与 OA PDF 链接
@@ -158,12 +158,13 @@ npm run notify
 
 当天没有新论文时会自动跳过，不会发空消息。
 
-### 本周周报
+### 周报
 
-页面列表上方的「本周周报」按钮会打开弹窗，展示近 7 天的统计和重点论文：
+页面列表上方的「周报」按钮会打开弹窗，展示**最近一个完整自然周（周一至周日）**的统计和重点论文：
 
-- 统计由 `src/weekly.js` 在每日构建时计算，写入 `data/weekly.json`，页面同时提供 `docs/data/weekly.json`
-- 配置 `GLM_API_KEY` 后，导语由 GLM-4-Flash 根据代码算好的事实生成 2–3 句中文；数据没变化时复用缓存，不重复调用
+- 统计由 `src/weekly.js` 计算，写入 `data/weekly.json`，页面同时提供 `docs/data/weekly.json`
+- 同一自然周内复用同一份报告，不随每天新增数据滚动；下周一生成上一周的完整周报
+- 配置 `GLM_API_KEY` 后，导语由 GLM-4-Flash 根据代码算好的事实生成 2–3 句中文；每个自然周只调用一次
 - 未配置 key 或接口失败时自动使用模板文字，不影响页面
 - 页面不会直接调用 GLM，key 只在 GitHub Actions 中使用
 - 打开 `?weekly=1` 可以直接显示周报弹窗，方便分享
@@ -471,7 +472,7 @@ uav-pls-daily_clau/
 │  ├─ enrich.js                  # Semantic Scholar 摘要 / 引用量 / TLDR / OA PDF
 │  ├─ enrich-springer.js         # Springer/Nature 按 DOI 补摘要
 │  ├─ summarize.js               # 智谱 GLM-4-Flash 中文一句话摘要
-│  ├─ weekly.js                  # 本周周报统计与可选 AI 导语
+│  ├─ weekly.js                  # 自然周周报统计与可选 AI 导语
 │  ├─ bibtex.js                  # BibTeX 生成
 │  ├─ rank.js                    # 相关性门槛、打分、标签
 │  ├─ store.js                   # JSON 持久化
@@ -494,7 +495,7 @@ uav-pls-daily_clau/
 ├─ wrangler.toml                 # Cloudflare Worker 配置
 ├─ data/
 │  ├─ papers.json                # 论文库（Git 即数据库）
-│  ├─ weekly.json                # 本周周报统计与导语
+│  ├─ weekly.json                # 自然周周报统计与导语
 │  └─ status.json                # 各数据源运行状态
 └─ docs/                         # 生成的静态网站（GitHub Pages 源）
 ```

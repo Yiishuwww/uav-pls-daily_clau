@@ -20,6 +20,7 @@
     weeklyData = null;
   }
   if (!weeklyData || typeof weeklyData !== "object") weeklyData = null;
+  let weeklyRange = null;
 
   const today = document.body.dataset.today || "";
   const assetVersion = document.querySelector('meta[name="asset-version"]')?.content || "";
@@ -86,6 +87,8 @@
 
   const state = {
     period: "30d",
+    weekStart: "",
+    weekEnd: "",
     q: "",
     tag: "all",
     type: "all",
@@ -96,8 +99,17 @@
   };
 
   const params = new URLSearchParams(window.location.search);
-  if (["today", "7d", "30d", "all"].includes(params.get("period"))) {
-    state.period = params.get("period");
+  const periodParam = params.get("period");
+  if (["today", "7d", "30d", "all"].includes(periodParam)) {
+    state.period = periodParam;
+  } else if (periodParam === "week") {
+    const from = params.get("from") || "";
+    const to = params.get("to") || "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(from) && /^\d{4}-\d{2}-\d{2}$/.test(to)) {
+      state.period = "week";
+      state.weekStart = from;
+      state.weekEnd = to;
+    }
   }
   state.q = (params.get("q") || "").trim();
   state.tag = params.get("tag") || "all";
@@ -209,6 +221,9 @@
     if (state.period === "today" && paper.firstSeen !== today) return false;
     if (state.period === "7d" && !(paper.firstSeen >= last7)) return false;
     if (state.period === "30d" && !(paper.firstSeen >= last30)) return false;
+    if (state.period === "week" && (paper.firstSeen < state.weekStart || paper.firstSeen > state.weekEnd)) {
+      return false;
+    }
     if (state.type !== "all" && paper.type !== state.type) return false;
     if (state.source === "ieee" && !isIeeePaper(paper)) return false;
     if (state.source === "other" && isIeeePaper(paper)) return false;
@@ -311,12 +326,14 @@
   }
 
   function renderOverview(items) {
-    const periodLabel = {
-      today: "今日",
-      "7d": "近 7 天",
-      "30d": "近 30 天",
-      all: "全部",
-    }[state.period] || "当前";
+    const periodLabel = state.period === "week"
+      ? `${formatMonthDay(state.weekStart)}–${formatMonthDay(state.weekEnd)}`
+      : ({
+        today: "今日",
+        "7d": "近 7 天",
+        "30d": "近 30 天",
+        all: "全部",
+      }[state.period] || "当前");
 
     if (items.length === 0) {
       els.overview.textContent = "当前筛选没有论文，试试放宽时间范围或清空筛选。";
@@ -351,7 +368,10 @@
   }
 
   function buildWeeklyFallback() {
-    const weekly = papers.filter((paper) => paper.firstSeen >= last7);
+    const range = lastCompletedWeek();
+    const weekly = papers.filter(
+      (paper) => paper.firstSeen >= range.start && paper.firstSeen <= range.end,
+    );
     const typeCounts = { "journal-article": 0, conference: 0, preprint: 0 };
     const tagCounts = new Map();
     let ieeeCount = 0;
@@ -390,8 +410,8 @@
     ].filter(Boolean).join("、");
 
     let summary = weekly.length > 0
-      ? `本周（${formatMonthDay(last7)}–${formatMonthDay(today)}）新增 ${weekly.length} 篇`
-      : "本周暂无新增论文。";
+      ? `该周（${formatMonthDay(range.start)}–${formatMonthDay(range.end)}）新增 ${weekly.length} 篇`
+      : "该周暂无新增论文。";
     if (weekly.length > 0) {
       if (typeText) summary += `：${typeText}`;
       summary += ieeeCount > 0 ? `；其中 IEEE 论文 ${ieeeCount} 篇。` : "。";
@@ -401,8 +421,8 @@
     }
 
     return {
-      rangeStart: last7,
-      rangeEnd: today,
+      rangeStart: range.start,
+      rangeEnd: range.end,
       count: weekly.length,
       typeCounts,
       ieeeCount,
@@ -417,10 +437,11 @@
     const data = weeklyData && Number.isFinite(weeklyData.count)
       ? weeklyData
       : buildWeeklyFallback();
+    weeklyRange = { start: data.rangeStart, end: data.rangeEnd };
 
     els.weeklyRange.textContent =
       `${formatMonthDay(data.rangeStart)}–${formatMonthDay(data.rangeEnd)}`;
-    els.weeklyAi.textContent = data.summary || "本周暂无新增论文。";
+    els.weeklyAi.textContent = data.summary || "该周暂无新增论文。";
     els.weeklyAiBadge.hidden = data.summarySource !== "ai";
 
     els.weeklyFacts.textContent = "";
@@ -801,6 +822,8 @@
   window.uavApp = {
     getFilters: () => ({
       period: state.period,
+      from: state.period === "week" ? state.weekStart : "",
+      to: state.period === "week" ? state.weekEnd : "",
       q: state.q,
       tag: state.tag,
       type: state.type,
@@ -813,6 +836,8 @@
 
   function setPeriod(period) {
     state.period = period;
+    state.weekStart = "";
+    state.weekEnd = "";
     state.limit = 12;
     for (const button of periodButtons) {
       button.classList.toggle("active", button.dataset.period === period);
@@ -860,7 +885,10 @@
   });
 
   function showWeekly(tag = "all") {
-    state.period = "7d";
+    const range = weeklyRange || lastCompletedWeek();
+    state.period = "week";
+    state.weekStart = range.start;
+    state.weekEnd = range.end;
     state.q = "";
     state.tag = tag;
     state.type = "all";
@@ -874,7 +902,7 @@
     els.month.value = "all";
     els.sort.value = "latest";
     for (const button of periodButtons) {
-      button.classList.toggle("active", button.dataset.period === "7d");
+      button.classList.remove("active");
     }
     renderTags();
     syncUrl();
@@ -946,6 +974,8 @@
 
   els.reset.addEventListener("click", () => {
     state.period = "30d";
+    state.weekStart = "";
+    state.weekEnd = "";
     state.q = "";
     state.tag = "all";
     state.type = "all";
@@ -1007,8 +1037,16 @@
   function syncUrl() {
     const url = new URL(window.location.href);
     const query = url.searchParams;
-    for (const key of ["period", "q", "tag", "type", "source", "month", "sort"]) query.delete(key);
-    if (state.period !== "30d") query.set("period", state.period);
+    for (const key of ["period", "from", "to", "q", "tag", "type", "source", "month", "sort"]) {
+      query.delete(key);
+    }
+    if (state.period === "week") {
+      query.set("period", "week");
+      query.set("from", state.weekStart);
+      query.set("to", state.weekEnd);
+    } else if (state.period !== "30d") {
+      query.set("period", state.period);
+    }
     if (state.q) query.set("q", state.q);
     if (state.tag !== "all") query.set("tag", state.tag);
     if (state.type !== "all") query.set("type", state.type);
@@ -1101,6 +1139,24 @@
 
   function formatMonthDay(isoDate) {
     return String(isoDate || "").slice(5).replace("-", ".");
+  }
+
+  function lastCompletedWeek() {
+    const date = new Date(`${today}T00:00:00Z`);
+    const sinceMonday = (date.getUTCDay() + 6) % 7;
+    const thisMonday = new Date(date);
+    thisMonday.setUTCDate(date.getUTCDate() - sinceMonday);
+
+    const start = new Date(thisMonday);
+    start.setUTCDate(thisMonday.getUTCDate() - 7);
+
+    const end = new Date(thisMonday);
+    end.setUTCDate(thisMonday.getUTCDate() - 1);
+
+    return {
+      start: start.toISOString().slice(0, 10),
+      end: end.toISOString().slice(0, 10),
+    };
   }
 
   function prettyPublisher(name) {

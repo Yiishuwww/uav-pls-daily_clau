@@ -158,6 +158,8 @@ function tokenize(input) {
 function matchesFilters(paper, filters, today) {
   if (!filters || typeof filters !== "object") return true;
 
+  if (filters.from && paper.firstSeen < filters.from) return false;
+  if (filters.to && paper.firstSeen > filters.to) return false;
   if (filters.period === "today" && paper.firstSeen !== today) return false;
   if (filters.period === "7d" && !(paper.firstSeen >= addDays(today, -6))) return false;
   if (filters.period === "30d" && !(paper.firstSeen >= addDays(today, -29))) return false;

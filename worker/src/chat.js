@@ -11,7 +11,7 @@ const MAX_HISTORY_ITEM_CHARS = 2000;
 const MAX_OUTPUT_TOKENS = 1200;
 const UPSTREAM_TIMEOUT_MS = 120000;
 
-const FILTER_KEYS = ["period", "q", "tag", "type", "source", "month", "sort"];
+const FILTER_KEYS = ["period", "from", "to", "q", "tag", "type", "source", "month", "sort"];
 
 /**
  * 处理一次 /api/chat 请求。

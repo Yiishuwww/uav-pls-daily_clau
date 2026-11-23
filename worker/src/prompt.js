@@ -136,6 +136,9 @@ function describeFilters(filters) {
   if (filters.period && PERIOD_LABELS[filters.period]) {
     parts.push(PERIOD_LABELS[filters.period]);
   }
+  if (filters.from && filters.to) {
+    parts.push(`${filters.from} 至 ${filters.to}（按收录日期）`);
+  }
   if (filters.tag && filters.tag !== "all") {
     parts.push(`标签「${filters.tag}」`);
   }
