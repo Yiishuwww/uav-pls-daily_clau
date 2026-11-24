@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T21:49:46+08:00",
+  "generatedAt": "2026-11-24T14:52:06+08:00",
   "rangeStart": "2026-11-16",
   "rangeEnd": "2026-11-22",
   "count": 12,
@@ -37,23 +37,23 @@
       "url": "https://doi.org/10.1109/tcomm.2026.3755456"
     },
     {
-      "id": "doi:10.1109/miot.2026.3743183",
-      "title": "Embodied Intelligence for UAV Covert Communications: From Open-Loop Design to Closed-Loop Autonomy",
-      "type": "journal-article",
-      "published": "2026-11-16",
-      "citationCount": 0,
-      "url": "https://doi.org/10.1109/miot.2026.3743183"
-    },
-    {
       "id": "doi:10.3390/electronics15225293",
       "title": "Performance Analysis of Covert Communications in Dual-UAV Systems with Colluding Wardens",
       "type": "journal-article",
       "published": "2026-11-14",
       "citationCount": 0,
       "url": "https://doi.org/10.3390/electronics15225293"
+    },
+    {
+      "id": "doi:10.1109/miot.2026.3743183",
+      "title": "Embodied Intelligence for UAV Covert Communications: From Open-Loop Design to Closed-Loop Autonomy",
+      "type": "journal-article",
+      "published": "2026-11-16",
+      "citationCount": 0,
+      "url": "https://doi.org/10.1109/miot.2026.3743183"
     }
   ],
-  "fingerprint": "2026-11-16|2026-11-22|doi:10.1007/s10586-026-06787-2,doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/mwc.2026.3751244,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|隐蔽通信:6,干扰/人工噪声:5,波束成形:4,轨迹优化:3|doi:10.1109/tcomm.2026.3755456,doi:10.1109/miot.2026.3743183,doi:10.3390/electronics15225293",
-  "summary": "该周（11.16–11.22）新增 12 篇：期刊 10、会议 2；其中 IEEE 论文 8 篇。热门主题：隐蔽通信、干扰/人工噪声、波束成形。",
-  "summarySource": "template"
+  "fingerprint": "2026-11-16|2026-11-22|doi:10.1007/s10586-026-06787-2,doi:10.1109/jiot.2026.3754897,doi:10.1109/miot.2026.3743183,doi:10.1109/mwc.2026.3751244,doi:10.1109/tcc.2026.3754920,doi:10.1109/tccn.2026.3754558,doi:10.1109/tcomm.2026.3755456,doi:10.1109/tmc.2026.3754831,doi:10.1109/twc.2026.3754901,doi:10.1117/12.3134002,doi:10.1117/12.3134523,doi:10.3390/electronics15225293|隐蔽通信:6,干扰/人工噪声:5,波束成形:4,轨迹优化:3|doi:10.1109/tcomm.2026.3755456,doi:10.3390/electronics15225293,doi:10.1109/miot.2026.3743183",
+  "summary": "本周共新增12篇论文，涵盖期刊与会议类型，IEEE论文占8篇。热门主题包括隐蔽通信、干扰/人工噪声和波束成形，值得关注论文有《Movable Antenna-Enabled UAV Covert Communication: A Heterogeneous Multi-agent DRL Approach》等。",
+  "summarySource": "ai"
 }

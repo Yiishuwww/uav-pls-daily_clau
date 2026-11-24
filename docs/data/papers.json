@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T11:35:39+08:00",
+  "updatedAt": "2026-11-24T14:51:35+08:00",
   "total": 88,
   "papers": [
     {
@@ -25,6 +25,43 @@
       "firstSeen": "2026-11-23",
       "summaryZh": "研究问题：在无人机辅助无线系统中，如何进行窃听检测？ 方法：通过比较无监督和监督方法，分析并纠正了信道模拟中的功率缩放不一致性，并评估了不同接收信号特征在理想化放大转发（AF）中是否具有判别力。 主要结论：在理想化的AF功率归一化模型下，基于接收幅度/功率的被动统计检测不可行，并指出了特定的模拟陷阱。",
       "id": "doi:10.1117/12.3139788"
+    },
+    {
+      "title": "Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning",
+      "authors": [
+        "Yinxuan Wu",
+        "Xiaohao Xia",
+        "Beatriz Lorenzo",
+        "Dennis Goeckel",
+        "Fikadu Dagefu"
+      ],
+      "abstract": "Unmanned aerial vehicle (UAV) swarms increasingly span multiple spectrum bands and radio access technologies (RATs), e.g., Wi-Fi, LoRa, Zigbee, and cellular. With active adversaries capable of protocol-aware jamming, spoofing, traffic analysis, and control-plane exploitation, survivable and timely covert communication is challenging. Moreover, after detection, adversaries may escalate with selective, adaptive attacks that increase latency and hinder recovery. This paper is the first to study covertness recovery under post-detection threat escalation. We design a learning-based mechanism that re-establishes covert communication across learning domains with different Willie densities and attack models, amid stochastic task arrivals, UAV mobility, and uncertain warden locations and behaviors. We jointly optimize RAT selection, resource allocation, and task offloading to minimize Age of Covert Information (AoCI), energy, and threat impact. Warden behavior is modeled via an adaptive attack-selection process capturing detection-triggered escalation and nonstationary strategies. We propose Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Opti- mization (CDFALL-PPO), which factorizes shared and domain-specific policy components for online adaptation while mitigating catastrophic forgetting. Across three escalating 30-task sequences, extensive simulations show that CDFALL-PPO raises median packet covert delivery rate (PCR) by 14.5 %, increases covert throughput by up to 53.6%, and lowers AoCI by 59.4% relative to PPO. Under the strongest composite attack, mean on-attack PCR improves from 52% to 70%, and mean post-attack recovery PCR rises from 64% to 93%.",
+      "doi": "10.1109/vtc2026-fall68024.2026.11758399",
+      "venue": "IEEE VTC Conference Fall 2026",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-21",
+      "url": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
+      "pdfUrl": "https://arxiv.org/pdf/2611.28486v1",
+      "sources": [
+        "ieee",
+        "arxiv"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "无人机集群",
+        "深度强化学习",
+        "资源分配"
+      ],
+      "score": 28,
+      "firstSeen": "2026-11-13",
+      "id": "doi:10.1109/vtc2026-fall68024.2026.11758399",
+      "citationCount": 0,
+      "tldr": "This paper is the first to study covertness recovery under post-detection threat escalation and proposes Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting.",
+      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
+      "summaryZh": "研究问题：在多RAT无人机编队中，如何通过终身强化学习在检测后的威胁升级下恢复隐蔽通信。 方法：设计了一种基于学习的机制，在具有不同Willie密度和攻击模型的多个学习域中重建隐蔽通信，同时优化RAT选择、资源分配和任务卸载，以最小化隐蔽信息年龄（AoCI）、能量和威胁影响。 主要结论：提出的CDFALL-PPO算法通过因子化共享和域特定策略组件，实现了在线适应并减轻了灾难性遗忘，实验结果表明CDFALL-PPO提高了中值数据包隐蔽交付率（PCR）和隐蔽吞吐量。",
+      "arxivId": "2611.28486"
     },
     {
       "title": "Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges",
@@ -349,7 +386,7 @@
       "tags": [
         "隐蔽通信"
       ],
-      "score": 32,
+      "score": 30,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/miot.2026.3743183",
       "summaryZh": "研究问题：如何解决低空无人机隐蔽通信中的三维移动性、动态信道条件和不确定的守卫位置等挑战。方法：通过引入具身智能，将无人机从被动接收器转变为集认知、优化和通信于一体的自主代理，实现闭环感知-决策-执行（PDE）循环。主要结论：具身智能有效缓解了信道状态信息陈旧问题，在闭环感知-决策-执行方面优于集中式基线，为实际部署提供了有前景的方向。",
@@ -382,7 +419,7 @@
         "深度强化学习",
         "语义通信"
       ],
-      "score": 23,
+      "score": 21,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/tccn.2026.3754558",
       "summaryZh": "研究问题：在低空经济网络（LAENets）中，如何通过语义通信（SemCom）在无人机（UAVs）与基站（BS）之间实现隐蔽通信，同时解决信息不对称问题。 方法：提出一个激励感知的语义抽象框架，通过调整UAV侧的语义抽象级别，在固定维度的传输负载下提供差异化的隐蔽语义服务，并采用合同理论模型解决信息不对称问题。 主要结论：该框架能够可靠地在严格的隐蔽通信约束下传输任务信息，同时通过合同理论模型有效解决信息不对称问题。",
@@ -1502,41 +1539,6 @@
       "firstSeen": "2026-09-02",
       "id": "doi:10.48550/arxiv.2609.03099",
       "summaryZh": "研究问题：如何通过视觉惯性跟踪增强无人机轨迹和通信。 方法：提出一种基于视觉惯性跟踪的无人机通信（VIT-UAVCom）系统，联合设计无人机轨迹和通信性能，并开发优化算法。 主要结论：VIT-UAVCom框架在能耗方面显著优于K-means基准，同时保持稳健的保密性能和可靠的用户覆盖，能量效率比基准提高144%。"
-    },
-    {
-      "title": "Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning",
-      "authors": [
-        "Yinxuan Wu",
-        "Xiaohao Xia",
-        "Beatriz Lorenzo",
-        "Dennis Goeckel",
-        "Fikadu Dagefu"
-      ],
-      "abstract": "Unmanned aerial vehicle (UAV) swarms increasingly span multiple spectrum bands and radio access technologies (RATs), e.g., Wi-Fi, LoRa, Zigbee, and cellular. With active adversaries capable of protocol-aware jamming, spoofing, traffic analysis, and control-plane exploitation, survivable and timely covert communication is challenging. Moreover, after detection, adversaries may escalate with selective, adaptive attacks that increase latency and hinder recovery. This paper is the first to study covertness recovery under post-detection threat escalation. We design a learning-based mechanism that re-establishes covert communication across learning domains with different Willie densities and attack models, amid stochastic task arrivals, UAV mobility, and uncertain warden locations and behaviors. We jointly optimize RAT selection, resource allocation, and task offloading to minimize Age of Covert Information (AoCI), energy, and threat impact. Warden behavior is modeled via an adaptive attack-selection process capturing detection-triggered escalation and nonstationary strategies. We propose Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting. Across three escalating 30-task sequences, extensive simulations show that CDFALL-PPO raises median packet covert delivery rate (PCR) by 14.5%, increases covert throughput by up to 53.6%, and lowers AoCI by 59.4% relative to PPO. Under the strongest composite attack, mean on-attack PCR improves from 52% to 70%, and mean post-attack recovery PCR rises from 64% to 93%.",
-      "doi": "10.1109/vtc2026-fall68024.2026.11758399",
-      "venue": "2026 IEEE 104th Vehicular Technology Conference (VTC2026-Fall)",
-      "publisher": "IEEE",
-      "type": "conference",
-      "published": "2026-09-01",
-      "url": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
-      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11758399",
-      "sources": [
-        "ieee"
-      ],
-      "tags": [
-        "隐蔽通信",
-        "干扰/人工噪声",
-        "无人机集群",
-        "深度强化学习",
-        "资源分配"
-      ],
-      "score": 25,
-      "firstSeen": "2026-11-13",
-      "id": "doi:10.1109/vtc2026-fall68024.2026.11758399",
-      "citationCount": 0,
-      "tldr": "This paper is the first to study covertness recovery under post-detection threat escalation and proposes Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting.",
-      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
-      "summaryZh": "研究问题：在多RAT无人机编队中，如何通过终身强化学习在检测后的威胁升级下恢复隐蔽通信。 方法：设计了一种基于学习的机制，在具有不同Willie密度和攻击模型的多个学习域中重建隐蔽通信，同时优化RAT选择、资源分配和任务卸载，以最小化隐蔽信息年龄（AoCI）、能量和威胁影响。 主要结论：提出的CDFALL-PPO算法通过因子化共享和域特定策略组件，实现了在线适应并减轻了灾难性遗忘，实验结果表明CDFALL-PPO提高了中值数据包隐蔽交付率（PCR）和隐蔽吞吐量。"
     },
     {
       "title": "Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems",

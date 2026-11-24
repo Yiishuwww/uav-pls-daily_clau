@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>UAV 物理层安全论文日报</title>
-    <link></link>
+    <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 23 Nov 2026 13:49:46 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 06:52:06 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
     <item>
       <title>Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches</title>
@@ -14,6 +14,18 @@
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <description>A wireless relaying system in the presence of an active eavesdropper is considered, using an unmanned aerial vehicle (UAV) as an amplify-and-forward (AF) relay. While reproducing and extending a prior received-signal-statistics detection framework [6], we identified a power-scaling inconsistency in the channel simulation: transmit power terms were applied linearly to signal amplitude rather than as their square root, which artificially inflates the apparent separability between normal and attack conditions. After correcting this inconsistency, we show, both analytically and empirically, that under an idealized AF relay with exact power normalization to a fixed transmit power, none of six candidate received-signal features, including the physics-motivated received power, retain any discriminative power (AUC ≈ 0.50) across the entire tested eavesdropper power range. We further show that large accuracy swings previously observed under class-imbalanced test conditions are a separate, well-known artifact of biased classifiers scored by raw accuracy rather than genuine detection ability. These findings indicate that passive statistical detection based on received amplitude/power alone is not viable under the idealized AF power-normalization model, and we highlight the specific simulation pitfall responsible so that future work in this area can avoid it.</description>
       <category>主动窃听</category>
+    </item>
+    <item>
+      <title>Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning</title>
+      <link>https://doi.org/10.1109/vtc2026-fall68024.2026.11758399</link>
+      <guid isPermaLink="false">doi:10.1109/vtc2026-fall68024.2026.11758399</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Unmanned aerial vehicle (UAV) swarms increasingly span multiple spectrum bands and radio access technologies (RATs), e.g., Wi-Fi, LoRa, Zigbee, and cellular. With active adversaries capable of protocol-aware jamming, spoofing, traffic analysis, and control-plane exploitation, survivable and timely covert communication is challenging. Moreover, after detection, adversaries may escalate with selective, adaptive attacks that increase latency and hinder recovery. This paper is the first to study covertness recovery under post-detection threat escalation. We design a learning-based mechanism that re-establishes covert communication across learning domains with different Willie densities and attack models, amid stochastic task arrivals, UAV mobility, and uncertain warden locations and behaviors. We jointly optimize RAT selection, resource allocation, and task offloading to minimize Age of Covert Information (AoCI), energy, and threat impact. Warden behavior is modeled via an adaptive attack-selection process capturing detection-triggered escalation and nonstationary strategies. We propose Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Opti- mization (CDFALL-PPO), which factorizes shared and domain-specific policy components for online adaptation while mitigating catastrophic forgetting. Across three escalating 30-task sequences, extensive simulations show that CDFALL-PPO raises median packet covert delivery rate (PCR) by 14.5 %, increases covert throughput by up to 53.6%, and lowers AoCI by 59.4% relative to PPO. Under the strongest composite attack, mean on-attack PCR improves from 52% to 70%, and mean post-attack recovery PCR rises from 64% to 93%.</description>
+      <category>隐蔽通信</category>
+      <category>干扰/人工噪声</category>
+      <category>无人机集群</category>
+      <category>深度强化学习</category>
+      <category>资源分配</category>
     </item>
     <item>
       <title>Pinching Antenna With Index Modulation for 6G Networks: Principles, Applications, and Challenges</title>
@@ -486,18 +498,6 @@
       <description>In this paper, we propose an energy-efficient and reliable communication system for non-terrestrial networks deployed in dynamic GPS-denied wireless environments, enabled by a Vision--Inertial Tracking-Assisted UAV Communication (VIT-UAVCom) system. To the best of our knowledge, this is the first work to exploit onboard UAV cameras and IMU sensors for UAV-assisted communications. We consider a complete VIT-UAVCom system that incorporates the key design parameters while explicitly accounting for system noise and residual tracking inaccuracies. Building on this framework, we formulate an optimization problem for jointly designing the UAV trajectory and communication performance to improve propulsion energy efficiency, reduce outage probability, and enhance physical-layer security. We then develop a dedicated solution framework to efficiently compute near-optimal trajectory and communication control actions in dynamic scenarios. Furthermore, to enable real-time implementation, we propose and evaluate three optimizers, namely linear search (LS), binary search (BS), and genetic search. Our numerical results demonstrate that our proposed VIT-UAVCom framework significantly outperforms the K-means benchmark in terms of energy consumption while maintaining robust secrecy performance and reliable user coverage. Specifically, our proposed framework improves the energy efficiency by 144% compared to the benchmark. Interestingly, our results also show that, compared with the LS, the BS reduces the computational time by approximately 50%.</description>
       <category>轨迹优化</category>
       <category>空天地网络</category>
-    </item>
-    <item>
-      <title>Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning</title>
-      <link>https://doi.org/10.1109/vtc2026-fall68024.2026.11758399</link>
-      <guid isPermaLink="false">doi:10.1109/vtc2026-fall68024.2026.11758399</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Unmanned aerial vehicle (UAV) swarms increasingly span multiple spectrum bands and radio access technologies (RATs), e.g., Wi-Fi, LoRa, Zigbee, and cellular. With active adversaries capable of protocol-aware jamming, spoofing, traffic analysis, and control-plane exploitation, survivable and timely covert communication is challenging. Moreover, after detection, adversaries may escalate with selective, adaptive attacks that increase latency and hinder recovery. This paper is the first to study covertness recovery under post-detection threat escalation. We design a learning-based mechanism that re-establishes covert communication across learning domains with different Willie densities and attack models, amid stochastic task arrivals, UAV mobility, and uncertain warden locations and behaviors. We jointly optimize RAT selection, resource allocation, and task offloading to minimize Age of Covert Information (AoCI), energy, and threat impact. Warden behavior is modeled via an adaptive attack-selection process capturing detection-triggered escalation and nonstationary strategies. We propose Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting. Across three escalating 30-task sequences, extensive simulations show that CDFALL-PPO raises median packet covert delivery rate (PCR) by 14.5%, increases covert throughput by up to 53.6%, and lowers AoCI by 59.4% relative to PPO. Under the strongest composite attack, mean on-attack PCR improves from 52% to 70%, and mean post-attack recovery PCR rises from 64% to 93%.</description>
-      <category>隐蔽通信</category>
-      <category>干扰/人工噪声</category>
-      <category>无人机集群</category>
-      <category>深度强化学习</category>
-      <category>资源分配</category>
     </item>
     <item>
       <title>Machine Learning-Enabled Optimization for Next-Generation Wireless Networks: A Survey of Intelligent Resource Management in RIS-Assisted Systems</title>
