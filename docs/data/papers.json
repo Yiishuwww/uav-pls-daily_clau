@@ -1,7 +1,64 @@
 {
-  "updatedAt": "2026-11-24T14:51:35+08:00",
-  "total": 88,
+  "updatedAt": "2026-11-25T13:17:50+08:00",
+  "total": 90,
   "papers": [
+    {
+      "title": "Waveform Randomization for Secure ISAC Against Informed Eavesdroppers",
+      "authors": [
+        "Zexin Fang",
+        "Bin Han",
+        "Shuangyang Li",
+        "Hans D. Schotten"
+      ],
+      "abstract": "We study waveform-level protection of Integrated Sensing and Communication (ISAC) against a UAV-mounted eavesdropper (Eve) that knows the waveform construction and the phase-key generation rules. The novelty of this work is a systematic, budget-explicit attack analysis: instead of relying on undisclosed design details, we quantify what an informed Eve can learn and reconstruct, and how much computation this takes. We protect the sensing reference with Fourier-curve modulation, phase keys, and tangent Artificial Noise (AN), with burst- specific information shared over secure backhaul. We compare three key-generation rules against offline Convolutional Neural Network (CNN)-based sequence identification and online Adam and phase-aware expectation-maximization (EM) key recovery, under complete or partial nominal-sequence knowledge. A power- domain model couples residual key error with imperfect AN removal and predicts coherent delay locking. Results show that reusable key structure permits sequence identification even when demodulation fails, position-dependent keying raises recovery difficulty, and seed-expanded keying resists the evaluated clas- sifier within the learning budget. Waveform simulations under multipath, clutter, and echo accumulation confirm the sensing impact.",
+      "arxivId": "2611.32506",
+      "venue": "arXiv",
+      "publisher": "arXiv",
+      "type": "preprint",
+      "published": "2026-11-24",
+      "url": "https://arxiv.org/abs/2611.32506v1",
+      "pdfUrl": "https://arxiv.org/pdf/2611.32506v1",
+      "sources": [
+        "arxiv"
+      ],
+      "tags": [
+        "通感一体化",
+        "干扰/人工噪声",
+        "机器学习",
+        "密钥生成"
+      ],
+      "score": 15.5,
+      "firstSeen": "2026-11-25",
+      "summaryZh": "研究问题：如何保护集成传感与通信（ISAC）免受已知波形结构和密钥生成规则的信息窃听者攻击。 方法：采用傅里叶曲线调制、相位密钥和切线人工噪声（AN）保护传感参考，并通过安全回程共享特定信息，比较三种密钥生成规则。 主要结论：可重用密钥结构允许在解调失败时进行序列识别，位置相关密钥增加了恢复难度，种子扩展密钥在评估分类器内抵抗学习预算内的攻击。",
+      "id": "arxiv:2611.32506"
+    },
+    {
+      "title": "A SLIPT Protocol for Optical Session Key Delivery and Photovoltaics-Aided Hybrid RF/FSO Links",
+      "authors": [
+        "Shunyuan Shang",
+        "Ziyuan Shi",
+        "Mohamed-Slim Alouini"
+      ],
+      "abstract": "We propose an iPPM-based SLIPT architecture in which a UAV optical downlink jointly delivers a fresh 128-bit session key and energy to a photovoltaic ground sensor, which subsequently performs an AES-128-GCM-protected RF uplink. Under a passive lateral eavesdropper model, we derive analytical expressions for the equivalent secrecy outage probability (SOP), downlink, uplink, and end-to-end connection probabilities, and the average gated RF-uplink spectral efficiency. The corresponding effective end-to-end throughput is obtained by accounting for the optical downlink, processing/guard, and RF uplink durations. Eve’s finite-length key compromise probability is further evaluated through bit-level iPPM simulation. The secrecy assessment is anchored in a spatially coupled beam-wander Eve model, in which the pointing losses of the legitimate and eavesdropper receivers fluctuate jointly; the closed-form deterministic-offset model is retained only as an analytical reference and is shown to understate the secrecy outage probability by one to two orders of magnitude at high optical power. The complete packet-level cryptographic procedure, covering the per-block key lifecycle, nonce construction, counter synchronization, key confirmation, and partial-recovery handling, is specified, and all circuit and radiated energies are accounted for on a single per-block capacitor. The results characterize the effects of optical power, beam width, geometric separation, and power splitting, and reveal an optimal allocation between key decoding and energy harvesting. Quantitative Monte Carlo (MC) comparisons with PPM, OOK, fixed-battery, conventional hybrid RF/FSO, and ideal pre-shared-key baselines further identify the performance gains and costs associated with the proposed protocol.",
+      "doi": "10.1109/twc.2026.3757230",
+      "venue": "IEEE Transactions on Wireless Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-24",
+      "url": "https://doi.org/10.1109/twc.2026.3757230",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11812750",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "保密中断",
+        "携能/能量收集"
+      ],
+      "score": 9.5,
+      "firstSeen": "2026-11-25",
+      "summaryZh": "研究问题：如何通过SLIPT协议在光通信中安全地传输会话密钥和能量？ 方法：提出一种基于iPPM的SLIPT架构，结合无人机光下行链路和光伏地面传感器，进行AES-128-GCM加密的射频上行链路，并分析保密中断概率、下行链路、上行链路和端到端连接概率等。 主要结论：该协议能够有效提高光通信的安全性，并通过仿真验证了其性能。",
+      "id": "doi:10.1109/twc.2026.3757230"
+    },
     {
       "title": "Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches",
       "authors": [
@@ -24,7 +81,9 @@
       "score": 23,
       "firstSeen": "2026-11-23",
       "summaryZh": "研究问题：在无人机辅助无线系统中，如何进行窃听检测？ 方法：通过比较无监督和监督方法，分析并纠正了信道模拟中的功率缩放不一致性，并评估了不同接收信号特征在理想化放大转发（AF）中是否具有判别力。 主要结论：在理想化的AF功率归一化模型下，基于接收幅度/功率的被动统计检测不可行，并指出了特定的模拟陷阱。",
-      "id": "doi:10.1117/12.3139788"
+      "id": "doi:10.1117/12.3139788",
+      "citationCount": 0,
+      "tldr": "It is shown that under an idealized AF relay with exact power normalization to a fixed transmit power, none of six candidate received-signal features retain any discriminative power across the entire tested eavesdropper power range."
     },
     {
       "title": "Covertness Recovery in Multi-RAT UAV Swarms Under Post-Detection Threat Escalation via Lifelong Reinforcement Learning",
@@ -256,7 +315,7 @@
         "保密中断",
         "无人机中继"
       ],
-      "score": 25.5,
+      "score": 23.5,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1117/12.3134002",
       "summaryZh": "研究问题：探讨无人机中继辅助通信中，结合流体天线系统（FAS）的保密性能；方法：采用基于Copula的空间相关性模型分析FAS端口之间的依赖关系，并通过逆拉普拉斯变换和高斯-拉盖尔求积法分析保密中断概率和遍历保密容量；主要结论：FAS相较于固定位置天线提供了显著的保密增益，随着端口数量的增加，增益逐渐饱和。",
@@ -289,7 +348,7 @@
         "波束成形",
         "机器学习"
       ],
-      "score": 15,
+      "score": 13,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1117/12.3134523",
       "summaryZh": "研究问题：在部分遮挡和信道状态信息不完美的情况下，如何利用零能耗可重构智能表面（zeRIS）辅助无人机通信实现安全波束成形。 方法：提出一种基于深度学习的框架，联合设计无人机的信息波束成形向量和人工噪声矩阵，并使用低复杂度的相位对齐规则确定RIS的相位偏移。 主要结论：所提出的zeRIS辅助深度学习方案在模拟的遮挡条件下优于无RIS和广义特征值分解（GEVD）基线，且增大RIS表面可以缓解直接链路严重遮挡引起的保密率下降。",
@@ -321,7 +380,7 @@
         "资源分配",
         "携能/能量收集"
       ],
-      "score": 14.5,
+      "score": 12.5,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/twc.2026.3754901",
       "summaryZh": "研究问题：在UAV-RIS辅助的MISO系统中，如何实现安全的下行传输，并优化UAV悬停位置、基站发射功率分配和RIS相移，以最大化在有限CSI不确定性和非线性能量收集约束下的最坏情况保密能量效率。 方法：提出了一种基于SAC框架的鲁棒优化方法，结合了连续到离散的动作投影、双批评家以减少价值高估和可行性感知奖励机制。 主要结论：所提出的SAC策略在保密能量效率方面比SCA基准、DDPG和TD3分别提高了28%、16%和6%，同时表现出更快的收敛速度和主要性能优势。",
@@ -355,7 +414,7 @@
         "轨迹优化",
         "波束成形"
       ],
-      "score": 11,
+      "score": 9,
       "firstSeen": "2026-11-18",
       "id": "doi:10.1109/tcc.2026.3754920",
       "summaryZh": "研究问题：如何通过联合优化无人机轨迹、水面无人艇轨迹和无人机波束成形向量，在移动性、功率和隐蔽性约束下提高无线信息监听的平均率，以有效监控涉嫌非法活动的船只。 方法：提出了一种基于无人机和水面无人艇的协同无线信息监听方案，并采用块坐标下降（BCD）交替优化算法解决联合优化问题。 主要结论：所提出的优化方法能够有效提高无线信息监听的平均率，从而加强现代航海中的海事安全。",
@@ -1238,7 +1297,7 @@
       "firstSeen": "2026-10-01",
       "id": "doi:10.1088/2631-8695/aeaecd",
       "citationCount": 0,
-      "tldr": "The results show a significant amount of improvement in the secrecy performance of the UAV-RSMA system model in terms of secrecy outage probability and secrecy capacity due to jamming caused by the CIGLScGAN trained model.",
+      "tldr": "A significant improvement in the secrecy performance of the UAV-RSMA system model, in terms of secrecy outage probability and ergodic secrecy capacity, due to jamming from the proposed CIGLScGAN deep learning model.",
       "oaPdfUrl": "https://iopscience.iop.org/article/10.1088/2631-8695/aeaecd/pdf",
       "summaryZh": "研究问题：如何利用条件生成对抗网络（cGAN）模型在RSMA网络中减轻窃听问题。 方法：提出了一种基于余弦插值Gamma潜在空间的cGAN（CIGLScGAN）深度学习模型，通过生成干扰信号来减轻窃听。 主要结论：CIGLScGAN模型在提高无人机-RSMA系统模型的保密性能方面取得了显著成效，包括保密中断概率和保密容量。"
     },

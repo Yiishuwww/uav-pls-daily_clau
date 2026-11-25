@@ -5,8 +5,28 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 24 Nov 2026 06:52:06 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 05:18:28 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Waveform Randomization for Secure ISAC Against Informed Eavesdroppers</title>
+      <link>https://arxiv.org/abs/2611.32506v1</link>
+      <guid isPermaLink="false">arxiv:2611.32506</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
+      <description>We study waveform-level protection of Integrated Sensing and Communication (ISAC) against a UAV-mounted eavesdropper (Eve) that knows the waveform construction and the phase-key generation rules. The novelty of this work is a systematic, budget-explicit attack analysis: instead of relying on undisclosed design details, we quantify what an informed Eve can learn and reconstruct, and how much computation this takes. We protect the sensing reference with Fourier-curve modulation, phase keys, and tangent Artificial Noise (AN), with burst- specific information shared over secure backhaul. We compare three key-generation rules against offline Convolutional Neural Network (CNN)-based sequence identification and online Adam and phase-aware expectation-maximization (EM) key recovery, under complete or partial nominal-sequence knowledge. A power- domain model couples residual key error with imperfect AN removal and predicts coherent delay locking. Results show that reusable key structure permits sequence identification even when demodulation fails, position-dependent keying raises recovery difficulty, and seed-expanded keying resists the evaluated clas- sifier within the learning budget. Waveform simulations under multipath, clutter, and echo accumulation confirm the sensing impact.</description>
+      <category>通感一体化</category>
+      <category>干扰/人工噪声</category>
+      <category>机器学习</category>
+      <category>密钥生成</category>
+    </item>
+    <item>
+      <title>A SLIPT Protocol for Optical Session Key Delivery and Photovoltaics-Aided Hybrid RF/FSO Links</title>
+      <link>https://doi.org/10.1109/twc.2026.3757230</link>
+      <guid isPermaLink="false">doi:10.1109/twc.2026.3757230</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
+      <description>We propose an iPPM-based SLIPT architecture in which a UAV optical downlink jointly delivers a fresh 128-bit session key and energy to a photovoltaic ground sensor, which subsequently performs an AES-128-GCM-protected RF uplink. Under a passive lateral eavesdropper model, we derive analytical expressions for the equivalent secrecy outage probability (SOP), downlink, uplink, and end-to-end connection probabilities, and the average gated RF-uplink spectral efficiency. The corresponding effective end-to-end throughput is obtained by accounting for the optical downlink, processing/guard, and RF uplink durations. Eve’s finite-length key compromise probability is further evaluated through bit-level iPPM simulation. The secrecy assessment is anchored in a spatially coupled beam-wander Eve model, in which the pointing losses of the legitimate and eavesdropper receivers fluctuate jointly; the closed-form deterministic-offset model is retained only as an analytical reference and is shown to understate the secrecy outage probability by one to two orders of magnitude at high optical power. The complete packet-level cryptographic procedure, covering the per-block key lifecycle, nonce construction, counter synchronization, key confirmation, and partial-recovery handling, is specified, and all circuit and radiated energies are accounted for on a single per-block capacitor. The results characterize the effects of optical power, beam width, geometric separation, and power splitting, and reveal an optimal allocation between key decoding and energy harvesting. Quantitative Monte Carlo (MC) comparisons with PPM, OOK, fixed-battery, conventional hybrid RF/FSO, and ideal pre-shared-key baselines further identify the performance gains and costs associated with the proposed protocol.</description>
+      <category>保密中断</category>
+      <category>携能/能量收集</category>
+    </item>
     <item>
       <title>Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches</title>
       <link>https://doi.org/10.1117/12.3139788</link>
