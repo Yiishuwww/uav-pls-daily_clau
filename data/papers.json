@@ -1,7 +1,38 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-25T13:18:28+08:00",
+  "updatedAt": "2026-11-26T10:33:48+08:00",
   "papers": [
+    {
+      "title": "Secure Wireless Agent Network Empowered by Probabilistic Semantic Communications",
+      "authors": [
+        "Jianxin Dai",
+        "Yiting Wang",
+        "Zhouxiang Zhao",
+        "Zhaoyang Zhang",
+        "Xiaoming Chen",
+        "Yihan Cang",
+        "Zhaohui Yang",
+        "Linqing Gui"
+      ],
+      "abstract": "This paper delves into the complicated problems of secure transmission and energy efficiency maximization in unmanned aerial vehicle (UAV) assisted low-altitude semantic wireless networks. In order to resist the ubiquitous eavesdropping attacks in such systems, a full three-layer eavesdropping model is proposed, consisting of communications between the UAV and the base station (BS), between the BS and the target user, and among UAVs for relay. We first derive the propagation characteristic and security requirement for every type of link. Based on this, we develop a joint optimization framework tailored to maximize the system’s secure semantic energy efficiency under a multifaceted set of constraints, including power budgets, latency thresholds, UAV positioning, secure semantic rates, and semantic compression ratios. By employing auxiliary variable substitution and convex approximation techniques, the original non-convex problem is converted into a series of tractable convex subproblems, for which a robust algorithm is proposed to derive a high-quality sub-optimal solution. Simulation results validate the effectiveness of the proposed scheme in significantly enhancing secure semantic energy efficiency.",
+      "doi": "10.1109/tcomm.2026.3757354",
+      "venue": "IEEE Transactions on Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-25",
+      "url": "https://doi.org/10.1109/tcomm.2026.3757354",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11814026",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "语义通信"
+      ],
+      "score": 11,
+      "firstSeen": "2026-11-26",
+      "summaryZh": "研究问题：无人机辅助的低空语义无线网络中的安全传输和能量效率最大化问题。 方法：提出一个三层窃听模型，并基于此开发一个联合优化框架，通过辅助变量替换和凸近似技术将非凸问题转化为可处理的凸子问题。 主要结论：仿真结果表明，所提出的方案在显著提高安全语义能量效率方面是有效的。",
+      "id": "doi:10.1109/tcomm.2026.3757354"
+    },
     {
       "title": "Waveform Randomization for Secure ISAC Against Informed Eavesdroppers",
       "authors": [
@@ -30,7 +61,9 @@
       "score": 15.5,
       "firstSeen": "2026-11-25",
       "summaryZh": "研究问题：如何保护集成传感与通信（ISAC）免受已知波形结构和密钥生成规则的信息窃听者攻击。 方法：采用傅里叶曲线调制、相位密钥和切线人工噪声（AN）保护传感参考，并通过安全回程共享特定信息，比较三种密钥生成规则。 主要结论：可重用密钥结构允许在解调失败时进行序列识别，位置相关密钥增加了恢复难度，种子扩展密钥在评估分类器内抵抗学习预算内的攻击。",
-      "id": "arxiv:2611.32506"
+      "id": "arxiv:2611.32506",
+      "citationCount": 0,
+      "tldr": "This work quantifies what an informed Eve can learn and reconstruct, and how much computation this takes, and shows that reusable key structure permits sequence identification even when demodulation fails, position-dependent keying raises recovery difficulty, and seed-expanded keying resists the evaluated clas- sifier within the learning budget."
     },
     {
       "title": "A SLIPT Protocol for Optical Session Key Delivery and Photovoltaics-Aided Hybrid RF/FSO Links",
@@ -118,7 +151,7 @@
       "id": "doi:10.1109/vtc2026-fall68024.2026.11758399",
       "citationCount": 0,
       "tldr": "This paper is the first to study covertness recovery under post-detection threat escalation and proposes Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting.",
-      "oaPdfUrl": "https://doi.org/10.1109/vtc2026-fall68024.2026.11758399",
+      "oaPdfUrl": "https://doi.org/10.48550/arxiv.2611.28486",
       "summaryZh": "研究问题：在多RAT无人机编队中，如何通过终身强化学习在检测后的威胁升级下恢复隐蔽通信。 方法：设计了一种基于学习的机制，在具有不同Willie密度和攻击模型的多个学习域中重建隐蔽通信，同时优化RAT选择、资源分配和任务卸载，以最小化隐蔽信息年龄（AoCI）、能量和威胁影响。 主要结论：提出的CDFALL-PPO算法通过因子化共享和域特定策略组件，实现了在线适应并减轻了灾难性遗忘，实验结果表明CDFALL-PPO提高了中值数据包隐蔽交付率（PCR）和隐蔽吞吐量。",
       "arxivId": "2611.28486"
     },
@@ -248,7 +281,7 @@
         "无人机中继",
         "全双工"
       ],
-      "score": 26.5,
+      "score": 24.5,
       "firstSeen": "2026-11-19",
       "summaryZh": "研究问题：针对无人机辅助物联网系统中的隐蔽和保密汇聚通信，如何联合优化无人机轨迹、功率和用户调度以提升系统性能并确保公平性。 方法：通过定义平均吞吐量（ATAS）和平均保密吞吐量（AST），以及推导威利（Willie）的最小检测错误概率（DEP），构建了基于ATAS最大化的优化问题，并采用基于惩罚的连续凸近似（P-SCA）算法求解。 主要结论：所提出的框架有效提升了系统性能，并揭示了关键系统参数对系统性能的影响。",
       "id": "doi:10.1109/jiot.2026.3754897",
@@ -285,7 +318,7 @@
         "空天地网络",
         "全双工"
       ],
-      "score": 19,
+      "score": 17,
       "firstSeen": "2026-11-19",
       "summaryZh": "研究问题：在ISCC-Enabled SAGIS中，如何实现隐蔽任务卸载以对抗敌方检测。 方法：通过联合设计波束成形和计算资源，包括本地计算与卸载任务之间的分配以及UAV CPU频率，以最大化隐蔽卸载速率。 主要结论：提出了一种基于半定松弛-连续凸逼近（SDR-SCA）的方法来解决非凸优化问题，并通过仿真验证了所提方法的有效性。",
       "id": "doi:10.1109/tmc.2026.3754831",

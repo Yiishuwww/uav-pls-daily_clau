@@ -5,8 +5,16 @@
     <link>https://Yiishuwww.github.io/uav-pls-daily_clau</link>
     <description>Physical Layer Security for UAV Communications · 每日自动汇总最新论文</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Nov 2026 05:18:28 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 02:33:48 GMT</lastBuildDate>
     <generator>uav-pls-daily</generator>
+    <item>
+      <title>Secure Wireless Agent Network Empowered by Probabilistic Semantic Communications</title>
+      <link>https://doi.org/10.1109/tcomm.2026.3757354</link>
+      <guid isPermaLink="false">doi:10.1109/tcomm.2026.3757354</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 GMT</pubDate>
+      <description>This paper delves into the complicated problems of secure transmission and energy efficiency maximization in unmanned aerial vehicle (UAV) assisted low-altitude semantic wireless networks. In order to resist the ubiquitous eavesdropping attacks in such systems, a full three-layer eavesdropping model is proposed, consisting of communications between the UAV and the base station (BS), between the BS and the target user, and among UAVs for relay. We first derive the propagation characteristic and security requirement for every type of link. Based on this, we develop a joint optimization framework tailored to maximize the system’s secure semantic energy efficiency under a multifaceted set of constraints, including power budgets, latency thresholds, UAV positioning, secure semantic rates, and semantic compression ratios. By employing auxiliary variable substitution and convex approximation techniques, the original non-convex problem is converted into a series of tractable convex subproblems, for which a robust algorithm is proposed to derive a high-quality sub-optimal solution. Simulation results validate the effectiveness of the proposed scheme in significantly enhancing secure semantic energy efficiency.</description>
+      <category>语义通信</category>
+    </item>
     <item>
       <title>Waveform Randomization for Secure ISAC Against Informed Eavesdroppers</title>
       <link>https://arxiv.org/abs/2611.32506v1</link>
