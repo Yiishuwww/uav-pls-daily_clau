@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T12:45:25+08:00",
+  "updatedAt": "2026-11-27T08:49:28+08:00",
   "papers": [
     {
       "title": "Secure Wireless Agent Network Empowered by Probabilistic Semantic Communications",
@@ -47,10 +47,11 @@
       "publisher": "arXiv",
       "type": "preprint",
       "published": "2026-11-24",
-      "url": "https://arxiv.org/abs/2611.32506v1",
+      "url": "https://doi.org/10.48550/arxiv.2611.32506",
       "pdfUrl": "https://arxiv.org/pdf/2611.32506v1",
       "sources": [
-        "arxiv"
+        "arxiv",
+        "openalex"
       ],
       "tags": [
         "通感一体化",
@@ -61,9 +62,10 @@
       "score": 15.5,
       "firstSeen": "2026-11-25",
       "summaryZh": "研究问题：如何保护集成传感与通信（ISAC）免受已知波形结构和密钥生成规则的信息窃听者攻击。 方法：采用傅里叶曲线调制、相位密钥和切线人工噪声（AN）保护传感参考，并通过安全回程共享特定信息，比较三种密钥生成规则。 主要结论：可重用密钥结构允许在解调失败时进行序列识别，位置相关密钥增加了恢复难度，种子扩展密钥在评估分类器内抵抗学习预算内的攻击。",
-      "id": "arxiv:2611.32506",
+      "id": "doi:10.48550/arxiv.2611.32506",
       "citationCount": 0,
-      "tldr": "This work quantifies what an informed Eve can learn and reconstruct, and how much computation this takes, and shows that reusable key structure permits sequence identification even when demodulation fails, position-dependent keying raises recovery difficulty, and seed-expanded keying resists the evaluated clas- sifier within the learning budget."
+      "tldr": "This work quantifies what an informed Eve can learn and reconstruct, and how much computation this takes, and shows that reusable key structure permits sequence identification even when demodulation fails, position-dependent keying raises recovery difficulty, and seed-expanded keying resists the evaluated clas- sifier within the learning budget.",
+      "doi": "10.48550/arxiv.2611.32506"
     },
     {
       "title": "A SLIPT Protocol for Optical Session Key Delivery and Photovoltaics-Aided Hybrid RF/FSO Links",
@@ -90,7 +92,8 @@
       "score": 9.5,
       "firstSeen": "2026-11-25",
       "summaryZh": "研究问题：如何通过SLIPT协议在光通信中安全地传输会话密钥和能量？ 方法：提出一种基于iPPM的SLIPT架构，结合无人机光下行链路和光伏地面传感器，进行AES-128-GCM加密的射频上行链路，并分析保密中断概率、下行链路、上行链路和端到端连接概率等。 主要结论：该协议能够有效提高光通信的安全性，并通过仿真验证了其性能。",
-      "id": "doi:10.1109/twc.2026.3757230"
+      "id": "doi:10.1109/twc.2026.3757230",
+      "citationCount": 0
     },
     {
       "title": "Physics-informed feature engineering for eavesdropper detection in UAV-aided wireless systems: a comparative study of unsupervised and supervised approaches",
@@ -183,7 +186,8 @@
       "score": 11,
       "firstSeen": "2026-11-21",
       "summaryZh": "研究问题：Pinching天线辅助索引调制（PA-IM）在6G网络中的应用及其挑战 方法：介绍PA-IM的基本原理，探讨其在ISAC、NGMA、PLS和UAV网络中的应用 主要结论：PA-IM具有提高频谱效率、能量效率和系统性能的潜力，同时存在一些挑战和机遇",
-      "id": "doi:10.1109/mwc.2026.3751244"
+      "id": "doi:10.1109/mwc.2026.3751244",
+      "citationCount": 0
     },
     {
       "title": "Joint localization and performance optimization in RSMA-based 6G aerial networks via particle filtering",
@@ -211,7 +215,7 @@
         "springer"
       ],
       "tags": [],
-      "score": 18,
+      "score": 16,
       "firstSeen": "2026-11-21",
       "citationCount": 0,
       "tldr": "This paper investigates a secure cognitive radio (CR)-enabled UAV communication system employing rate-splitting multiple access (RSMA) for efficient spectrum sharing and multiuser transmission and demonstrates the effectiveness of the proposed localization and optimization methods in improving both communication reliability and physical-layer security.",
@@ -247,7 +251,7 @@
         "波束成形",
         "深度强化学习"
       ],
-      "score": 32,
+      "score": 30,
       "firstSeen": "2026-11-20",
       "summaryZh": "研究问题：如何通过集成可移动天线来提高无人机在复杂城市环境中的隐蔽数据收集性能。 方法：提出了一种基于异构多智能体深度强化学习（HMATD3）算法的联合优化方法，包括无人机轨迹、干扰功率、发射波束成形、MA位置和频率分配。 主要结论：通过优化算法实现了实时隐蔽数据收集决策，并提高了隐蔽性能。",
       "id": "doi:10.1109/tcomm.2026.3755456",
