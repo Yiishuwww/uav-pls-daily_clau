@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T08:49:28+08:00",
+  "updatedAt": "2026-11-27T12:52:48+08:00",
   "papers": [
     {
       "title": "Secure Wireless Agent Network Empowered by Probabilistic Semantic Communications",
@@ -154,7 +154,7 @@
       "id": "doi:10.1109/vtc2026-fall68024.2026.11758399",
       "citationCount": 0,
       "tldr": "This paper is the first to study covertness recovery under post-detection threat escalation and proposes Cross-Domain Factorized Adaptive Lifelong Learning with Proximal Policy Optimization (CDFALL-PPO), which factorizes shared and domainspecific policy components for online adaptation while mitigating catastrophic forgetting.",
-      "oaPdfUrl": "https://doi.org/10.48550/arxiv.2611.28486",
+      "oaPdfUrl": "https://arxiv.org/pdf/2611.28486",
       "summaryZh": "研究问题：在多RAT无人机编队中，如何通过终身强化学习在检测后的威胁升级下恢复隐蔽通信。 方法：设计了一种基于学习的机制，在具有不同Willie密度和攻击模型的多个学习域中重建隐蔽通信，同时优化RAT选择、资源分配和任务卸载，以最小化隐蔽信息年龄（AoCI）、能量和威胁影响。 主要结论：提出的CDFALL-PPO算法通过因子化共享和域特定策略组件，实现了在线适应并减轻了灾难性遗忘，实验结果表明CDFALL-PPO提高了中值数据包隐蔽交付率（PCR）和隐蔽吞吐量。",
       "arxivId": "2611.28486"
     },
