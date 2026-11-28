@@ -1,7 +1,68 @@
 {
-  "updatedAt": "2026-11-27T12:51:57+08:00",
-  "total": 91,
+  "updatedAt": "2026-11-28T12:36:43+08:00",
+  "total": 95,
   "papers": [
+    {
+      "title": "Joint Beamforming and Dual-UAV Trajectory Optimization for Friendly-Jamming-Assisted Covert Communications in UAV-Enabled ISAC Systems",
+      "authors": [
+        "Wen Chen",
+        "Hang Hu",
+        "Yangchao Huang",
+        "Wei Li",
+        "Ju Liu",
+        "Lei Ni"
+      ],
+      "abstract": "This paper investigates friendly-jamming-assisted covert communications in UAV-enabled integrated sensing and communication (ISAC) systems. A multiuser scenario is considered, where an aerial ISAC base station jointly performs covert communication and target sensing, while a friendly-jamming UAV transmits directional artificial noise to impair the warden’s detection capability. To enhance user fairness, a joint optimization problem is formulated to maximize the average minimum covert transmission rate by jointly designing the communication and sensing beamforming and the trajectories of Alice and Jammer, subject to covertness, radar sensing, transmit-power, and UAV mobility constraints. To tackle the resulting non-convex problem, an alternating optimization (AO) framework is developed. Specifically, the beamforming subproblem is transformed into a semidefinite programming problem via semidefinite relaxation and successive convex approximation, while the dual-UAV trajectory subproblem is convexified and reformulated as a second-order cone programming problem. Numerical results demonstrate favorable convergence performance and show that the proposed joint design achieves a higher average minimum covert transmission rate than benchmark schemes by effectively exploiting multi-antenna beamforming, dual-UAV mobility, and friendly jamming.",
+      "doi": "10.3390/electronics15235561",
+      "venue": "Electronics",
+      "publisher": "MDPI AG",
+      "type": "journal-article",
+      "published": "2026-11-27",
+      "url": "https://doi.org/10.3390/electronics15235561",
+      "pdfUrl": "",
+      "sources": [
+        "crossref"
+      ],
+      "tags": [
+        "通感一体化",
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "协作干扰",
+        "轨迹优化",
+        "波束成形"
+      ],
+      "score": 32.5,
+      "firstSeen": "2026-11-28",
+      "summaryZh": "研究问题：在UAV-启用ISAC系统中，如何通过友好的干扰辅助隐蔽通信来提高用户公平性。 方法：通过联合设计通信和传感波束成形以及Alice和干扰者的轨迹，提出了一种交替优化（AO）框架来解决非凸问题。 主要结论：所提出的联合设计通过有效利用多天线波束成形、双UAV移动性和友好干扰，实现了比基准方案更高的平均最小隐蔽传输速率。",
+      "id": "doi:10.3390/electronics15235561"
+    },
+    {
+      "title": "Joint Optimization of Movable Antenna Positions, Beamforming, and UAV Deployment for Sensing Resilient UAV Communications",
+      "authors": [
+        "Jiawei Yao",
+        "Dongyu Wei",
+        "Mingzhe Chen"
+      ],
+      "abstract": "This paper investigates a movable-antenna (MA)-based sensing resilient unmanned aerial vehicle (UAV) communication system. In the considered model, an MA-empowered UAV serves multiple users in the presence of multiple eavesdroppers. The UAV can either change its position, beamforming, and MA positions to remain resilient to sensing attacks and data interception. We formulate this problem as an optimization problem whose goal is to impede data interception and UAV localization estimation by eavesdroppers while guaranteeing the secure rate for all users. To solve this problem, we transform it into its tractable surrogates via the generalized Lagrangian dual transform and quadratic transform. We then solve it using an iterative method that optimizes the beamforming and MA positions with a given UAV position and optimizes the UAV position with given beamforming and MA positions. Different from current works that optimize beamforming and MA positions iteratively, we use compressed sensing to simultaneously optimize the beamforming and MA positions with the given UAV position. This removes the overhead of inner-iterations between the beamforming and MA positions, accelerates convergence, and reduces the risk of over-relaxation and uncontrolled approximation errors. In particular, given the UAV position, the problem can be rewritten as a Frobenius norm regularized least squares (FN-RLS) problem. The FN-RLS problem can be further recast as a sparse optimization problem that can be solved by the orthogonal matching pursuit (OMP) algorithm. Given the beamforming and MA positions, the UAV position is updated using a gradient ascent method. Numerical results show that the proposed method can improve the sensing resilient objective, i.e., defined as the sum of secure rate and Cramér–Rao bound (CRB) by up to 20.71% compared to the successive convex approximation (SCA)-based method, and the convergence time is only 32.98% of its.",
+      "doi": "10.1109/jsac.2026.3757812",
+      "venue": "IEEE Journal on Selected Areas in Communications",
+      "publisher": "IEEE",
+      "type": "journal-article",
+      "published": "2026-11-27",
+      "url": "https://doi.org/10.1109/jsac.2026.3757812",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11816098",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "安全速率",
+        "波束成形"
+      ],
+      "score": 14,
+      "firstSeen": "2026-11-28",
+      "summaryZh": "研究问题：如何通过联合优化移动天线位置、波束成形和无人机部署来增强无人机通信系统的抗侦察能力。 方法：将问题转化为优化问题，利用广义拉格朗日对偶变换和二次变换求解，并采用压缩感知技术同时优化波束成形和移动天线位置。 主要结论：所提出的方法能够有效提高无人机通信系统的抗侦察能力，并通过减少内部迭代次数和加速收敛来提高计算效率。",
+      "id": "doi:10.1109/jsac.2026.3757812"
+    },
     {
       "title": "Secure Wireless Agent Network Empowered by Probabilistic Semantic Communications",
       "authors": [
@@ -183,7 +244,7 @@
         "通感一体化",
         "无人机集群"
       ],
-      "score": 11,
+      "score": 9,
       "firstSeen": "2026-11-21",
       "summaryZh": "研究问题：Pinching天线辅助索引调制（PA-IM）在6G网络中的应用及其挑战 方法：介绍PA-IM的基本原理，探讨其在ISAC、NGMA、PLS和UAV网络中的应用 主要结论：PA-IM具有提高频谱效率、能量效率和系统性能的潜力，同时存在一些挑战和机遇",
       "id": "doi:10.1109/mwc.2026.3751244",
@@ -2579,6 +2640,71 @@
       "firstSeen": "2026-08-05",
       "id": "title:1snc1de",
       "summaryZh": "研究问题：如何提高RIS辅助无人机网络中的物理层安全性，特别是在存在信道状态信息不完美的情况下。 方法：提出了一种鲁棒的波束成形优化框架，通过联合优化无人机和RIS的波束成形向量，以最大化合法通信链路的最大秘密速率。 主要结论：该框架通过考虑信道不确定性，有效地提高了无人机网络在存在恶意窃听时的物理层安全性。"
+    },
+    {
+      "title": "Joint Trajectory and Power Optimization for Dual-UAV Covert Communication",
+      "authors": [
+        "Zenebe Melesew Yetneberk",
+        "Tong-Xing Zheng",
+        "Ke-Wei Wang",
+        "Nawaf Q. Othman",
+        "Berihu B. Weldemichael",
+        "Filipos Tekeste Weldetinsae"
+      ],
+      "abstract": "This paper studies covert communication in a dual-UAV network consisting of a transmitter Alice UAV, a cooperative jammer UAV, a ground receiver (Bob), and a ground warden (Willie). Alice transmits to Bob while the Jammer emits randomized artificial noise (AN) to degrade Willie's detection capability. Willie employs an energy detector, and a line-of-sight (LoS) channel model yields a closed-form minimum detection error probability (DEP) that couples the transmit powers and trajectories of both UAVs. We formulate a nonconvex optimization problem that maximizes the average covert rate over a finite mission period, subject to covertness, UAV mobility, collision avoidance, and peak/average power constraints. An iterative algorithm based on block coordinate descent (BCD) and successive convex approximation (SCA) is developed, which alternates between a convex power subproblem with a closed-form jammer power solution and a trajectory subproblem with guaranteed feasibility at each iteration. Numerical results show that the proposed joint design consistently outperforms the trajectory-restricted schemes, particularly under stringent covertness requirements, while positiverate covert transmission is infeasible without randomized jamming under the adopted detector model.",
+      "doi": "10.1109/icccworkshops70794.2026.11796862",
+      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC Workshops)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-08-01",
+      "url": "https://doi.org/10.1109/icccworkshops70794.2026.11796862",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11796862",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "隐蔽通信",
+        "干扰/人工噪声",
+        "协作干扰",
+        "轨迹优化",
+        "无人机集群"
+      ],
+      "score": 29.5,
+      "firstSeen": "2026-11-28",
+      "summaryZh": "研究问题：如何优化双无人机网络中的联合轨迹和功率以实现隐蔽通信。 方法：采用基于块坐标下降和连续凸近似迭代算法进行优化。 主要结论：所提出的联合设计在隐蔽性要求严格的情况下优于轨迹限制方案，且在采用的能量检测器模型下，没有随机干扰的隐蔽传输不可行。",
+      "id": "doi:10.1109/icccworkshops70794.2026.11796862"
+    },
+    {
+      "title": "Two-Timescale Covert Communication and Sensing in UAV-Enabled ISAC Networks",
+      "authors": [
+        "Feiyan Ding",
+        "Haowen Yang",
+        "Yimei Han",
+        "Hongwu Liu",
+        "Zhiquan Bai",
+        "Theodoros A. Tsiftsis"
+      ],
+      "abstract": "This paper investigates covert communications in an unmanned aerial vehicle (UAV)-enabled integrated sensing and communication (ISAC) network for low-altitude applications requiring privacy protection. To guarantee muti-target sensing performance while maximizing covert communication rate, we propose a two-timescale optimization framework to jointly design the UAV trajectory and beamforming. Specifically, on the large-scale of covert communication only (CCO), an average covert rate maximization problem is formulated, in which the UAV trajectory and beamforming need to be jointly optimized. To tackle the non-convex objective function and deal with the complicated coupling between the UAV trajectory and beamforming, the UAV trajectory and beamforming optimizations are decoupled and optimized in an alternate way. While on the small-scale of covert communication and sensing (CCS), we propose a greedy strategy to select the UAV's locations out of the UAV trajectory optimized on the CCO-scale, which are suitable for the CCS operations, therefore reducing the computational complexity significantly. Simulation results show that the proposed two-timescale optimization framework significantly enhances the covert rate performance while ensuring reliable multi-target sensing and outperforming the baseline methods.",
+      "doi": "10.1109/icccworkshops70794.2026.11796973",
+      "venue": "2026 IEEE/CIC International Conference on Communications in China (ICCC Workshops)",
+      "publisher": "IEEE",
+      "type": "conference",
+      "published": "2026-08-01",
+      "url": "https://doi.org/10.1109/icccworkshops70794.2026.11796973",
+      "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11796973",
+      "sources": [
+        "ieee"
+      ],
+      "tags": [
+        "通感一体化",
+        "隐蔽通信",
+        "轨迹优化",
+        "波束成形"
+      ],
+      "score": 29,
+      "firstSeen": "2026-11-28",
+      "summaryZh": "研究问题：在无人机（UAV）辅助的集成感知与通信（ISAC）网络中，如何实现低空应用中的隐私保护下的隐蔽通信。 方法：提出一个双时间尺度优化框架，联合设计UAV轨迹和波束成形，并在隐蔽通信和感知两个不同尺度上分别进行优化。 主要结论：所提出的双时间尺度优化框架显著提高了隐蔽通信速率，同时确保了可靠的多元目标感知，并优于基线方法。",
+      "id": "doi:10.1109/icccworkshops70794.2026.11796973"
     },
     {
       "title": "Joint UAV Placement and Active IRS Gain Optimization for Covert Communications",
